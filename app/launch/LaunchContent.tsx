@@ -7,6 +7,7 @@ import { motion } from 'framer-motion'
 import WaitlistForm from '@/components/WaitlistForm'
 import WaitlistCounter from '@/components/WaitlistCounter'
 import LaunchJournal from '@/components/LaunchJournal'
+import SensoryEditorialGrid from '@/components/SensoryEditorialGrid'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -256,6 +257,9 @@ export default function LaunchContent() {
           </div>
         </div>
       </section>
+
+      {/* ── SENSORY EDITORIAL GRID ────────────────────── */}
+      <SensoryEditorialGrid />
 
       {/* ── LAUNCH JOURNAL ────────────────────────────── */}
       <LaunchJournal />

@@ -317,3 +317,121 @@ body::after {
   transform: translateY(-4px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
 }
+
+/* ——————————————————————————————
+   CINEMATIC: REVEAL MASK
+—————————————————————————————— */
+@keyframes reveal-up {
+  from {
+    clip-path: inset(100% 0 0 0);
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0% 0 0 0);
+    opacity: 1;
+  }
+}
+
+.reveal-up {
+  animation: reveal-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ——————————————————————————————
+   CINEMATIC: BLUR TRANSITION
+—————————————————————————————— */
+@keyframes blur-in {
+  from { filter: blur(12px); opacity: 0; transform: translateY(10px); }
+  to   { filter: blur(0);    opacity: 1; transform: translateY(0); }
+}
+
+.blur-in {
+  animation: blur-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ——————————————————————————————
+   CINEMATIC: AMBIENT GLOW ORBS
+—————————————————————————————— */
+.ambient-orb-gold {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201, 169, 110, 0.12) 0%, transparent 70%);
+  filter: blur(70px);
+}
+
+.ambient-orb-cream {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(240, 235, 225, 0.35) 0%, transparent 70%);
+  filter: blur(80px);
+}
+
+/* ——————————————————————————————
+   CINEMATIC: EDITORIAL IMAGE
+—————————————————————————————— */
+.img-cinematic {
+  filter: saturate(0.82) contrast(1.06) brightness(0.95);
+  transition: filter 0.6s ease;
+}
+
+.img-cinematic:hover {
+  filter: saturate(0.92) contrast(1.03) brightness(0.97);
+}
+
+/* ——————————————————————————————
+   CINEMATIC: DARK GLASS CARD
+—————————————————————————————— */
+.glass-dark {
+  background: rgba(15, 14, 12, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-light {
+  background: rgba(253, 252, 250, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(234, 229, 222, 0.7);
+}
+
+/* ——————————————————————————————
+   CINEMATIC: TEXT SHIMMER
+—————————————————————————————— */
+@keyframes text-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    #C9A96E 0%,
+    #E8C98A 30%,
+    #C9A96E 60%,
+    #E8C98A 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: text-shimmer 4s linear infinite;
+}
+
+/* ——————————————————————————————
+   EDITORIAL: SECTION TRANSITION
+—————————————————————————————— */
+.section-dark-to-light::before {
+  content: '';
+  display: block;
+  height: 80px;
+  background: linear-gradient(to bottom, #0F0E0C, #FAF8F5);
+}
+
+.section-light-to-dark::before {
+  content: '';
+  display: block;
+  height: 80px;
+  background: linear-gradient(to bottom, #FAF8F5, #0F0E0C);
+}

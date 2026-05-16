@@ -3,8 +3,10 @@ import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import TrustStrip from '@/components/TrustStrip'
 import HeroProductSpotlight from '@/components/HeroProductSpotlight'
+import RitualSection from '@/components/RitualSection'
 import UGCReviews from '@/components/UGCReviews'
 import PhilosophyPreview from '@/components/PhilosophyPreview'
+import EditorialQuote from '@/components/EditorialQuote'
 import FounderNote from '@/components/FounderNote'
 import ClosingCTA from '@/components/ClosingCTA'
 import Footer from '@/components/Footer'
@@ -16,8 +18,15 @@ export default function Home() {
       <Hero />
       <TrustStrip />
       <HeroProductSpotlight />
+      <RitualSection />
       <UGCReviews />
       <PhilosophyPreview />
+      <EditorialQuote
+        quote="Huidverzorging hoeft niet ingewikkeld te zijn. Het hoeft alleen eerlijk te zijn."
+        attribution="LUMÉ · Oprichtingsmanifest"
+        variant="light"
+        size="md"
+      />
       <FounderNote />
       <ClosingCTA />
       <Footer />

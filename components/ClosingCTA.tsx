@@ -31,29 +31,31 @@ export default function ClosingCTA() {
           </div>
 
           <h2 className="text-5xl sm:text-6xl font-semibold text-[#1A1A1A] leading-[1.05] mb-6">
-            Start met drie producten.
+            De eerste batch<br />
+            is bijna klaar.
             <br />
-            <span className="text-[#9A9590] font-normal italic">Niet meer.</span>
+            <span className="text-[#9A9590] font-normal italic">Zorg dat je erbij bent.</span>
           </h2>
 
           <p className="text-[#6B6560] text-lg leading-relaxed mb-12 font-light max-w-xl mx-auto">
-            Risicovrij. 30 dagen. Gratis verzending boven €50. Als je huid er niet beter uitziet, krijg je alles terug — geen vragen.
+            Kleine oplage. Geen hype. Alleen mensen die écht willen weten wat Reset Serum doet voor hun huid.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/shop" className="btn-gold inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl font-medium text-[15px] w-full sm:w-auto justify-center">
-              Shop nu
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                <path d="M2 7h10M8 3l4 4-4 4"/>
+            <Link href="/launch?source=closing-cta#waitlist" className="btn-gold inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl font-medium text-[15px] w-full sm:w-auto justify-center">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
               </svg>
+              Zet me op de lijst
             </Link>
-            <Link href="/routine" className="btn-outline inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-medium text-[15px] w-full sm:w-auto justify-center">
-              Doe de huidtest
+            <Link href="/products/reset-serum" className="btn-outline inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-medium text-[15px] w-full sm:w-auto justify-center">
+              Lees meer over Reset Serum
             </Link>
           </div>
 
           <p className="text-xs text-[#9A9590] mt-8 font-medium tracking-wide uppercase">
-            30 dagen garantie · Gratis retour · Geen abonnement
+            Geen verplichting · Geen spam · Je kunt altijd uitschrijven
           </p>
         </motion.div>
       </div>
