@@ -41,6 +41,15 @@ export type Product = {
   reviews: ProductReview[]
   relatedSlugs: string[]
   seo: { title: string; description: string }
+  emotion?: string
+  textureNote?: string
+  textureImages?: string[]
+  routineContext?: {
+    time: string
+    step: number
+    note: string
+    pairingNote: string
+  }
 }
 
 const PRODUCTS: Product[] = [
@@ -83,6 +92,19 @@ const PRODUCTS: Product[] = [
     ],
     relatedSlugs: ['reset-serum', 'soft-barrier-cream'],
     seo: { title: 'Quiet Cleanser — Zachte Ceramide Reiniger 150ml | LUMÉ', description: 'Parfumvrije foamreiniger met Ceramiden & Provitamine B5. Reinigt zonder barrièreverstoring. Geschikt voor gevoelige huid. €38.' },
+    emotion: 'Een cleanser die niks opeist. Wast schoon. Laat met rust.',
+    textureNote: 'Rijke foam die direct aanspoelt. Geen trekkerig gevoel achteraf — alleen schoon.',
+    textureImages: [
+      'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=900&q=85&fit=crop',
+      'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=700&q=85&fit=crop',
+      'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=700&q=85&fit=crop',
+    ],
+    routineContext: {
+      time: 'Ochtend & avond',
+      step: 1,
+      note: 'Altijd eerste stap. Lauwe huid — nooit heet. 60 seconden masseren. Grondig afspoelen. Dep droog, niet wrijven.',
+      pairingNote: 'Avond: volg op met Reset Serum. Ochtend: direct naar Soft Barrier Cream + SPF. Nooit overslaan, ook niet na een lange dag.',
+    },
   },
   {
     slug: 'reset-serum',
@@ -124,6 +146,19 @@ const PRODUCTS: Product[] = [
     ],
     relatedSlugs: ['quiet-cleanser', 'soft-barrier-cream'],
     seo: { title: 'Reset Serum — Retinol 0.3% + Niacinamide 10% | LUMÉ', description: 'Klinisch bewezen Retinol 0.3% + Niacinamide 10% serum. Zichtbaar betere huid in 28 dagen. Parfumvrij, dermatoloog getest. €58.' },
+    emotion: 'Gebouwd voor huid die te veel heeft meegemaakt.',
+    textureNote: 'Waterig en bijna doorzichtig. Trekt in binnen 45 seconden. Geen restlaag. Geen kleverig gevoel. Werkt terwijl je slaapt.',
+    textureImages: [
+      'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=900&q=85&fit=crop',
+      'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=700&q=85&fit=crop',
+      'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=700&q=85&fit=crop',
+    ],
+    routineContext: {
+      time: 'Avond',
+      step: 2,
+      note: 'Na de Quiet Cleanser, voor de Soft Barrier Cream. 3–4 druppels. Druk zachtjes aan — niet wrijven. Beginners: start 2–3× per week en bouw langzaam op naar dagelijks gebruik.',
+      pairingNote: 'Gebruik altijd SPF 30+ de volgende ochtend. Retinol verhoogt UV-gevoeligheid. Dit is niet optioneel.',
+    },
   },
   {
     slug: 'soft-barrier-cream',
@@ -164,6 +199,19 @@ const PRODUCTS: Product[] = [
     ],
     relatedSlugs: ['quiet-cleanser', 'reset-serum'],
     seo: { title: 'Soft Barrier Cream — Ceramiden & Bakuchiol Dagcrème 50ml | LUMÉ', description: 'Lichte dagcrème met Ceramiden 3%, Bakuchiol & Squalaan. Barrièreherstel & langdurige hydratatie. Non-comedogeen. €48.' },
+    emotion: 'Hydratatie die beschermt in plaats van verstopt.',
+    textureNote: 'Lichte gel-crème die smelt op lichaamstemperatuur. Snel intrekkend. Geen witte restlaag, geen vet gevoel — ook niet na een uur.',
+    textureImages: [
+      'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=900&q=85&fit=crop',
+      'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=700&q=85&fit=crop',
+      'https://images.unsplash.com/photo-1612817288484-6f916006741a?w=700&q=85&fit=crop',
+    ],
+    routineContext: {
+      time: 'Ochtend & avond',
+      step: 3,
+      note: 'Laatste stap. Een kleine hoeveelheid gaat ver — minder dan je denkt. Verspreid in opwaartse bewegingen over gezicht en hals. Wacht 60 seconden voor SPF.',
+      pairingNote: 'Ochtend: altijd afsluiten met SPF 30+. Avond: kan worden gebruikt ná de Overnight Renewal Oil voor extra rijkdom. Of gebruik alleen — ook prima als nachtcrème.',
+    },
   },
   {
     slug: 'overnight-renewal-oil',
@@ -204,6 +252,19 @@ const PRODUCTS: Product[] = [
     ],
     relatedSlugs: ['reset-serum', 'soft-barrier-cream'],
     seo: { title: 'Overnight Renewal Oil — Rozenbottelolie & Bakuchiol Nachtserum 30ml | LUMÉ', description: 'Herstellende droge olie met Rozenbottelolie 20% & Bakuchiol. Nachtelijk barrièreherstel en celvernieuwing. Non-comedogeen, parfumvrij. €52.' },
+    emotion: 'De nacht is herseltijd. Dit zorgt dat je huid dat ook weet.',
+    textureNote: 'Droge olie die absorbeert als water. Geen glans na aanbrengen, geen kleverig gevoel. Huid voelt de volgende ochtend zachter — zonder residue.',
+    textureImages: [
+      'https://images.unsplash.com/photo-1612817288484-6f916006741a?w=900&q=85&fit=crop',
+      'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=700&q=85&fit=crop',
+      'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=700&q=85&fit=crop',
+    ],
+    routineContext: {
+      time: 'Avond',
+      step: 3,
+      note: 'Allerlaatste stap. 3–5 druppels voor gezicht en hals. Druk zachtjes aan — niet wrijven. Kan worden gemengd met Soft Barrier Cream voor extra rijkdom.',
+      pairingNote: 'Werkt synergetisch met het Reset Serum. Serum behandelt actief — deze olie beschermt en herstelt. Samen het complete nachtprotocol.',
+    },
   },
   {
     slug: 'radiance-serum',
