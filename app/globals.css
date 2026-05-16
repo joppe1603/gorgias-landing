@@ -5,8 +5,14 @@
 :root {
   --gold: #C9A96E;
   --gold-dark: #B8935A;
+  --gold-light: #E8C98A;
   --cream: #FAF8F5;
   --cream-deep: #F0EBE1;
+  --ink: #1A1A1A;
+  --muted: #6B6560;
+  --surface: #FDFCFA;
+  --border: #EAE5DE;
+  --dark: #0F0E0C;
 }
 
 * {
@@ -23,9 +29,12 @@ body {
   background: #ffffff;
   color: #1A1A1A;
   font-feature-settings: 'rlig' 1, 'calt' 1;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Marquee */
+/* ——————————————————————————————
+   MARQUEE
+—————————————————————————————— */
 @keyframes marquee {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -35,29 +44,30 @@ body {
   animation: marquee 35s linear infinite;
   will-change: transform;
 }
-.animate-marquee:hover,
-.animate-marquee-reverse:hover {
-  animation-play-state: paused;
-}
+.animate-marquee:hover { animation-play-state: paused; }
 
-/* Hero blob — warm cream/gold pulse */
+/* ——————————————————————————————
+   HERO BLOB
+—————————————————————————————— */
 @keyframes hero-blob-shift {
-  0%, 100% { transform: translate(-12%, -8%) scale(1);    opacity: 0.5; }
-  50%       { transform: translate(10%,  12%) scale(1.1);  opacity: 0.75; }
+  0%, 100% { transform: translate(-12%, -8%) scale(1);    opacity: 0.4; }
+  50%       { transform: translate(10%,  12%) scale(1.08); opacity: 0.6; }
 }
 
 .hero-blob {
   background: radial-gradient(
     circle at 35% 45%,
-    rgba(201, 169, 110, 0.28) 0%,
-    rgba(240, 235, 225, 0.4)  40%,
-    rgba(255, 255, 255, 0)    70%
+    rgba(201, 169, 110, 0.2) 0%,
+    rgba(240, 235, 225, 0.28) 40%,
+    rgba(255, 255, 255, 0)   70%
   );
-  animation: hero-blob-shift 12s ease-in-out infinite;
-  filter: blur(56px);
+  animation: hero-blob-shift 14s ease-in-out infinite;
+  filter: blur(64px);
 }
 
-/* Feature card border flow — gold tones */
+/* ——————————————————————————————
+   FEATURE CARD GLOW
+—————————————————————————————— */
 @keyframes feature-border-flow {
   0%   { background-position: 0%   50%; }
   100% { background-position: 200% 50%; }
@@ -66,9 +76,9 @@ body {
 .feature-card-glow {
   background: linear-gradient(
     90deg,
-    rgba(201, 169, 110, 0.5),
-    rgba(240, 220, 170, 0.6),
-    rgba(201, 169, 110, 0.5)
+    rgba(201, 169, 110, 0.45),
+    rgba(240, 220, 170, 0.55),
+    rgba(201, 169, 110, 0.45)
   );
   background-size: 200% 100%;
   opacity: 0;
@@ -80,14 +90,18 @@ body {
   animation: feature-border-flow 3.5s linear infinite;
 }
 
-/* Premium serif headings */
-h1, h2 {
+/* ——————————————————————————————
+   TYPOGRAPHY
+—————————————————————————————— */
+h1, h2, h3, h4 {
   font-family: var(--font-cormorant), Georgia, serif;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.01em;
 }
 
-/* Gradient text — gold */
+/* ——————————————————————————————
+   GRADIENT TEXT
+—————————————————————————————— */
 .gradient-text {
   background: linear-gradient(135deg, #C9A96E 0%, #E8C98A 100%);
   -webkit-background-clip: text;
@@ -95,50 +109,130 @@ h1, h2 {
   background-clip: text;
 }
 
-/* Dot grid */
+/* ——————————————————————————————
+   DOT PATTERN
+—————————————————————————————— */
 .dot-pattern {
   background-image: radial-gradient(circle, #e8e0d8 1px, transparent 1px);
   background-size: 32px 32px;
 }
 
-/* Card hover */
+/* ——————————————————————————————
+   CARD HOVER
+—————————————————————————————— */
 .card-hover {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.07);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.07);
 }
 
-/* Gold CTA button */
+/* ——————————————————————————————
+   BUTTONS
+—————————————————————————————— */
 .btn-gold {
   background: #C9A96E;
   color: white;
-  box-shadow: 0 4px 20px rgba(201, 169, 110, 0.35);
-  transition: all 0.2s ease;
+  box-shadow: 0 2px 16px rgba(201, 169, 110, 0.28);
+  transition: all 0.22s ease;
 }
 .btn-gold:hover {
   background: #B8935A;
-  box-shadow: 0 8px 30px rgba(201, 169, 110, 0.45);
+  box-shadow: 0 6px 28px rgba(201, 169, 110, 0.38);
   transform: translateY(-1px);
 }
 
-/* Film grain overlay — luxury texture */
+.btn-outline {
+  border: 1.5px solid #EAE5DE;
+  color: #1A1A1A;
+  transition: all 0.22s ease;
+  background: transparent;
+}
+.btn-outline:hover {
+  border-color: #C9A96E;
+  color: #C9A96E;
+}
+
+/* ——————————————————————————————
+   FILM GRAIN
+—————————————————————————————— */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.028;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.022;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-size: 180px 180px;
   background-repeat: repeat;
   mix-blend-mode: overlay;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 6px; }
+/* ——————————————————————————————
+   SCROLLBAR
+—————————————————————————————— */
+::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #FAF8F5; }
 ::-webkit-scrollbar-thumb { background: #d9c9b4; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #C9A96E; }
+
+/* ——————————————————————————————
+   SECTION UTILITIES
+—————————————————————————————— */
+.section-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #C9A96E;
+  font-family: var(--font-inter), sans-serif;
+}
+
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201, 169, 110, 0.3), transparent);
+}
+
+.divider-stone {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #e5e0d8, transparent);
+}
+
+/* ——————————————————————————————
+   JOURNAL CARD
+—————————————————————————————— */
+.journal-card {
+  border: 1px solid #EAE5DE;
+  transition: border-color 0.2s ease, transform 0.25s ease;
+}
+.journal-card:hover {
+  border-color: rgba(201, 169, 110, 0.4);
+  transform: translateY(-2px);
+}
+
+/* ——————————————————————————————
+   INGREDIENT PILL
+—————————————————————————————— */
+.ingredient-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 100px;
+  background: #FDF8F0;
+  color: #B8935A;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(201, 169, 110, 0.2);
+}
+
+/* ——————————————————————————————
+   PAGE ENTRANCE
+—————————————————————————————— */
+@keyframes page-fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

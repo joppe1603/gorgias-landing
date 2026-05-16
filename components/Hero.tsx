@@ -1,137 +1,162 @@
 'use client'
 
+import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 32 },
+  initial: { opacity: 0, y: 28 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] as const },
+  transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] as const },
 })
-
-const trustBadges = [
-  { icon: '★', value: '4.9/5', label: '12.400 reviews' },
-  { icon: '○', value: 'Parfumvrij', label: 'dermatologisch getest' },
-  { icon: '↩', value: '30 dagen', label: 'volledige garantie' },
-]
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative overflow-hidden bg-white pb-0">
-      <div className="absolute inset-0 dot-pattern opacity-50 pointer-events-none" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-b from-[#FAF0DC]/50 to-transparent rounded-full blur-3xl pointer-events-none" />
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-white">
+      {/* Ambient blob */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden>
+        <div className="hero-blob absolute top-0 left-1/4 w-[700px] h-[600px] rounded-[50%]" />
+        <div className="dot-pattern absolute inset-0 opacity-30" />
+      </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div className="relative w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-24 lg:py-0">
+        <div className="grid lg:grid-cols-[1fr_420px] gap-16 lg:gap-24 items-center min-h-[80vh]">
 
-          {/* LEFT — tekst */}
-          <div className="text-left">
-            <div className="relative mb-6">
-              <div className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 w-[500px] h-[280px]" aria-hidden>
-                <div className="hero-blob w-full h-full rounded-[50%]" />
-              </div>
-              <motion.h1
-                {...fadeUp(0.05)}
-                className="relative text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.06] tracking-tight text-[#1A1A1A]"
-              >
-                Minder stappen.
-                <br />
-                <span className="gradient-text">Betere huid.</span>
-              </motion.h1>
-            </div>
+          {/* LEFT — COPY */}
+          <div className="max-w-2xl">
 
-            <motion.p {...fadeUp(0.15)} className="text-lg text-[#6B6560] max-w-lg leading-relaxed mb-10">
-              LUMÉ is gemaakt voor mensen die genoeg hebben van ingewikkelde routines. Drie producten. Klinisch bewezen. Elke dag klaar in 3 minuten.
-            </motion.p>
-
-            <motion.div {...fadeUp(0.25)} className="flex flex-col sm:flex-row gap-4 mb-10">
-              <a href="#shop" className="btn-gold px-8 py-4 rounded-2xl font-semibold text-base text-center cursor-pointer transition-all">
-                Bouw mijn routine
-              </a>
-              <a href="#quiz" className="flex items-center justify-center gap-2 px-8 py-4 rounded-2xl font-semibold text-base text-[#1A1A1A] border-2 border-stone-200 hover:border-[#C9A96E] hover:text-[#C9A96E] transition-all cursor-pointer">
-                Doe de huidquiz
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                  <path d="M3 8h10M9 4l4 4-4 4"/>
-                </svg>
-              </a>
+            {/* Label */}
+            <motion.div {...fadeUp(0)} className="flex items-center gap-3 mb-10">
+              <div className="w-6 h-px bg-[#C9A96E]" />
+              <span className="section-label">LUMÉ — Huidverzorging</span>
             </motion.div>
 
-            {/* Vertrouwensbadges */}
-            <motion.div {...fadeUp(0.35)} className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-              {trustBadges.map((b) => (
-                <div key={b.label} className="flex items-center gap-2.5">
-                  <span className="text-xl">{b.icon}</span>
-                  <div>
-                    <p className="text-sm font-bold text-[#1A1A1A] leading-none">{b.value}</p>
-                    <p className="text-xs text-[#6B6560]">{b.label}</p>
-                  </div>
-                </div>
-              ))}
+            {/* Headline */}
+            <motion.h1
+              {...fadeUp(0.08)}
+              className="text-[clamp(3rem,7vw,6rem)] font-semibold leading-[1.03] tracking-[-0.025em] text-[#1A1A1A] mb-8"
+            >
+              Huidverzorging
+              <br />
+              <span className="text-[#9A9590] font-normal italic">zonder het spektakel.</span>
+            </motion.h1>
+
+            {/* Subline */}
+            <motion.p {...fadeUp(0.16)} className="text-xl text-[#6B6560] leading-relaxed mb-12 max-w-lg font-light">
+              Drie producten. Klinisch bewezen. Elke dag klaar in minder dan drie minuten — voor mensen die genoeg hebben van ingewikkelde routines.
+            </motion.p>
+
+            {/* CTAs */}
+            <motion.div {...fadeUp(0.24)} className="flex flex-wrap gap-4 mb-14">
+              <Link
+                href="/shop"
+                className="btn-gold inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl font-medium text-[15px]"
+              >
+                Shop de routine
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <path d="M2 7h10M8 3l4 4-4 4"/>
+                </svg>
+              </Link>
+              <Link
+                href="/routine"
+                className="btn-outline inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-medium text-[15px]"
+              >
+                Bouw mijn routine
+              </Link>
+            </motion.div>
+
+            {/* Minimal stats */}
+            <motion.div {...fadeUp(0.32)} className="flex items-center gap-8">
+              <div>
+                <p className="text-2xl font-semibold text-[#1A1A1A] font-[family-name:var(--font-cormorant)]">4.9</p>
+                <p className="text-xs text-[#9A9590] mt-0.5 font-medium tracking-wide uppercase">12k+ reviews</p>
+              </div>
+              <div className="w-px h-8 bg-stone-200" />
+              <div>
+                <p className="text-2xl font-semibold text-[#1A1A1A] font-[family-name:var(--font-cormorant)]">28 dagen</p>
+                <p className="text-xs text-[#9A9590] mt-0.5 font-medium tracking-wide uppercase">Zichtbaar resultaat</p>
+              </div>
+              <div className="w-px h-8 bg-stone-200" />
+              <div>
+                <p className="text-2xl font-semibold text-[#1A1A1A] font-[family-name:var(--font-cormorant)]">30 dagen</p>
+                <p className="text-xs text-[#9A9590] mt-0.5 font-medium tracking-wide uppercase">Volledige garantie</p>
+              </div>
             </motion.div>
           </div>
 
-          {/* RIGHT — echte product foto */}
+          {/* RIGHT — PRODUCT VISUAL */}
           <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="relative flex justify-center lg:justify-end"
+            initial={{ opacity: 0, y: 48, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="relative hidden lg:flex justify-end"
           >
-            <motion.div
-              animate={{ y: [0, -12, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-              className="relative"
-            >
-              <div className="relative w-72 sm:w-80 aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl shadow-stone-300/60">
-                <Image
-                  src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=640&q=85&fit=crop"
-                  alt="LUMÉ Radiance Serum — premium huidverzorging"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 288px, 320px"
-                  priority
-                />
-                {/* Subtle overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/30 via-transparent to-transparent" />
-
-                <div className="absolute bottom-6 left-0 right-0 flex justify-center">
-                  <span className="bg-white/85 backdrop-blur-sm border border-stone-100 rounded-full px-4 py-1.5 text-xs font-semibold text-[#1A1A1A] shadow-sm">
-                    €58 · Gratis verzending
-                  </span>
-                </div>
-
-                <div className="absolute top-5 left-0 right-0 flex justify-center">
-                  <span className="bg-[#1A1A1A]/60 backdrop-blur-sm text-[10px] font-bold uppercase tracking-[0.25em] text-[#C9A96E] px-3 py-1 rounded-full">
-                    Radiance Serum · 30ml
-                  </span>
-                </div>
-              </div>
+            {/* Main product image */}
+            <div className="relative">
+              {/* Subtle background shape */}
+              <div className="absolute -inset-8 bg-[#F5EFE6] rounded-[32px] opacity-60" />
 
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute -left-10 top-1/3 bg-white rounded-2xl shadow-xl border border-stone-100 px-4 py-3 min-w-[120px]"
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+                className="relative z-10"
               >
-                <p className="text-xl font-black text-[#C9A96E]">28 dagen</p>
-                <p className="text-xs text-[#6B6560] mt-0.5">zichtbaar resultaat</p>
-              </motion.div>
+                <div className="w-[380px] h-[480px] rounded-[24px] overflow-hidden relative shadow-[0_32px_80px_rgba(0,0,0,0.12)]">
+                  <Image
+                    src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=760&q=85&fit=crop"
+                    alt="LUMÉ Reset Serum"
+                    fill
+                    className="object-cover"
+                    sizes="380px"
+                    priority
+                  />
+                  {/* Subtle tone overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/25 via-transparent to-transparent" />
 
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.3, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute -right-10 top-1/4 bg-white rounded-2xl shadow-xl border border-stone-100 px-4 py-3 min-w-[130px]"
-              >
-                <p className="text-sm font-bold text-[#1A1A1A]">Puur ✓</p>
-                <p className="text-xs text-[#6B6560] mt-0.5">100% veganistische formule</p>
+                  {/* Product label */}
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <div className="bg-white/90 backdrop-blur-md rounded-2xl px-5 py-3.5 border border-stone-100/80">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C9A96E] mb-0.5">Reset Serum · 30ml</p>
+                      <div className="flex items-center justify-between">
+                        <p className="text-sm font-semibold text-[#1A1A1A]">€58 · Gratis verzending</p>
+                        <Link href="/products/reset-serum" className="text-[10px] font-bold text-[#C9A96E] hover:underline underline-offset-2">
+                          Bekijk →
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Floating ingredient note */}
+                <motion.div
+                  initial={{ opacity: 0, x: -24 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute -left-14 top-1/3 bg-white rounded-2xl shadow-lg border border-stone-100 px-4 py-3"
+                >
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-stone-400 mb-1">Hoofdingredient</p>
+                  <p className="text-sm font-semibold text-[#1A1A1A]">Retinol 0.3%</p>
+                  <p className="text-xs text-[#6B6560]">+ Niacinamide 10%</p>
+                </motion.div>
+
+                {/* Floating skin badge */}
+                <motion.div
+                  initial={{ opacity: 0, x: 24 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.4, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute -right-10 top-1/4 bg-[#0F0E0C] rounded-2xl px-4 py-3"
+                >
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-[#C9A96E] mb-1">Alle huidtypes</p>
+                  <p className="text-xs text-stone-300">Parfumvrij · Vegan</p>
+                </motion.div>
               </motion.div>
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </div>
 
-      <div className="h-28 bg-gradient-to-b from-transparent to-[#FAF8F5] mt-20" />
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#FAF8F5] to-transparent pointer-events-none" />
     </section>
   )
 }
