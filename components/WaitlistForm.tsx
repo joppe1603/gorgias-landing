@@ -1,47 +1,83 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { supabase } from '@/lib/supabase/client'
 
-export default function WaitlistForm({ source = 'launch' }: { source?: string }) {
+type SubmitState = 'idle' | 'loading' | 'success' | 'error'
+
+export default function WaitlistForm({
+  source = 'launch',
+  productSlug,
+}: {
+  source?: string
+  productSlug?: string
+}) {
   const [email, setEmail] = useState('')
-  const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+  const [state, setState] = useState<SubmitState>('idle')
+  const [errorMsg, setErrorMsg] = useState('')
+  const lastSubmitRef = useRef<number>(0)
 
-  function handleSubmit(e: React.FormEvent) {
+  function validate(value: string): string {
+    const trimmed = value.trim()
+    if (!trimmed) return 'Vul een e-mailadres in.'
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) return 'Vul een geldig e-mailadres in.'
+    return ''
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    setError('')
+    setErrorMsg('')
 
-    const trimmed = email.trim()
-    if (!trimmed || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
-      setError('Vul een geldig e-mailadres in.')
+    // Anti-spam: debounce rapid submits (2s cooldown)
+    const now = Date.now()
+    if (now - lastSubmitRef.current < 2000) return
+    lastSubmitRef.current = now
+
+    const validationError = validate(email)
+    if (validationError) {
+      setErrorMsg(validationError)
       return
     }
 
-    setLoading(true)
+    setState('loading')
 
-    // Store in localStorage so we remember across reloads
+    const trimmedEmail = email.trim().toLowerCase()
+
+    const { error } = await supabase.from('waitlist').insert({
+      email: trimmedEmail,
+      source,
+      product_slug: productSlug ?? null,
+    })
+
+    if (error) {
+      // Postgres unique violation — email already registered
+      if (error.code === '23505') {
+        setState('success')
+        return
+      }
+      setState('error')
+      setErrorMsg('Er ging iets mis. Probeer het opnieuw.')
+      return
+    }
+
+    // Mirror to localStorage as read cache
     try {
       const existing = JSON.parse(localStorage.getItem('lume_waitlist') || '[]') as string[]
-      if (!existing.includes(trimmed)) {
-        existing.push(trimmed)
+      if (!existing.includes(trimmedEmail)) {
+        existing.push(trimmedEmail)
         localStorage.setItem('lume_waitlist', JSON.stringify(existing))
       }
     } catch {
       // ignore storage errors
     }
 
-    // Simulate async submission
-    setTimeout(() => {
-      setLoading(false)
-      setSubmitted(true)
-    }, 700)
+    setState('success')
   }
 
   return (
     <AnimatePresence mode="wait">
-      {submitted ? (
+      {state === 'success' ? (
         <motion.div
           key="success"
           initial={{ opacity: 0, y: 12 }}
@@ -73,18 +109,23 @@ export default function WaitlistForm({ source = 'launch' }: { source?: string })
             <input
               type="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value)
+                if (errorMsg) setErrorMsg('')
+                if (state === 'error') setState('idle')
+              }}
               placeholder="jouw@email.nl"
               required
               aria-label="E-mailadres voor wachtlijst"
-              className="flex-1 bg-white border border-stone-200 rounded-xl px-4 py-3.5 text-[14px] text-[#1A1A1A] placeholder-stone-300 focus:outline-none focus:border-[#C9A96E] focus:ring-1 focus:ring-[#C9A96E]/30 transition-colors"
+              disabled={state === 'loading'}
+              className="flex-1 bg-white border border-stone-200 rounded-xl px-4 py-3.5 text-[14px] text-[#1A1A1A] placeholder-stone-300 focus:outline-none focus:border-[#C9A96E] focus:ring-1 focus:ring-[#C9A96E]/30 transition-colors disabled:opacity-60"
             />
             <button
               type="submit"
-              disabled={loading}
+              disabled={state === 'loading'}
               className="btn-gold shrink-0 px-6 py-3.5 rounded-xl text-[14px] font-semibold cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 min-w-[160px]"
             >
-              {loading ? (
+              {state === 'loading' ? (
                 <svg className="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
                   <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" opacity=".2"/>
                   <path d="M12 3a9 9 0 019 9"/>
@@ -101,8 +142,8 @@ export default function WaitlistForm({ source = 'launch' }: { source?: string })
             </button>
           </div>
 
-          {error && (
-            <p className="mt-2 text-[12px] text-red-500 font-light">{error}</p>
+          {errorMsg && (
+            <p className="mt-2 text-[12px] text-red-400 font-light">{errorMsg}</p>
           )}
 
           <p className="mt-3 text-[11px] text-[#9A9590] font-light">
