@@ -5,32 +5,32 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const faqs = [
   {
-    q: 'Wanneer zie ik resultaten?',
-    a: 'De meeste klanten zien na 2–4 weken een verbetering in hydratatie en textuur. Klinisch bewezen resultaten in fine lines en evenness zijn zichtbaar na 4–8 weken consistent gebruik. Huid vernieuwt zich elke 28 dagen — geef je routine de tijd.',
+    q: 'Wanneer zie ik iets?',
+    a: 'Na 2–4 weken merk je verbetering in hydratatie en textuur. Fine lines en egale huidtint verbeteren na 4–8 weken consistent gebruik. Huid vernieuwt zich elke 28 dagen — geef het die tijd.',
   },
   {
-    q: 'Is LUMÉ geschikt voor gevoelige huid?',
-    a: 'Ja. Onze formules zijn ontwikkeld zonder parfum, alcoholen en agressieve conserveringsmiddelen. De Retinol Serum gebruikt een microgestuurd afgiftesysteem dat effectief is maar minder irriterend dan traditionele retinol. Meer dan 91% van klanten met gevoelige huid rapporteert geen irritatie.',
+    q: 'Ik heb gevoelige huid. Kan ik LUMÉ gebruiken?',
+    a: 'Ja. Onze formules zijn parfumvrij, alcoholvrij en zonder agressieve conserveringsmiddelen. De Radiance Serum gebruikt een geleidelijk afgiftesysteem — effectief, maar zachter dan standaard retinol. 91% van klanten met gevoelige huid rapporteert geen irritatie. Twijfel je? Begin met de Sensitive Skin Edit.',
   },
   {
-    q: 'Kan ik LUMÉ combineren met mijn huidige routine?',
-    a: 'Absoluut. LUMÉ producten zijn ontworpen om samen te werken, maar integreren ook naadloos met andere producten. Gebruik onze quiz om te zien welke stap het beste bij jou past — of bouw je volledige routine op met The Glow Ritual.',
+    q: 'Moet ik mijn hele routine vervangen?',
+    a: 'Nee. LUMÉ integreert in elke bestaande routine. Doe de quiz als je niet zeker weet welk product bij jou past. Maar eerlijk: de meeste klanten eindigen toch met alleen LUMÉ.',
   },
   {
     q: 'Hoe werkt de 30-dagen garantie?',
-    a: 'Als je na 30 dagen niet tevreden bent, stuur je je bestelling terug voor een volledige terugbetaling — geen vragen gesteld. Wij geloven zo sterk in onze formules dat we het risico volledig op ons nemen.',
+    a: 'Niet tevreden na 30 dagen? Stuur het terug, je krijgt alles terug. Geen vragen, geen gedoe. We geloven in onze formules — dus het risico is voor ons.',
   },
   {
     q: 'Is LUMÉ vegan en cruelty-free?',
-    a: 'Ja, 100%. LUMÉ is gecertificeerd vegan, cruelty-free en bevat geen dierlijke ingrediënten. Onze verpakking is 92% recyclebaar. We zijn transparant over elke ingredient en de herkomst ervan.',
+    a: '100% vegan, gecertificeerd cruelty-free, zonder dierlijke ingrediënten. Verpakking is 92% recyclebaar. Alle INCI-ingrediënten staan op elke productpagina — we verbergen niets.',
   },
   {
-    q: 'Hoe vaak moet ik de producten gebruiken?',
-    a: 'De Cleanser gebruik je ochtend en avond. De Radiance Serum gebruik je \'s ochtends onder SPF. De Retinol Serum gebruik je \'s avonds 2–3x per week (beginners) tot dagelijks (gevorderd). De Overnight Oil sluit je avondroutine af. Zie onze Routine sectie voor het exacte schema.',
+    q: 'Hoe gebruik ik het?',
+    a: "Ochtend: cleanser → Radiance Serum → moisturizer → SPF. Avond: cleanser → Radiance Serum (2–3x/week als beginner, dagelijks als gevorderd) → Overnight Oil. Dat is het. Geen 12 stappen.",
   },
   {
-    q: 'Zijn de ingrediënten veilig tijdens de zwangerschap?',
-    a: 'Retinol wordt afgeraden tijdens de zwangerschap. Onze andere producten — de Cleanser, Radiance Serum en Overnight Oil — zijn veilig in gebruik. We raden altijd aan om met je arts te overleggen. Neem contact met ons op voor gepersonaliseerd advies.',
+    q: 'Veilig tijdens zwangerschap?',
+    a: 'Retinol wordt afgeraden tijdens de zwangerschap. Onze andere producten zijn veilig. Overleg altijd met je arts. Voor zwangere klanten raden we de Sensitive Skin Edit aan — met bakuchiol als retinol-alternatief.',
   },
 ]
 
@@ -92,15 +92,15 @@ export default function FAQ() {
           className="text-center mb-14"
         >
           <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[#C9A96E] bg-[#FDF8F0] px-4 py-1.5 rounded-full mb-4">
-            Veelgestelde vragen
+            Vragen
           </span>
           <h2 className="text-4xl sm:text-5xl font-bold text-[#1A1A1A] mb-4 leading-tight">
-            Alles wat je wil weten
+            Goede vraag.
             <br />
-            <span className="gradient-text">over LUMÉ</span>
+            <span className="gradient-text">Eerlijk antwoord.</span>
           </h2>
           <p className="text-lg text-[#6B6560]">
-            Staat je vraag er niet bij? Stuur ons een bericht via de chat.
+            Geen verkooppraat. Gewoon wat je moet weten.
           </p>
         </motion.div>
 

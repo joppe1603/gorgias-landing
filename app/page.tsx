@@ -2,7 +2,9 @@ import PageEntrance from '@/components/PageEntrance'
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import LogoCarousel from '@/components/LogoCarousel'
+import BrandManifest from '@/components/BrandManifest'
 import Features from '@/components/Features'
+import WhatWeLeaveOut from '@/components/WhatWeLeaveOut'
 import BeforeAfter from '@/components/BeforeAfter'
 import Routine from '@/components/Routine'
 import SocialProof from '@/components/SocialProof'
@@ -20,7 +22,9 @@ export default function Home() {
       <Navbar />
       <Hero />
       <LogoCarousel />
+      <BrandManifest />
       <Features />
+      <WhatWeLeaveOut />
       <BeforeAfter />
       <Routine />
       <SocialProof />

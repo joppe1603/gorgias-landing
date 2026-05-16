@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const reviews = [
   {
-    quote: 'Mijn huid is compleet getransformeerd. Na 4 weken zag ik al verschil in mijn textuur en glow.',
+    quote: 'Na 4 weken echt zichtbaar verschil in textuur. Ik had het niet verwacht maar het werkt gewoon.',
     author: 'Sophie van den Berg',
     location: 'Amsterdam',
     skin: 'Droge huid',
@@ -17,19 +17,19 @@ const reviews = [
     color: 'bg-rose-400',
   },
   {
-    quote: 'Eindelijk een retinol die niet irriteert. Mijn gevoeligheidsproblemen zijn verdwenen en mijn huid ziet er jaren jonger uit.',
+    quote: 'Gevoelige huid, altijd bang voor retinol. Dit is de eerste formule die ik dagelijks gebruik zonder problemen.',
     author: 'Emma Clarke',
     location: 'London',
     skin: 'Gevoelige huid',
     weeks: '6 weken',
     rating: 5,
-    product: 'Retinol Serum',
+    product: 'Radiance Serum',
     verified: true,
     initials: 'EC',
     color: 'bg-amber-500',
   },
   {
-    quote: 'Ik gebruik LUMÉ nu 3 maanden en mijn vriendinnen vragen constant wat ik doe. Absolute game changer.',
+    quote: '3 maanden verder. Mijn vriendinnen vragen wat ik doe. Eerlijk antwoord: minder dan vroeger.',
     author: 'Lisa Müller',
     location: 'Berlijn',
     skin: 'Gemengde huid',
@@ -41,19 +41,19 @@ const reviews = [
     color: 'bg-indigo-400',
   },
   {
-    quote: 'De cleanser is de zachtste die ik ooit heb gebruikt. Mijn barrière is eindelijk hersteld na jaren van te veel exfoliëren.',
+    quote: 'Mijn barrière was kapot van te veel scrubben. Na 8 weken LUMÉ voelt mijn huid eindelijk normaal.',
     author: 'Hannah Park',
     location: 'Seoul / Amsterdam',
     skin: 'Gevoelige huid',
     weeks: '8 weken',
     rating: 5,
-    product: 'Gentle Foam Cleanser',
+    product: 'Sensitive Skin Edit',
     verified: true,
     initials: 'HP',
     color: 'bg-teal-500',
   },
   {
-    quote: 'Het nachtserum is pure magie. Ik word wakker met de meest plompe, stralende huid van mijn leven.',
+    quote: 'Ik word wakker en mijn huid ziet er al goed uit. Dat was eerder nooit zo. De overnight olie doet echt iets.',
     author: 'Fleur de Jong',
     location: 'Utrecht',
     skin: 'Vette huid',
@@ -65,7 +65,7 @@ const reviews = [
     color: 'bg-purple-400',
   },
   {
-    quote: 'LUMÉ heeft me omgezet van een 10-stappen routine naar 3 producten. Mijn huid heeft er nooit beter uitgezien, eerlijk gezegd.',
+    quote: 'Ik had een kast vol producten. Nu 3. Mijn huid ziet er beter uit en ik snap eindelijk wat ik gebruik.',
     author: 'Julia Rossi',
     location: 'Milaan',
     skin: 'Normale huid',
@@ -77,7 +77,7 @@ const reviews = [
     color: 'bg-emerald-500',
   },
   {
-    quote: 'De Niacinamide 10% heeft mijn poriën letterlijk onzichtbaar gemaakt. Ik ben zo blij dat ik dit heb geprobeerd.',
+    quote: 'Poriën veel minder zichtbaar na 5 weken. Ik gebruik het nu als basis en bouw niets meer bovenop.',
     author: 'Noor Bakker',
     location: 'Rotterdam',
     skin: 'Gemengde huid',
@@ -89,7 +89,7 @@ const reviews = [
     color: 'bg-pink-400',
   },
   {
-    quote: 'Op impuls besteld en nu ben ik voor altijd geabonneerd. Het hyaluronzuurcomplex is ongeëvenaard.',
+    quote: 'Op impuls besteld, geen verwachtingen. Nu kan ik niet meer zonder. Het serum is gewoon goed.',
     author: 'Charlotte Webb',
     location: 'Manchester',
     skin: 'Droge huid',
@@ -195,10 +195,12 @@ export default function Reviews() {
             12.400+ reviews
           </span>
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4 leading-tight">
-            Klanten aan het woord
+            Echte mensen.
+            <br />
+            Echte huid.
           </h2>
           <p className="text-lg text-stone-400 max-w-md mx-auto">
-            Geverifieerde reviews van echte klanten. Geen filters.
+            Geverifieerde aankopen. Geen geselecteerde uitzonderingen.
           </p>
         </motion.div>
 

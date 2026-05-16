@@ -20,7 +20,7 @@ const products = [
     ],
     note:        null,
     highlight:   false,
-    cta:         'In winkelwagen',
+    cta:         'Begin simpel',
     ctaStyle:    'border-2 border-stone-200 text-[#1A1A1A] hover:border-[#C9A96E] hover:text-[#C9A96E]',
     href:        '/products/radiance-serum',
   },
@@ -40,7 +40,7 @@ const products = [
     ],
     note:        'Gratis verzending · 30 dagen retour · Bespaar €45',
     highlight:   true,
-    cta:         'Shop het Ritueel',
+    cta:         'Bouw mijn routine',
     ctaStyle:    'btn-gold',
     href:        '/products/the-glow-ritual',
   },
@@ -58,7 +58,7 @@ const products = [
     ],
     note:        null,
     highlight:   false,
-    cta:         'In winkelwagen',
+    cta:         'Goed voor mij',
     ctaStyle:    'border-2 border-stone-200 text-[#1A1A1A] hover:border-[#C9A96E] hover:text-[#C9A96E]',
     href:        '/products/sensitive-skin-edit',
   },
@@ -92,12 +92,12 @@ export default function Pricing() {
             Shop LUMÉ
           </span>
           <h2 className="text-4xl sm:text-5xl font-bold text-[#1A1A1A] mb-5 leading-tight">
-            Vind jouw
+            Kies je
             <br />
-            <span className="gradient-text">perfecte routine</span>
+            <span className="gradient-text">startpunt.</span>
           </h2>
           <p className="text-lg text-[#6B6560] max-w-xl mx-auto">
-            Begin met één topseller of bouw jouw volledige LUMÉ ritueel.
+            Start met één product. Of de complete set. Geen druk.
           </p>
         </motion.div>
 
@@ -172,7 +172,7 @@ export default function Pricing() {
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                         <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/>
                       </svg>
-                      Bekijk product
+                      Details
                     </a>
                   </div>
 

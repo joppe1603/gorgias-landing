@@ -41,7 +41,7 @@ const stats = [
 
 const testimonials = [
   {
-    quote: 'Ik heb elk serum op de markt geprobeerd en niets komt in de buurt. Mijn huid is de helderste in jaren.',
+    quote: 'Na 4 weken ziet mijn huid er anders uit. Gewoon beter. Niet meer ingewikkeld dan dat.',
     author: 'Lena B.',
     role: 'Amsterdam · Gemengde huid · 3 maanden',
     avatar: 'LB',
@@ -49,7 +49,7 @@ const testimonials = [
     rating: 5,
   },
   {
-    quote: 'Het retinol serum is het enige dat geen irritatie heeft veroorzaakt. Mijn huidtextuur is volledig getransformeerd.',
+    quote: 'Ik heb gevoelige huid. Dit is het enige retinol dat ik kan verdragen — en het werkt ook nog.',
     author: 'Maya S.',
     role: 'London · Gevoelige huid · 6 weken',
     avatar: 'MS',
@@ -57,7 +57,7 @@ const testimonials = [
     rating: 5,
   },
   {
-    quote: 'LUMÉ heeft me omgezet van een 10-stappen routine naar 3 producten. Minder is meer en mijn huid heeft er nooit beter uitgezien.',
+    quote: 'Van 10 producten naar 3. Mijn huid ziet er beter uit en ik bespaar uren per week.',
     author: 'Julia R.',
     role: 'Berlijn · Droge huid · 2 maanden',
     avatar: 'JR',
@@ -89,11 +89,11 @@ function TestimonialCard({ t, className = '' }: { t: (typeof testimonials)[0]; c
 }
 
 const trustItems = [
-  { label: 'Trustpilot',              value: '4.9 ★',    color: 'text-[#C9A96E]' },
-  { label: '#1 Huidverzorgingsmerk NL', value: 'Top Rated', color: 'text-[#C9A96E]' },
-  { label: 'Aanbevolen door Vogue',   value: 'Featured',  color: 'text-purple-600' },
-  { label: 'Diervriendelijk',         value: 'Gecertificeerd', color: 'text-green-600' },
-  { label: 'Clean bij Sephora',       value: 'Listed',    color: 'text-blue-600' },
+  { label: 'Trustpilot score',     value: '4.9 ★',          color: 'text-[#C9A96E]' },
+  { label: 'Geverifieerd vegan',   value: '100% plant-based', color: 'text-green-600' },
+  { label: 'Dermatoloog getest',   value: 'Klinisch',        color: 'text-blue-600' },
+  { label: 'Parfumvrij',           value: 'Zonder geurstoffen', color: 'text-stone-600' },
+  { label: 'Retourbeleid',         value: '30 dagen',        color: 'text-[#C9A96E]' },
 ]
 
 export default function SocialProof() {
@@ -112,15 +112,15 @@ export default function SocialProof() {
           className="text-center mb-16"
         >
           <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[#C9A96E] bg-[#FDF8F0] px-4 py-1.5 rounded-full mb-4">
-            Bewezen resultaten
+            Resultaten
           </span>
           <h2 className="text-4xl sm:text-5xl font-bold text-[#1A1A1A] mb-5 leading-tight">
-            Cijfers die voor
+            Wat mensen
             <br />
-            <span className="gradient-text">zichzelf spreken</span>
+            <span className="gradient-text">zeggen.</span>
           </h2>
           <p className="text-lg text-[#6B6560] max-w-xl mx-auto">
-            Sluit je aan bij duizenden klanten die hun huid hebben getransformeerd met LUMÉ.
+            Geverifieerde reviews. Geen filters, geen geselecteerde uitzonderingen.
           </p>
         </motion.div>
 

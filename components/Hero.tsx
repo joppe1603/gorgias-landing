@@ -10,9 +10,9 @@ const fadeUp = (delay = 0) => ({
 })
 
 const trustBadges = [
-  { icon: '★', value: '4.9/5', label: 'van 12.400 beoordelingen' },
-  { icon: '🔬', value: 'Dermatoloog', label: 'getest & goedgekeurd' },
-  { icon: '🌿', value: 'Puur', label: '100% veganistische formule' },
+  { icon: '★', value: '4.9/5', label: '12.400 reviews' },
+  { icon: '○', value: 'Parfumvrij', label: 'dermatologisch getest' },
+  { icon: '↩', value: '30 dagen', label: 'volledige garantie' },
 ]
 
 export default function Hero() {
@@ -34,19 +34,19 @@ export default function Hero() {
                 {...fadeUp(0.05)}
                 className="relative text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.06] tracking-tight text-[#1A1A1A]"
               >
-                Glow begint
+                Minder stappen.
                 <br />
-                <span className="gradient-text">met wetenschap.</span>
+                <span className="gradient-text">Betere huid.</span>
               </motion.h1>
             </div>
 
             <motion.p {...fadeUp(0.15)} className="text-lg text-[#6B6560] max-w-lg leading-relaxed mb-10">
-              LUMÉ combineert klinisch bewezen actieve stoffen met luxueuze texturen — huidverzorging die jouw huid écht transformeert in 28 dagen.
+              LUMÉ is gemaakt voor mensen die genoeg hebben van ingewikkelde routines. Drie producten. Klinisch bewezen. Elke dag klaar in 3 minuten.
             </motion.p>
 
             <motion.div {...fadeUp(0.25)} className="flex flex-col sm:flex-row gap-4 mb-10">
               <a href="#shop" className="btn-gold px-8 py-4 rounded-2xl font-semibold text-base text-center cursor-pointer transition-all">
-                Bekijk de collectie
+                Bouw mijn routine
               </a>
               <a href="#quiz" className="flex items-center justify-center gap-2 px-8 py-4 rounded-2xl font-semibold text-base text-[#1A1A1A] border-2 border-stone-200 hover:border-[#C9A96E] hover:text-[#C9A96E] transition-all cursor-pointer">
                 Doe de huidquiz

@@ -132,15 +132,15 @@ export default function Routine() {
           className="text-center mb-16"
         >
           <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[#C9A96E] bg-[#FDF8F0] px-4 py-1.5 rounded-full mb-4">
-            Jouw dagelijkse ritueel
+            De routine
           </span>
           <h2 className="text-4xl sm:text-5xl font-bold text-[#1A1A1A] mb-5 leading-tight">
-            Ochtend & Avond
+            3 stappen.
             <br />
-            <span className="gradient-text">in 3 stappen</span>
+            <span className="gradient-text">Elke dag.</span>
           </h2>
           <p className="text-lg text-[#6B6560] max-w-xl mx-auto">
-            Consistentie wint van complexiteit. Dit is de exacte routine die in 28 dagen resultaten levert.
+            Consistentie wint van complexiteit. Dit is alles wat je nodig hebt.
           </p>
         </motion.div>
 
@@ -209,7 +209,7 @@ export default function Routine() {
           className="text-center mt-14"
         >
           <a href="#shop" className="btn-gold inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-semibold text-sm cursor-pointer">
-            Shop de volledige routine
+            Start de routine
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
               <path d="M3 8h10M9 4l4 4-4 4"/>
             </svg>
