@@ -65,22 +65,21 @@ export default function Hero() {
               </Link>
             </motion.div>
 
-            {/* Minimal stats */}
-            <motion.div {...fadeUp(0.32)} className="flex items-center gap-8">
-              <div>
-                <p className="text-2xl font-semibold text-[#1A1A1A] font-[family-name:var(--font-cormorant)]">4.9</p>
-                <p className="text-xs text-[#9A9590] mt-0.5 font-medium tracking-wide uppercase">12k+ reviews</p>
-              </div>
-              <div className="w-px h-8 bg-stone-200" />
-              <div>
-                <p className="text-2xl font-semibold text-[#1A1A1A] font-[family-name:var(--font-cormorant)]">28 dagen</p>
-                <p className="text-xs text-[#9A9590] mt-0.5 font-medium tracking-wide uppercase">Zichtbaar resultaat</p>
-              </div>
-              <div className="w-px h-8 bg-stone-200" />
-              <div>
-                <p className="text-2xl font-semibold text-[#1A1A1A] font-[family-name:var(--font-cormorant)]">30 dagen</p>
-                <p className="text-xs text-[#9A9590] mt-0.5 font-medium tracking-wide uppercase">Volledige garantie</p>
-              </div>
+            {/* Trust signals */}
+            <motion.div {...fadeUp(0.32)} className="flex flex-wrap items-center gap-5">
+              {[
+                { label: '30 dagen garantie', sub: 'Geen vragen gesteld' },
+                { label: 'Parfumvrij', sub: 'Geschikt voor gevoelige huid' },
+                { label: 'Pre-launch', sub: 'Eerste batch in voorbereiding' },
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-2.5">
+                  {i > 0 && <div className="w-px h-7 bg-stone-200" />}
+                  <div>
+                    <p className="text-sm font-semibold text-[#1A1A1A]">{item.label}</p>
+                    <p className="text-xs text-[#9A9590] mt-0.5">{item.sub}</p>
+                  </div>
+                </div>
+              ))}
             </motion.div>
           </div>
 

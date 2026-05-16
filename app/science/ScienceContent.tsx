@@ -34,7 +34,7 @@ const keyIngredients = [
     concentration: '3%',
     category: 'Barrière-herstel',
     mechanism: 'Ceramiden zijn de primaire lipiden in de huidbarrière. Ze vullen beschadigde intercellulaire ruimtes aan en reduceren transepidermaal waterverlies (TEWL).',
-    evidence: 'TEWL-reductie tot 38% aangetoond bij ceramide-rijke formules (Draelos, 2019). Essentieel bij herstel van beschadigde huid.',
+    evidence: 'Ceramiden worden breed erkend in de dermatologie als essentieel voor barrièreherstel — in het bijzonder bij beschadigde of gevoelige huid.',
     note: 'Combinatie van Ceramide NP, AP en EOP voor volledige barrière-reconstructie.',
     color: '#FAF8F5',
   },
@@ -43,7 +43,7 @@ const keyIngredients = [
     concentration: '0.5%',
     category: 'Plantaardig retinol-alternatief',
     mechanism: 'Functioneert op dezelfde retinoïdreceptoren als retinol, maar via een ander moleculair pad. Stimuleert collageen type I, III en IV zonder klassieke retinol-bijwerkingen.',
-    evidence: 'Klinische studie (Dhaliwal et al., 2019): vergelijkbare effectiviteit met retinol 0.5% bij significant minder irritatie. Geschikt tijdens zwangerschap.',
+    evidence: 'Onderzocht als mild alternatief voor retinol. Werkt via vergelijkbaar mechanisme met minder kans op irritatie — geschikt voor gevoelige huid en zwangerschap na medisch overleg.',
     note: 'Gebruikt als solo-actief in gevoelige formules, of als synergetische versterker naast retinol.',
     color: '#F5EFE6',
   },
@@ -52,7 +52,7 @@ const keyIngredients = [
     concentration: '2%',
     category: 'Hydratatie',
     mechanism: 'Drie molecuulgewichten: hoog (oppervlak), middel (midden epidermis), laag (dieper). Elke fractie trekt en houdt vocht vast in een ander huidniveau.',
-    evidence: 'Hydratatieverbetering tot 60% na 8 weken aantoonbaar bij cross-linked HA-complexen. Vermindert fijne lijntjes zichtbaar bij langdurig gebruik.',
+    evidence: 'Hyaluronzuur is een van de best gedocumenteerde hydratatie-ingrediënten in cosmetologie. Multi-fractie aanpak zorgt voor zowel oppervlakkige als diepere werking.',
     note: 'Multi-fractie aanpak voor aanhoudend, niet oppervlakkig hydratatie-effect.',
     color: '#EEF5F0',
   },
@@ -231,24 +231,24 @@ export default function ScienceContent() {
         </div>
       </section>
 
-      {/* ── DERMATOLOOG NOOT ─────────────────────────── */}
+      {/* ── AANPAK NOOT ──────────────────────────────── */}
       <section className="py-24 bg-[#0F0E0C]">
         <div className="max-w-3xl mx-auto px-6 sm:px-8 text-center">
           <motion.div {...fadeUp(0)}>
             <div className="flex items-center justify-center gap-3 mb-8">
               <div className="w-8 h-px bg-[#C9A96E]/40" />
-              <span className="section-label text-[#C9A96E]">Dermatoloog review</span>
+              <span className="section-label text-[#C9A96E]">Onze aanpak</span>
               <div className="w-8 h-px bg-[#C9A96E]/40" />
             </div>
 
-            <blockquote className="text-white text-[1.25rem] leading-[1.7] font-light italic mb-8 max-w-2xl mx-auto"
+            <p className="text-white text-[1.2rem] leading-[1.75] font-light mb-8 max-w-2xl mx-auto"
               style={{ fontFamily: 'var(--font-cormorant)' }}
             >
-              &ldquo;LUMÉ formuleert op een manier die ik zelden zie bij DTC-merken: de concentraties kloppen, de combinaties zijn weloverwogen, en er worden geen claims gemaakt die het onderzoek niet ondersteunt.&rdquo;
-            </blockquote>
+              LUMÉ formuleert uitsluitend rond ingrediënten met een gedocumenteerde werking in de cosmetologische literatuur. We maken geen medische claims. We vertalen wetenschap naar eerlijke, effectieve huidverzorging.
+            </p>
 
             <p className="text-stone-500 text-[13px]">
-              Onafhankelijke dermatoloog review, 2025 — naam op aanvraag beschikbaar
+              LUMÉ producten zijn cosmetische producten — geen medische behandelingen.
             </p>
           </motion.div>
         </div>

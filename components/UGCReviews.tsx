@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
-// Simulated UGC-style content - human, imperfect, real-feeling
+// Sample tester experiences — pre-launch feedback from early formula testers
 const ugcCards = [
   {
     type: 'text',
@@ -90,7 +90,7 @@ export default function UGCReviews() {
             className="flex items-center gap-3 mb-4"
           >
             <div className="w-6 h-px bg-[#C9A96E]" />
-            <span className="section-label">Echte mensen</span>
+            <span className="section-label">Sample testers</span>
           </motion.div>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <motion.h2
@@ -109,18 +109,11 @@ export default function UGCReviews() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex items-center gap-6"
             >
-              <div className="text-center">
-                <p className="text-3xl font-semibold text-[#1A1A1A] font-[family-name:var(--font-cormorant)]">4.9</p>
-                <Stars />
-                <p className="text-xs text-[#9A9590] mt-1">12.400+ reviews</p>
-              </div>
-              <div className="w-px h-12 bg-stone-200" />
-              <div className="text-center">
-                <p className="text-3xl font-semibold text-[#1A1A1A] font-[family-name:var(--font-cormorant)]">94%</p>
-                <p className="text-xs text-[#9A9590] mt-1">Ziet verschil in 6 weken</p>
-              </div>
+              <span className="inline-flex items-center gap-2 text-[11px] font-medium text-[#9A9590] bg-[#FAF8F5] border border-stone-100 px-3 py-1.5 rounded-full">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C9A96E]" />
+                Ervaringen van sample testers · Pre-launch formule
+              </span>
             </motion.div>
           </div>
         </div>
@@ -195,8 +188,8 @@ export default function UGCReviews() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-14 text-center"
         >
-          <Link href="/community" className="btn-outline inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl font-medium text-sm">
-            Lees alle verhalen
+          <Link href="/launch#waitlist" className="btn-gold inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl font-medium text-sm">
+            Word als eerste uitgenodigd
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
               <path d="M2 6h8M6 2l4 4-4 4"/>
             </svg>

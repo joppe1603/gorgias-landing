@@ -8,25 +8,23 @@ const milestones = [
     label: 'Week één',
     title: 'Huid raakt gewend',
     desc: 'De formule doet zijn intrede. Lichte warmte of strakheid kan optreden — dat is normaal en tijdelijk. Gebruik elke avond op schone huid.',
-    pct: null,
+    note: null,
     accent: '#D4B896',
   },
   {
     week: '4',
     label: 'Vier weken',
-    title: 'Eerste veranderingen',
-    desc: 'Textuur begint gladder te voelen. Poriën lijken kleiner. Huidtoon wordt gelijkmatiger. Meetbare veranderingen zijn al zichtbaar.',
-    pct: '72%',
-    pctLabel: 'van gebruikers ziet verbetering',
+    title: 'Eerste signalen',
+    desc: 'Textuur begint gladder te voelen. Poriën lijken kleiner. Huidtoon wordt gelijkmatiger. Consistentie is hier het sleutelwoord.',
+    note: 'Ontworpen voor zichtbare verbetering bij dagelijks gebruik.',
     accent: '#C9A96E',
   },
   {
     week: '8',
     label: 'Acht weken',
-    title: 'Zichtbaar resultaat',
-    desc: 'Significant verschil in huidtoon, textuur en fijnere lijntjes. Consistent gebruik loont. Dit is het moment waarop anderen het opmerken.',
-    pct: '94%',
-    pctLabel: 'ziet merkbaar verschil',
+    title: 'Merkbaar verschil',
+    desc: 'Consistent gebruik bouwt resultaat op. Fijnere lijntjes, helderder complexie, rustiger huid. Dit is waar de formule voor ontworpen is.',
+    note: 'Individuele resultaten variëren. Geen medische claim.',
     accent: '#B8935A',
   },
 ]
@@ -81,29 +79,22 @@ export default function PDPUsageTimeline() {
 
                 {/* Card */}
                 <div className="flex-1 bg-white rounded-2xl border border-stone-100 px-6 py-5 shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-                  <div className="flex items-start justify-between gap-3 mb-2">
-                    <div>
-                      <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#9A9590] mb-1.5">
-                        {m.label}
-                      </p>
-                      <h3 className="text-[17px] font-semibold text-[#1A1A1A] leading-tight">
-                        {m.title}
-                      </h3>
-                    </div>
-                    {m.pct && (
-                      <div className="text-right shrink-0">
-                        <p className="text-xl font-semibold leading-none" style={{ color: m.accent }}>
-                          {m.pct}
-                        </p>
-                        <p className="text-[10px] text-[#9A9590] font-light mt-1 leading-tight max-w-[100px] text-right">
-                          {m.pctLabel}
-                        </p>
-                      </div>
-                    )}
+                  <div className="mb-2">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#9A9590] mb-1.5">
+                      {m.label}
+                    </p>
+                    <h3 className="text-[17px] font-semibold text-[#1A1A1A] leading-tight">
+                      {m.title}
+                    </h3>
                   </div>
                   <p className="text-[13px] text-[#6B6560] font-light leading-relaxed mt-2">
                     {m.desc}
                   </p>
+                  {m.note && (
+                    <p className="text-[11px] text-[#9A9590] italic mt-3 font-light">
+                      {m.note}
+                    </p>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -117,7 +108,7 @@ export default function PDPUsageTimeline() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="text-[11px] text-stone-400 font-light mt-8 text-center"
         >
-          Gebaseerd op 8-weekse gebruikerstest (n=312). Individuele resultaten kunnen variëren.
+          Resultaten zijn afhankelijk van huidtype, consistentie en individuele huidconditie.
         </motion.p>
       </div>
     </section>

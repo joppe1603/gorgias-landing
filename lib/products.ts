@@ -50,6 +50,8 @@ export type Product = {
     note: string
     pairingNote: string
   }
+  // 'available' | 'pre-launch' | 'sample' — defaults to 'pre-launch' if omitted
+  availability?: 'available' | 'pre-launch' | 'sample'
 }
 
 const PRODUCTS: Product[] = [

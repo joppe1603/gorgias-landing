@@ -346,6 +346,7 @@ export default async function ProductPage({
         originalPrice={product.originalPrice}
         image={product.heroImage}
         size={product.size}
+        availability={product.availability}
       />
     </>
   )

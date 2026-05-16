@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { useRef, useState } from 'react'
 import type { Product } from '@/lib/products'
@@ -40,6 +41,7 @@ export default function PDPHero({ product }: { product: Product }) {
   const { dispatch } = useCart()
   const [added, setAdded] = useState(false)
   const [activeSlide, setActiveSlide] = useState(0)
+  const isAvailable = product.availability === 'available'
 
   const allImages = [product.heroImage, ...(product.textureImages ?? [])]
 
@@ -225,10 +227,15 @@ export default function PDPHero({ product }: { product: Product }) {
               {product.tagline}
             </motion.p>
 
-            {/* Rating */}
-            <motion.div {...fadeUp(0.36)} className="mb-7">
-              <Stars rating={product.rating} count={product.reviewCount} />
-            </motion.div>
+            {/* Availability badge */}
+            {!isAvailable && (
+              <motion.div {...fadeUp(0.36)} className="mb-7">
+                <span className="inline-flex items-center gap-2 text-[11px] font-medium text-[#9A9590] bg-[#FAF8F5] border border-stone-100 px-3 py-1.5 rounded-full">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#C9A96E]" />
+                  Kleine eerste batch in voorbereiding · Pre-launch
+                </span>
+              </motion.div>
+            )}
 
             {/* Price */}
             <motion.div {...fadeUp(0.42)} className="mb-7">
@@ -278,60 +285,63 @@ export default function PDPHero({ product }: { product: Product }) {
               ))}
             </motion.div>
 
-            {/* Delivery + stock micro-row */}
-            <motion.div {...fadeUp(0.59)} className="flex items-center justify-between mb-5 px-0.5">
-              <span className="flex items-center gap-1.5 text-[12px] text-[#6B6560]">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                  <rect x="1" y="3" width="15" height="13" rx="1"/>
-                  <path d="M16 8h4l3 5v3h-7V8z"/>
-                  <circle cx="5.5" cy="18.5" r="2.5"/>
-                  <circle cx="18.5" cy="18.5" r="2.5"/>
-                </svg>
-                Morgen in huis · bestel vóór 23:00
-              </span>
-              <span className="flex items-center gap-1.5 text-[12px] text-[#9A9590]">
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#C9A96E] animate-pulse" />
-                Nog 12 stuks
-              </span>
-            </motion.div>
-
             {/* CTAs */}
             <motion.div {...fadeUp(0.62)} id="product-hero-cta" className="space-y-3 mb-6">
-              <button
-                onClick={handleAddToCart}
-                className="btn-gold w-full py-[1.05rem] rounded-2xl font-medium text-[15px] cursor-pointer tracking-[0.01em] relative overflow-hidden"
-              >
-                <AnimatePresence mode="wait" initial={false}>
-                  {added ? (
-                    <motion.span
-                      key="added"
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -8 }}
-                      transition={{ duration: 0.22 }}
-                      className="flex items-center justify-center gap-2"
-                    >
-                      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden>
-                        <path d="M2.5 7.5L6 11L12.5 4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                      Toegevoegd aan winkelwagen
-                    </motion.span>
-                  ) : (
-                    <motion.span
-                      key="default"
-                      initial={{ opacity: 0, y: -8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 8 }}
-                      transition={{ duration: 0.22 }}
-                    >
-                      In winkelwagen · €{product.price}
-                    </motion.span>
-                  )}
-                </AnimatePresence>
-              </button>
-              <button className="w-full py-[0.95rem] rounded-2xl font-light text-[13px] border border-stone-200 text-[#6B6560] hover:border-[#C9A96E] hover:text-[#C9A96E] cursor-pointer transition-all duration-200">
-                Koop nu, betaal later via Klarna
-              </button>
+              {isAvailable ? (
+                <>
+                  <button
+                    onClick={handleAddToCart}
+                    className="btn-gold w-full py-[1.05rem] rounded-2xl font-medium text-[15px] cursor-pointer tracking-[0.01em] relative overflow-hidden"
+                  >
+                    <AnimatePresence mode="wait" initial={false}>
+                      {added ? (
+                        <motion.span
+                          key="added"
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -8 }}
+                          transition={{ duration: 0.22 }}
+                          className="flex items-center justify-center gap-2"
+                        >
+                          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden>
+                            <path d="M2.5 7.5L6 11L12.5 4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                          Toegevoegd aan winkelwagen
+                        </motion.span>
+                      ) : (
+                        <motion.span
+                          key="default"
+                          initial={{ opacity: 0, y: -8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 8 }}
+                          transition={{ duration: 0.22 }}
+                        >
+                          In winkelwagen · €{product.price}
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
+                  </button>
+                  <button className="w-full py-[0.95rem] rounded-2xl font-light text-[13px] border border-stone-200 text-[#6B6560] hover:border-[#C9A96E] hover:text-[#C9A96E] cursor-pointer transition-all duration-200">
+                    Koop nu, betaal later via Klarna
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    href="/launch#waitlist"
+                    className="btn-gold w-full py-[1.05rem] rounded-2xl font-medium text-[15px] tracking-[0.01em] flex items-center justify-center gap-2.5"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                      <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    Word als eerste uitgenodigd
+                  </Link>
+                  <p className="text-center text-[12px] text-[#9A9590] font-light">
+                    Pre-launch · Geen verplichting · Gratis annuleren
+                  </p>
+                </>
+              )}
             </motion.div>
 
             {/* Trust row */}

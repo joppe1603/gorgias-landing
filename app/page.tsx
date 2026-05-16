@@ -5,6 +5,7 @@ import TrustStrip from '@/components/TrustStrip'
 import HeroProductSpotlight from '@/components/HeroProductSpotlight'
 import UGCReviews from '@/components/UGCReviews'
 import PhilosophyPreview from '@/components/PhilosophyPreview'
+import FounderNote from '@/components/FounderNote'
 import ClosingCTA from '@/components/ClosingCTA'
 import Footer from '@/components/Footer'
 
@@ -17,6 +18,7 @@ export default function Home() {
       <HeroProductSpotlight />
       <UGCReviews />
       <PhilosophyPreview />
+      <FounderNote />
       <ClosingCTA />
       <Footer />
     </PageEntrance>

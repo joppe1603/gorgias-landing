@@ -101,21 +101,13 @@ export default function HeroProductSpotlight() {
               className="absolute bottom-8 left-8 right-8"
             >
               <div className="bg-[#0F0E0C]/88 backdrop-blur-md rounded-2xl px-5 py-4 border border-white/8">
-                <div className="flex items-center gap-2.5 mb-2">
-                  <div className="flex gap-0.5">
-                    {[1,2,3,4,5].map(i => (
-                      <svg key={i} width="10" height="10" viewBox="0 0 16 16" fill="#C9A96E" aria-hidden>
-                        <path d="M8 1L9.8 5.5H15L10.8 8.5L12.5 13L8 10L3.5 13L5.2 8.5L1 5.5H6.2L8 1Z"/>
-                      </svg>
-                    ))}
-                  </div>
-                  <span className="text-white text-[13px] font-semibold">4.9</span>
-                  <span className="text-stone-500 text-[11px]">12.400+ beoordelingen</span>
-                </div>
-                <p className="text-stone-300 text-[13px] font-light italic leading-relaxed">
-                  &ldquo;Het eerste retinol dat ik dagelijks gebruik zonder problemen — gevoelige huid.&rdquo;
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C9A96E] mb-2">
+                  Formule · Pre-launch
                 </p>
-                <p className="text-stone-600 text-[11px] mt-1.5">— Emma C. · Amsterdam · 6 weken</p>
+                <p className="text-stone-300 text-[13px] font-light italic leading-relaxed">
+                  Retinol 0.3% gebufferd door Niacinamide 10% — ontworpen voor gevoelige huid die ook wil werken met actieve stoffen.
+                </p>
+                <p className="text-stone-600 text-[11px] mt-2">Kleine eerste batch in voorbereiding.</p>
               </div>
             </motion.div>
           </motion.div>
@@ -216,38 +208,16 @@ export default function HeroProductSpotlight() {
               transition={{ duration: 0.5, delay: 0.28 }}
               className="space-y-3 mb-6"
             >
-              <button
-                onClick={handleAdd}
-                className="btn-gold w-full py-[1.05rem] rounded-2xl font-medium text-[15px] cursor-pointer tracking-[0.01em] relative overflow-hidden"
+              <Link
+                href="/launch#waitlist"
+                className="btn-gold w-full py-[1.05rem] rounded-2xl font-medium text-[15px] tracking-[0.01em] flex items-center justify-center gap-2.5"
               >
-                <AnimatePresence mode="wait" initial={false}>
-                  {added ? (
-                    <motion.span
-                      key="added"
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -8 }}
-                      transition={{ duration: 0.2 }}
-                      className="flex items-center justify-center gap-2"
-                    >
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
-                        <path d="M2 7l3.5 3.5L12 3" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                      Toegevoegd aan winkelwagen
-                    </motion.span>
-                  ) : (
-                    <motion.span
-                      key="default"
-                      initial={{ opacity: 0, y: -8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 8 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      In winkelwagen · €58
-                    </motion.span>
-                  )}
-                </AnimatePresence>
-              </button>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                Word als eerste uitgenodigd
+              </Link>
 
               <Link
                 href="/products/reset-serum"

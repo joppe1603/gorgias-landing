@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useCart } from '@/contexts/CartContext'
@@ -11,6 +12,7 @@ export default function StickyProductBar({
   originalPrice,
   image,
   size,
+  availability,
 }: {
   slug: string
   name: string
@@ -18,10 +20,12 @@ export default function StickyProductBar({
   originalPrice?: number
   image: string
   size: string
+  availability?: 'available' | 'pre-launch' | 'sample'
 }) {
   const [visible, setVisible] = useState(false)
   const [added, setAdded] = useState(false)
   const { dispatch } = useCart()
+  const isAvailable = availability === 'available'
 
   useEffect(() => {
     const hero = document.getElementById('product-hero-cta')
@@ -62,41 +66,57 @@ export default function StickyProductBar({
                   {originalPrice && (
                     <span className="text-stone-500 text-xs line-through">€{originalPrice}</span>
                   )}
-                  <span className="text-stone-400 text-xs">· Gratis verzending</span>
+                  {isAvailable && (
+                    <span className="text-stone-400 text-xs">· Gratis verzending</span>
+                  )}
                 </div>
               </div>
-              <button
-                onClick={handleAddToCart}
-                className="btn-gold shrink-0 px-5 py-2.5 rounded-xl text-sm font-semibold cursor-pointer transition-all min-w-[140px] text-center"
-              >
-                <AnimatePresence mode="wait" initial={false}>
-                  {added ? (
-                    <motion.span
-                      key="added"
-                      initial={{ opacity: 0, y: 5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -5 }}
-                      transition={{ duration: 0.18 }}
-                      className="flex items-center justify-center gap-1.5"
-                    >
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
-                        <path d="M2 6l3 3 5-5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                      Toegevoegd
-                    </motion.span>
-                  ) : (
-                    <motion.span
-                      key="default"
-                      initial={{ opacity: 0, y: -5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 5 }}
-                      transition={{ duration: 0.18 }}
-                    >
-                      In winkelwagen
-                    </motion.span>
-                  )}
-                </AnimatePresence>
-              </button>
+
+              {isAvailable ? (
+                <button
+                  onClick={handleAddToCart}
+                  className="btn-gold shrink-0 px-5 py-2.5 rounded-xl text-sm font-semibold cursor-pointer transition-all min-w-[140px] text-center"
+                >
+                  <AnimatePresence mode="wait" initial={false}>
+                    {added ? (
+                      <motion.span
+                        key="added"
+                        initial={{ opacity: 0, y: 5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -5 }}
+                        transition={{ duration: 0.18 }}
+                        className="flex items-center justify-center gap-1.5"
+                      >
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
+                          <path d="M2 6l3 3 5-5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                        Toegevoegd
+                      </motion.span>
+                    ) : (
+                      <motion.span
+                        key="default"
+                        initial={{ opacity: 0, y: -5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 5 }}
+                        transition={{ duration: 0.18 }}
+                      >
+                        In winkelwagen
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                </button>
+              ) : (
+                <Link
+                  href="/launch#waitlist"
+                  className="btn-gold shrink-0 px-5 py-2.5 rounded-xl text-sm font-semibold min-w-[160px] text-center flex items-center justify-center gap-2"
+                >
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                  Schrijf je in
+                </Link>
+              )}
             </div>
           </div>
         </motion.div>
