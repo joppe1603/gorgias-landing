@@ -157,9 +157,38 @@ export default function Navbar() {
                 </div>
 
                 {navLink('/routine', 'Routine')}
-                {navLink('/philosophy', 'Filosofie')}
-                {navLink('/ingredients', 'Ingrediënten')}
-                {navLink('/journal', 'Journal')}
+
+                {/* Ontdekken mega */}
+                <div className="relative group">
+                  <button
+                    type="button"
+                    className={`px-4 py-2 text-sm font-medium rounded-lg cursor-pointer transition-all flex items-center gap-1 ${
+                      ['/philosophy', '/why-lume', '/science', '/ingredients', '/journal', '/community', '/faq'].some(p => pathname.startsWith(p))
+                        ? 'text-[#C9A96E]'
+                        : 'text-stone-600 hover:text-[#C9A96E]'
+                    }`}
+                  >
+                    Ontdekken
+                    <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-40" aria-hidden>
+                      <path d="M3 4.5L6 7.5L9 4.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
+                  <div className="absolute left-0 top-full pt-3 opacity-0 invisible pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto transition-all duration-200 z-50">
+                    <div className="rounded-2xl border border-stone-100 bg-white shadow-2xl shadow-stone-200/40 p-6 grid grid-cols-2 gap-x-8 gap-y-1 min-w-[380px]">
+                      <p className="col-span-2 text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 mb-3">Merk & wetenschap</p>
+                      {exploreLinks.map((l) => (
+                        <Link
+                          key={l.label}
+                          href={l.href}
+                          className="block group/link rounded-xl px-2 py-2 -mx-2 hover:bg-[#FAF8F5] transition-all"
+                        >
+                          <span className="text-sm font-medium text-stone-800 group-hover/link:text-[#C9A96E] transition-colors block">{l.label}</span>
+                          <span className="text-xs text-stone-400 leading-snug block">{l.desc}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* CTAs */}
