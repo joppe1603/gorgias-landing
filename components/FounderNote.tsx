@@ -88,7 +88,7 @@ export default function FounderNote() {
 
             <div className="pt-2">
               <Link
-                href="/launch#waitlist"
+                href="/launch?source=founder-note#waitlist"
                 className="inline-flex items-center gap-2.5 btn-gold px-6 py-3.5 rounded-2xl text-[14px] font-semibold"
               >
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>

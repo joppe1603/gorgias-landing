@@ -114,25 +114,51 @@ export default function SlideCart() {
             {/* ── Items ── */}
             <div className="flex-1 overflow-y-auto overscroll-contain">
               {items.length === 0 ? (
-                /* Empty state */
-                <div className="flex flex-col items-center justify-center h-full text-center px-8 py-16">
-                  <div className="w-16 h-16 rounded-full bg-[#FAF8F5] flex items-center justify-center mb-5">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                      <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/>
-                    </svg>
+                /* Empty state — premium pre-launch */
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="flex flex-col items-center justify-center h-full text-center px-8 py-16"
+                >
+                  {/* Ambient icon */}
+                  <div className="relative mb-8">
+                    <div className="w-20 h-20 rounded-full bg-[#FAF8F5] border border-stone-100 flex items-center justify-center">
+                      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                      </svg>
+                    </div>
+                    <div className="absolute inset-0 rounded-full bg-[#C9A96E]/5 blur-xl" aria-hidden />
                   </div>
-                  <p className="text-[#1A1A1A] font-semibold mb-2 text-[15px]">Je winkelwagen is leeg</p>
-                  <p className="text-[13px] text-[#9A9590] font-light mb-7 leading-relaxed">
-                    Begin met de drie producten van de LUMÉ routine.
+
+                  {/* Copy */}
+                  <p
+                    className="text-[1.25rem] font-semibold text-[#1A1A1A] mb-3 leading-snug"
+                    style={{ fontFamily: 'var(--font-cormorant)' }}
+                  >
+                    Momenteel in samplefase.
                   </p>
+                  <p className="text-[13px] text-[#9A9590] font-light mb-2 leading-relaxed max-w-[220px]">
+                    De eerste batch is in voorbereiding. Schrijf je in voor vroege toegang.
+                  </p>
+                  <div className="divider-gold w-12 mx-auto my-5" />
+
+                  {/* CTAs */}
+                  <Link
+                    href="/launch#waitlist"
+                    onClick={() => dispatch({ type: 'CLOSE' })}
+                    className="btn-gold px-7 py-3 rounded-xl text-[13px] font-semibold mb-3"
+                  >
+                    Word als eerste uitgenodigd
+                  </Link>
                   <Link
                     href="/shop"
                     onClick={() => dispatch({ type: 'CLOSE' })}
-                    className="btn-gold px-7 py-3 rounded-xl text-sm font-medium"
+                    className="text-[12px] text-[#9A9590] hover:text-[#C9A96E] transition-colors font-light"
                   >
-                    Bekijk producten
+                    Bekijk alle producten →
                   </Link>
-                </div>
+                </motion.div>
               ) : (
                 <div className="px-6 pt-2">
                   <AnimatePresence initial={false}>

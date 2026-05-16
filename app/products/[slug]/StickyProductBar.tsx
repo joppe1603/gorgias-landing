@@ -107,7 +107,7 @@ export default function StickyProductBar({
                 </button>
               ) : (
                 <Link
-                  href="/launch#waitlist"
+                  href={`/launch?source=sticky-bar&product=${slug}#waitlist`}
                   className="btn-gold shrink-0 px-5 py-2.5 rounded-xl text-sm font-semibold min-w-[160px] text-center flex items-center justify-center gap-2"
                 >
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>

@@ -2,9 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useState } from 'react'
-import { useCart } from '@/contexts/CartContext'
+import { motion } from 'framer-motion'
 
 const reasons = [
   {
@@ -24,24 +22,6 @@ const reasons = [
 const HERO_IMAGE = 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=960&q=85&fit=crop'
 
 export default function HeroProductSpotlight() {
-  const { dispatch } = useCart()
-  const [added, setAdded] = useState(false)
-
-  function handleAdd() {
-    dispatch({
-      type: 'ADD_ITEM',
-      payload: {
-        slug: 'reset-serum',
-        name: 'Reset Serum',
-        price: 58,
-        image: HERO_IMAGE,
-        size: '30ml',
-      },
-    })
-    setAdded(true)
-    setTimeout(() => setAdded(false), 2200)
-  }
-
   return (
     <section className="bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-[46%_54%]">
@@ -183,22 +163,19 @@ export default function HeroProductSpotlight() {
               <span className="text-sm text-[#9A9590]">30ml · incl. BTW</span>
             </motion.div>
 
-            {/* Delivery line */}
-            <motion.p
+            {/* Pre-launch badge */}
+            <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.26 }}
-              className="text-[11px] text-[#9A9590] mb-6 flex items-center gap-1.5"
+              className="mb-6"
             >
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                <rect x="1" y="3" width="15" height="13" rx="1"/>
-                <path d="M16 8h4l3 5v3h-7V8z"/>
-                <circle cx="5.5" cy="18.5" r="2.5"/>
-                <circle cx="18.5" cy="18.5" r="2.5"/>
-              </svg>
-              Besteld vóór 23:00, morgen in huis · Gratis boven €75
-            </motion.p>
+              <span className="inline-flex items-center gap-2 text-[11px] font-medium text-[#9A9590] bg-[#FAF8F5] border border-stone-100 px-3 py-1.5 rounded-full">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C9A96E] animate-pulse" />
+                Kleine eerste batch in voorbereiding · Pre-launch
+              </span>
+            </motion.div>
 
             {/* CTA block */}
             <motion.div
@@ -209,8 +186,8 @@ export default function HeroProductSpotlight() {
               className="space-y-3 mb-6"
             >
               <Link
-                href="/launch#waitlist"
-                className="btn-gold w-full py-[1.05rem] rounded-2xl font-medium text-[15px] tracking-[0.01em] flex items-center justify-center gap-2.5"
+                href="/launch?source=homepage-spotlight#waitlist"
+                className="btn-gold w-full py-[1.05rem] rounded-2xl font-medium text-[15px] tracking-[0.01em] flex items-center justify-center gap-2.5 active:scale-[0.98] transition-transform"
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>

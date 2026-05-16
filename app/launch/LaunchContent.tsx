@@ -2,8 +2,11 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 import WaitlistForm from '@/components/WaitlistForm'
+import WaitlistCounter from '@/components/WaitlistCounter'
+import LaunchJournal from '@/components/LaunchJournal'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -48,6 +51,9 @@ const testingPhases = [
 const HERO_IMAGE = 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=960&q=85&fit=crop'
 
 export default function LaunchContent() {
+  const searchParams = useSearchParams()
+  const urlSource = searchParams.get('source')
+
   return (
     <main>
 
@@ -97,9 +103,14 @@ export default function LaunchContent() {
               De formule wordt getest. De eerste batch is in voorbereiding. Schrijf je in en ontvang een persoonlijk bericht zodra het zover is.
             </p>
 
+            {/* Counter */}
+            <div className="mb-6">
+              <WaitlistCounter variant="hero" />
+            </div>
+
             {/* Inline waitlist form */}
             <div id="waitlist" className="max-w-lg">
-              <WaitlistForm source="launch-hero" />
+              <WaitlistForm source={urlSource ?? 'launch-hero'} />
             </div>
           </motion.div>
         </div>
@@ -246,6 +257,9 @@ export default function LaunchContent() {
         </div>
       </section>
 
+      {/* ── LAUNCH JOURNAL ────────────────────────────── */}
+      <LaunchJournal />
+
       {/* ── WAITLIST BOTTOM CTA ────────────────────────── */}
       <section className="py-24 bg-[#0F0E0C]">
         <div className="max-w-2xl mx-auto px-6 sm:px-8 text-center">
@@ -262,6 +276,10 @@ export default function LaunchContent() {
             <p className="text-[16px] text-stone-400 font-light leading-relaxed mb-10">
               Eerste batch is beperkt. Wachtlijst leden krijgen als eerste toegang — geen opruiming, geen hype. Gewoon als eerste weten dat het er is.
             </p>
+
+            <div className="flex justify-center mb-6">
+              <WaitlistCounter variant="badge" />
+            </div>
 
             <div className="max-w-lg mx-auto">
               <WaitlistForm source="launch-bottom" />
