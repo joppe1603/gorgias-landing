@@ -35,6 +35,8 @@ const shopColumns = [
 
 const exploreLinks = [
   { label: 'Filosofie',       href: '/philosophy',    desc: 'Waarom minder meer is' },
+  { label: 'Waarom LUMÉ',     href: '/why-lume',      desc: 'Ons verhaal & onze principes' },
+  { label: 'Wetenschap',      href: '/science',       desc: 'Hoe we formuleren' },
   { label: 'Ingrediënten',    href: '/ingredients',   desc: 'Wat werkt. En waarom.' },
   { label: 'Journal',         href: '/journal',       desc: 'Editoriaal & wetenschap' },
   { label: 'Community',       href: '/community',     desc: 'Verhalen van echte mensen' },

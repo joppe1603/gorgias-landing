@@ -2,13 +2,11 @@ import PageEntrance from '@/components/PageEntrance'
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import TrustStrip from '@/components/TrustStrip'
-import FeaturedProducts from '@/components/FeaturedProducts'
-import RoutinePreview from '@/components/RoutinePreview'
+import HeroProductSpotlight from '@/components/HeroProductSpotlight'
 import UGCReviews from '@/components/UGCReviews'
 import PhilosophyPreview from '@/components/PhilosophyPreview'
 import ClosingCTA from '@/components/ClosingCTA'
 import Footer from '@/components/Footer'
-import StickyCart from '@/components/StickyCart'
 
 export default function Home() {
   return (
@@ -16,13 +14,11 @@ export default function Home() {
       <Navbar />
       <Hero />
       <TrustStrip />
-      <FeaturedProducts />
-      <RoutinePreview />
+      <HeroProductSpotlight />
       <UGCReviews />
       <PhilosophyPreview />
       <ClosingCTA />
       <Footer />
-      <StickyCart />
     </PageEntrance>
   )
 }

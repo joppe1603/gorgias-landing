@@ -9,6 +9,9 @@ import IngredientsAccordion from './IngredientsAccordion'
 import PDPHero from './PDPHero'
 import PDPTextureGallery from './PDPTextureGallery'
 import PDPRoutineContext from './PDPRoutineContext'
+import PDPWhyThisWorks from './PDPWhyThisWorks'
+import PDPUsageTimeline from './PDPUsageTimeline'
+import PDPFaq from './PDPFaq'
 import { getProduct, getAllProducts, getRelatedProducts } from '@/lib/products'
 
 const BASE_URL = 'https://lume-skincare.nl'
@@ -122,7 +125,10 @@ export default async function ProductPage({
         {/* ─── 3. TEXTURE GALLERY ───────────────────────── */}
         <PDPTextureGallery product={product} />
 
-        {/* ─── 4. INGREDIËNTEN ──────────────────────────── */}
+        {/* ─── 4. WAAROM DIT WERKT ──────────────────────── */}
+        <PDPWhyThisWorks product={product} />
+
+        {/* ─── 5. INGREDIËNTEN ──────────────────────────── */}
         <section className="py-20 bg-white">
           <div className="max-w-3xl mx-auto px-6 sm:px-8">
             <div className="mb-12">
@@ -184,7 +190,10 @@ export default async function ProductPage({
         {/* ─── 6. ROUTINE CONTEXT ───────────────────────── */}
         <PDPRoutineContext product={product} relatedProducts={related} />
 
-        {/* ─── 7. REVIEWS ───────────────────────────────── */}
+        {/* ─── 7. TIJDLIJN ──────────────────────────────── */}
+        <PDPUsageTimeline />
+
+        {/* ─── 8. REVIEWS ───────────────────────────────── */}
         <section className="py-20 bg-[#FAF8F5]">
           <div className="max-w-5xl mx-auto px-6 sm:px-8">
 
@@ -256,7 +265,10 @@ export default async function ProductPage({
           </div>
         </section>
 
-        {/* ─── 8. PAIRS WELL WITH ───────────────────────── */}
+        {/* ─── 9. FAQ ───────────────────────────────────── */}
+        <PDPFaq productName={product.name} />
+
+        {/* ─── 10. PAIRS WELL WITH ──────────────────────── */}
         {related.length > 0 && (
           <section className="py-20 bg-white">
             <div className="max-w-5xl mx-auto px-6 sm:px-8">

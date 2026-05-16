@@ -278,6 +278,23 @@ export default function PDPHero({ product }: { product: Product }) {
               ))}
             </motion.div>
 
+            {/* Delivery + stock micro-row */}
+            <motion.div {...fadeUp(0.59)} className="flex items-center justify-between mb-5 px-0.5">
+              <span className="flex items-center gap-1.5 text-[12px] text-[#6B6560]">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <rect x="1" y="3" width="15" height="13" rx="1"/>
+                  <path d="M16 8h4l3 5v3h-7V8z"/>
+                  <circle cx="5.5" cy="18.5" r="2.5"/>
+                  <circle cx="18.5" cy="18.5" r="2.5"/>
+                </svg>
+                Morgen in huis · bestel vóór 23:00
+              </span>
+              <span className="flex items-center gap-1.5 text-[12px] text-[#9A9590]">
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#C9A96E] animate-pulse" />
+                Nog 12 stuks
+              </span>
+            </motion.div>
+
             {/* CTAs */}
             <motion.div {...fadeUp(0.62)} id="product-hero-cta" className="space-y-3 mb-6">
               <button
