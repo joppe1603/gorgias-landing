@@ -328,9 +328,12 @@ export default async function ProductPage({
 
       <Footer />
       <StickyProductBar
+        slug={product.slug}
         name={product.name}
         price={product.price}
         originalPrice={product.originalPrice}
+        image={product.heroImage}
+        size={product.size}
       />
     </>
   )

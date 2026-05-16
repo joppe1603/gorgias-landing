@@ -2,17 +2,26 @@
 
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useCart } from '@/contexts/CartContext'
 
 export default function StickyProductBar({
+  slug,
   name,
   price,
   originalPrice,
+  image,
+  size,
 }: {
+  slug: string
   name: string
   price: number
   originalPrice?: number
+  image: string
+  size: string
 }) {
   const [visible, setVisible] = useState(false)
+  const [added, setAdded] = useState(false)
+  const { dispatch } = useCart()
 
   useEffect(() => {
     const hero = document.getElementById('product-hero-cta')
@@ -24,6 +33,15 @@ export default function StickyProductBar({
     observer.observe(hero)
     return () => observer.disconnect()
   }, [])
+
+  function handleAddToCart() {
+    dispatch({
+      type: 'ADD_ITEM',
+      payload: { slug, name, price, image, size },
+    })
+    setAdded(true)
+    setTimeout(() => setAdded(false), 2200)
+  }
 
   return (
     <AnimatePresence>
@@ -47,8 +65,37 @@ export default function StickyProductBar({
                   <span className="text-stone-400 text-xs">· Gratis verzending</span>
                 </div>
               </div>
-              <button className="btn-gold shrink-0 px-5 py-2.5 rounded-xl text-sm font-semibold cursor-pointer transition-all">
-                In winkelwagen
+              <button
+                onClick={handleAddToCart}
+                className="btn-gold shrink-0 px-5 py-2.5 rounded-xl text-sm font-semibold cursor-pointer transition-all min-w-[140px] text-center"
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  {added ? (
+                    <motion.span
+                      key="added"
+                      initial={{ opacity: 0, y: 5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -5 }}
+                      transition={{ duration: 0.18 }}
+                      className="flex items-center justify-center gap-1.5"
+                    >
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
+                        <path d="M2 6l3 3 5-5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      Toegevoegd
+                    </motion.span>
+                  ) : (
+                    <motion.span
+                      key="default"
+                      initial={{ opacity: 0, y: -5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 5 }}
+                      transition={{ duration: 0.18 }}
+                    >
+                      In winkelwagen
+                    </motion.span>
+                  )}
+                </AnimatePresence>
               </button>
             </div>
           </div>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, Cormorant_Garamond } from 'next/font/google'
 import './globals.css'
 import SiteChrome from '@/components/SiteChrome'
+import Providers from '@/components/Providers'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -85,7 +86,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className={`${inter.className} antialiased`}>
         <SiteChrome />
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   )

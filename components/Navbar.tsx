@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useCart } from '@/contexts/CartContext'
 
 const shopColumns = [
   {
@@ -71,6 +72,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const pathname = usePathname()
+  const { dispatch, itemCount } = useCart()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -163,6 +165,27 @@ export default function Navbar() {
                 <Link href="/community" className="px-4 py-2 text-sm font-medium text-stone-600 hover:text-[#C9A96E] cursor-pointer transition-all">
                   Community
                 </Link>
+                {/* Cart icon */}
+                <button
+                  type="button"
+                  onClick={() => dispatch({ type: 'TOGGLE' })}
+                  className="relative p-2.5 rounded-xl text-stone-600 hover:text-[#C9A96E] hover:bg-stone-50 transition-all cursor-pointer"
+                  aria-label="Winkelwagen openen"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/>
+                  </svg>
+                  {itemCount > 0 && (
+                    <motion.span
+                      key={itemCount}
+                      initial={{ scale: 0.5, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-[#C9A96E] text-white text-[9px] font-bold flex items-center justify-center tabular-nums"
+                    >
+                      {itemCount}
+                    </motion.span>
+                  )}
+                </button>
                 <Link href="/shop" className="btn-gold px-5 py-2.5 rounded-xl text-sm font-medium cursor-pointer">
                   Shop
                 </Link>

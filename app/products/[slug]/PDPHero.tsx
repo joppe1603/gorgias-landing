@@ -1,9 +1,10 @@
 'use client'
 
 import Image from 'next/image'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
+import { useRef, useState } from 'react'
 import type { Product } from '@/lib/products'
+import { useCart } from '@/contexts/CartContext'
 
 function Stars({ rating, count }: { rating: number; count: number }) {
   return (
@@ -29,87 +30,177 @@ const fadeUp = (delay = 0) => ({
 
 export default function PDPHero({ product }: { product: Product }) {
   const imageRef = useRef<HTMLDivElement>(null)
+  const galleryRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: imageRef,
     offset: ['start start', 'end start'],
   })
   const imageY = useTransform(scrollYProgress, [0, 1], ['0%', '14%'])
 
+  const { dispatch } = useCart()
+  const [added, setAdded] = useState(false)
+  const [activeSlide, setActiveSlide] = useState(0)
+
+  const allImages = [product.heroImage, ...(product.textureImages ?? [])]
+
+  function handleAddToCart() {
+    dispatch({
+      type: 'ADD_ITEM',
+      payload: {
+        slug: product.slug,
+        name: product.name,
+        price: product.price,
+        image: product.heroImage,
+        size: product.size,
+      },
+    })
+    setAdded(true)
+    setTimeout(() => setAdded(false), 2200)
+  }
+
+  function handleGalleryScroll(e: React.UIEvent<HTMLDivElement>) {
+    const el = e.currentTarget
+    const index = Math.round(el.scrollLeft / el.clientWidth)
+    setActiveSlide(index)
+  }
+
   return (
     <section className="bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-20">
         <div className="grid lg:grid-cols-[54%_46%] gap-10 lg:gap-16 items-start">
 
-          {/* ── LEFT: Cinematic image ── */}
-          <div ref={imageRef} className="relative">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96, y: 24 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-            >
-              {/* Image frame */}
-              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-[0_8px_64px_rgba(0,0,0,0.09)] bg-stone-100">
-                <motion.div style={{ y: imageY }} className="absolute inset-[-10%] w-[120%] h-[120%]">
-                  <Image
-                    src={product.heroImage}
-                    alt={`${product.name} — LUMÉ`}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 54vw"
-                    priority
-                  />
-                </motion.div>
+          {/* ── LEFT: Images ── */}
+          <div>
 
-                {/* Grain overlay */}
-                <svg className="absolute inset-0 w-full h-full opacity-[0.032] pointer-events-none mix-blend-multiply" aria-hidden>
-                  <filter id="grain-hero">
-                    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/>
-                    <feColorMatrix type="saturate" values="0"/>
-                  </filter>
-                  <rect width="100%" height="100%" filter="url(#grain-hero)" />
-                </svg>
-
-                {/* Bottom gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
-
-                {/* Floating emotion badge */}
-                <motion.div
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.85, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute bottom-6 left-6 right-6"
-                >
-                  <div className="bg-[#0F0E0C]/88 backdrop-blur-md rounded-2xl px-5 py-4 border border-white/8">
-                    <p className="text-[9px] font-bold uppercase tracking-[0.22em] text-[#C9A96E] mb-2">
-                      LUMÉ — standpunt
-                    </p>
-                    <p className="text-sm font-light text-stone-200 italic leading-relaxed">
-                      {product.emotion || product.tagline}
-                    </p>
+            {/* Mobile swipe gallery — hidden on desktop */}
+            <div className="lg:hidden -mx-6 mb-8">
+              <div
+                ref={galleryRef}
+                onScroll={handleGalleryScroll}
+                className="flex overflow-x-auto snap-x snap-mandatory gap-3 px-6 pb-1 scrollbar-hide"
+                style={{ scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch' }}
+              >
+                {allImages.map((img, i) => (
+                  <div
+                    key={i}
+                    className="relative aspect-[4/5] rounded-3xl overflow-hidden shrink-0 bg-stone-100 shadow-sm"
+                    style={{ width: 'calc(100vw - 3rem)', scrollSnapAlign: 'center' }}
+                  >
+                    <Image
+                      src={img}
+                      alt={`${product.name} — foto ${i + 1}`}
+                      fill
+                      className="object-cover"
+                      sizes="100vw"
+                      priority={i === 0}
+                    />
+                    {/* Bottom gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                    {/* Emotion badge on first slide */}
+                    {i === 0 && (product.emotion || product.tagline) && (
+                      <div className="absolute bottom-5 left-5 right-5">
+                        <div className="bg-[#0F0E0C]/88 backdrop-blur-md rounded-2xl px-4 py-3.5 border border-white/8">
+                          <p className="text-[9px] font-bold uppercase tracking-[0.22em] text-[#C9A96E] mb-1.5">
+                            LUMÉ — standpunt
+                          </p>
+                          <p className="text-[13px] font-light text-stone-200 italic leading-relaxed">
+                            {product.emotion || product.tagline}
+                          </p>
+                        </div>
+                      </div>
+                    )}
                   </div>
-                </motion.div>
+                ))}
               </div>
 
-              {/* Floating key ingredient chip */}
+              {/* Dot indicators */}
+              {allImages.length > 1 && (
+                <div className="flex justify-center gap-1.5 mt-3 px-6">
+                  {allImages.map((_, i) => (
+                    <div
+                      key={i}
+                      className={`rounded-full transition-all duration-300 ${
+                        i === activeSlide
+                          ? 'w-4 h-1.5 bg-[#C9A96E]'
+                          : 'w-1.5 h-1.5 bg-stone-200'
+                      }`}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Desktop cinematic image — hidden on mobile */}
+            <div ref={imageRef} className="relative hidden lg:block">
               <motion.div
-                initial={{ opacity: 0, x: 20, y: -8 }}
-                animate={{ opacity: 1, x: 0, y: 0 }}
-                transition={{ delay: 1.05, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute -top-3 -right-4 bg-white rounded-2xl shadow-lg border border-stone-100/90 px-4 py-3 max-w-[180px]"
+                initial={{ opacity: 0, scale: 0.96, y: 24 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
               >
-                <p className="text-[8px] font-bold uppercase tracking-[0.2em] text-[#9A9590] mb-1.5">
-                  Werkzaam actief
-                </p>
-                <p className="text-sm font-semibold text-[#1A1A1A] leading-tight">
-                  {product.keyIngredients[0].name}
-                </p>
-                {product.keyIngredients[0].pct && (
-                  <p className="text-xs text-[#C9A96E] font-medium mt-0.5">
-                    {product.keyIngredients[0].pct}
+                {/* Image frame */}
+                <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-[0_8px_64px_rgba(0,0,0,0.09)] bg-stone-100">
+                  <motion.div style={{ y: imageY }} className="absolute inset-[-10%] w-[120%] h-[120%]">
+                    <Image
+                      src={product.heroImage}
+                      alt={`${product.name} — LUMÉ`}
+                      fill
+                      className="object-cover"
+                      sizes="54vw"
+                      priority
+                    />
+                  </motion.div>
+
+                  {/* Grain overlay */}
+                  <svg className="absolute inset-0 w-full h-full opacity-[0.032] pointer-events-none mix-blend-multiply" aria-hidden>
+                    <filter id="grain-hero">
+                      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/>
+                      <feColorMatrix type="saturate" values="0"/>
+                    </filter>
+                    <rect width="100%" height="100%" filter="url(#grain-hero)" />
+                  </svg>
+
+                  {/* Bottom gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+
+                  {/* Floating emotion badge */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.85, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute bottom-6 left-6 right-6"
+                  >
+                    <div className="bg-[#0F0E0C]/88 backdrop-blur-md rounded-2xl px-5 py-4 border border-white/8">
+                      <p className="text-[9px] font-bold uppercase tracking-[0.22em] text-[#C9A96E] mb-2">
+                        LUMÉ — standpunt
+                      </p>
+                      <p className="text-sm font-light text-stone-200 italic leading-relaxed">
+                        {product.emotion || product.tagline}
+                      </p>
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* Floating key ingredient chip */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20, y: -8 }}
+                  animate={{ opacity: 1, x: 0, y: 0 }}
+                  transition={{ delay: 1.05, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute -top-3 -right-4 bg-white rounded-2xl shadow-lg border border-stone-100/90 px-4 py-3 max-w-[180px]"
+                >
+                  <p className="text-[8px] font-bold uppercase tracking-[0.2em] text-[#9A9590] mb-1.5">
+                    Werkzaam actief
                   </p>
-                )}
+                  <p className="text-sm font-semibold text-[#1A1A1A] leading-tight">
+                    {product.keyIngredients[0].name}
+                  </p>
+                  {product.keyIngredients[0].pct && (
+                    <p className="text-xs text-[#C9A96E] font-medium mt-0.5">
+                      {product.keyIngredients[0].pct}
+                    </p>
+                  )}
+                </motion.div>
               </motion.div>
-            </motion.div>
+            </div>
           </div>
 
           {/* ── RIGHT: Product info ── */}
@@ -189,8 +280,37 @@ export default function PDPHero({ product }: { product: Product }) {
 
             {/* CTAs */}
             <motion.div {...fadeUp(0.62)} id="product-hero-cta" className="space-y-3 mb-6">
-              <button className="btn-gold w-full py-[1.05rem] rounded-2xl font-medium text-[15px] cursor-pointer tracking-[0.01em]">
-                In winkelwagen · €{product.price}
+              <button
+                onClick={handleAddToCart}
+                className="btn-gold w-full py-[1.05rem] rounded-2xl font-medium text-[15px] cursor-pointer tracking-[0.01em] relative overflow-hidden"
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  {added ? (
+                    <motion.span
+                      key="added"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.22 }}
+                      className="flex items-center justify-center gap-2"
+                    >
+                      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden>
+                        <path d="M2.5 7.5L6 11L12.5 4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      Toegevoegd aan winkelwagen
+                    </motion.span>
+                  ) : (
+                    <motion.span
+                      key="default"
+                      initial={{ opacity: 0, y: -8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 8 }}
+                      transition={{ duration: 0.22 }}
+                    >
+                      In winkelwagen · €{product.price}
+                    </motion.span>
+                  )}
+                </AnimatePresence>
               </button>
               <button className="w-full py-[0.95rem] rounded-2xl font-light text-[13px] border border-stone-200 text-[#6B6560] hover:border-[#C9A96E] hover:text-[#C9A96E] cursor-pointer transition-all duration-200">
                 Koop nu, betaal later via Klarna
