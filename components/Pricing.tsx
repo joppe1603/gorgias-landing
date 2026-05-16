@@ -1,105 +1,83 @@
 'use client'
 
-import { useState } from 'react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 
-const plans = [
+const products = [
   {
-    name: 'Starter',
-    price: { monthly: 10, annual: 8 },
-    description: 'Perfect for small teams getting started with customer support.',
-    tickets: '50 tickets/month',
-    popular: false,
-    color: 'border-gray-200',
-    btnStyle: 'border-2 border-gray-200 text-gray-700 hover:border-[#FF4F00] hover:text-[#FF4F00]',
-    features: [
-      'Email & live chat',
-      'Shopify & BigCommerce integrations',
-      '3 agent seats included',
-      'Basic automation rules',
-      '150+ integrations',
-      'Help center (FAQ portal)',
-      'Standard support (email)',
-      'Mobile app',
+    label:       'Bestseller',
+    name:        'Radiance Serum',
+    size:        '30ml',
+    price:       '€58',
+    originalPrice: null,
+    description: 'Ons bestsellende vitamine C + retinol serum voor een stralende, egale huid.',
+    image:       'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=480&q=80&fit=crop',
+    items: [
+      'Retinol 0.3%',
+      'Vitamine C 15%',
+      'Niacinamide 5%',
+      'Hyaluronzuur',
     ],
-    notIncluded: [
-      'Voice & SMS',
-      'Advanced analytics',
-      'Custom integrations',
-      'Dedicated CSM',
-    ],
+    note:        null,
+    highlight:   false,
+    cta:         'In winkelwagen',
+    ctaStyle:    'border-2 border-stone-200 text-[#1A1A1A] hover:border-[#C9A96E] hover:text-[#C9A96E]',
+    href:        '/products/radiance-serum',
   },
   {
-    name: 'Pro',
-    price: { monthly: 60, annual: 50 },
-    description: 'For growing brands that need automation and multi-channel support.',
-    tickets: '300 tickets/month',
-    popular: true,
-    color: 'border-[#FF4F00]',
-    btnStyle: 'btn-orange',
-    features: [
-      'Everything in Starter',
-      'Voice & SMS channels',
-      'Instagram & Facebook DM',
-      '10 agent seats included',
-      'Advanced AI automations',
-      'Analytics dashboard',
-      'CSAT surveys',
-      'SLA management',
-      'Priority support (chat)',
-      'Revenue reporting',
+    label:       'Beste Waarde',
+    name:        'The Glow Ritual',
+    size:        'Volledige routine · 3 producten',
+    price:       '€129',
+    originalPrice: '€174',
+    description: 'De complete LUMÉ ochtend- en avondroutine voor transformerende resultaten.',
+    image:       'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=480&q=80&fit=crop',
+    items: [
+      'Radiance Serum (ochtend)',
+      'Deep Moisture Cream',
+      'Overnight Renewal Oil',
+      'Gratis: Mini Oogcrème (cadeau)',
     ],
-    notIncluded: [
-      'Custom integrations',
-      'Dedicated CSM',
-    ],
+    note:        'Gratis verzending · 30 dagen retour · Bespaar €45',
+    highlight:   true,
+    cta:         'Shop het Ritueel',
+    ctaStyle:    'btn-gold',
+    href:        '/products/the-glow-ritual',
   },
   {
-    name: 'Advanced',
-    price: { monthly: 360, annual: 300 },
-    description: 'For high-volume brands that need enterprise power and custom workflows.',
-    tickets: '2,000 tickets/month',
-    popular: false,
-    color: 'border-gray-200',
-    btnStyle: 'border-2 border-gray-200 text-gray-700 hover:border-[#FF4F00] hover:text-[#FF4F00]',
-    features: [
-      'Everything in Pro',
-      'Unlimited agent seats',
-      'Custom integrations (API)',
-      'Dedicated Customer Success Manager',
-      'White-glove onboarding',
-      'Custom SLA policies',
-      'Advanced reporting & BI export',
-      'SOC 2 compliance reports',
-      'SSO & SAML authentication',
-      'Enterprise SLA (99.9% uptime)',
+    label:       'Zachte Formule',
+    name:        'Sensitive Skin Edit',
+    size:        '2 producten',
+    price:       '€89',
+    originalPrice: null,
+    description: 'Bakuchiol + barrièreherstel — alle resultaten, zonder irritatie.',
+    image:       'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=480&q=80&fit=crop',
+    items: [
+      'Bakuchiol Serum',
+      'Barrier Restore Cream',
     ],
-    notIncluded: [],
+    note:        null,
+    highlight:   false,
+    cta:         'In winkelwagen',
+    ctaStyle:    'border-2 border-stone-200 text-[#1A1A1A] hover:border-[#C9A96E] hover:text-[#C9A96E]',
+    href:        '/products/sensitive-skin-edit',
   },
 ]
 
-const CheckIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="shrink-0">
-    <circle cx="8" cy="8" r="7" fill="#FF4F00" fillOpacity="0.1"/>
-    <path d="M5 8L7 10L11 6" stroke="#FF4F00" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-)
+const whyItems = [
+  { icon: '🌿', title: 'Schone ingrediënten',  desc: 'Geen parabenen, siliconen of minerale oliën' },
+  { icon: '🔬', title: 'Klinisch getest',       desc: 'Elke formule door dermatologen goedgekeurd' },
+  { icon: '📦', title: 'Gratis retour',          desc: '30 dagen retourbeleid zonder vragen' },
+  { icon: '🌍', title: 'Koolstofneutraal',       desc: 'Verzending en verpakking gecompenseerd' },
+]
 
-const XIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="shrink-0">
-    <circle cx="8" cy="8" r="7" fill="#f3f4f6"/>
-    <path d="M6 6L10 10M10 6L6 10" stroke="#9ca3af" strokeWidth="1.5" strokeLinecap="round"/>
-  </svg>
-)
 
 export default function Pricing() {
-  const [annual, setAnnual] = useState(false)
-
   return (
-    <section id="pricing" className="py-28 bg-white relative overflow-hidden">
-      {/* Background shapes */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-orange-50/50 to-transparent rounded-full -translate-y-1/2 translate-x-1/3 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-blue-50/40 to-transparent rounded-full translate-y-1/2 -translate-x-1/3 pointer-events-none" />
+    <section id="shop" className="py-28 bg-white relative overflow-hidden scroll-mt-28">
+      {/* Soft background shapes */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-[#FDF8F0]/60 to-transparent rounded-full -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-stone-50/60 to-transparent rounded-full translate-y-1/2 -translate-x-1/3 pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -110,163 +88,142 @@ export default function Pricing() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#FF4F00] bg-orange-50 px-4 py-1.5 rounded-full mb-4">
-            Simple pricing
+          <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[#C9A96E] bg-[#FDF8F0] px-4 py-1.5 rounded-full mb-4">
+            Shop LUMÉ
           </span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-5 leading-tight">
-            Start free, scale as
+          <h2 className="text-4xl sm:text-5xl font-bold text-[#1A1A1A] mb-5 leading-tight">
+            Vind jouw
             <br />
-            <span className="gradient-text">you grow</span>
+            <span className="gradient-text">perfecte routine</span>
           </h2>
-          <p className="text-lg text-gray-500 max-w-xl mx-auto mb-8">
-            No hidden fees, no long-term contracts. Cancel anytime.
-            7-day free trial on all plans.
+          <p className="text-lg text-[#6B6560] max-w-xl mx-auto">
+            Begin met één topseller of bouw jouw volledige LUMÉ ritueel.
           </p>
-
-          {/* Billing toggle */}
-          <div className="inline-flex items-center gap-3 bg-gray-50 border border-gray-200 rounded-2xl p-1.5">
-            <button
-              onClick={() => setAnnual(false)}
-              className={`px-5 py-2 rounded-xl text-sm font-semibold transition-all ${
-                !annual ? 'bg-white shadow-sm text-gray-900' : 'text-gray-500'
-              }`}
-            >
-              Monthly
-            </button>
-            <button
-              onClick={() => setAnnual(true)}
-              className={`px-5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 ${
-                annual ? 'bg-white shadow-sm text-gray-900' : 'text-gray-500'
-              }`}
-            >
-              Annual
-              <span className="bg-green-100 text-green-700 text-xs font-bold px-2 py-0.5 rounded-full">
-                Save 20%
-              </span>
-            </button>
-          </div>
         </motion.div>
 
-        {/* Pricing cards */}
+        {/* Product cards */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
-          {plans.map((plan, idx) => (
+          {products.map((product, idx) => (
             <motion.div
-              key={plan.name}
+              key={product.name}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.12, ease: [0.22, 1, 0.36, 1] }}
-              className={`relative rounded-2xl border-2 ${plan.color} p-8 ${
-                plan.popular ? 'shadow-2xl shadow-orange-100 lg:-mt-4 bg-white' : 'bg-white shadow-sm'
-              }`}
+              className={`relative ${product.highlight ? 'lg:-mt-4' : ''}`}
             >
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="bg-[#FF4F00] text-white text-xs font-bold px-5 py-1.5 rounded-full shadow-md shadow-orange-200">
-                    Most Popular
-                  </span>
-                </div>
-              )}
-
-              {/* Plan name + description */}
-              <div className="mb-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-1">{plan.name}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{plan.description}</p>
-              </div>
-
-              {/* Price */}
-              <div className="mb-2">
-                <div className="flex items-end gap-1">
-                  <span className="text-5xl font-black text-gray-900">
-                    ${annual ? plan.price.annual : plan.price.monthly}
-                  </span>
-                  <span className="text-gray-400 mb-2">/mo</span>
-                </div>
-                {annual && (
-                  <p className="text-xs text-gray-400">
-                    Billed annually (${(annual ? plan.price.annual : plan.price.monthly) * 12}/yr)
-                  </p>
-                )}
-              </div>
-
-              {/* Ticket volume */}
-              <div className="mb-6">
-                <span className="inline-flex items-center gap-1.5 bg-gray-50 border border-gray-100 rounded-lg px-3 py-1.5 text-xs font-semibold text-gray-600">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M2 2h8l-1 7H3L2 2z"/>
-                    <circle cx="4.5" cy="10" r="0.75" fill="currentColor"/>
-                    <circle cx="7.5" cy="10" r="0.75" fill="currentColor"/>
-                  </svg>
-                  {plan.tickets}
-                </span>
-              </div>
-
-              {/* CTA */}
-              <a
-                href="#"
-                className={`block w-full py-3.5 px-6 rounded-xl font-semibold text-sm text-center transition-all mb-8 ${plan.btnStyle}`}
+              {/* Gold glow ring on highlight card */}
+              <div className={`rounded-2xl ${product.highlight
+                ? 'p-[2px] bg-gradient-to-br from-[#C9A96E] via-[#E8C98A] to-[#C9A96E] shadow-[0_0_0_1px_rgba(201,169,110,0.2),0_0_48px_rgba(201,169,110,0.25)]'
+                : ''}`}
               >
-                {plan.popular ? 'Start free trial' : 'Get started free'}
-              </a>
+                <div className={`rounded-2xl border-2 bg-white p-8 ${product.highlight
+                  ? 'border-transparent shadow-xl'
+                  : 'border-stone-200 shadow-sm'}`}
+                >
+                  {/* Label */}
+                  <div className="mb-4">
+                    <span className={`text-xs font-bold uppercase tracking-[0.15em] px-3 py-1 rounded-full ${
+                      product.highlight
+                        ? 'bg-[#FDF8F0] text-[#C9A96E]'
+                        : 'bg-stone-50 text-stone-500'
+                    }`}>
+                      {product.label}
+                    </span>
+                  </div>
 
-              {/* Divider */}
-              <div className="h-px bg-gray-100 mb-6" />
+                  {/* Product image */}
+                  <div className="w-full h-36 rounded-2xl mb-6 relative overflow-hidden">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 380px"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/20 via-transparent to-transparent" />
+                  </div>
 
-              {/* Features */}
-              <ul className="space-y-3">
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-3 text-sm text-gray-600">
-                    <CheckIcon />
-                    {feature}
-                  </li>
-                ))}
-                {plan.notIncluded.map((feature) => (
-                  <li key={feature} className="flex items-center gap-3 text-sm text-gray-400">
-                    <XIcon />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+                  {/* Name + size */}
+                  <h3 className="text-xl font-bold text-[#1A1A1A] mb-1">{product.name}</h3>
+                  <p className="text-xs text-[#6B6560] mb-3 uppercase tracking-wide">{product.size}</p>
+                  <p className="text-sm text-[#6B6560] leading-relaxed mb-5">{product.description}</p>
+
+                  {/* Price */}
+                  <div className="flex items-baseline gap-2 mb-6">
+                    <span className="text-3xl font-black text-[#1A1A1A]">{product.price}</span>
+                    {product.originalPrice && (
+                      <span className="text-base text-stone-400 line-through">{product.originalPrice}</span>
+                    )}
+                  </div>
+
+                  {/* CTA + Quick Add on hover */}
+                  <div className="relative mb-6 group/btn">
+                    <a
+                      href={product.href}
+                      className={`block w-full py-3.5 px-6 rounded-xl font-semibold text-sm text-center cursor-pointer transition-all group-hover/btn:opacity-0 group-hover/btn:scale-95 ${product.ctaStyle}`}
+                    >
+                      {product.cta}
+                    </a>
+                    <a
+                      href={product.href}
+                      className="absolute inset-0 flex items-center justify-center gap-2 rounded-xl font-semibold text-sm cursor-pointer opacity-0 scale-95 group-hover/btn:opacity-100 group-hover/btn:scale-100 transition-all btn-gold"
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/>
+                      </svg>
+                      Bekijk product
+                    </a>
+                  </div>
+
+                  {/* Note */}
+                  {product.note && (
+                    <p className="text-xs text-center text-[#6B6560] mb-5">{product.note}</p>
+                  )}
+
+                  {/* Divider */}
+                  <div className="h-px bg-stone-100 mb-5" />
+
+                  {/* Key items */}
+                  <p className="text-xs font-bold uppercase tracking-[0.15em] text-stone-400 mb-3">
+                    {product.items.length <= 4 ? 'Werkzame stoffen' : 'Bevat'}
+                  </p>
+                  <ul className="space-y-2">
+                    {product.items.map((item) => (
+                      <li key={item} className="flex items-center gap-2.5 text-sm text-stone-600">
+                        <div className="w-4 h-4 rounded-full bg-[#FDF8F0] flex items-center justify-center shrink-0">
+                          <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden>
+                            <path d="M1.5 4L3 5.5L6.5 2" stroke="#C9A96E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </div>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Enterprise note */}
+        {/* Waarom LUMÉ strip */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-12 bg-gray-50 border border-gray-100 rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6"
+          transition={{ duration: 0.55, delay: 0.2 }}
+          className="mt-16 bg-[#FAF8F5] border border-stone-100 rounded-2xl p-8"
         >
-          <div>
-            <h4 className="text-lg font-bold text-gray-900 mb-1">Need more than 2,000 tickets/month?</h4>
-            <p className="text-gray-500 text-sm">
-              Talk to us about an Enterprise plan with custom ticket volume, dedicated infrastructure, and a tailored onboarding program.
-            </p>
+          <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-stone-400 mb-8">Waarom LUMÉ?</p>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            {whyItems.map((item) => (
+              <div key={item.title} className="text-center">
+                <div className="text-2xl mb-2">{item.icon}</div>
+                <p className="text-sm font-bold text-[#1A1A1A] mb-1">{item.title}</p>
+                <p className="text-xs text-[#6B6560] leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
           </div>
-          <a
-            href="#"
-            className="shrink-0 px-7 py-3 bg-gray-900 text-white rounded-xl font-semibold text-sm hover:bg-gray-800 transition-colors"
-          >
-            Contact sales
-          </a>
-        </motion.div>
-
-        {/* FAQ quick links */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-10 text-center"
-        >
-          <p className="text-sm text-gray-400">
-            Have questions?{' '}
-            <a href="#" className="text-[#FF4F00] font-semibold hover:underline">Read our pricing FAQ</a>
-            {' '}or{' '}
-            <a href="#" className="text-[#FF4F00] font-semibold hover:underline">chat with us</a>
-          </p>
         </motion.div>
       </div>
     </section>

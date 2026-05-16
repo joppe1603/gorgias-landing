@@ -1,117 +1,106 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useInView, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { motion, useInView, useMotionValue, useMotionValueEvent, useSpring } from 'framer-motion'
 
-function AnimatedNumber({
-  target,
-  suffix = '',
-  prefix = '',
-  duration = 2,
-}: {
-  target: number
-  suffix?: string
-  prefix?: string
-  duration?: number
-}) {
+function AnimatedNumber({ target, suffix = '', prefix = '' }: { target: number; suffix?: string; prefix?: string }) {
   const ref = useRef<HTMLSpanElement>(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
   const motionVal = useMotionValue(0)
-  const spring = useSpring(motionVal, { damping: 30, stiffness: 60 })
-  const display = useTransform(spring, (v) =>
-    Math.floor(v).toLocaleString()
-  )
+  const spring = useSpring(motionVal, { damping: 32, stiffness: 72 })
+  const [text, setText] = useState('0')
 
-  useEffect(() => {
-    if (inView) {
-      motionVal.set(target)
-    }
-  }, [inView, motionVal, target])
+  useMotionValueEvent(spring, 'change', (v) => { setText(Math.floor(v).toLocaleString()) })
+  useEffect(() => { if (inView) motionVal.set(target) }, [inView, motionVal, target])
 
-  return (
-    <span ref={ref}>
-      {prefix}
-      <motion.span>{display}</motion.span>
-      {suffix}
-    </span>
-  )
+  return <span ref={ref}>{prefix}{text}{suffix}</span>
 }
 
 const stats = [
   {
-    value: 17000,
-    suffix: '+',
-    label: 'Brands worldwide',
-    description: 'From startups to enterprise ecommerce brands trust Gorgias to run their support.',
-    icon: '🌍',
-    color: 'from-orange-50 to-white',
-    accent: 'text-[#FF4F00]',
+    value: 12400, suffix: '+', label: '5-sterrenbeoordelingen',
+    description: 'Geverifieerde klantbeoordelingen op Trustpilot, Google en onze eigen winkel.',
+    icon: '⭐', color: 'from-[#FDF8F0] to-white', accent: 'text-[#C9A96E]',
   },
   {
-    value: 60,
-    suffix: '%',
-    label: 'Tickets automated',
-    description: 'On average, Gorgias customers automate 60% of their incoming support volume.',
-    icon: '⚡',
-    color: 'from-blue-50 to-white',
-    accent: 'text-blue-600',
+    value: 94, suffix: '%', label: 'zag zichtbaar resultaat',
+    description: '94% van de klanten rapporteert een zichtbaar betere huid na 6 weken consistent gebruik.',
+    icon: '✨', color: 'from-green-50 to-white', accent: 'text-green-600',
   },
   {
-    value: 3,
-    prefix: '$',
-    suffix: 'B+',
-    label: 'Revenue driven',
-    description: 'Gorgias has helped brands generate over $3B in revenue through support interactions.',
-    icon: '💰',
-    color: 'from-green-50 to-white',
-    accent: 'text-green-600',
+    value: 28, suffix: ' dagen', label: 'tot zichtbaar resultaat',
+    description: 'Onze klinische onderzoeken tonen meetbare verbeteringen in huidtextuur in slechts 28 dagen.',
+    icon: '📅', color: 'from-blue-50 to-white', accent: 'text-blue-600',
   },
   {
-    value: 2,
-    prefix: '<',
-    suffix: 'h',
-    label: 'Avg. first response',
-    description: 'Teams on Gorgias respond to customers in under 2 hours on average.',
-    icon: '⏱️',
-    color: 'from-purple-50 to-white',
-    accent: 'text-purple-600',
+    value: 49, prefix: '4.', suffix: '/5', label: 'gemiddelde beoordeling',
+    description: 'Consequent het hoogst beoordeeld in clean skincare in onafhankelijke reviews.',
+    icon: '💛', color: 'from-amber-50 to-white', accent: 'text-[#C9A96E]',
   },
 ]
 
 const testimonials = [
   {
-    quote: "Gorgias completely transformed how we handle customer support. We went from overwhelmed to automated in just 2 weeks.",
-    author: "Sarah Mitchell",
-    role: "Head of CX, Glamnetic",
-    avatar: 'SM',
-    color: 'bg-pink-400',
+    quote: 'Ik heb elk serum op de markt geprobeerd en niets komt in de buurt. Mijn huid is de helderste in jaren.',
+    author: 'Lena B.',
+    role: 'Amsterdam · Gemengde huid · 3 maanden',
+    avatar: 'LB',
+    color: 'bg-rose-400',
     rating: 5,
   },
   {
-    quote: "We reduced our first response time by 80% and our team actually enjoys working in Gorgias — it just makes sense.",
-    author: "James Park",
-    role: "Support Lead, MVMT Watches",
-    avatar: 'JP',
-    color: 'bg-blue-500',
+    quote: 'Het retinol serum is het enige dat geen irritatie heeft veroorzaakt. Mijn huidtextuur is volledig getransformeerd.',
+    author: 'Maya S.',
+    role: 'London · Gevoelige huid · 6 weken',
+    avatar: 'MS',
+    color: 'bg-amber-500',
     rating: 5,
   },
   {
-    quote: "The Shopify integration is unbelievable. We edit orders, issue refunds, and close tickets without ever leaving the app.",
-    author: "Anya Torres",
-    role: "Operations Manager, Brooklinen",
-    avatar: 'AT',
-    color: 'bg-purple-500',
+    quote: 'LUMÉ heeft me omgezet van een 10-stappen routine naar 3 producten. Minder is meer en mijn huid heeft er nooit beter uitgezien.',
+    author: 'Julia R.',
+    role: 'Berlijn · Droge huid · 2 maanden',
+    avatar: 'JR',
+    color: 'bg-indigo-400',
     rating: 5,
   },
 ]
 
+function TestimonialCard({ t, className = '' }: { t: (typeof testimonials)[0]; className?: string }) {
+  return (
+    <div className={`bg-white rounded-2xl border border-stone-100 p-7 shadow-sm card-hover shrink-0 snap-center ${className}`}>
+      <div className="flex gap-0.5 mb-4">
+        {[...Array(t.rating)].map((_, i) => (
+          <svg key={i} width="16" height="16" viewBox="0 0 16 16" fill="#C9A96E" aria-hidden>
+            <path d="M8 1L9.8 5.5H15L10.8 8.5L12.5 13L8 10L3.5 13L5.2 8.5L1 5.5H6.2L8 1Z"/>
+          </svg>
+        ))}
+      </div>
+      <p className="text-stone-700 text-sm leading-relaxed mb-6">&ldquo;{t.quote}&rdquo;</p>
+      <div className="flex items-center gap-3">
+        <div className={`w-10 h-10 ${t.color} rounded-full flex items-center justify-center text-white text-sm font-bold`}>{t.avatar}</div>
+        <div>
+          <p className="text-sm font-semibold text-[#1A1A1A]">{t.author}</p>
+          <p className="text-xs text-[#6B6560]">{t.role}</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const trustItems = [
+  { label: 'Trustpilot',              value: '4.9 ★',    color: 'text-[#C9A96E]' },
+  { label: '#1 Huidverzorgingsmerk NL', value: 'Top Rated', color: 'text-[#C9A96E]' },
+  { label: 'Aanbevolen door Vogue',   value: 'Featured',  color: 'text-purple-600' },
+  { label: 'Diervriendelijk',         value: 'Gecertificeerd', color: 'text-green-600' },
+  { label: 'Clean bij Sephora',       value: 'Listed',    color: 'text-blue-600' },
+]
+
 export default function SocialProof() {
   return (
-    <section className="py-28 bg-gray-50 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
+    <section id="social-proof" className="py-28 relative overflow-hidden scroll-mt-28" style={{ background: '#FAF8F5' }}>
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-stone-200 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-stone-200 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -122,20 +111,20 @@ export default function SocialProof() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#FF4F00] bg-orange-50 px-4 py-1.5 rounded-full mb-4">
-            Proven results
+          <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[#C9A96E] bg-[#FDF8F0] px-4 py-1.5 rounded-full mb-4">
+            Bewezen resultaten
           </span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-5 leading-tight">
-            Numbers that speak
+          <h2 className="text-4xl sm:text-5xl font-bold text-[#1A1A1A] mb-5 leading-tight">
+            Cijfers die voor
             <br />
-            <span className="gradient-text">for themselves</span>
+            <span className="gradient-text">zichzelf spreken</span>
           </h2>
-          <p className="text-lg text-gray-500 max-w-xl mx-auto">
-            Join thousands of brands that have transformed their customer experience with Gorgias.
+          <p className="text-lg text-[#6B6560] max-w-xl mx-auto">
+            Sluit je aan bij duizenden klanten die hun huid hebben getransformeerd met LUMÉ.
           </p>
         </motion.div>
 
-        {/* Stats grid */}
+        {/* Stats */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-20">
           {stats.map((stat, idx) => (
             <motion.div
@@ -144,29 +133,25 @@ export default function SocialProof() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className={`bg-gradient-to-b ${stat.color} rounded-2xl border border-gray-100 p-7 text-center group card-hover`}
+              className={`bg-gradient-to-b ${stat.color} rounded-2xl border border-stone-100 p-7 text-center group card-hover cursor-default`}
             >
               <div className="text-3xl mb-3">{stat.icon}</div>
               <div className={`text-4xl sm:text-5xl font-black mb-2 ${stat.accent}`}>
-                <AnimatedNumber
-                  target={stat.value}
-                  suffix={stat.suffix}
-                  prefix={stat.prefix}
-                />
+                <AnimatedNumber target={stat.value} suffix={stat.suffix} prefix={stat.prefix} />
               </div>
-              <p className="font-semibold text-gray-800 text-sm mb-2">{stat.label}</p>
-              <p className="text-xs text-gray-500 leading-relaxed hidden sm:block">{stat.description}</p>
+              <p className="font-semibold text-[#1A1A1A] text-sm mb-2">{stat.label}</p>
+              <p className="text-xs text-[#6B6560] leading-relaxed hidden sm:block">{stat.description}</p>
             </motion.div>
           ))}
         </div>
 
-        {/* Testimonials */}
+        {/* Testimonials — desktop grid */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+          className="hidden md:grid md:grid-cols-3 gap-6"
         >
           {testimonials.map((t, idx) => (
             <motion.div
@@ -175,57 +160,41 @@ export default function SocialProof() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.12, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-white rounded-2xl border border-gray-100 p-7 shadow-sm card-hover"
             >
-              {/* Stars */}
-              <div className="flex gap-0.5 mb-4">
-                {[...Array(t.rating)].map((_, i) => (
-                  <svg key={i} width="16" height="16" viewBox="0 0 16 16" fill="#FF4F00">
-                    <path d="M8 1L9.8 5.5H15L10.8 8.5L12.5 13L8 10L3.5 13L5.2 8.5L1 5.5H6.2L8 1Z"/>
-                  </svg>
-                ))}
-              </div>
-
-              {/* Quote */}
-              <p className="text-gray-700 text-sm leading-relaxed mb-6">
-                &ldquo;{t.quote}&rdquo;
-              </p>
-
-              {/* Author */}
-              <div className="flex items-center gap-3">
-                <div className={`w-10 h-10 ${t.color} rounded-full flex items-center justify-center text-white text-sm font-bold`}>
-                  {t.avatar}
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-gray-900">{t.author}</p>
-                  <p className="text-xs text-gray-500">{t.role}</p>
-                </div>
-              </div>
+              <TestimonialCard t={t} />
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Bottom trust bar */}
+        {/* Testimonials — mobile scroll */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="md:hidden -mx-4 px-4"
+        >
+          <div
+            className="flex gap-4 overflow-x-auto pb-3 snap-x snap-mandatory scroll-pl-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            style={{ WebkitOverflowScrolling: 'touch' }}
+          >
+            {testimonials.map((t) => (
+              <TestimonialCard key={t.author} t={t} className="w-[min(88vw,340px)]" />
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Trust bar */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-16 bg-white rounded-2xl border border-gray-100 p-8 flex flex-wrap items-center justify-center gap-8 shadow-sm"
+          className="mt-16 bg-white rounded-2xl border border-stone-100 p-8 flex flex-wrap items-center justify-center gap-8 shadow-sm"
         >
-          {[
-            { label: 'Shopify App Store', value: '4.4 ★', color: 'text-yellow-500' },
-            { label: 'G2 Leader', value: '#1 Rated', color: 'text-[#FF4F00]' },
-            { label: 'Capterra Score', value: '4.6 / 5', color: 'text-blue-500' },
-            { label: 'SOC 2 Type II', value: 'Certified', color: 'text-green-600' },
-            { label: 'GDPR', value: 'Compliant', color: 'text-purple-600' },
-          ].map((item) => (
-            <div key={item.label} className="flex items-center gap-3">
-              <div className="h-10 w-px bg-gray-100 hidden sm:block first:hidden" />
-              <div className="text-center">
-                <p className={`text-lg font-bold ${item.color}`}>{item.value}</p>
-                <p className="text-xs text-gray-400 font-medium">{item.label}</p>
-              </div>
+          {trustItems.map((item) => (
+            <div key={item.label} className="text-center cursor-default">
+              <p className={`text-lg font-bold ${item.color}`}>{item.value}</p>
+              <p className="text-xs text-[#6B6560] font-medium">{item.label}</p>
             </div>
           ))}
         </motion.div>
