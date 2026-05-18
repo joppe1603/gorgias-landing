@@ -26,7 +26,7 @@ const products = [
     tagline: 'Eén serum. Doet het werk van drie.',
     price: 58,
     size: '30ml',
-    image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&q=80&fit=crop',
+    image: '/reset-serum.jpg',
     tag: 'Bestseller',
     categories: ['Serums', 'Bestsellers'],
     keyIngredients: ['Retinol 0.3%', 'Niacinamide 10%'],

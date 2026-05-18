@@ -29,7 +29,7 @@ const products = [
     skinType: 'Normaal · Droog · Gemengd',
     keyIngredient: 'Retinol + Niacinamide',
     routineStep: 'Stap 02 — Behandelen',
-    image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&q=80&fit=crop',
+    image: '/reset-serum.jpg',
     accent: 'bg-[#EEF0F5]',
     tag: 'Bestseller',
     featured: true,

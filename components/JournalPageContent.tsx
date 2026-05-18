@@ -31,7 +31,7 @@ const articles = [
     category: 'Ingrediënten',
     readTime: '5 min',
     date: 'April 2026',
-    image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&q=75&fit=crop',
+    image: '/reset-serum.jpg',
   },
   {
     slug: 'ochtend-vs-avond-routine',

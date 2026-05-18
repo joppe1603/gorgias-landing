@@ -50,7 +50,7 @@ const testingPhases = [
   },
 ]
 
-const HERO_IMAGE = 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=960&q=85&fit=crop'
+const HERO_IMAGE = '/reset-serum.jpg'
 
 export default function LaunchContent() {
   const searchParams = useSearchParams()

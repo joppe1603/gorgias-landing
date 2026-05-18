@@ -102,7 +102,7 @@ export default function Hero() {
               >
                 <div className="w-[380px] h-[480px] rounded-[24px] overflow-hidden relative shadow-[0_32px_80px_rgba(0,0,0,0.12)]">
                   <Image
-                    src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=760&q=85&fit=crop"
+                    src="/reset-serum.jpg"
                     alt="LUMÉ Reset Serum"
                     fill
                     className="object-cover"

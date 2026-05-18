@@ -22,7 +22,7 @@ const ROUTINE_SUGGESTIONS = [
     name: 'Reset Serum',
     price: 58,
     size: '30ml',
-    image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=200&q=80&fit=crop',
+    image: '/reset-serum.jpg',
   },
   {
     slug: 'soft-barrier-cream',
