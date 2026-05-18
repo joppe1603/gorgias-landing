@@ -70,7 +70,6 @@ const organizationSchema = {
   '@type': 'Organization',
   name: 'LUMÉ',
   url: BASE_URL,
-  logo: `${BASE_URL}/logo.png`,
   description: 'Premium Nederlands huidverzorgingsmerk gebouwd op klinische wetenschap.',
   contactPoint: { '@type': 'ContactPoint', email: 'hello@lume-skincare.nl', contactType: 'customer service' },
   sameAs: ['https://www.instagram.com/lumeskincare', 'https://www.tiktok.com/@lumeskincare'],
