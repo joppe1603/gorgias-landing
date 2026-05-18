@@ -29,8 +29,8 @@ export type Product = {
   price: number
   originalPrice?: number
   size: string
-  rating: number
-  reviewCount: number
+  rating?: number
+  reviewCount?: number
   heroImage: string
   description: string
   longDescription: string
@@ -62,8 +62,7 @@ const PRODUCTS: Product[] = [
     badge: 'Stap 01',
     price: 38,
     size: '150ml',
-    rating: 4.9,
-    reviewCount: 6800,
+    availability: 'pre-launch',
     heroImage: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=900&q=85&fit=crop',
     description: 'Zachte foamreiniger die SPF, make-up en vervuiling verwijdert zonder de huidbarrière te verstoren. Ceramiden en Provitamine B5 herstellen terwijl je reinigt.',
     longDescription: 'De Quiet Cleanser is ontworpen vanuit één principe: reiniging mag nooit ten koste gaan van de huidbarrière. Waar de meeste cleansers de beschermende lipiden wegspoelen, versterkt de Quiet Cleanser deze juist. Ceramiden vullen de barrière aan. Provitamine B5 kalmeert. Allantoin herstelt. Het resultaat is een huid die na het reinigen niet strak aanvoelt, maar soepel en klaar voor de volgende stap.',
@@ -115,8 +114,7 @@ const PRODUCTS: Product[] = [
     badge: 'Bestseller',
     price: 58,
     size: '30ml',
-    rating: 4.9,
-    reviewCount: 12400,
+    availability: 'pre-launch',
     heroImage: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=900&q=85&fit=crop',
     description: 'Retinol 0.3%, Niacinamide 10% en Hyaluronzuur in één stabiele formule. Effectief voor celvernieuwing, poriënverfijning en hydratatie — zonder irritatie.',
     longDescription: 'Het Reset Serum is ons antwoord op onnodige complexiteit. In plaats van drie afzonderlijke serums voor retinol, niacinamide en hydratie, combineert het Reset Serum deze drie klinisch bewezen ingrediënten in één lichte, waterige textuur. Retinol stimuleert celvernieuwing. Niacinamide verfijnt poriën en egalisert de huidtint. Hyaluronzuur op drie molecuulgewichten hydrateert op elk niveau. Het resultaat: minder stappen, meer effect.',
@@ -147,7 +145,7 @@ const PRODUCTS: Product[] = [
       { quote: 'Poriën veel minder zichtbaar na 5 weken. Dit is mijn nieuwe vaste serum.', author: 'Noor Bakker', location: 'Rotterdam', skin: 'Gemengde huid', weeks: '5 weken', rating: 5, initials: 'NB', color: 'bg-indigo-400' },
     ],
     relatedSlugs: ['quiet-cleanser', 'soft-barrier-cream'],
-    seo: { title: 'Reset Serum — Retinol 0.3% + Niacinamide 10% | LUMÉ', description: 'Klinisch bewezen Retinol 0.3% + Niacinamide 10% serum. Zichtbaar betere huid in 28 dagen. Parfumvrij, dermatoloog getest. €58.' },
+    seo: { title: 'Reset Serum — Retinol 0.3% + Niacinamide 10% | LUMÉ', description: 'Parfumvrij Retinol 0.3% + Niacinamide 10% serum. Geformuleerd voor barrièreherstel, poriënverfijning en hydratatie. Pre-launch. €58.' },
     emotion: 'Gebouwd voor huid die te veel heeft meegemaakt.',
     textureNote: 'Waterig en bijna doorzichtig. Trekt in binnen 45 seconden. Geen restlaag. Geen kleverig gevoel. Werkt terwijl je slaapt.',
     textureImages: [
@@ -169,8 +167,7 @@ const PRODUCTS: Product[] = [
     badge: 'Stap 03',
     price: 48,
     size: '50ml',
-    rating: 4.8,
-    reviewCount: 5200,
+    availability: 'pre-launch',
     heroImage: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=900&q=85&fit=crop',
     description: 'Lichte dagcrème die de huidbarrière herstelt en langdurig vocht vasthoudt. Met Bakuchiol en Ceramiden. Werkt als afsluiting van de ochtend- én avondroutine.',
     longDescription: 'De Soft Barrier Cream is de laatste stap in je routine — en een van de belangrijkste. Een beschadigde huidbarrière laat vocht ontsnappen en externe irritanten toe. Ceramiden vullen de lipidenmantels aan. Bakuchiol voegt milde celvernieuwing toe. Squalaan sluit alles in zonder te verstoppen. Het resultaat is een huid die de rest van de dag beschermd en gehydrateerd blijft — zonder de vettige glans van zwaardere crèmes.',
@@ -222,8 +219,7 @@ const PRODUCTS: Product[] = [
     badge: 'Nacht',
     price: 52,
     size: '30ml',
-    rating: 4.8,
-    reviewCount: 3800,
+    availability: 'pre-launch',
     heroImage: 'https://images.unsplash.com/photo-1612817288484-6f916006741a?w=900&q=85&fit=crop',
     description: 'Lichte droge olie met Rozenbottelolie, Bakuchiol en Squalaan. Werkt nachtelijk aan celvernieuwing en barrièreherstel zonder zware textuur.',
     longDescription: 'De nacht is het meest actieve herstelmoment voor je huid. De Overnight Renewal Oil maakt gebruik van dit raam: Rozenbottelolie levert vitamine A en essentielle vetzuren voor celvernieuwing. Bakuchiol versterkt dit effect en verbetert huidtoon. Squalaan sluit alles in — licht, non-comedogeen en volledig plantaardig. Geen kunstmatig parfum. Geen overbodige vullers. Alleen wat werkt.',
@@ -275,18 +271,17 @@ const PRODUCTS: Product[] = [
     badge: 'Bestseller',
     price: 58,
     size: '30ml',
-    rating: 4.9,
-    reviewCount: 12400,
+    availability: 'pre-launch',
     heroImage:
       'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=900&q=85&fit=crop',
     description:
-      'Ons bestsellende serum combineert Vitamine C 15% met Retinol 0.3% en Niacinamide 5% voor zichtbaar stralende en egale huid in 28 dagen.',
+      'Ons serum combineert Vitamine C 15% met Retinol 0.3% en Niacinamide 5% voor een stralende en egale huid. Geformuleerd voor zichtbaar effect.',
     longDescription:
       'De Radiance Serum is geformuleerd voor iedereen die op zoek is naar een klinisch bewezen aanpak voor dofheid, ongelijkmatige huidtint en de eerste tekenen van veroudering. Vitamine C neutraliseert vrije radicalen, Retinol stimuleert huidvernieuwing en Niacinamide verkleint zichtbare poriën — drie krachtige actieve stoffen in één lichte, waterige textuur die direct intrekt.',
     benefits: [
       { icon: '✨', title: 'Zichtbaar stralend', desc: 'Dofheid verminderen vanaf dag 1' },
       { icon: '🎯', title: 'Egale huidtint', desc: 'Verkleurt pigmentvlekken & roodheid' },
-      { icon: '⏱️', title: '28 dagen resultaat', desc: 'Klinisch bewezen verbetering' },
+      { icon: '⏱️', title: 'Geformuleerd voor effect', desc: 'Gericht op zichtbaar verschil in huidtint' },
       { icon: '🌿', title: 'Geen parfum', desc: 'Geschikt voor gevoelige huid' },
     ],
     keyIngredients: [
@@ -327,7 +322,7 @@ const PRODUCTS: Product[] = [
     seo: {
       title: 'Radiance Serum — Vitamine C & Retinol Serum 30ml',
       description:
-        'Klinisch bewezen Vitamine C 15% + Retinol 0.3% serum. Stralende, egale huid in 28 dagen. Dermatoloog getest, parfumvrij. €58 met gratis verzending.',
+        'Vitamine C 15% + Retinol 0.3% serum voor stralende, egale huid. Parfumvrij, pre-launch. €58.',
     },
   },
   {
@@ -338,14 +333,13 @@ const PRODUCTS: Product[] = [
     price: 129,
     originalPrice: 174,
     size: 'Volledige routine · 3 producten',
-    rating: 4.9,
-    reviewCount: 8700,
+    availability: 'pre-launch',
     heroImage:
       'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=900&q=85&fit=crop',
     description:
       'De complete LUMÉ ochtend- en avondroutine in één bundel. Inclusief gratis Mini Oogcrème. Bespaar €45 ten opzichte van los kopen.',
     longDescription:
-      "The Glow Ritual is onze meest populaire bundel voor een reden. Drie producten die naadloos samenwerken: de Radiance Serum voor overdag, de Deep Moisture Cream voor barrièreherstel en de Overnight Renewal Oil om 's nachts te regenereren. Dit is het systeem dat 94% van onze klanten in slechts 28 dagen zichtbare resultaten geeft. Als cadeau ontvang je er ook onze Mini Oogcrème bij.",
+      "The Glow Ritual is onze complete dagelijks bundel. Drie producten die naadloos samenwerken: de Radiance Serum voor overdag, de Deep Moisture Cream voor barrièreherstel en de Overnight Renewal Oil voor nachtelijk herstel. Als cadeau ontvang je er ook onze Mini Oogcrème bij.",
     benefits: [
       { icon: '🎁', title: 'Gratis Mini Oogcrème', desc: 'Ter waarde van €28 cadeau' },
       { icon: '💰', title: 'Bespaar €45', desc: 'Versus los kopen (€174)' },
@@ -400,8 +394,7 @@ const PRODUCTS: Product[] = [
     badge: 'Zachte Formule',
     price: 89,
     size: '2 producten',
-    rating: 4.8,
-    reviewCount: 4200,
+    availability: 'pre-launch',
     heroImage:
       'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=900&q=85&fit=crop',
     description:
@@ -411,7 +404,7 @@ const PRODUCTS: Product[] = [
     benefits: [
       { icon: '🌿', title: 'Geen irritatie', desc: 'Bakuchiol werkt als retinol maar zachter' },
       { icon: '🛡️', title: 'Barrièreherstel', desc: 'Ceramiden voor bescherming & sterkte' },
-      { icon: '🔬', title: 'Klinisch bewezen', desc: '91% rapporteert geen irritatie' },
+      { icon: '🛡️', title: 'Geschikt voor gevoelige huid', desc: 'Geformuleerd zonder irriterende stoffen' },
       { icon: '✓', title: 'Parfumvrij', desc: 'Zonder alcoholen & conserveringsmiddelen' },
     ],
     keyIngredients: [

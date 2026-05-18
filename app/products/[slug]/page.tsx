@@ -58,6 +58,11 @@ export default async function ProductPage({
 
   const related = getRelatedProducts(product.relatedSlugs)
 
+  const availability =
+    product.availability === 'available'
+      ? 'https://schema.org/InStock'
+      : 'https://schema.org/PreOrder'
+
   const productSchema = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -69,13 +74,8 @@ export default async function ProductPage({
       '@type': 'Offer',
       price: product.price.toString(),
       priceCurrency: 'EUR',
-      availability: 'https://schema.org/InStock',
+      availability,
       url: `${BASE_URL}/products/${slug}`,
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: product.rating.toString(),
-      reviewCount: product.reviewCount.toString(),
     },
   }
 
@@ -201,23 +201,15 @@ export default async function ProductPage({
             <div className="mb-12">
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-5 h-px bg-[#C9A96E]" />
-                <span className="section-label">Beoordelingen</span>
+                <span className="section-label">Sample testers</span>
               </div>
               <div className="flex flex-wrap items-end justify-between gap-4">
                 <h2 className="text-3xl sm:text-4xl font-semibold text-[#1A1A1A] leading-tight">
-                  Wat klanten zeggen.
+                  Wat onze testers zeggen.
                 </h2>
-                <div className="flex items-center gap-2.5">
-                  <div className="flex gap-0.5">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} width="13" height="13" viewBox="0 0 16 16" fill="#C9A96E" aria-hidden>
-                        <path d="M8 1L9.8 5.5H15L10.8 8.5L12.5 13L8 10L3.5 13L5.2 8.5L1 5.5H6.2L8 1Z"/>
-                      </svg>
-                    ))}
-                  </div>
-                  <span className="text-sm font-semibold text-[#1A1A1A]">{product.rating}</span>
-                  <span className="text-sm text-[#9A9590]">({product.reviewCount.toLocaleString('nl-NL')})</span>
-                </div>
+                <p className="text-[13px] text-[#9A9590] font-light max-w-xs text-right">
+                  Feedback verzameld tijdens de ontwikkelfase met sample testers.
+                </p>
               </div>
             </div>
 
@@ -248,19 +240,19 @@ export default async function ProductPage({
                       <p className="text-[12px] font-semibold text-[#1A1A1A] truncate">{r.author}</p>
                       <p className="text-[10px] text-[#9A9590]">{r.skin} · {r.weeks}</p>
                     </div>
-                    <span className="ml-auto text-[9px] font-bold uppercase tracking-[0.15em] text-[#C9A96E] bg-[#FDF8F0] px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap">
-                      Geverifieerd
+                    <span className="ml-auto text-[9px] font-bold uppercase tracking-[0.15em] text-[#9A9590] bg-stone-100 px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap">
+                      Tester
                     </span>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* CTA to all reviews */}
-            <div className="mt-10 text-center">
-              <Link href="/community" className="text-sm text-[#C9A96E] font-medium hover:underline underline-offset-4">
-                Alle {product.reviewCount.toLocaleString('nl-NL')} beoordelingen lezen →
-              </Link>
+            {/* Pre-launch disclaimer */}
+            <div className="mt-8 text-center">
+              <p className="text-[12px] text-[#9A9590] font-light">
+                Dit product is in pre-launch. Bovenstaande feedback is afkomstig van sample testers tijdens de ontwikkelfase.
+              </p>
             </div>
           </div>
         </section>

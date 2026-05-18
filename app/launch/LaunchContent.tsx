@@ -8,6 +8,7 @@ import WaitlistForm from '@/components/WaitlistForm'
 import WaitlistCounter from '@/components/WaitlistCounter'
 import LaunchJournal from '@/components/LaunchJournal'
 import SensoryEditorialGrid from '@/components/SensoryEditorialGrid'
+import LaunchCountdown from '@/components/LaunchCountdown'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -190,6 +191,9 @@ export default function LaunchContent() {
           </div>
         </div>
       </section>
+
+      {/* ── COUNTDOWN ─────────────────────────────────── */}
+      <LaunchCountdown />
 
       {/* ── PRODUCT PREVIEW ───────────────────────────── */}
       <section className="py-24 bg-[#FAF8F5]">

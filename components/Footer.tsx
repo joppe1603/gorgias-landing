@@ -3,8 +3,6 @@
 import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { supabase } from '@/lib/supabase/client'
-
 const footerLinks: Record<string, { label: string; href: string }[]> = {
   'Ontdekken': [
     { label: 'Waarom LUMÉ',    href: '/why-lume' },
@@ -61,12 +59,13 @@ export default function Footer() {
     if (!email) return
     setStatus('loading')
 
-    const { error } = await supabase.from('waitlist').insert({
-      email: email.trim().toLowerCase(),
-      source: 'footer-newsletter',
+    const res = await fetch('/api/waitlist', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email.trim().toLowerCase(), source: 'footer-newsletter' }),
     })
 
-    if (error && error.code !== '23505') {
+    if (!res.ok) {
       setStatus('error')
       return
     }

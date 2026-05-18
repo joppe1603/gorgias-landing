@@ -3,8 +3,6 @@
 import { useState, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { supabase } from '@/lib/supabase/client'
-
 type SubmitState = 'idle' | 'loading' | 'error'
 
 export default function WaitlistForm({
@@ -46,21 +44,16 @@ export default function WaitlistForm({
 
     const trimmedEmail = email.trim().toLowerCase()
 
-    const { error } = await supabase.from('waitlist').insert({
-      email: trimmedEmail,
-      source,
-      product_slug: productSlug ?? null,
+    const res = await fetch('/api/waitlist', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: trimmedEmail, source, productSlug: productSlug ?? null }),
     })
 
-    if (error) {
-      console.error('[WaitlistForm] Supabase error:', error.code, error.message)
-      // Postgres unique violation — email already registered, treat as success
-      if (error.code === '23505') {
-        redirectToThanks(trimmedEmail)
-        return
-      }
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}))
       setState('error')
-      setErrorMsg(`Er ging iets mis. (${error.code ?? error.message})`)
+      setErrorMsg(data.error ?? 'Er ging iets mis. Probeer het opnieuw.')
       return
     }
 
