@@ -4,10 +4,13 @@ const BASE_URL = 'https://lume-skincare.nl'
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-    },
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/admin/', '/thanks', '/api/'],
+      },
+    ],
     sitemap: `${BASE_URL}/sitemap.xml`,
     host: BASE_URL,
   }

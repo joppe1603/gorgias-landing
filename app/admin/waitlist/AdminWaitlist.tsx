@@ -13,6 +13,26 @@ function formatDate(iso: string) {
   }).format(new Date(iso))
 }
 
+function downloadCSV(entries: WaitlistEntry[]) {
+  const header = 'E-mail,Bron,Product,Datum'
+  const rows = entries.map((e) =>
+    [
+      `"${e.email}"`,
+      `"${e.source ?? ''}"`,
+      `"${e.product_slug ?? ''}"`,
+      `"${formatDate(e.created_at)}"`,
+    ].join(',')
+  )
+  const csv = [header, ...rows].join('\n')
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = `lume-wachtlijst-${new Date().toISOString().slice(0, 10)}.csv`
+  a.click()
+  URL.revokeObjectURL(url)
+}
+
 export default function AdminWaitlist() {
   const [password, setPassword] = useState('')
   const [authed, setAuthed] = useState(false)
@@ -113,11 +133,25 @@ export default function AdminWaitlist() {
               LUMÉ Wachtlijst
             </h1>
           </div>
-          <div className="text-right">
-            <p className="text-3xl font-semibold text-[#1A1A1A]" style={{ fontFamily: 'var(--font-cormorant)' }}>
-              {total}
-            </p>
-            <p className="text-[11px] text-[#9A9590] font-light">aanmeldingen totaal</p>
+          <div className="flex items-center gap-6">
+            <div className="text-right">
+              <p className="text-3xl font-semibold text-[#1A1A1A]" style={{ fontFamily: 'var(--font-cormorant)' }}>
+                {total}
+              </p>
+              <p className="text-[11px] text-[#9A9590] font-light">aanmeldingen totaal</p>
+            </div>
+            {entries.length > 0 && (
+              <button
+                onClick={() => downloadCSV(entries)}
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-stone-200 hover:border-[#C9A96E]/40 text-[12px] font-medium text-[#6B6560] hover:text-[#C9A96E] transition-all"
+                title="Download als CSV"
+              >
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                </svg>
+                CSV
+              </button>
+            )}
           </div>
         </div>
       </div>

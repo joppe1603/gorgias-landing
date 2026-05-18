@@ -65,8 +65,21 @@ export default function RitualSection() {
 
       <div className="relative max-w-7xl mx-auto lg:grid lg:grid-cols-[52%_48%]">
 
+        {/* ── MOBILE: Cinematic image header (hidden on lg+) ── */}
+        <div className="relative lg:hidden h-52 overflow-hidden">
+          <Image
+            src={RITUAL_IMAGE}
+            alt="Avondritueel — Reset Serum nachtelijk herstel"
+            fill
+            className="object-cover object-top"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0F0E0C]/20 to-[#0F0E0C]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0F0E0C] via-transparent to-transparent opacity-60" />
+        </div>
+
         {/* ── LEFT: Ritual content ── */}
-        <div className="flex flex-col justify-center px-6 sm:px-10 lg:px-16 py-20 lg:py-28">
+        <div className="flex flex-col justify-center px-6 sm:px-10 lg:px-16 py-10 lg:py-28">
 
           {/* Section label */}
           <motion.div

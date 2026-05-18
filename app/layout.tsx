@@ -3,6 +3,7 @@ import { Inter, Cormorant_Garamond } from 'next/font/google'
 import './globals.css'
 import SiteChrome from '@/components/SiteChrome'
 import Providers from '@/components/Providers'
+import CookieBanner from '@/components/CookieBanner'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -22,11 +23,11 @@ const BASE_URL = 'https://lume-skincare.nl'
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'LUMÉ — Premium Huidverzorging | Glow begint met wetenschap',
+    default: 'LUMÉ — Huidverzorging geformuleerd op wetenschap | Pre-launch',
     template: '%s | LUMÉ Skincare',
   },
   description:
-    'Klinisch bewezen huidverzorgingsformules. Schone ingrediënten, zichtbare resultaten in 28 dagen. Dermatoloog getest. Gratis verzending boven €50.',
+    'LUMÉ — huidverzorging geformuleerd op wetenschap. Pre-launch: schrijf je in voor de wachtlijst en ontvang als eerste toegang tot Reset Serum.',
   keywords: [
     'huidverzorging', 'serum', 'retinol', 'hyaluronzuur', 'clean beauty',
     'LUMÉ', 'skincare Nederland', 'vitamine C serum', 'bakuchiol', 'gezichtscrème',
@@ -44,9 +45,9 @@ export const metadata: Metadata = {
     locale: 'nl_NL',
     url: BASE_URL,
     siteName: 'LUMÉ Skincare',
-    title: 'LUMÉ — Premium Huidverzorging | Glow begint met wetenschap',
+    title: 'LUMÉ — Huidverzorging geformuleerd op wetenschap | Pre-launch',
     description:
-      'Klinisch bewezen huidverzorgingsformules. Schone ingrediënten, zichtbare resultaten in 28 dagen.',
+      'LUMÉ — huidverzorging geformuleerd op wetenschap. Pre-launch: schrijf je in voor de wachtlijst.',
     images: [
       {
         url: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=1200&q=80',
@@ -58,8 +59,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'LUMÉ — Premium Huidverzorging',
-    description: 'Zichtbare resultaten in 28 dagen. Klinisch bewezen, clean beauty.',
+    title: 'LUMÉ — Pre-launch | Huidverzorging op wetenschap',
+    description: 'Huidverzorging geformuleerd op wetenschap. Wachtlijst open — schrijf je in.',
     images: ['https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=1200&q=80'],
   },
 }
@@ -89,6 +90,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Providers>
           {children}
         </Providers>
+        <CookieBanner />
       </body>
     </html>
   )

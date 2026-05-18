@@ -112,10 +112,16 @@ export default function Navbar() {
         transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         className="fixed top-0 left-0 right-0 z-50"
       >
-        {/* Announcement */}
-        <div className="flex items-center justify-center bg-[#1A1A1A] text-white text-xs font-medium py-2.5 px-4 text-center">
-          <span>Gratis verzending boven €50 · Code <strong>LUMÉ10</strong> voor 10% op je eerste bestelling</span>
-        </div>
+        {/* Announcement — pre-launch */}
+        <Link href="/launch" className="flex items-center justify-center gap-2.5 bg-[#1A1A1A] text-white text-xs font-medium py-2.5 px-4 text-center hover:bg-[#2A2A2A] transition-colors">
+          <span className="inline-flex items-center gap-1.5">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#C9A96E] animate-pulse" aria-hidden />
+            <span className="text-[#C9A96E] font-semibold tracking-wide uppercase text-[10px]">Pre-launch</span>
+          </span>
+          <span className="hidden sm:inline text-white/60">·</span>
+          <span className="hidden sm:inline">Wachtlijst is open — wees erbij van het begin</span>
+          <span className="sm:hidden">Wachtlijst open →</span>
+        </Link>
 
         <nav className={`transition-all duration-300 border-b ${
           scrolled
@@ -217,8 +223,8 @@ export default function Navbar() {
                     </motion.span>
                   )}
                 </button>
-                <Link href="/shop" className="btn-gold px-5 py-2.5 rounded-xl text-sm font-medium cursor-pointer">
-                  Shop
+                <Link href="/launch#waitlist" className="btn-gold px-5 py-2.5 rounded-xl text-sm font-medium cursor-pointer">
+                  Wachtlijst
                 </Link>
               </div>
 
@@ -287,11 +293,11 @@ export default function Navbar() {
               ))}
 
               <motion.div variants={mobileLinkVariants} className="pt-4 border-t border-stone-100 mt-3 flex flex-col gap-2">
-                <Link href="/shop" onClick={() => setMobileOpen(false)} className="btn-gold block text-center py-3.5 rounded-2xl text-sm font-medium cursor-pointer">
-                  Shop de routine
+                <Link href="/launch#waitlist" onClick={() => setMobileOpen(false)} className="btn-gold block text-center py-3.5 rounded-2xl text-sm font-medium cursor-pointer">
+                  Zet me op de wachtlijst
                 </Link>
-                <Link href="/routine" onClick={() => setMobileOpen(false)} className="btn-outline block text-center py-3 rounded-2xl text-sm font-medium cursor-pointer">
-                  Bouw mijn routine
+                <Link href="/launch" onClick={() => setMobileOpen(false)} className="btn-outline block text-center py-3 rounded-2xl text-sm font-medium cursor-pointer">
+                  Over de lancering
                 </Link>
               </motion.div>
             </motion.div>
