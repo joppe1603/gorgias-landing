@@ -4,6 +4,7 @@ import './globals.css'
 import SiteChrome from '@/components/SiteChrome'
 import Providers from '@/components/Providers'
 import CookieBanner from '@/components/CookieBanner'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -90,6 +91,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </Providers>
         <CookieBanner />
+        <SpeedInsights />
       </body>
     </html>
   )
