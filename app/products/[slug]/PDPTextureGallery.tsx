@@ -26,8 +26,52 @@ export default function PDPTextureGallery({ product }: { product: Product }) {
           <span className="section-label text-[#C9A96E]">In gebruik</span>
         </motion.div>
 
-        {/* Asymmetric image grid */}
-        <div className="grid grid-cols-3 gap-3 mb-10" style={{ height: 'clamp(280px, 44vw, 520px)' }}>
+        {/* Mobile image layout */}
+        <div className="md:hidden space-y-3 mb-10">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.97 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="relative aspect-[4/3] rounded-2xl overflow-hidden"
+          >
+            <Image
+              src={main}
+              alt={`${product.name} in gebruik`}
+              fill
+              className="object-cover"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/20" />
+          </motion.div>
+          <div className="grid grid-cols-2 gap-3">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="relative aspect-square rounded-2xl overflow-hidden"
+            >
+              <Image src={second} alt={`${product.name} textuur`} fill className="object-cover" sizes="50vw" />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/15" />
+            </motion.div>
+            {third && (
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+                className="relative aspect-square rounded-2xl overflow-hidden"
+              >
+                <Image src={third} alt={`${product.name} detail`} fill className="object-cover" sizes="50vw" />
+                <div className="absolute inset-0 bg-gradient-to-t from-transparent to-black/10" />
+              </motion.div>
+            )}
+          </div>
+        </div>
+
+        {/* Desktop asymmetric image grid */}
+        <div className="hidden md:grid grid-cols-3 gap-3 mb-10" style={{ height: 'clamp(280px, 44vw, 520px)' }}>
 
           {/* Main image — 2/3 width */}
           <motion.div
@@ -42,7 +86,7 @@ export default function PDPTextureGallery({ product }: { product: Product }) {
               alt={`${product.name} in gebruik`}
               fill
               className="object-cover"
-              sizes="(max-width: 768px) 66vw, 50vw"
+              sizes="50vw"
             />
             {/* Grain on image */}
             <svg className="absolute inset-0 w-full h-full opacity-[0.04] pointer-events-none" aria-hidden>
@@ -69,7 +113,7 @@ export default function PDPTextureGallery({ product }: { product: Product }) {
                 alt={`${product.name} textuur`}
                 fill
                 className="object-cover"
-                sizes="(max-width: 768px) 33vw, 18vw"
+                sizes="18vw"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/15" />
             </motion.div>
@@ -87,7 +131,7 @@ export default function PDPTextureGallery({ product }: { product: Product }) {
                   alt={`${product.name} detail`}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 33vw, 18vw"
+                  sizes="18vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-transparent to-black/10" />
               </motion.div>

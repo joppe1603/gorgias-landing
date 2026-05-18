@@ -119,7 +119,7 @@ export default function FeaturedProducts() {
                   )}
 
                   {/* Image */}
-                  <div className={`relative ${product.accent} h-56 overflow-hidden`}>
+                  <div className={`relative ${product.accent} aspect-[4/3] overflow-hidden`}>
                     <Image
                       src={product.image}
                       alt={product.name}

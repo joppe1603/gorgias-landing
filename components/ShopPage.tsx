@@ -63,7 +63,7 @@ const products = [
     tagline: 'Resultaat zonder irritatie.',
     price: 89,
     size: '2 producten',
-    image: '/quiet-cleanser.jpg&fit=crop',
+    image: '/quiet-cleanser.jpg',
     tag: null,
     categories: ['Bundels', 'Gevoelige huid'],
     keyIngredients: ['Bakuchiol', 'Ceramiden'],
@@ -169,7 +169,7 @@ export default function ShopPage() {
                 >
                   <Link href={`/products/${product.slug}`} className="group block bg-white rounded-2xl border border-stone-100 hover:border-stone-200 overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-stone-100">
                     {/* Image */}
-                    <div className="relative h-64 bg-[#F5EFE6] overflow-hidden">
+                    <div className="relative aspect-[4/3] bg-[#F5EFE6] overflow-hidden">
                       <Image
                         src={product.image}
                         alt={product.name}
