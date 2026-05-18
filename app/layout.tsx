@@ -50,7 +50,7 @@ export const metadata: Metadata = {
       'LUMÉ — huidverzorging geformuleerd op wetenschap. Pre-launch: schrijf je in voor de wachtlijst.',
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=1200&q=80',
+        url: '/quiet-cleanser.jpg',
         width: 1200,
         height: 630,
         alt: 'LUMÉ Premium Skincare producten',
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'LUMÉ — Pre-launch | Huidverzorging op wetenschap',
     description: 'Huidverzorging geformuleerd op wetenschap. Wachtlijst open — schrijf je in.',
-    images: ['https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=1200&q=80'],
+    images: ['/quiet-cleanser.jpg'],
   },
 }
 

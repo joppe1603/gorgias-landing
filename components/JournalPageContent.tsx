@@ -11,7 +11,7 @@ const featured = {
   category: 'Filosofie',
   readTime: '6 min',
   date: 'Mei 2026',
-  image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1200&q=80&fit=crop',
+  image: '/quiet-cleanser.jpg',
 }
 
 const articles = [
@@ -49,7 +49,7 @@ const articles = [
     category: 'Filosofie',
     readTime: '7 min',
     date: 'Maart 2026',
-    image: 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=600&q=75&fit=crop',
+    image: '/quiet-cleanser.jpg&fit=crop',
   },
   {
     slug: 'niacinamide-alles-over',

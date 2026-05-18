@@ -15,7 +15,7 @@ const products = [
     skinType: 'Alle huidtypes',
     keyIngredient: 'Ceramiden',
     routineStep: 'Stap 01 — Reinigen',
-    image: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=600&q=80&fit=crop',
+    image: '/quiet-cleanser.jpg',
     accent: 'bg-[#F5EFE6]',
     tag: 'Dagelijks gebruik',
   },

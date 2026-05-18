@@ -15,7 +15,7 @@ const ROUTINE_SUGGESTIONS = [
     name: 'Quiet Cleanser',
     price: 38,
     size: '150ml',
-    image: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=200&q=80&fit=crop',
+    image: '/quiet-cleanser.jpg',
   },
   {
     slug: 'reset-serum',

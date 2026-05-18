@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
-const RITUAL_IMAGE = 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=900&q=85&fit=crop'
+const RITUAL_IMAGE = '/quiet-cleanser.jpg'
 
 const steps = [
   {

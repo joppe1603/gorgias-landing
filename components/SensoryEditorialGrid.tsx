@@ -35,7 +35,7 @@ const shots = [
   {
     label: 'Verpakking',
     sublabel: 'Studio editorial',
-    src: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=600&q=80&fit=crop',
+    src: '/quiet-cleanser.jpg',
     span: 'col-span-1 row-span-1',
     tall: false,
   },

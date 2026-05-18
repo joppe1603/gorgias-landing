@@ -63,7 +63,7 @@ const PRODUCTS: Product[] = [
     price: 38,
     size: '150ml',
     availability: 'pre-launch',
-    heroImage: 'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=900&q=85&fit=crop',
+    heroImage: '/quiet-cleanser.jpg',
     description: 'Zachte foamreiniger die SPF, make-up en vervuiling verwijdert zonder de huidbarrière te verstoren. Ceramiden en Provitamine B5 herstellen terwijl je reinigt.',
     longDescription: 'De Quiet Cleanser is ontworpen vanuit één principe: reiniging mag nooit ten koste gaan van de huidbarrière. Waar de meeste cleansers de beschermende lipiden wegspoelen, versterkt de Quiet Cleanser deze juist. Ceramiden vullen de barrière aan. Provitamine B5 kalmeert. Allantoin herstelt. Het resultaat is een huid die na het reinigen niet strak aanvoelt, maar soepel en klaar voor de volgende stap.',
     benefits: [
@@ -96,7 +96,7 @@ const PRODUCTS: Product[] = [
     emotion: 'Een cleanser die niks opeist. Wast schoon. Laat met rust.',
     textureNote: 'Rijke foam die direct aanspoelt. Geen trekkerig gevoel achteraf — alleen schoon.',
     textureImages: [
-      'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=900&q=85&fit=crop',
+      '/quiet-cleanser.jpg',
       'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=700&q=85&fit=crop',
       'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=700&q=85&fit=crop',
     ],
@@ -255,7 +255,7 @@ const PRODUCTS: Product[] = [
     textureImages: [
       'https://images.unsplash.com/photo-1612817288484-6f916006741a?w=900&q=85&fit=crop',
       'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=700&q=85&fit=crop',
-      'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=700&q=85&fit=crop',
+      '/quiet-cleanser.jpg',
     ],
     routineContext: {
       time: 'Avond',
