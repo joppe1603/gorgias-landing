@@ -93,7 +93,7 @@ function confirmationEmail(email: string): string {
               <p style="margin:0;font-size:11px;color:#C9A96E;">
                 <a href="https://lume-skincare.nl/privacy" style="color:#C9A96E;text-decoration:underline;">Privacybeleid</a>
                 &nbsp;·&nbsp;
-                <a href="mailto:hello@lume-skincare.nl?subject=Uitschrijven&body=Schrijf me uit: ${encodeURIComponent(email)}" style="color:#9A9590;text-decoration:underline;">Uitschrijven</a>
+                <a href="https://lume-skincare.nl/unsubscribe?email=${encodeURIComponent(email)}" style="color:#9A9590;text-decoration:underline;">Uitschrijven</a>
               </p>
             </td>
           </tr>
