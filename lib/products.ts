@@ -115,7 +115,7 @@ const PRODUCTS: Product[] = [
     price: 58,
     size: '30ml',
     availability: 'pre-launch',
-    heroImage: '/reset-serum-mockup.svg',
+    heroImage: '/reset-serum.jpg',
     description: 'Retinol 0.3%, Niacinamide 10% en Hyaluronzuur in één stabiele formule. Effectief voor celvernieuwing, poriënverfijning en hydratatie — zonder irritatie.',
     longDescription: 'Het Reset Serum is ons antwoord op onnodige complexiteit. In plaats van drie afzonderlijke serums voor retinol, niacinamide en hydratie, combineert het Reset Serum deze drie klinisch bewezen ingrediënten in één lichte, waterige textuur. Retinol stimuleert celvernieuwing. Niacinamide verfijnt poriën en egalisert de huidtint. Hyaluronzuur op drie molecuulgewichten hydrateert op elk niveau. Het resultaat: minder stappen, meer effect.',
     benefits: [
