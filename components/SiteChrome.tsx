@@ -3,13 +3,10 @@
 import { useEffect, useState } from 'react'
 import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion'
 
-const COOKIE_KEY = 'lume-cookie-consent'
-
 export default function SiteChrome() {
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 35, mass: 0.2 })
   const [showTop, setShowTop] = useState(false)
-  const [cookieVisible, setCookieVisible] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 400)
@@ -17,25 +14,6 @@ export default function SiteChrome() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
-
-  useEffect(() => {
-    try {
-      if (typeof window !== 'undefined' && !localStorage.getItem(COOKIE_KEY)) {
-        setCookieVisible(true)
-      }
-    } catch {
-      setCookieVisible(true)
-    }
-  }, [])
-
-  const setConsent = (value: 'accept' | 'decline') => {
-    try {
-      localStorage.setItem(COOKIE_KEY, value)
-    } catch {
-      /* ignore */
-    }
-    setCookieVisible(false)
-  }
 
   return (
     <>
@@ -63,43 +41,6 @@ export default function SiteChrome() {
               <path d="M12 19V5M5 12l7-7 7 7" />
             </svg>
           </motion.button>
-        )}
-      </AnimatePresence>
-
-      {/* Cookie toestemming */}
-      <AnimatePresence>
-        {cookieVisible && (
-          <motion.div
-            role="dialog"
-            aria-label="Cookietoestemming"
-            initial={{ y: 120, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 120, opacity: 0 }}
-            transition={{ type: 'spring', damping: 28, stiffness: 320 }}
-            className="fixed bottom-0 left-0 right-0 z-[95] p-4 sm:p-6 pointer-events-none"
-          >
-            <div className="max-w-4xl mx-auto pointer-events-auto bg-[#0F0E0C] text-white rounded-2xl border border-white/10 shadow-2xl px-5 py-4 sm:px-6 sm:py-5 flex flex-col sm:flex-row sm:items-center gap-4">
-              <p className="text-sm text-stone-300 flex-1 leading-relaxed">
-                We gebruiken cookies om u de beste ervaring op LUMÉ te geven. Door verder te gaan, stemt u in met ons cookiebeleid.
-              </p>
-              <div className="flex items-center gap-3 shrink-0">
-                <button
-                  type="button"
-                  onClick={() => setConsent('decline')}
-                  className="px-4 py-2.5 rounded-xl text-sm font-semibold text-stone-300 border border-white/20 hover:bg-white/5 cursor-pointer transition-all"
-                >
-                  Weigeren
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setConsent('accept')}
-                  className="px-4 py-2.5 rounded-xl text-sm font-semibold bg-[#C9A96E] text-white hover:bg-[#B8935A] cursor-pointer transition-all shadow-lg shadow-[#C9A96E]/20"
-                >
-                  Accepteren
-                </button>
-              </div>
-            </div>
-          </motion.div>
         )}
       </AnimatePresence>
     </>
