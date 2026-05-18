@@ -448,6 +448,25 @@ const PRODUCTS: Product[] = [
         'Zachte Bakuchiol + barrièreherstel voor gevoelige huid. Retinol-achtige resultaten zonder irritatie. Geen parfum. €89 met gratis verzending.',
     },
   },
+  {
+    slug: 'test-sample',
+    name: 'Test Sample',
+    tagline: 'Alleen voor intern testen.',
+    badge: 'Test',
+    price: 0.02,
+    size: '1ml',
+    availability: 'available',
+    heroImage: '/reset-serum.jpg',
+    description: 'Intern testproduct. Niet zichtbaar in de winkel.',
+    longDescription: 'Intern testproduct.',
+    benefits: [],
+    keyIngredients: [{ name: 'Test', benefit: 'Test' }],
+    allIngredients: '',
+    howToUse: [],
+    reviews: [],
+    relatedSlugs: [],
+    seo: { title: 'Test | LUMÉ', description: 'Testproduct.' },
+  },
 ]
 
 export function getAllProducts(): Product[] {
