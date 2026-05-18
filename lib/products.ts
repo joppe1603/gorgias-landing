@@ -149,9 +149,9 @@ const PRODUCTS: Product[] = [
     emotion: 'Gebouwd voor huid die te veel heeft meegemaakt.',
     textureNote: 'Waterig en bijna doorzichtig. Trekt in binnen 45 seconden. Geen restlaag. Geen kleverig gevoel. Werkt terwijl je slaapt.',
     textureImages: [
-      'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=900&q=85&fit=crop',
-      'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=700&q=85&fit=crop',
-      'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=700&q=85&fit=crop',
+      '/reset-serum-2.jpg',
+      '/reset-serum-3.jpg',
+      '/reset-serum-4.jpg',
     ],
     routineContext: {
       time: 'Avond',
