@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 640" width="480" height="640">
+  <defs>
+    <linearGradient id="bottleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#E8E4DF;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#FAF8F5;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#F2EFE9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D8D4CF;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="capGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#111111;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#2A2A2A;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#1A1A1A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0D0D0D;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="neckGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#DEDAD4;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#F5F2EC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D0CCC6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="shadowGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0F0E0C;stop-opacity:0.5" />
+      <stop offset="100%" style="stop-color:#0F0E0C;stop-opacity:0" />
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-10%" width="140%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="480" height="640" fill="#0F0E0C"/>
+
+  <!-- Subtle background glow -->
+  <ellipse cx="240" cy="320" rx="160" ry="220" fill="#C9A96E" opacity="0.03"/>
+
+  <!-- Bottle group with shadow -->
+  <g filter="url(#softShadow)">
+
+    <!-- Bottle body -->
+    <rect x="164" y="230" width="152" height="330" rx="14" fill="url(#bottleGrad)"/>
+
+    <!-- Glass inner depth (left edge dark) -->
+    <rect x="164" y="230" width="10" height="330" rx="7" fill="#C8C4BE" opacity="0.6"/>
+    <!-- Glass inner depth (right edge dark) -->
+    <rect x="306" y="230" width="10" height="330" rx="7" fill="#C8C4BE" opacity="0.5"/>
+
+    <!-- Glass shine strip -->
+    <rect x="180" y="242" width="12" height="306" rx="6" fill="white" opacity="0.22"/>
+    <!-- Secondary shine -->
+    <rect x="196" y="248" width="4" height="294" rx="2" fill="white" opacity="0.08"/>
+
+    <!-- Bottle neck -->
+    <rect x="196" y="188" width="88" height="52" rx="8" fill="url(#neckGrad)"/>
+    <rect x="204" y="196" width="10" height="38" rx="5" fill="white" opacity="0.2"/>
+    <!-- Neck shoulder lines -->
+    <rect x="164" y="228" width="152" height="8" rx="4" fill="#D5D1CB" opacity="0.5"/>
+
+    <!-- Dropper cap body -->
+    <rect x="190" y="96" width="100" height="100" rx="10" fill="url(#capGrad)"/>
+    <!-- Cap shine -->
+    <rect x="198" y="105" width="14" height="83" rx="7" fill="#3A3A3A"/>
+    <rect x="215" y="108" width="5" height="77" rx="2.5" fill="#333333"/>
+    <!-- Cap bottom edge highlight -->
+    <rect x="190" y="188" width="100" height="5" rx="2" fill="#2A2A2A"/>
+
+    <!-- Dropper rubber bulb -->
+    <ellipse cx="240" cy="92" rx="36" ry="20" fill="#1C1C1C"/>
+    <ellipse cx="240" cy="86" rx="26" ry="14" fill="#252525"/>
+    <ellipse cx="233" cy="82" rx="8" ry="5" fill="#2E2E2E" opacity="0.6"/>
+    <!-- Bulb highlight -->
+    <ellipse cx="232" cy="80" rx="5" ry="3" fill="#3A3A3A" opacity="0.5"/>
+
+    <!-- Dropper tip (glass needle) -->
+    <rect x="237" y="56" width="6" height="32" rx="3" fill="#D0CCC6" opacity="0.7"/>
+    <!-- Tip highlight -->
+    <rect x="238" y="58" width="2" height="28" rx="1" fill="white" opacity="0.4"/>
+
+  </g>
+
+  <!-- Label (white card on bottle) -->
+  <rect x="178" y="268" width="124" height="222" rx="3" fill="#FDFCFA"/>
+  <!-- Label subtle border -->
+  <rect x="178" y="268" width="124" height="222" rx="3" fill="none" stroke="#E8E4DF" stroke-width="0.5"/>
+
+  <!-- Gold top rule on label -->
+  <rect x="190" y="283" width="100" height="0.8" fill="#C9A96E"/>
+  <!-- Gold bottom rule on label -->
+  <rect x="190" y="476" width="100" height="0.8" fill="#C9A96E"/>
+
+  <!-- LUMÉ brand name -->
+  <text x="240" y="317" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="20" font-weight="600"
+        letter-spacing="9"
+        fill="#1A1A1A">LUMÉ</text>
+
+  <!-- Thin gold divider under brand -->
+  <rect x="212" y="328" width="56" height="0.6" fill="#C9A96E" opacity="0.7"/>
+
+  <!-- Product name -->
+  <text x="240" y="350" text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="6.5" font-weight="700"
+        letter-spacing="3.8"
+        fill="#5C5754">RESET SERUM</text>
+
+  <!-- Ingredient line 1 -->
+  <text x="240" y="374" text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="7" font-style="italic"
+        fill="#9A9590">Retinol · Bakuchiol</text>
+
+  <!-- Ingredient line 2 -->
+  <text x="240" y="387" text-anchor="middle"
+        font-family="Georgia, serif"
+        font-size="7" font-style="italic"
+        fill="#9A9590">Hyaluronzuur · Niacinamide</text>
+
+  <!-- Middle thin rule -->
+  <rect x="210" y="401" width="60" height="0.5" fill="#E0DDD8"/>
+
+  <!-- Subtitle -->
+  <text x="240" y="418" text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="5.5" letter-spacing="1.8"
+        fill="#B5B0AB">PRE-LAUNCH · 2026</text>
+
+  <!-- Volume -->
+  <text x="240" y="461" text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="6" letter-spacing="2.5"
+        fill="#9A9590">30 ML</text>
+
+  <!-- Surface / table line -->
+  <rect x="80" y="572" width="320" height="1" fill="#C9A96E" opacity="0.12"/>
+
+  <!-- Bottle shadow on surface -->
+  <ellipse cx="240" cy="573" rx="68" ry="7" fill="#000000" opacity="0.28"/>
+
+  <!-- Subtle reflection -->
+  <rect x="164" y="575" width="152" height="40" rx="14"
+        fill="url(#shadowGrad)" opacity="0.4"/>
+
+</svg>
