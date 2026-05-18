@@ -10,6 +10,7 @@ import EditorialQuote from '@/components/EditorialQuote'
 import FounderNote from '@/components/FounderNote'
 import ClosingCTA from '@/components/ClosingCTA'
 import Footer from '@/components/Footer'
+import InstagramGrid from '@/components/InstagramGrid'
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
         size="md"
       />
       <FounderNote />
+      <InstagramGrid />
       <ClosingCTA />
       <Footer />
     </PageEntrance>

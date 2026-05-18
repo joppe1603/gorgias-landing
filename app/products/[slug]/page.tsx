@@ -13,6 +13,8 @@ import PDPWhyThisWorks from './PDPWhyThisWorks'
 import PDPUsageTimeline from './PDPUsageTimeline'
 import PDPFaq from './PDPFaq'
 import { getProduct, getAllProducts, getRelatedProducts } from '@/lib/products'
+import PDPBundleUpsell from './PDPBundleUpsell'
+import PDPReviews from './PDPReviews'
 
 const BASE_URL = 'https://lume-skincare.nl'
 
@@ -259,6 +261,14 @@ export default async function ProductPage({
 
         {/* ─── 9. FAQ ───────────────────────────────────── */}
         <PDPFaq productName={product.name} />
+
+        {/* ─── 9b. BUNDLE UPSELL ────────────────────────── */}
+        {related.length > 0 && (
+          <PDPBundleUpsell currentProduct={product} relatedProducts={related} />
+        )}
+
+        {/* ─── 9c. KLANTREVIEWS ─────────────────────────── */}
+        <PDPReviews slug={product.slug} />
 
         {/* ─── 10. PAIRS WELL WITH ──────────────────────── */}
         {related.length > 0 && (

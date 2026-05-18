@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useCart } from '@/contexts/CartContext'
+import { getProduct } from '@/lib/products'
 
 type Step = 'type' | 'concern' | 'simplicity' | 'result'
 
@@ -97,6 +99,20 @@ export default function RoutineBuilderPage() {
   const [step, setStep] = useState<Step>('type')
   const [answers, setAnswers] = useState<Partial<Answers>>({})
   const [result, setResult] = useState<RoutineResult | null>(null)
+  const [addedAll, setAddedAll] = useState(false)
+  const { dispatch } = useCart()
+
+  function addAllToCart() {
+    if (!result) return
+    result.products.forEach(p => {
+      const full = getProduct(p.slug)
+      if (full && full.availability === 'available') {
+        dispatch({ type: 'ADD_ITEM', payload: { slug: full.slug, name: full.name, price: full.price, image: full.heroImage, size: full.size } })
+      }
+    })
+    setAddedAll(true)
+    setTimeout(() => setAddedAll(false), 2500)
+  }
 
   const steps: Step[] = ['type', 'concern', 'simplicity']
   const currentStepIndex = steps.indexOf(step as 'type' | 'concern' | 'simplicity')
@@ -301,9 +317,20 @@ export default function RoutineBuilderPage() {
 
                 {/* Actions */}
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Link href="/shop" className="btn-gold inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl font-medium flex-1">
-                    Shop deze producten
-                  </Link>
+                  <button
+                    type="button"
+                    onClick={addAllToCart}
+                    className="btn-gold inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl font-medium flex-1 cursor-pointer"
+                  >
+                    {addedAll ? (
+                      <>
+                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden><path d="M2.5 7.5L6 11L12.5 4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                        Toegevoegd!
+                      </>
+                    ) : (
+                      'Voeg alles toe aan winkelwagen'
+                    )}
+                  </button>
                   <button
                     type="button"
                     onClick={reset}

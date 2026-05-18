@@ -9,6 +9,7 @@ export type CartItem = {
   image: string
   size: string
   quantity: number
+  subscription?: boolean
 }
 
 type CartState = {

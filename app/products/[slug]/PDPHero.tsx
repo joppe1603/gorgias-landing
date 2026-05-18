@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { useRef, useState } from 'react'
 import type { Product } from '@/lib/products'
 import { useCart } from '@/contexts/CartContext'
+import PDPSubscriptionToggle from './PDPSubscriptionToggle'
 
 function Stars({ rating, count }: { rating: number; count: number }) {
   return (
@@ -41,7 +42,11 @@ export default function PDPHero({ product }: { product: Product }) {
   const { dispatch } = useCart()
   const [added, setAdded] = useState(false)
   const [activeSlide, setActiveSlide] = useState(0)
+  const [isSubscription, setIsSubscription] = useState(false)
   const isAvailable = product.availability === 'available'
+  const displayPrice = isSubscription
+    ? Math.round(product.price * 0.9 * 100) / 100
+    : product.price
 
   const allImages = [product.heroImage, ...(product.textureImages ?? [])]
 
@@ -49,11 +54,12 @@ export default function PDPHero({ product }: { product: Product }) {
     dispatch({
       type: 'ADD_ITEM',
       payload: {
-        slug: product.slug,
-        name: product.name,
-        price: product.price,
+        slug: isSubscription ? `${product.slug}-abo` : product.slug,
+        name: isSubscription ? `${product.name} — Abonnement` : product.name,
+        price: displayPrice,
         image: product.heroImage,
         size: product.size,
+        subscription: isSubscription,
       },
     })
     setAdded(true)
@@ -289,6 +295,11 @@ export default function PDPHero({ product }: { product: Product }) {
             <motion.div {...fadeUp(0.62)} id="product-hero-cta" className="space-y-3 mb-6">
               {isAvailable ? (
                 <>
+                  <PDPSubscriptionToggle
+                    price={product.price}
+                    isSubscription={isSubscription}
+                    onChange={setIsSubscription}
+                  />
                   <button
                     onClick={handleAddToCart}
                     className="btn-gold w-full py-[1.05rem] rounded-2xl font-medium text-[15px] cursor-pointer tracking-[0.01em] relative overflow-hidden"
@@ -316,7 +327,7 @@ export default function PDPHero({ product }: { product: Product }) {
                           exit={{ opacity: 0, y: 8 }}
                           transition={{ duration: 0.22 }}
                         >
-                          In winkelwagen · €{product.price}
+                          In winkelwagen · €{displayPrice.toFixed(2).replace('.', ',')}
                         </motion.span>
                       )}
                     </AnimatePresence>
