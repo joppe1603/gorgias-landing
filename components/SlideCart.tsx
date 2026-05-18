@@ -317,9 +317,9 @@ export default function SlideCart() {
                 </div>
 
                 {/* Checkout CTA */}
-                <button className="btn-gold w-full py-[1.05rem] rounded-2xl font-medium text-[15px] cursor-pointer tracking-[0.01em]">
+                <Link href="/checkout" onClick={() => dispatch({ type: 'CLOSE' })} className="btn-gold w-full py-[1.05rem] rounded-2xl font-medium text-[15px] tracking-[0.01em] flex items-center justify-center">
                   Afrekenen · €{freeShipping ? total : orderTotal.toFixed(2).replace('.', ',')}
-                </button>
+                </Link>
 
                 <button
                   onClick={() => dispatch({ type: 'CLOSE' })}
