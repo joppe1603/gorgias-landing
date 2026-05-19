@@ -11,6 +11,7 @@ type Order = {
   items: Array<{ name: string; quantity: number; price: number; size: string }>
   address: { street: string; houseNumber: string; zipCode: string; city: string; country: string }
   mollie_payment_id: string | null
+  myparcel_shipment_id: string | null
 }
 
 const STATUS_COLOR: Record<string, string> = {
@@ -93,7 +94,7 @@ export default async function AdminOrdersPage({
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-stone-100 bg-[#FAF8F5]">
-                  {['Datum', 'Klant', 'Producten', 'Totaal', 'Status', 'Adres'].map(h => (
+                  {['Datum', 'Klant', 'Producten', 'Totaal', 'Status', 'Adres', 'Verzending'].map(h => (
                     <th key={h} className="text-left px-5 py-3.5 text-[10px] font-bold uppercase tracking-[0.18em] text-[#9A9590]">
                       {h}
                     </th>
@@ -134,6 +135,20 @@ export default async function AdminOrdersPage({
                     <td className="px-5 py-4 text-[11px] text-[#9A9590] whitespace-nowrap">
                       {order.address?.street} {order.address?.houseNumber}<br />
                       {order.address?.zipCode} {order.address?.city}
+                    </td>
+                    <td className="px-5 py-4 text-[11px] whitespace-nowrap">
+                      {order.myparcel_shipment_id ? (
+                        <a
+                          href={`https://app.myparcel.nl/shipments`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[#C9A96E] hover:underline"
+                        >
+                          #{order.myparcel_shipment_id}
+                        </a>
+                      ) : (
+                        <span className="text-stone-300">—</span>
+                      )}
                     </td>
                   </tr>
                 ))}

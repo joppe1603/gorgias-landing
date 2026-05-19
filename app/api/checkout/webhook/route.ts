@@ -34,8 +34,53 @@ export async function POST(req: NextRequest) {
       .select('*')
       .single()
 
-    // Send confirmation email on successful payment
+    // Send confirmation email + create MyParcel shipment on successful payment
     if (status === 'paid' && order) {
+
+      // ── MyParcel: create shipment ──────────────────────────────────────
+      try {
+        const myparcelRes = await fetch('https://api.myparcel.nl/shipments', {
+          method: 'POST',
+          headers: {
+            'Authorization': `basic ${Buffer.from(process.env.MYPARCEL_API_KEY!).toString('base64')}`,
+            'Content-Type': 'application/vnd.shipment+json;charset=utf-8',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify({
+            data: {
+              shipments: [{
+                recipient: {
+                  cc: order.address.country || 'NL',
+                  city: order.address.city,
+                  street: order.address.street,
+                  number: String(order.address.houseNumber),
+                  postal_code: order.address.zipCode.replace(/\s/g, ''),
+                  person: order.name,
+                  email: order.email,
+                },
+                options: { package_type: 1 },
+                carrier: 1, // PostNL
+              }],
+            },
+          }),
+        })
+
+        if (myparcelRes.ok) {
+          const myparcelData = await myparcelRes.json()
+          const shipmentId = myparcelData?.data?.ids?.[0]?.id
+          if (shipmentId) {
+            await supabase
+              .from('orders')
+              .update({ myparcel_shipment_id: String(shipmentId) })
+              .eq('id', order.id)
+          }
+        } else {
+          console.error('MyParcel error:', await myparcelRes.text())
+        }
+      } catch (myparcelErr) {
+        console.error('MyParcel exception:', myparcelErr)
+      }
+
       const resend = new Resend(process.env.RESEND_API_KEY!)
       const items = order.items as Array<{ name: string; quantity: number; price: number; size: string }>
 
