@@ -194,7 +194,30 @@ export default function CheckoutForm() {
                 <span className="w-6 h-6 rounded-full bg-[#C9A96E] text-white text-[11px] font-bold flex items-center justify-center shrink-0">1</span>
                 <h2 className="text-[13px] font-semibold text-[#1A1A1A]">Je winkelmand</h2>
               </div>
-              <ul className="divide-y divide-stone-50">
+              {/* Free shipping progress bar */}
+              {(() => {
+                const remaining = FREE_SHIPPING - subtotal
+                const pct = Math.min((subtotal / FREE_SHIPPING) * 100, 100)
+                return (
+                  <div className="px-6 pt-5 pb-4">
+                    {remaining > 0 ? (
+                      <p className="text-[12px] text-[#5C5754] mb-2">
+                        Nog <span className="font-semibold text-[#1A1A1A]">€{remaining.toFixed(2).replace('.', ',')}</span> voor gratis verzending
+                      </p>
+                    ) : (
+                      <p className="text-[12px] font-semibold text-emerald-600 mb-2">Gratis verzending inbegrepen!</p>
+                    )}
+                    <div className="h-1.5 rounded-full bg-stone-100 overflow-hidden">
+                      <div
+                        className="h-full rounded-full transition-all duration-500"
+                        style={{ width: `${pct}%`, background: pct >= 100 ? '#34d399' : 'linear-gradient(to right, #C9A96E, #e8c98a)' }}
+                      />
+                    </div>
+                  </div>
+                )
+              })()}
+
+              <ul className="divide-y divide-stone-50 border-t border-stone-50">
                 {cartItems.map(item => (
                   <li key={item.slug} className="flex gap-4 p-6">
                     <div className="relative w-20 h-20 rounded-xl overflow-hidden bg-[#FAF8F5] shrink-0 border border-stone-100">

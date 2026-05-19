@@ -14,7 +14,8 @@ const stagger = (i: number) => ({
 
 export default function OrderConfirmedContent() {
   const { dispatch } = useCart()
-  useSearchParams() // order_id available if needed for display
+  const searchParams = useSearchParams()
+  const orderId = searchParams.get('order_id')
 
   // Clear cart after successful order
   useEffect(() => {
@@ -114,15 +115,17 @@ export default function OrderConfirmedContent() {
 
         {/* CTAs */}
         <motion.div {...stagger(5)} className="flex flex-col sm:flex-row items-center justify-center gap-3">
-          <Link
-            href="/"
-            className="btn-gold px-7 py-3.5 rounded-2xl text-[14px] font-semibold inline-flex items-center gap-2"
-          >
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-              <path d="M10 6H2M5 2L1 6l4 4"/>
-            </svg>
-            Terug naar MAUYI
-          </Link>
+          {orderId && (
+            <Link
+              href={`/orders/${orderId}`}
+              className="btn-gold px-7 py-3.5 rounded-2xl text-[14px] font-semibold inline-flex items-center gap-2"
+            >
+              Bekijk je bestelling
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <path d="M2 6h8M6 2l4 4-4 4"/>
+              </svg>
+            </Link>
+          )}
           <Link
             href="/shop"
             className="btn-outline px-7 py-3.5 rounded-2xl text-[14px] font-medium inline-flex items-center gap-2 border-white/15 text-stone-400 hover:border-[#C9A96E]/40 hover:text-[#C9A96E]"
