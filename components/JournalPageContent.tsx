@@ -49,7 +49,7 @@ const articles = [
     category: 'Filosofie',
     readTime: '7 min',
     date: 'Maart 2026',
-    image: '/quiet-cleanser.jpg',
+    image: '/journal-fatigue.jpg',
   },
   {
     slug: 'niacinamide-alles-over',
