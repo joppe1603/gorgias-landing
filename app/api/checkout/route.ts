@@ -42,11 +42,16 @@ export async function POST(req: NextRequest) {
     }
 
     // Create Mollie payment via direct API call (bypasses SDK ESM issues)
+    const siteUrl = 'https://www.mauyi.nl'
+    console.log('BASE_URL env:', JSON.stringify(process.env.NEXT_PUBLIC_BASE_URL))
+    console.log('order.id:', JSON.stringify(order.id))
+    const redirectUrl = `${siteUrl}/order-confirmed?order_id=${order.id}`
+    console.log('redirectUrl:', redirectUrl)
     const mollieBody = {
       amount: { currency: 'EUR', value: total.toFixed(2) },
-      description: `MAUYI bestelling #${order.id}`,
-      redirectUrl: `${BASE_URL}/order-confirmed?order_id=${order.id}`,
-      webhookUrl: `${BASE_URL}/api/checkout/webhook`,
+      description: `MAUYI bestelling`,
+      redirectUrl,
+      webhookUrl: `${siteUrl}/api/checkout/webhook`,
       metadata: { orderId: order.id, email: form.email },
       locale: 'nl_NL',
     }
