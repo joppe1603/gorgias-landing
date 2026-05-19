@@ -97,8 +97,7 @@ const PRODUCTS: Product[] = [
     textureNote: 'Rijke foam die direct aanspoelt. Geen trekkerig gevoel achteraf — alleen schoon.',
     textureImages: [
       '/quiet-cleanser.jpg',
-      'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=700&q=85&fit=crop',
-      'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=700&q=85&fit=crop',
+      '/quiet-cleanser-foam.jpg',
     ],
     routineContext: {
       time: 'Ochtend & avond',
@@ -149,9 +148,8 @@ const PRODUCTS: Product[] = [
     emotion: 'Gebouwd voor huid die te veel heeft meegemaakt.',
     textureNote: 'Waterig en bijna doorzichtig. Trekt in binnen 45 seconden. Geen restlaag. Geen kleverig gevoel. Werkt terwijl je slaapt.',
     textureImages: [
+      '/reset-serum.jpg',
       '/reset-serum-2.jpg',
-      '/reset-serum-3.jpg',
-      '/reset-serum-4.jpg',
     ],
     routineContext: {
       time: 'Avond',
@@ -168,7 +166,7 @@ const PRODUCTS: Product[] = [
     price: 48,
     size: '50ml',
     availability: 'pre-launch',
-    heroImage: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=900&q=85&fit=crop',
+    heroImage: '/soft-barrier-cream.jpg',
     description: 'Lichte dagcrème die de huidbarrière herstelt en langdurig vocht vasthoudt. Met Bakuchiol en Ceramiden. Werkt als afsluiting van de ochtend- én avondroutine.',
     longDescription: 'De Soft Barrier Cream is de laatste stap in je routine — en een van de belangrijkste. Een beschadigde huidbarrière laat vocht ontsnappen en externe irritanten toe. Ceramiden vullen de lipidenmantels aan. Bakuchiol voegt milde celvernieuwing toe. Squalaan sluit alles in zonder te verstoppen. Het resultaat is een huid die de rest van de dag beschermd en gehydrateerd blijft — zonder de vettige glans van zwaardere crèmes.',
     benefits: [
@@ -201,9 +199,8 @@ const PRODUCTS: Product[] = [
     emotion: 'Hydratatie die beschermt in plaats van verstopt.',
     textureNote: 'Lichte gel-crème die smelt op lichaamstemperatuur. Snel intrekkend. Geen witte restlaag, geen vet gevoel — ook niet na een uur.',
     textureImages: [
-      'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=900&q=85&fit=crop',
-      'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=700&q=85&fit=crop',
-      'https://images.unsplash.com/photo-1612817288484-6f916006741a?w=700&q=85&fit=crop',
+      '/soft-barrier-cream.jpg',
+      '/soft-barrier-cream-2.jpg',
     ],
     routineContext: {
       time: 'Ochtend & avond',
@@ -220,7 +217,7 @@ const PRODUCTS: Product[] = [
     price: 52,
     size: '30ml',
     availability: 'pre-launch',
-    heroImage: 'https://images.unsplash.com/photo-1612817288484-6f916006741a?w=900&q=85&fit=crop',
+    heroImage: '/overnight-renewal-oil.jpg',
     description: 'Lichte droge olie met Rozenbottelolie, Bakuchiol en Squalaan. Werkt nachtelijk aan celvernieuwing en barrièreherstel zonder zware textuur.',
     longDescription: 'De nacht is het meest actieve herstelmoment voor je huid. De Overnight Renewal Oil maakt gebruik van dit raam: Rozenbottelolie levert vitamine A en essentielle vetzuren voor celvernieuwing. Bakuchiol versterkt dit effect en verbetert huidtoon. Squalaan sluit alles in — licht, non-comedogeen en volledig plantaardig. Geen kunstmatig parfum. Geen overbodige vullers. Alleen wat werkt.',
     benefits: [
@@ -253,9 +250,8 @@ const PRODUCTS: Product[] = [
     emotion: 'De nacht is herseltijd. Dit zorgt dat je huid dat ook weet.',
     textureNote: 'Droge olie die absorbeert als water. Geen glans na aanbrengen, geen kleverig gevoel. Huid voelt de volgende ochtend zachter — zonder residue.',
     textureImages: [
-      'https://images.unsplash.com/photo-1612817288484-6f916006741a?w=900&q=85&fit=crop',
-      'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=700&q=85&fit=crop',
-      '/quiet-cleanser.jpg',
+      '/overnight-renewal-oil.jpg',
+      '/overnight-renewal-oil-2.jpg',
     ],
     routineContext: {
       time: 'Avond',
@@ -272,8 +268,7 @@ const PRODUCTS: Product[] = [
     price: 58,
     size: '30ml',
     availability: 'pre-launch',
-    heroImage:
-      'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=900&q=85&fit=crop',
+    heroImage: '/radiance-serum.jpg',
     description:
       'Ons serum combineert Vitamine C 15% met Retinol 0.3% en Niacinamide 5% voor een stralende en egale huid. Geformuleerd voor zichtbaar effect.',
     longDescription:
@@ -324,6 +319,10 @@ const PRODUCTS: Product[] = [
       description:
         'Vitamine C 15% + Retinol 0.3% serum voor stralende, egale huid. Parfumvrij, pre-launch. €58.',
     },
+    textureImages: [
+      '/radiance-serum.jpg',
+      '/radiance-serum-2.jpg',
+    ],
   },
   {
     slug: 'the-glow-ritual',
@@ -334,8 +333,7 @@ const PRODUCTS: Product[] = [
     originalPrice: 174,
     size: 'Volledige routine · 3 producten',
     availability: 'pre-launch',
-    heroImage:
-      'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=900&q=85&fit=crop',
+    heroImage: '/the-glow-ritual.jpg',
     description:
       'De complete MAUYI ochtend- en avondroutine in één bundel. Inclusief gratis Mini Oogcrème. Bespaar €45 ten opzichte van los kopen.',
     longDescription:
@@ -386,6 +384,10 @@ const PRODUCTS: Product[] = [
       description:
         'De complete MAUYI ochtend- en avondroutine. Radiance Serum + Deep Moisture Cream + Overnight Oil. Bespaar €45. Gratis Mini Oogcrème. €129.',
     },
+    textureImages: [
+      '/the-glow-ritual.jpg',
+      '/the-glow-ritual-2.jpg',
+    ],
   },
   {
     slug: 'sensitive-skin-edit',
@@ -395,8 +397,7 @@ const PRODUCTS: Product[] = [
     price: 89,
     size: '2 producten',
     availability: 'pre-launch',
-    heroImage:
-      'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=900&q=85&fit=crop',
+    heroImage: '/sensitive-skin-edit.jpg',
     description:
       'Bakuchiol geeft je retinol-achtige resultaten zonder irritatie. Gecombineerd met onze Barrier Restore Cream voor een versterkte, rustige huid.',
     longDescription:
@@ -447,6 +448,9 @@ const PRODUCTS: Product[] = [
       description:
         'Zachte Bakuchiol + barrièreherstel voor gevoelige huid. Retinol-achtige resultaten zonder irritatie. Geen parfum. €89 met gratis verzending.',
     },
+    textureImages: [
+      '/sensitive-skin-edit.jpg',
+    ],
   },
   {
     slug: 'test-sample',
