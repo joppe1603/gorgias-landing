@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
 
     if (!mollieRes.ok) {
       console.error('Mollie API error:', JSON.stringify(mollieData))
-      return NextResponse.json({ error: 'Betaling kon niet worden aangemaakt.' }, { status: 500 })
+      return NextResponse.json({ error: `Mollie: ${mollieData?.detail ?? mollieData?.title ?? JSON.stringify(mollieData)}` }, { status: 500 })
     }
 
     const checkoutUrl = mollieData._links?.checkout?.href
