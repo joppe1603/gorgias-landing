@@ -45,20 +45,22 @@ export async function POST(req: NextRequest) {
     // Create Mollie payment
     const mollie = createMollieClient({ apiKey: process.env.MOLLIE_API_KEY! })
 
-    const payment = await mollie.payments.create({
+    const mollieParams = {
       amount: {
         currency: 'EUR',
         value: total.toFixed(2),
       },
-      description: `MAUYI bestelling — ${items.map((i: { name: string; quantity: number }) => `${i.quantity}× ${i.name}`).join(', ')}`,
+      description: `MAUYI bestelling`,
       redirectUrl: `${BASE_URL}/order-confirmed?order_id=${order.id}`,
       webhookUrl: `${BASE_URL}/api/checkout/webhook`,
       metadata: {
         orderId: order.id,
         email: form.email,
       },
-      locale: 'nl_NL' as never,
-    })
+    }
+    console.log('Mollie params:', JSON.stringify(mollieParams))
+
+    const payment = await mollie.payments.create(mollieParams as never)
 
     // Save Mollie payment ID to order
     await supabase
@@ -68,7 +70,12 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ checkoutUrl: payment.getCheckoutUrl() })
   } catch (err) {
-    console.error('Checkout error:', err)
+    const e = err as { message?: string; detail?: string; title?: string; status?: number }
+    console.error('Checkout error message:', e?.message)
+    console.error('Checkout error detail:', e?.detail)
+    console.error('Checkout error title:', e?.title)
+    console.error('Checkout error status:', e?.status)
+    console.error('Checkout error full:', JSON.stringify(err, Object.getOwnPropertyNames(err as object)))
     return NextResponse.json({ error: 'Er is iets misgegaan. Probeer het opnieuw.' }, { status: 500 })
   }
 }
