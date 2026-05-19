@@ -11,7 +11,7 @@ const featured = {
   category: 'Filosofie',
   readTime: '6 min',
   date: 'Mei 2026',
-  image: '/quiet-cleanser.jpg',
+  image: '/journal-featured.jpg',
 }
 
 const articles = [
