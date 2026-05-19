@@ -22,7 +22,7 @@ const articles = [
     category: 'Wetenschap',
     readTime: '8 min',
     date: 'Mei 2026',
-    image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=600&q=75&fit=crop',
+    image: '/journal-barrier.jpg',
   },
   {
     slug: 'retinol-beginners-gids',
@@ -40,7 +40,7 @@ const articles = [
     category: 'Routines',
     readTime: '4 min',
     date: 'April 2026',
-    image: 'https://images.unsplash.com/photo-1612817288484-6f916006741a?w=600&q=75&fit=crop',
+    image: '/journal-routine.jpg',
   },
   {
     slug: 'skincare-fatigue',
@@ -58,7 +58,7 @@ const articles = [
     category: 'Ingrediënten',
     readTime: '5 min',
     date: 'Maart 2026',
-    image: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=600&q=75&fit=crop',
+    image: '/journal-niacinamide.jpg',
   },
   {
     slug: 'minimalisme-in-de-badkamer',
@@ -67,7 +67,7 @@ const articles = [
     category: 'Levensstijl',
     readTime: '3 min',
     date: 'Februari 2026',
-    image: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=600&q=75&fit=crop',
+    image: '/journal-minimal.jpg',
   },
 ]
 
