@@ -34,7 +34,84 @@ export async function GET(req: NextRequest) {
 
   const supabase = db()
   const resend = new Resend(process.env.RESEND_API_KEY!)
-  const results = { tracking: 0, reviews: 0, winback: 0, lowStock: 0 }
+  const results = { tips: 0, tracking: 0, reviews: 0, winback: 0, lowStock: 0 }
+
+  // ── 0. Dag-2 gebruikstips email ────────────────────────────────────────
+  // Vereist: ALTER TABLE orders ADD COLUMN IF NOT EXISTS day2_email_sent boolean DEFAULT false;
+  const d2start = new Date(Date.now() - 3 * 864e5).toISOString()
+  const d2end   = new Date(Date.now() - 2 * 864e5).toISOString()
+
+  const { data: tipsOrders } = await supabase
+    .from('orders')
+    .select('id, email, name')
+    .eq('status', 'paid')
+    .eq('day2_email_sent', false)
+    .gte('created_at', d2start)
+    .lte('created_at', d2end)
+
+  for (const order of tipsOrders ?? []) {
+    await resend.emails.send({
+      from: process.env.RESEND_FROM_EMAIL!,
+      to: order.email,
+      subject: 'Zo haal je het meeste uit je MAUYI serum',
+      html: `
+        <!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"></head>
+        <body style="margin:0;padding:0;background:#FAF8F5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+          <table width="100%" cellpadding="0" cellspacing="0" style="background:#FAF8F5;padding:40px 20px;">
+            <tr><td align="center">
+              <table width="560" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:16px;overflow:hidden;border:1px solid #E8E4DF;">
+                <tr><td style="background:#0F0E0C;padding:32px 40px;text-align:center;">
+                  <p style="margin:0;font-size:26px;font-weight:600;letter-spacing:0.1em;color:#FAF8F5;font-family:Georgia,serif;">MAUYI</p>
+                  <p style="margin:8px 0 0;font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:#C9A96E;">Jouw huidroutine</p>
+                </td></tr>
+                <tr><td style="padding:40px;">
+                  <p style="margin:0 0 8px;font-size:22px;font-weight:600;color:#1A1A1A;font-family:Georgia,serif;">Goed bezig, ${order.name.split(' ')[0]}.</p>
+                  <p style="margin:0 0 32px;font-size:14px;color:#9A9590;line-height:1.7;">
+                    Je bestelling is aangekomen — hier zijn onze tips om het meeste uit je serum te halen.
+                  </p>
+
+                  <div style="height:1px;background:linear-gradient(to right,transparent,#C9A96E,transparent);margin-bottom:32px;"></div>
+
+                  ${[
+                    ['2–3 pompjes, niet meer', 'Een kleine hoeveelheid is genoeg. Meer product = niet betere resultaten.'],
+                    ['Apply op licht vochtige huid', 'Dep je gezicht droog maar niet volledig — dit helpt het serum beter opnemen.'],
+                    ['Tik in, wrijf niet', 'Gebruik je vingertoppen om het serum zachtjes in te tikken. Geen wrijven.'],
+                    ['Volg met een moisturizer', 'Sluit je routine af met een vochtinbrengende crème om het serum in te sealen.'],
+                    ['Consistentie is alles', 'Gebruik dagelijks gedurende 4–6 weken voor zichtbaar resultaat.'],
+                  ].map(([title, desc]) => `
+                    <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:20px;">
+                      <tr>
+                        <td width="32" style="vertical-align:top;padding-top:2px;">
+                          <div style="width:20px;height:20px;border-radius:50%;background:#C9A96E;display:flex;align-items:center;justify-content:center;">
+                            <span style="color:#fff;font-size:10px;font-weight:700;line-height:20px;text-align:center;display:block;">✓</span>
+                          </div>
+                        </td>
+                        <td>
+                          <p style="margin:0 0 3px;font-size:13px;font-weight:600;color:#1A1A1A;">${title}</p>
+                          <p style="margin:0;font-size:12px;color:#9A9590;line-height:1.6;">${desc}</p>
+                        </td>
+                      </tr>
+                    </table>
+                  `).join('')}
+
+                  <div style="height:1px;background:linear-gradient(to right,transparent,#C9A96E,transparent);margin:32px 0;"></div>
+
+                  <p style="margin:0;font-size:13px;color:#9A9590;line-height:1.7;font-style:italic;">
+                    Vragen? Stuur een bericht naar <a href="mailto:hello@mauyi.nl" style="color:#C9A96E;text-decoration:none;">hello@mauyi.nl</a>
+                  </p>
+                </td></tr>
+                <tr><td style="background:#FAF8F5;padding:24px 40px;text-align:center;border-top:1px solid #E8E4DF;">
+                  <p style="margin:0;font-size:11px;color:#9A9590;">MAUYI Skincare · mauyi.nl</p>
+                </td></tr>
+              </table>
+            </td></tr>
+          </table>
+        </body></html>
+      `,
+    })
+    await supabase.from('orders').update({ day2_email_sent: true }).eq('id', order.id)
+    results.tips++
+  }
 
   // ── 1. Tracking emails ─────────────────────────────────────────────────
   const { data: toShip } = await supabase

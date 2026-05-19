@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import type { WaitlistEntry } from '@/lib/supabase/client'
 
+type LaunchState = 'idle' | 'confirm' | 'sending' | 'done' | 'error'
+
 function formatDate(iso: string) {
   return new Intl.DateTimeFormat('nl-NL', {
     day: 'numeric',
@@ -40,6 +42,8 @@ export default function AdminWaitlist() {
   const [error, setError] = useState('')
   const [entries, setEntries] = useState<WaitlistEntry[]>([])
   const [total, setTotal] = useState(0)
+  const [launchState, setLaunchState] = useState<LaunchState>('idle')
+  const [launchResult, setLaunchResult] = useState('')
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault()
@@ -67,6 +71,27 @@ export default function AdminWaitlist() {
     setTotal(data.total)
     setAuthed(true)
     setLoading(false)
+  }
+
+  async function sendLaunchEmail() {
+    setLaunchState('sending')
+    try {
+      const res = await fetch('/api/admin/send-launch', {
+        method: 'POST',
+        headers: { 'x-admin-password': password },
+      })
+      const data = await res.json()
+      if (!res.ok) {
+        setLaunchResult(data.error ?? 'Er ging iets mis.')
+        setLaunchState('error')
+      } else {
+        setLaunchResult(data.message)
+        setLaunchState('done')
+      }
+    } catch {
+      setLaunchResult('Netwerkfout. Probeer opnieuw.')
+      setLaunchState('error')
+    }
   }
 
   // ── PASSWORD GATE ─────────────────────────────────
@@ -133,8 +158,8 @@ export default function AdminWaitlist() {
               MAUYI Wachtlijst
             </h1>
           </div>
-          <div className="flex items-center gap-6">
-            <div className="text-right">
+          <div className="flex items-center gap-3">
+            <div className="text-right mr-3">
               <p className="text-3xl font-semibold text-[#1A1A1A]" style={{ fontFamily: 'var(--font-cormorant)' }}>
                 {total}
               </p>
@@ -151,6 +176,57 @@ export default function AdminWaitlist() {
                 </svg>
                 CSV
               </button>
+            )}
+
+            {/* Launch blast button */}
+            {launchState === 'idle' && (
+              <button
+                onClick={() => setLaunchState('confirm')}
+                className="btn-gold inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-[12px] font-semibold"
+              >
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 19-7z"/>
+                </svg>
+                Verstuur lancerings-e-mail
+              </button>
+            )}
+
+            {launchState === 'confirm' && (
+              <div className="flex items-center gap-2">
+                <span className="text-[12px] text-[#5C5754]">Zeker weten?</span>
+                <button
+                  onClick={sendLaunchEmail}
+                  className="btn-gold px-3 py-2 rounded-xl text-[12px] font-semibold"
+                >
+                  Ja, verstuur
+                </button>
+                <button
+                  onClick={() => setLaunchState('idle')}
+                  className="px-3 py-2 rounded-xl text-[12px] text-[#9A9590] border border-stone-200 hover:border-stone-300 transition-colors"
+                >
+                  Annuleer
+                </button>
+              </div>
+            )}
+
+            {launchState === 'sending' && (
+              <span className="text-[12px] text-[#9A9590] animate-pulse">Versturen...</span>
+            )}
+
+            {launchState === 'done' && (
+              <span className="text-[12px] font-semibold text-emerald-600">{launchResult}</span>
+            )}
+
+            {launchState === 'error' && (
+              <div className="flex items-center gap-2">
+                <span className="text-[12px] text-red-500">{launchResult}</span>
+                <button
+                  onClick={() => setLaunchState('idle')}
+                  className="text-[11px] text-[#9A9590] underline"
+                >
+                  Opnieuw
+                </button>
+              </div>
             )}
           </div>
         </div>
