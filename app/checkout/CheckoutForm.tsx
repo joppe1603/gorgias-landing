@@ -278,18 +278,44 @@ export default function CheckoutForm() {
               <h2 className="text-[13px] font-semibold text-[#1A1A1A]">Betaalmethode</h2>
             </div>
             <div className="p-6">
-              <div className="flex flex-wrap gap-2 mb-4">
-                {[
-                  { label: 'iDEAL', color: 'text-[#CC0066]' },
-                  { label: 'Mastercard', color: 'text-[#EB001B]' },
-                  { label: 'Visa', color: 'text-[#1A1F71]' },
-                  { label: 'PayPal', color: 'text-[#003087]' },
-                  { label: 'Klarna', color: 'text-[#FFB3C7]' },
-                ].map(({ label, color }) => (
-                  <span key={label} className={`bg-[#FAF8F5] border border-stone-100 rounded-lg px-3 py-1.5 text-[11px] font-semibold ${color}`}>
-                    {label}
-                  </span>
-                ))}
+              <div className="flex flex-wrap gap-2.5 mb-4">
+                {/* iDEAL */}
+                <div className="bg-white border border-stone-150 rounded-lg px-3 py-2 flex items-center justify-center h-9 w-16">
+                  <svg viewBox="0 0 52 28" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-5">
+                    <rect width="52" height="28" rx="4" fill="white"/>
+                    <text x="4" y="19" fontFamily="Arial" fontWeight="900" fontSize="13" fill="#CC0066">i</text>
+                    <text x="12" y="19" fontFamily="Arial" fontWeight="700" fontSize="11" fill="#000">DEAL</text>
+                    <circle cx="44" cy="14" r="7" fill="#CC0066"/>
+                    <path d="M41 14h6M44 11v6" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                  </svg>
+                </div>
+                {/* Mastercard */}
+                <div className="bg-white border border-stone-150 rounded-lg px-3 py-2 flex items-center justify-center h-9 w-16">
+                  <svg viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-5">
+                    <circle cx="14" cy="12" r="10" fill="#EB001B"/>
+                    <circle cx="24" cy="12" r="10" fill="#F79E1B"/>
+                    <path d="M19 4.8a10 10 0 010 14.4A10 10 0 0119 4.8z" fill="#FF5F00"/>
+                  </svg>
+                </div>
+                {/* Visa */}
+                <div className="bg-white border border-stone-150 rounded-lg px-3 py-2 flex items-center justify-center h-9 w-16">
+                  <svg viewBox="0 0 52 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-4">
+                    <text x="0" y="16" fontFamily="Arial" fontWeight="900" fontSize="18" fill="#1A1F71" fontStyle="italic">VISA</text>
+                  </svg>
+                </div>
+                {/* PayPal */}
+                <div className="bg-white border border-stone-150 rounded-lg px-3 py-2 flex items-center justify-center h-9 w-16">
+                  <svg viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-5">
+                    <text x="0" y="17" fontFamily="Arial" fontWeight="800" fontSize="13" fill="#003087">Pay</text>
+                    <text x="24" y="17" fontFamily="Arial" fontWeight="800" fontSize="13" fill="#009CDE">Pal</text>
+                  </svg>
+                </div>
+                {/* Klarna */}
+                <div className="bg-[#FFB3C7] border border-[#ff8fab] rounded-lg px-3 py-2 flex items-center justify-center h-9 w-16">
+                  <svg viewBox="0 0 50 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-4">
+                    <text x="0" y="15" fontFamily="Arial" fontWeight="800" fontSize="13" fill="#000">Klarna</text>
+                  </svg>
+                </div>
               </div>
               <div className="flex items-center gap-2 text-[11px] text-[#9A9590]">
                 <LockIcon />
