@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useCart } from '@/contexts/CartContext'
@@ -66,10 +66,9 @@ export default function CheckoutForm() {
   const shippingCost = subtotal >= FREE_SHIPPING ? 0 : (shipMethod === 'express' ? 7.95 : STANDARD_SHIPPING)
   const orderTotal = subtotal + shippingCost
 
-  // Available products to add in cart step
-  const availableProducts = useMemo(() =>
-    getAllProducts().filter(p => p.availability === 'pre-launch' && p.slug !== 'test-sample'),
-    []
+  // Single product suggestion for cart step (first not already in cart)
+  const suggestedProduct = getAllProducts().find(
+    p => p.availability === 'pre-launch' && p.slug !== 'test-sample' && !cartItems.find(i => i.slug === p.slug)
   )
 
   function updateQty(slug: string, delta: number) {
@@ -244,28 +243,24 @@ export default function CheckoutForm() {
                 ))}
               </ul>
 
-              {/* Add more products */}
-              {availableProducts.filter(p => !cartItems.find(i => i.slug === p.slug)).length > 0 && (
-                <div className="border-t border-stone-50 px-6 py-5">
-                  <p className="text-[11px] font-semibold text-[#9A9590] uppercase tracking-[0.1em] mb-4">Meer toevoegen</p>
-                  <div className="space-y-3">
-                    {availableProducts.filter(p => !cartItems.find(i => i.slug === p.slug)).map(p => (
-                      <div key={p.slug} className="flex items-center gap-3">
-                        <div className="relative w-12 h-12 rounded-lg overflow-hidden bg-[#FAF8F5] shrink-0 border border-stone-100">
-                          <Image src={p.heroImage} alt={p.name} fill className="object-cover" sizes="48px"/>
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-[13px] font-medium text-[#1A1A1A] truncate">{p.name}</p>
-                          <p className="text-[11px] text-[#9A9590]">€{p.price.toFixed(2).replace('.', ',')} · {p.size}</p>
-                        </div>
-                        <button
-                          onClick={() => updateQty(p.slug, 1)}
-                          className="shrink-0 text-[12px] font-semibold text-[#C9A96E] border border-[#C9A96E]/40 rounded-full px-3 py-1 hover:bg-[#C9A96E]/5 transition-colors"
-                        >
-                          + Voeg toe
-                        </button>
-                      </div>
-                    ))}
+              {/* Single inline product suggestion */}
+              {suggestedProduct && (
+                <div className="border-t border-stone-50 px-5 py-4">
+                  <p className="text-[10px] font-semibold text-[#9A9590] uppercase tracking-[0.12em] mb-3">Voeg toe aan je routine</p>
+                  <div className="flex items-center gap-3 bg-[#FAF8F5] rounded-2xl p-3 border border-stone-100">
+                    <div className="relative w-14 h-14 rounded-xl overflow-hidden shrink-0 bg-white border border-stone-100">
+                      <Image src={suggestedProduct.heroImage} alt={suggestedProduct.name} fill className="object-cover" sizes="56px"/>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[13px] font-semibold text-[#1A1A1A] truncate" style={{ fontFamily: 'var(--font-cormorant)' }}>{suggestedProduct.name}</p>
+                      <p className="text-[11px] text-[#9A9590]">{suggestedProduct.size} · €{suggestedProduct.price.toFixed(2).replace('.', ',')}</p>
+                    </div>
+                    <button
+                      onClick={() => updateQty(suggestedProduct.slug, 1)}
+                      className="shrink-0 btn-gold text-[12px] font-semibold rounded-full px-4 py-2 active:scale-[0.98] transition-transform"
+                    >
+                      + Voeg toe
+                    </button>
                   </div>
                 </div>
               )}
@@ -281,8 +276,8 @@ export default function CheckoutForm() {
                   <h2 className="text-[13px] font-semibold text-[#1A1A1A]">Contactgegevens</h2>
                 </div>
                 <div className="p-6 space-y-4">
-                  <FormField label="E-mailadres" name="email" type="email" value={form.email} onChange={handleChange} placeholder="naam@voorbeeld.nl" hint="Bevestiging wordt hierheen gestuurd" required/>
-                  <FormField label="Volledige naam" name="name" value={form.name} onChange={handleChange} placeholder="Voor- en achternaam" required/>
+                  <FormField label="E-mailadres" name="email" type="email" value={form.email} onChange={handleChange} placeholder="naam@voorbeeld.nl" hint="Bevestiging wordt hierheen gestuurd" required autoComplete="email"/>
+                  <FormField label="Volledige naam" name="name" value={form.name} onChange={handleChange} placeholder="Voor- en achternaam" required autoComplete="name"/>
                 </div>
               </section>
 
@@ -293,16 +288,16 @@ export default function CheckoutForm() {
                 </div>
                 <div className="p-6 space-y-4">
                   <div className="grid grid-cols-[1fr_100px] gap-3">
-                    <FormField label="Straatnaam" name="street" value={form.street} onChange={handleChange} placeholder="Dorpsstraat" required/>
-                    <FormField label="Huisnr." name="houseNumber" value={form.houseNumber} onChange={handleChange} placeholder="12A" required/>
+                    <FormField label="Straatnaam" name="street" value={form.street} onChange={handleChange} placeholder="Dorpsstraat" required autoComplete="address-line1"/>
+                    <FormField label="Huisnr." name="houseNumber" value={form.houseNumber} onChange={handleChange} placeholder="12A" required autoComplete="address-line2"/>
                   </div>
                   <div className="grid grid-cols-[140px_1fr] gap-3">
-                    <FormField label="Postcode" name="zipCode" value={form.zipCode} onChange={handleChange} placeholder="1234 AB" required/>
-                    <FormField label="Stad" name="city" value={form.city} onChange={handleChange} placeholder="Amsterdam" required/>
+                    <FormField label="Postcode" name="zipCode" value={form.zipCode} onChange={handleChange} placeholder="1234 AB" required autoComplete="postal-code"/>
+                    <FormField label="Stad" name="city" value={form.city} onChange={handleChange} placeholder="Amsterdam" required autoComplete="address-level2"/>
                   </div>
                   <div>
                     <label className="block text-[11px] font-semibold text-[#5C5754] uppercase tracking-[0.08em] mb-1.5">Land</label>
-                    <select name="country" value={form.country} onChange={handleChange} className="w-full border border-stone-200 rounded-xl px-4 py-3 text-[14px] text-[#1A1A1A] focus:outline-none focus:border-[#C9A96E] focus:ring-2 focus:ring-[#C9A96E]/10 transition-all bg-white">
+                    <select name="country" value={form.country} onChange={handleChange} autoComplete="country" className="w-full border border-stone-200 rounded-xl px-4 py-3 text-[14px] text-[#1A1A1A] focus:outline-none focus:border-[#C9A96E] focus:ring-2 focus:ring-[#C9A96E]/10 transition-all bg-white">
                       <option value="NL">🇳🇱 Nederland</option>
                       <option value="BE">🇧🇪 België</option>
                       <option value="DE">🇩🇪 Duitsland</option>
@@ -511,17 +506,17 @@ export default function CheckoutForm() {
 }
 
 /* ─────────── Sub-components ─────────── */
-function FormField({ label, name, type = 'text', value, onChange, placeholder, hint, required }: {
+function FormField({ label, name, type = 'text', value, onChange, placeholder, hint, required, autoComplete }: {
   label: string; name: string; type?: string; value: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  placeholder?: string; hint?: string; required?: boolean
+  placeholder?: string; hint?: string; required?: boolean; autoComplete?: string
 }) {
   return (
     <div>
       <label className="block text-[11px] font-semibold text-[#5C5754] uppercase tracking-[0.08em] mb-1.5">{label}</label>
       <input
         name={name} type={type} value={value} onChange={onChange}
-        placeholder={placeholder} required={required}
+        placeholder={placeholder} required={required} autoComplete={autoComplete}
         className="w-full border border-stone-200 rounded-xl px-4 py-3 text-[14px] text-[#1A1A1A] placeholder-stone-300 focus:outline-none focus:border-[#C9A96E] focus:ring-2 focus:ring-[#C9A96E]/10 transition-all bg-white"
       />
       {hint && <p className="text-[10px] text-[#9A9590] mt-1.5">{hint}</p>}
