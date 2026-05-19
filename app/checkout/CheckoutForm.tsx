@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useCart } from '@/contexts/CartContext'
+import CheckoutUpsell from '@/components/CheckoutUpsell'
 
 const FREE_SHIPPING = 75
 
@@ -45,36 +46,54 @@ export default function CheckoutForm() {
   })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [showUpsell, setShowUpsell] = useState(false)
+  const [pendingSubmit, setPendingSubmit] = useState(false)
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
+  async function submitToMollie(currentItems = items) {
     setError('')
     setLoading(true)
+    const currentTotal = currentItems.reduce((s, i) => s + i.price * i.quantity, 0)
+    const currentShipping = currentTotal >= FREE_SHIPPING ? 0 : 4.99
+    const currentOrderTotal = currentTotal + currentShipping
 
     try {
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items, form, total: orderTotal }),
+        body: JSON.stringify({ items: currentItems, form, total: currentOrderTotal }),
       })
-
       const data = await res.json()
-
       if (!res.ok) {
         setError(data.error ?? 'Er is iets misgegaan. Probeer het opnieuw.')
         setLoading(false)
         return
       }
-
       window.location.href = data.checkoutUrl
     } catch {
       setError('Er is iets misgegaan. Probeer het opnieuw.')
       setLoading(false)
     }
+  }
+
+  function handleUpsellAccept(slug: string, name: string, price: number, image: string, size: string) {
+    setShowUpsell(false)
+    const upsellItem = { slug, name, price, image, size, quantity: 1 }
+    submitToMollie([...items, upsellItem])
+  }
+
+  function handleUpsellDecline() {
+    setShowUpsell(false)
+    submitToMollie()
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setError('')
+    setShowUpsell(true)
   }
 
   if (items.length === 0) {
@@ -429,6 +448,15 @@ export default function CheckoutForm() {
           </div>
         </aside>
       </div>
+
+      {/* Upsell popup */}
+      {showUpsell && (
+        <CheckoutUpsell
+          cartSlugs={items.map((i) => i.slug)}
+          onAccept={handleUpsellAccept}
+          onDecline={handleUpsellDecline}
+        />
+      )}
     </main>
   )
 }
