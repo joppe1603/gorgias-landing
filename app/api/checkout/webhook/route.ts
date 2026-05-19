@@ -93,6 +93,15 @@ export async function POST(req: NextRequest) {
         console.error('Inventory decrement error:', invErr)
       }
 
+      // ── Waitlist: voeg klant toe aan emaillijst ───────────────────────
+      try {
+        await supabase
+          .from('waitlist')
+          .upsert({ email: order.email, source: 'checkout' }, { onConflict: 'email', ignoreDuplicates: true })
+      } catch (waitlistErr) {
+        console.error('Waitlist upsert error:', waitlistErr)
+      }
+
       const resend = new Resend(process.env.RESEND_API_KEY!)
       const items = order.items as Array<{ name: string; quantity: number; price: number; size: string; slug?: string }>
 
