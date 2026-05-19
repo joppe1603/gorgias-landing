@@ -296,6 +296,66 @@ export default function LaunchContent() {
         </div>
       </section>
 
+      {/* ── BEFORE / AFTER ────────────────────────────── */}
+      <section className="py-24 bg-[#FAF8F5]">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8">
+          <motion.div {...fadeUp(0)} className="mb-12 text-center">
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <div className="w-8 h-px bg-[#C9A96E]/40" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#9A9590]">Resultaat</span>
+              <div className="w-8 h-px bg-[#C9A96E]/40" />
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-semibold text-[#1A1A1A] leading-tight">
+              Wat Reset Serum doet.
+              <br />
+              <span className="font-normal italic text-[#9A9590]" style={{ fontFamily: 'var(--font-cormorant)' }}>
+                Voor jezelf te zien.
+              </span>
+            </h2>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-4">
+            {/* Before */}
+            <motion.div {...fadeUp(0)} className="relative rounded-2xl overflow-hidden">
+              <video
+                src="/before-skin.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full aspect-[3/4] object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0F0E0C]/50 to-transparent" />
+              <div className="absolute bottom-5 left-5">
+                <span className="text-[9px] font-bold uppercase tracking-[0.22em] text-stone-400">Voor</span>
+                <p className="text-white/70 text-[12px] font-light italic mt-0.5">Vermoeid · Ongelijkmatig</p>
+              </div>
+            </motion.div>
+
+            {/* After */}
+            <motion.div {...fadeUp(0.1)} className="relative rounded-2xl overflow-hidden">
+              <video
+                src="/after-skin.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full aspect-[3/4] object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0F0E0C]/50 to-transparent" />
+              <div className="absolute bottom-5 left-5">
+                <span className="text-[9px] font-bold uppercase tracking-[0.22em] text-[#C9A96E]">Na</span>
+                <p className="text-white/70 text-[12px] font-light italic mt-0.5">Stralend · Egaal · Verfijnd</p>
+              </div>
+            </motion.div>
+          </div>
+
+          <motion.p {...fadeUp(0.2)} className="text-center text-[11px] text-[#9A9590] font-light italic mt-6">
+            Gesimuleerd resultaat — definitieve testresultaten worden gepubliceerd na de 8-weekse sample periode.
+          </motion.p>
+        </div>
+      </section>
+
       {/* ── SENSORY EDITORIAL GRID ────────────────────── */}
       <SensoryEditorialGrid />
 
