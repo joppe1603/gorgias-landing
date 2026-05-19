@@ -32,12 +32,16 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
+  const taskFilter = req.nextUrl.searchParams.get('task') // null = run all
+  const shouldRun = (t: string) => !taskFilter || taskFilter === t
+
   const supabase = db()
   const resend = new Resend(process.env.RESEND_API_KEY!)
   const results = { tips: 0, tracking: 0, reviews: 0, winback: 0, lowStock: 0 }
 
   // ── 0. Dag-2 gebruikstips email ────────────────────────────────────────
   // Vereist: ALTER TABLE orders ADD COLUMN IF NOT EXISTS day2_email_sent boolean DEFAULT false;
+  if (shouldRun('tips')) {
   const d2start = new Date(Date.now() - 3 * 864e5).toISOString()
   const d2end   = new Date(Date.now() - 2 * 864e5).toISOString()
 
@@ -112,8 +116,10 @@ export async function GET(req: NextRequest) {
     await supabase.from('orders').update({ day2_email_sent: true }).eq('id', order.id)
     results.tips++
   }
+  } // end shouldRun('tips')
 
   // ── 1. Tracking emails ─────────────────────────────────────────────────
+  if (shouldRun('tracking')) {
   const { data: toShip } = await supabase
     .from('orders')
     .select('id, email, name, myparcel_shipment_id, address')
@@ -166,8 +172,10 @@ export async function GET(req: NextRequest) {
     })
     results.tracking++
   }
+  } // end shouldRun('tracking')
 
   // ── 2. Review request emails (14 dagen na aankoop) ─────────────────────
+  if (shouldRun('reviews')) {
   const d14start = new Date(Date.now() - 15 * 864e5).toISOString()
   const d14end = new Date(Date.now() - 14 * 864e5).toISOString()
 
@@ -215,8 +223,10 @@ export async function GET(req: NextRequest) {
     await supabase.from('orders').update({ review_email_sent: true }).eq('id', order.id)
     results.reviews++
   }
+  } // end shouldRun('reviews')
 
   // ── 3. Winback emails (30 dagen na aankoop) ────────────────────────────
+  if (shouldRun('winback')) {
   const d30start = new Date(Date.now() - 31 * 864e5).toISOString()
   const d30end = new Date(Date.now() - 30 * 864e5).toISOString()
 
@@ -264,8 +274,10 @@ export async function GET(req: NextRequest) {
     await supabase.from('orders').update({ winback_email_sent: true }).eq('id', order.id)
     results.winback++
   }
+  } // end shouldRun('winback')
 
   // ── 4. Lage voorraad check ─────────────────────────────────────────────
+  if (shouldRun('lowstock')) {
   const { data: inventory } = await supabase
     .from('inventory')
     .select('product_slug, name, quantity, low_stock_threshold')
@@ -302,6 +314,7 @@ export async function GET(req: NextRequest) {
     })
     results.lowStock = lowStock.length
   }
+  } // end shouldRun('lowstock')
 
   return NextResponse.json({ ok: true, ...results })
 }
