@@ -62,9 +62,11 @@ export default function CheckoutForm() {
   const shippingCost = subtotal >= FREE_SHIPPING ? 0 : (shipMethod === 'express' ? 7.95 : STANDARD_SHIPPING)
   const orderTotal = subtotal + shippingCost
 
-  // Single product suggestion for cart step (first not already in cart)
-  const suggestedProduct = getAllProducts().find(
-    p => p.availability === 'pre-launch' && p.slug !== 'test-sample' && !cartItems.find(i => i.slug === p.slug)
+  // Lock suggestion at mount — never changes, disappears once added to cart
+  const [suggestedProduct] = useState(() =>
+    getAllProducts().find(
+      p => p.availability === 'pre-launch' && p.slug !== 'test-sample' && !state.items.find(i => i.slug === p.slug)
+    )
   )
 
   function updateQty(slug: string, delta: number) {
@@ -78,7 +80,7 @@ export default function CheckoutForm() {
     })
   }
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement> | React.FocusEvent<HTMLInputElement | HTMLSelectElement>) {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
@@ -221,8 +223,8 @@ export default function CheckoutForm() {
                 ))}
               </ul>
 
-              {/* Single inline product suggestion */}
-              {suggestedProduct && (
+              {/* Single inline product suggestion — fixed at mount, disappears once added */}
+              {suggestedProduct && !cartItems.find(i => i.slug === suggestedProduct.slug) && (
                 <div className="border-t border-stone-50 px-5 py-4">
                   <p className="text-[10px] font-semibold text-[#9A9590] uppercase tracking-[0.12em] mb-3">Voeg toe aan je routine</p>
                   <div className="flex items-center gap-3 bg-[#FAF8F5] rounded-2xl p-3 border border-stone-100">
@@ -473,14 +475,15 @@ export default function CheckoutForm() {
 /* ─────────── Sub-components ─────────── */
 function FormField({ label, name, type = 'text', value, onChange, placeholder, hint, required, autoComplete }: {
   label: string; name: string; type?: string; value: string
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onChange: (e: React.ChangeEvent<HTMLInputElement> | React.FocusEvent<HTMLInputElement>) => void
   placeholder?: string; hint?: string; required?: boolean; autoComplete?: string
 }) {
   return (
     <div>
       <label className="block text-[11px] font-semibold text-[#5C5754] uppercase tracking-[0.08em] mb-1.5">{label}</label>
       <input
-        name={name} type={type} value={value} onChange={onChange}
+        name={name} type={type} value={value}
+        onChange={onChange} onBlur={onChange}
         placeholder={placeholder} required={required} autoComplete={autoComplete}
         className="w-full border border-stone-200 rounded-xl px-4 py-3 text-[14px] text-[#1A1A1A] placeholder-stone-300 focus:outline-none focus:border-[#C9A96E] focus:ring-2 focus:ring-[#C9A96E]/10 transition-all bg-white"
       />
