@@ -280,41 +280,30 @@ export default function CheckoutForm() {
             <div className="p-6">
               <div className="flex flex-wrap gap-2.5 mb-4">
                 {/* iDEAL */}
-                <div className="bg-white border border-stone-150 rounded-lg px-3 py-2 flex items-center justify-center h-9 w-16">
-                  <svg viewBox="0 0 52 28" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-5">
-                    <rect width="52" height="28" rx="4" fill="white"/>
-                    <text x="4" y="19" fontFamily="Arial" fontWeight="900" fontSize="13" fill="#CC0066">i</text>
-                    <text x="12" y="19" fontFamily="Arial" fontWeight="700" fontSize="11" fill="#000">DEAL</text>
-                    <circle cx="44" cy="14" r="7" fill="#CC0066"/>
-                    <path d="M41 14h6M44 11v6" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-                  </svg>
+                <div className="bg-white border border-stone-200 rounded-lg h-9 px-3 flex items-center justify-center gap-0.5 min-w-[64px]">
+                  <span style={{ color: '#CC0066', fontWeight: 900, fontSize: 14, fontFamily: 'Arial Black, sans-serif', lineHeight: 1 }}>i</span>
+                  <span style={{ color: '#000', fontWeight: 700, fontSize: 11, fontFamily: 'Arial, sans-serif', letterSpacing: 0 }}>DEAL</span>
+                  <span style={{ color: '#CC0066', marginLeft: 2, fontSize: 18, lineHeight: 1 }}>●</span>
                 </div>
                 {/* Mastercard */}
-                <div className="bg-white border border-stone-150 rounded-lg px-3 py-2 flex items-center justify-center h-9 w-16">
-                  <svg viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-5">
-                    <circle cx="14" cy="12" r="10" fill="#EB001B"/>
-                    <circle cx="24" cy="12" r="10" fill="#F79E1B"/>
-                    <path d="M19 4.8a10 10 0 010 14.4A10 10 0 0119 4.8z" fill="#FF5F00"/>
-                  </svg>
+                <div className="bg-white border border-stone-200 rounded-lg h-9 px-3 flex items-center justify-center min-w-[56px]">
+                  <div className="relative flex items-center" style={{ width: 34, height: 22 }}>
+                    <div className="absolute rounded-full bg-[#EB001B]" style={{ width: 22, height: 22, left: 0 }} />
+                    <div className="absolute rounded-full bg-[#F79E1B]" style={{ width: 22, height: 22, left: 12, opacity: 0.95 }} />
+                  </div>
                 </div>
                 {/* Visa */}
-                <div className="bg-white border border-stone-150 rounded-lg px-3 py-2 flex items-center justify-center h-9 w-16">
-                  <svg viewBox="0 0 52 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-4">
-                    <text x="0" y="16" fontFamily="Arial" fontWeight="900" fontSize="18" fill="#1A1F71" fontStyle="italic">VISA</text>
-                  </svg>
+                <div className="bg-white border border-stone-200 rounded-lg h-9 px-3 flex items-center justify-center min-w-[56px]">
+                  <span style={{ color: '#1A1F71', fontWeight: 900, fontStyle: 'italic', fontSize: 17, fontFamily: 'Arial Black, sans-serif', letterSpacing: -0.5 }}>VISA</span>
                 </div>
                 {/* PayPal */}
-                <div className="bg-white border border-stone-150 rounded-lg px-3 py-2 flex items-center justify-center h-9 w-16">
-                  <svg viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-5">
-                    <text x="0" y="17" fontFamily="Arial" fontWeight="800" fontSize="13" fill="#003087">Pay</text>
-                    <text x="24" y="17" fontFamily="Arial" fontWeight="800" fontSize="13" fill="#009CDE">Pal</text>
-                  </svg>
+                <div className="bg-white border border-stone-200 rounded-lg h-9 px-3 flex items-center justify-center min-w-[64px]">
+                  <span style={{ color: '#003087', fontWeight: 800, fontSize: 12, fontFamily: 'Arial, sans-serif' }}>Pay</span>
+                  <span style={{ color: '#009CDE', fontWeight: 800, fontSize: 12, fontFamily: 'Arial, sans-serif' }}>Pal</span>
                 </div>
                 {/* Klarna */}
-                <div className="bg-[#FFB3C7] border border-[#ff8fab] rounded-lg px-3 py-2 flex items-center justify-center h-9 w-16">
-                  <svg viewBox="0 0 50 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-4">
-                    <text x="0" y="15" fontFamily="Arial" fontWeight="800" fontSize="13" fill="#000">Klarna</text>
-                  </svg>
+                <div className="rounded-lg h-9 px-3 flex items-center justify-center min-w-[64px]" style={{ backgroundColor: '#FFB3C7' }}>
+                  <span style={{ color: '#17120E', fontWeight: 800, fontSize: 12, fontFamily: 'Arial, sans-serif', letterSpacing: 0.2 }}>klarna</span>
                 </div>
               </div>
               <div className="flex items-center gap-2 text-[11px] text-[#9A9590]">
