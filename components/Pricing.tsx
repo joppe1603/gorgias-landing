@@ -11,7 +11,7 @@ const products = [
     price:       '€58',
     originalPrice: null,
     description: 'Ons bestsellende vitamine C + retinol serum voor een stralende, egale huid.',
-    image:       '/reset-serum.jpg',
+    image:       '/reset-serum-new.jpg',
     items: [
       'Retinol 0.3%',
       'Vitamine C 15%',

@@ -50,7 +50,7 @@ const testingPhases = [
   },
 ]
 
-const HERO_IMAGE = '/reset-serum.jpg'
+const HERO_IMAGE = '/reset-serum-new.jpg'
 
 export default function LaunchContent() {
   const searchParams = useSearchParams()

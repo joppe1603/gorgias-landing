@@ -102,7 +102,7 @@ export default function Hero() {
               >
                 <div className="w-[380px] h-[480px] rounded-[24px] overflow-hidden relative shadow-[0_32px_80px_rgba(0,0,0,0.12)]">
                   <Image
-                    src="/reset-serum.jpg"
+                    src="/reset-serum-new.jpg"
                     alt="MAUYI Reset Serum"
                     fill
                     className="object-cover"

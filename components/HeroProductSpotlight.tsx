@@ -19,7 +19,7 @@ const reasons = [
   },
 ]
 
-const HERO_IMAGE = '/reset-serum.jpg'
+const HERO_IMAGE = '/reset-serum-new.jpg'
 
 export default function HeroProductSpotlight() {
   return (

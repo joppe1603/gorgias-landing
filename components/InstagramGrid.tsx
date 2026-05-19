@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 const posts = [
-  { src: '/reset-serum.jpg', caption: 'Reset Serum — ochtend ritual' },
+  { src: '/reset-serum-new.jpg', caption: 'Reset Serum — ochtend ritual' },
   { src: '/quiet-cleanser.jpg', caption: 'Quiet Cleanser — begin clean' },
   { src: '/reset-serum-2.jpg', caption: 'Textuur die je voelt' },
   { src: '/reset-serum-3.jpg', caption: 'Formulering op basis van wetenschap' },
