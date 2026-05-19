@@ -4,7 +4,6 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useCart } from '@/contexts/CartContext'
-import CheckoutUpsell from '@/components/CheckoutUpsell'
 import { getAllProducts } from '@/lib/products'
 
 const FREE_SHIPPING = 75
@@ -42,11 +41,9 @@ interface CartItem {
 
 /* ─────────── Main component ─────────── */
 export default function CheckoutForm() {
-  const { state, total: cartTotal } = useCart()
+  const { state } = useCart()
 
-  // Local cart state — initialized from global cart, editable in cart step
   const [cartItems, setCartItems] = useState<CartItem[]>(state.items)
-
   const [step, setStep] = useState<Step>(0)
   const [form, setForm] = useState({
     email: '',
@@ -60,7 +57,6 @@ export default function CheckoutForm() {
   const [shipMethod, setShipMethod] = useState<'standard' | 'express'>('standard')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const [showUpsell, setShowUpsell] = useState(false)
 
   const subtotal = cartItems.reduce((s, i) => s + i.price * i.quantity, 0)
   const shippingCost = subtotal >= FREE_SHIPPING ? 0 : (shipMethod === 'express' ? 7.95 : STANDARD_SHIPPING)
@@ -74,7 +70,6 @@ export default function CheckoutForm() {
   function updateQty(slug: string, delta: number) {
     setCartItems(prev => {
       const next = prev.map(i => i.slug === slug ? { ...i, quantity: Math.max(0, i.quantity + delta) } : i).filter(i => i.quantity > 0)
-      // If adding a product not in cart
       if (delta > 0 && !prev.find(i => i.slug === slug)) {
         const p = getAllProducts().find(p => p.slug === slug)
         if (p) return [...next, { slug: p.slug, name: p.name, price: p.price, image: p.heroImage, size: p.size, quantity: 1 }]
@@ -87,17 +82,16 @@ export default function CheckoutForm() {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  async function submitToMollie(finalItems: CartItem[] = cartItems) {
+  async function submitToMollie() {
     setError('')
     setLoading(true)
-    const total = finalItems.reduce((s, i) => s + i.price * i.quantity, 0)
+    const total = cartItems.reduce((s, i) => s + i.price * i.quantity, 0)
     const shipping = total >= FREE_SHIPPING ? 0 : (shipMethod === 'express' ? 7.95 : STANDARD_SHIPPING)
-    const orderT = total + shipping
     try {
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items: finalItems, form, total: orderT }),
+        body: JSON.stringify({ items: cartItems, form, total: total + shipping }),
       })
       const data = await res.json()
       if (!res.ok) {
@@ -112,22 +106,6 @@ export default function CheckoutForm() {
     }
   }
 
-  function handleUpsellAccept(slug: string, name: string, price: number, image: string, size: string) {
-    setShowUpsell(false)
-    submitToMollie([...cartItems, { slug, name, price, image, size, quantity: 1 }])
-  }
-
-  function handleUpsellDecline() {
-    setShowUpsell(false)
-    submitToMollie()
-  }
-
-  function handlePayClick() {
-    setError('')
-    setShowUpsell(true)
-  }
-
-  // Guards
   const canGoStep1 = cartItems.length > 0
   const canGoStep2 = form.email.includes('@') && form.name.trim().length > 1 && form.street && form.houseNumber && form.zipCode && form.city
 
@@ -232,11 +210,11 @@ export default function CheckoutForm() {
                       </div>
                       <div className="flex items-center justify-between mt-3">
                         <div className="inline-flex items-center rounded-full border border-stone-200 bg-white">
-                          <button onClick={() => updateQty(item.slug, -1)} className="w-8 h-8 flex items-center justify-center text-[#5C5754] hover:bg-stone-50 rounded-full transition-colors text-lg leading-none" aria-label="Min">−</button>
+                          <button type="button" onClick={() => updateQty(item.slug, -1)} className="w-8 h-8 flex items-center justify-center text-[#5C5754] hover:bg-stone-50 rounded-full transition-colors text-lg leading-none" aria-label="Min">−</button>
                           <span className="w-7 text-center text-[13px] tabular-nums text-[#1A1A1A]">{item.quantity}</span>
-                          <button onClick={() => updateQty(item.slug, +1)} className="w-8 h-8 flex items-center justify-center text-[#5C5754] hover:bg-stone-50 rounded-full transition-colors text-lg leading-none" aria-label="Plus">+</button>
+                          <button type="button" onClick={() => updateQty(item.slug, +1)} className="w-8 h-8 flex items-center justify-center text-[#5C5754] hover:bg-stone-50 rounded-full transition-colors text-lg leading-none" aria-label="Plus">+</button>
                         </div>
-                        <button onClick={() => updateQty(item.slug, -item.quantity)} className="text-[11px] text-[#9A9590] hover:text-red-400 transition-colors">Verwijder</button>
+                        <button type="button" onClick={() => updateQty(item.slug, -item.quantity)} className="text-[11px] text-[#9A9590] hover:text-red-400 transition-colors">Verwijder</button>
                       </div>
                     </div>
                   </li>
@@ -256,6 +234,7 @@ export default function CheckoutForm() {
                       <p className="text-[11px] text-[#9A9590]">{suggestedProduct.size} · €{suggestedProduct.price.toFixed(2).replace('.', ',')}</p>
                     </div>
                     <button
+                      type="button"
                       onClick={() => updateQty(suggestedProduct.slug, 1)}
                       className="shrink-0 btn-gold text-[12px] font-semibold rounded-full px-4 py-2 active:scale-[0.98] transition-transform"
                     >
@@ -267,9 +246,9 @@ export default function CheckoutForm() {
             </section>
           )}
 
-          {/* ── STEP 1: Bezorging ── */}
+          {/* ── STEP 1: Bezorging — wrapped in form for browser autocomplete ── */}
           {step === 1 && (
-            <>
+            <form autoComplete="on" onSubmit={e => e.preventDefault()} className="space-y-5">
               <section className="bg-white rounded-2xl border border-stone-100 overflow-hidden">
                 <div className="px-6 py-4 border-b border-stone-50 flex items-center gap-3">
                   <span className="w-6 h-6 rounded-full bg-[#C9A96E] text-white text-[11px] font-bold flex items-center justify-center shrink-0">1</span>
@@ -317,55 +296,87 @@ export default function CheckoutForm() {
                   <ShipOption checked={shipMethod === 'express'} onChange={() => setShipMethod('express')} title="Express · morgen in huis" meta="Bestel voor 22:00" right="€7,95"/>
                 </div>
               </section>
-            </>
+            </form>
           )}
 
-          {/* ── STEP 2: Betaling ── */}
+          {/* ── STEP 2: Betaling — pay button lives inside the card ── */}
           {step === 2 && (
             <section className="bg-white rounded-2xl border border-stone-100 overflow-hidden">
               <div className="px-6 py-4 border-b border-stone-50 flex items-center gap-3">
-                <span className="w-6 h-6 rounded-full bg-[#C9A96E] text-white text-[11px] font-bold flex items-center justify-center shrink-0">4</span>
-                <h2 className="text-[13px] font-semibold text-[#1A1A1A]">Betaalmethode</h2>
+                <span className="w-6 h-6 rounded-full bg-[#C9A96E] text-white text-[11px] font-bold flex items-center justify-center shrink-0">3</span>
+                <h2 className="text-[13px] font-semibold text-[#1A1A1A]">Betaling</h2>
               </div>
-              <div className="p-6">
-                <div className="flex flex-wrap gap-2.5 mb-4">
-                  {/* iDEAL */}
+              <div className="p-6 space-y-5">
+                {/* Payment logos */}
+                <div className="flex flex-wrap gap-2.5">
                   <div className="bg-white border border-stone-200 rounded-lg h-9 px-3 flex items-center justify-center gap-0.5 min-w-[64px]">
                     <span style={{ color: '#CC0066', fontWeight: 900, fontSize: 14, fontFamily: 'Arial Black, sans-serif', lineHeight: 1 }}>i</span>
                     <span style={{ color: '#000', fontWeight: 700, fontSize: 11, fontFamily: 'Arial, sans-serif' }}>DEAL</span>
                     <span style={{ color: '#CC0066', marginLeft: 2, fontSize: 18, lineHeight: 1 }}>●</span>
                   </div>
-                  {/* Mastercard */}
                   <div className="bg-white border border-stone-200 rounded-lg h-9 px-3 flex items-center justify-center min-w-[56px]">
                     <div className="relative flex items-center" style={{ width: 34, height: 22 }}>
                       <div className="absolute rounded-full bg-[#EB001B]" style={{ width: 22, height: 22, left: 0 }}/>
                       <div className="absolute rounded-full bg-[#F79E1B]" style={{ width: 22, height: 22, left: 12, opacity: 0.95 }}/>
                     </div>
                   </div>
-                  {/* Visa */}
                   <div className="bg-white border border-stone-200 rounded-lg h-9 px-3 flex items-center justify-center min-w-[56px]">
                     <span style={{ color: '#1A1F71', fontWeight: 900, fontStyle: 'italic', fontSize: 17, fontFamily: 'Arial Black, sans-serif', letterSpacing: -0.5 }}>VISA</span>
                   </div>
-                  {/* PayPal */}
                   <div className="bg-white border border-stone-200 rounded-lg h-9 px-3 flex items-center justify-center min-w-[64px]">
                     <span style={{ color: '#003087', fontWeight: 800, fontSize: 12, fontFamily: 'Arial, sans-serif' }}>Pay</span>
                     <span style={{ color: '#009CDE', fontWeight: 800, fontSize: 12, fontFamily: 'Arial, sans-serif' }}>Pal</span>
                   </div>
-                  {/* Klarna */}
                   <div className="rounded-lg h-9 px-3 flex items-center justify-center min-w-[64px]" style={{ backgroundColor: '#FFB3C7' }}>
                     <span style={{ color: '#17120E', fontWeight: 800, fontSize: 12, fontFamily: 'Arial, sans-serif', letterSpacing: 0.2 }}>klarna</span>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 text-[11px] text-[#9A9590]">
+
+                <p className="text-[12px] text-[#9A9590]">
+                  Je kiest je betaalmethode op de volgende pagina. Veilig verwerkt via <span className="font-medium text-[#5C5754]">Mollie</span>.
+                </p>
+
+                {/* Pay button — right here, no scrolling needed */}
+                {error && (
+                  <div className="flex items-start gap-3 text-[13px] bg-red-50 border border-red-100 rounded-xl px-4 py-3">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" className="shrink-0 mt-0.5" aria-hidden>
+                      <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                    <span className="text-red-600">{error}</span>
+                  </div>
+                )}
+
+                <button
+                  type="button"
+                  onClick={submitToMollie}
+                  disabled={loading}
+                  className="btn-gold w-full py-4 rounded-2xl font-semibold text-[15px] tracking-[0.01em] disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2.5 active:scale-[0.99] transition-transform"
+                >
+                  {loading ? (
+                    <>
+                      <svg className="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                        <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" opacity="0.25"/><path d="M21 12a9 9 0 00-9-9"/>
+                      </svg>
+                      Bezig met doorsturen…
+                    </>
+                  ) : (
+                    <>
+                      <LockIcon size={14}/>
+                      Veilig betalen · €{orderTotal.toFixed(2).replace('.', ',')}
+                    </>
+                  )}
+                </button>
+
+                <div className="flex items-center justify-center gap-1.5 text-[11px] text-stone-400">
                   <LockIcon/>
-                  <span>Je kiest je betaalmethode op de volgende pagina. Veilig verwerkt via <span className="font-medium text-[#5C5754]">Mollie</span>.</span>
+                  <span>256-bit SSL · PCI DSS · Geen account nodig</span>
                 </div>
               </div>
             </section>
           )}
 
-          {/* ── Error ── */}
-          {error && (
+          {/* ── Error (steps 0 & 1 only) ── */}
+          {error && step < 2 && (
             <div className="flex items-start gap-3 text-[13px] bg-red-50 border border-red-100 rounded-xl px-4 py-3">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" className="shrink-0 mt-0.5" aria-hidden>
                 <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
@@ -377,7 +388,7 @@ export default function CheckoutForm() {
           {/* ── Navigation ── */}
           <div className="flex items-center justify-between pt-1">
             {step > 0 ? (
-              <button onClick={() => setStep((step - 1) as Step)} className="text-[13px] text-[#9A9590] hover:text-[#1A1A1A] transition-colors flex items-center gap-1.5">
+              <button type="button" onClick={() => setStep((step - 1) as Step)} className="text-[13px] text-[#9A9590] hover:text-[#1A1A1A] transition-colors flex items-center gap-1.5">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden><path d="M8 6H2M4 3L1 6l3 3"/></svg>
                 Terug
               </button>
@@ -390,6 +401,7 @@ export default function CheckoutForm() {
 
             {step < 2 && (
               <button
+                type="button"
                 disabled={(step === 0 && !canGoStep1) || (step === 1 && !canGoStep2)}
                 onClick={() => setStep((step + 1) as Step)}
                 className="btn-gold px-8 py-3.5 rounded-2xl font-semibold text-[14px] tracking-[0.01em] disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2 active:scale-[0.99] transition-transform"
@@ -401,34 +413,6 @@ export default function CheckoutForm() {
                 </svg>
               </button>
             )}
-
-            {step === 2 && (
-              <button
-                onClick={handlePayClick}
-                disabled={loading}
-                className="btn-gold px-8 py-3.5 rounded-2xl font-semibold text-[14px] tracking-[0.01em] disabled:opacity-60 disabled:cursor-not-allowed flex items-center gap-2.5 active:scale-[0.99] transition-transform"
-              >
-                {loading ? (
-                  <>
-                    <svg className="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-                      <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" opacity="0.25"/><path d="M21 12a9 9 0 00-9-9"/>
-                    </svg>
-                    Bezig met doorsturen…
-                  </>
-                ) : (
-                  <>
-                    <LockIcon/>
-                    Veilig betalen · €{orderTotal.toFixed(2).replace('.', ',')}
-                  </>
-                )}
-              </button>
-            )}
-          </div>
-
-          <div className="flex items-center justify-center gap-4 text-[10px] text-stone-400 pt-1">
-            <span className="flex items-center gap-1"><LockIcon/> SSL beveiligd</span>
-            <span>·</span><span>Geen account nodig</span>
-            <span>·</span><span>Gratis retour</span>
           </div>
         </div>
 
@@ -480,27 +464,8 @@ export default function CheckoutForm() {
               </div>
             ))}
           </div>
-
-          <div className="bg-[#FAF8F5] rounded-2xl border border-stone-100 p-4 flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-white border border-stone-100 flex items-center justify-center shrink-0 text-[#5C5754]">
-              <LockIcon size={14}/>
-            </div>
-            <div>
-              <p className="text-[11px] font-semibold text-[#1A1A1A]">Beveiligd door Mollie</p>
-              <p className="text-[10px] text-[#9A9590]">256-bit SSL encryptie · PCI DSS compliant</p>
-            </div>
-          </div>
         </aside>
       </div>
-
-      {/* Upsell popup */}
-      {showUpsell && (
-        <CheckoutUpsell
-          cartSlugs={cartItems.map(i => i.slug)}
-          onAccept={handleUpsellAccept}
-          onDecline={handleUpsellDecline}
-        />
-      )}
     </main>
   )
 }
