@@ -283,8 +283,8 @@ export default function LaunchContent() {
             >
               <div className="aspect-[3/4] rounded-[24px] overflow-hidden relative shadow-[0_24px_60px_rgba(0,0,0,0.1)]">
                 <Image
-                  src={HERO_IMAGE}
-                  alt="MAUYI Reset Serum"
+                  src="/factory-bottles.jpg"
+                  alt="MAUYI Reset Serum — eerste batch"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 90vw, 420px"
