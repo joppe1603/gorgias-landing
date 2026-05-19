@@ -76,7 +76,7 @@ export default function CheckoutForm() {
       const next = prev.map(i => i.slug === slug ? { ...i, quantity: Math.max(0, i.quantity + delta) } : i).filter(i => i.quantity > 0)
       // If adding a product not in cart
       if (delta > 0 && !prev.find(i => i.slug === slug)) {
-        const p = availableProducts.find(p => p.slug === slug)
+        const p = getAllProducts().find(p => p.slug === slug)
         if (p) return [...next, { slug: p.slug, name: p.name, price: p.price, image: p.heroImage, size: p.size, quantity: 1 }]
       }
       return next
