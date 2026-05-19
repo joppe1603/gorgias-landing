@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createMollieClient } from '@mollie/api-client'
 import { createClient } from '@supabase/supabase-js'
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.mauyi.nl'
@@ -42,40 +41,47 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Bestelling kon niet worden opgeslagen.' }, { status: 500 })
     }
 
-    // Create Mollie payment
-    const mollie = createMollieClient({ apiKey: process.env.MOLLIE_API_KEY! })
-
-    const mollieParams = {
-      amount: {
-        currency: 'EUR',
-        value: total.toFixed(2),
-      },
-      description: `MAUYI bestelling`,
+    // Create Mollie payment via direct API call (bypasses SDK ESM issues)
+    const mollieBody = {
+      amount: { currency: 'EUR', value: total.toFixed(2) },
+      description: `MAUYI bestelling #${order.id}`,
       redirectUrl: `${BASE_URL}/order-confirmed?order_id=${order.id}`,
       webhookUrl: `${BASE_URL}/api/checkout/webhook`,
-      metadata: {
-        orderId: order.id,
-        email: form.email,
-      },
+      metadata: { orderId: order.id, email: form.email },
+      locale: 'nl_NL',
     }
-    console.log('Mollie params:', JSON.stringify(mollieParams))
 
-    const payment = await mollie.payments.create(mollieParams as never)
+    const mollieRes = await fetch('https://api.mollie.com/v2/payments', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.MOLLIE_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(mollieBody),
+    })
+
+    const mollieData = await mollieRes.json()
+
+    if (!mollieRes.ok) {
+      console.error('Mollie API error:', JSON.stringify(mollieData))
+      return NextResponse.json({ error: 'Betaling kon niet worden aangemaakt.' }, { status: 500 })
+    }
+
+    const checkoutUrl = mollieData._links?.checkout?.href
+    if (!checkoutUrl) {
+      console.error('No checkout URL in Mollie response:', JSON.stringify(mollieData))
+      return NextResponse.json({ error: 'Geen checkout URL ontvangen.' }, { status: 500 })
+    }
 
     // Save Mollie payment ID to order
     await supabase
       .from('orders')
-      .update({ mollie_payment_id: payment.id })
+      .update({ mollie_payment_id: mollieData.id })
       .eq('id', order.id)
 
-    return NextResponse.json({ checkoutUrl: payment.getCheckoutUrl() })
+    return NextResponse.json({ checkoutUrl })
   } catch (err) {
-    const e = err as { message?: string; detail?: string; title?: string; status?: number }
-    console.error('Checkout error message:', e?.message)
-    console.error('Checkout error detail:', e?.detail)
-    console.error('Checkout error title:', e?.title)
-    console.error('Checkout error status:', e?.status)
-    console.error('Checkout error full:', JSON.stringify(err, Object.getOwnPropertyNames(err as object)))
+    console.error('Checkout error:', err)
     return NextResponse.json({ error: 'Er is iets misgegaan. Probeer het opnieuw.' }, { status: 500 })
   }
 }
