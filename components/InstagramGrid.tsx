@@ -28,7 +28,7 @@ export default function InstagramGrid() {
               className="flex items-center gap-3 mb-3"
             >
               <div className="w-6 h-px bg-[#C9A96E]" />
-              <span className="section-label">@lumeskincare</span>
+              <span className="section-label">@mauyi</span>
             </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 16 }}

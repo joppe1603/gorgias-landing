@@ -5,7 +5,7 @@ import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
   title: 'Privacybeleid',
-  description: 'Hoe LUMÉ omgaat met jouw persoonsgegevens.',
+  description: 'Hoe MAUYI omgaat met jouw persoonsgegevens.',
   robots: { index: true, follow: true },
 }
 
@@ -44,8 +44,8 @@ export default function PrivacyPage() {
             <section>
               <h2 className="text-[18px] font-semibold text-[#1A1A1A] mb-3">1. Wie zijn wij</h2>
               <p>
-                LUMÉ B.V. (hierna: &ldquo;LUMÉ&rdquo;, &ldquo;wij&rdquo;, &ldquo;ons&rdquo;) is verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in dit privacybeleid. Wij zijn bereikbaar via{' '}
-                <a href="mailto:hello@lume-skincare.nl" className="text-[#C9A96E] underline underline-offset-2">hello@lume-skincare.nl</a>.
+                MAUYI B.V. (hierna: &ldquo;MAUYI&rdquo;, &ldquo;wij&rdquo;, &ldquo;ons&rdquo;) is verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in dit privacybeleid. Wij zijn bereikbaar via{' '}
+                <a href="mailto:hello@mauyi.nl" className="text-[#C9A96E] underline underline-offset-2">hello@mauyi.nl</a>.
               </p>
             </section>
 
@@ -75,7 +75,7 @@ export default function PrivacyPage() {
               <p>Wij verwerken jouw e-mailadres uitsluitend voor de volgende doeleinden:</p>
               <ul className="mt-3 space-y-2 list-none pl-0">
                 {[
-                  'Het sturen van een persoonlijk bericht wanneer LUMÉ producten beschikbaar komen (lanceringsmelding).',
+                  'Het sturen van een persoonlijk bericht wanneer MAUYI producten beschikbaar komen (lanceringsmelding).',
                   'Het delen van relevante updates over de voortgang van de productontwikkeling, uitsluitend indien je dit verwacht op basis van je inschrijving.',
                 ].map((item, i) => (
                   <li key={i} className="flex gap-3">
@@ -152,7 +152,7 @@ export default function PrivacyPage() {
               </ul>
               <p className="mt-4">
                 Stuur een e-mail naar{' '}
-                <a href="mailto:hello@lume-skincare.nl" className="text-[#C9A96E] underline underline-offset-2">hello@lume-skincare.nl</a>{' '}
+                <a href="mailto:hello@mauyi.nl" className="text-[#C9A96E] underline underline-offset-2">hello@mauyi.nl</a>{' '}
                 om gebruik te maken van jouw rechten. Wij reageren binnen 30 dagen.
               </p>
               <p className="mt-3">

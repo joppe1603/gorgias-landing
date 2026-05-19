@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createMollieClient } from '@mollie/api-client'
 import { createClient } from '@supabase/supabase-js'
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.lume-skincare.nl'
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.mauyi.nl'
 
 export async function POST(req: NextRequest) {
   try {
@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
         currency: 'EUR',
         value: total.toFixed(2),
       },
-      description: `LUMÉ bestelling — ${items.map((i: { name: string; quantity: number }) => `${i.quantity}× ${i.name}`).join(', ')}`,
+      description: `MAUYI bestelling — ${items.map((i: { name: string; quantity: number }) => `${i.quantity}× ${i.name}`).join(', ')}`,
       redirectUrl: `${BASE_URL}/order-confirmed?order_id=${order.id}`,
       webhookUrl: `${BASE_URL}/api/checkout/webhook`,
       metadata: {

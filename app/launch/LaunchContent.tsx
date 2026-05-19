@@ -250,7 +250,7 @@ export default function LaunchContent() {
               <div className="aspect-[3/4] rounded-[24px] overflow-hidden relative shadow-[0_24px_60px_rgba(0,0,0,0.1)]">
                 <Image
                   src={HERO_IMAGE}
-                  alt="LUMÉ Reset Serum"
+                  alt="MAUYI Reset Serum"
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 90vw, 420px"
@@ -294,7 +294,7 @@ export default function LaunchContent() {
             </div>
 
             <p className="text-stone-600 text-[12px] mt-8">
-              LUMÉ producten zijn cosmetische producten — geen medische behandelingen.
+              MAUYI producten zijn cosmetische producten — geen medische behandelingen.
             </p>
           </motion.div>
         </div>

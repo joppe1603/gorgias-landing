@@ -79,7 +79,7 @@ export default function UnsubscribeContent() {
                 Uitschrijven
               </h1>
               <p className="text-[14px] text-[#9A9590] font-light mb-8">
-                Vul je e-mailadres in om je uit te schrijven van de LUMÉ wachtlijst.
+                Vul je e-mailadres in om je uit te schrijven van de MAUYI wachtlijst.
               </p>
 
               <form onSubmit={handleSubmit} className="text-left">
@@ -105,7 +105,7 @@ export default function UnsubscribeContent() {
               </form>
 
               <p className="mt-6 text-[12px] text-[#9A9590] font-light">
-                Na uitschrijven ontvang je geen berichten meer van LUMÉ.
+                Na uitschrijven ontvang je geen berichten meer van MAUYI.
               </p>
             </>
           )}

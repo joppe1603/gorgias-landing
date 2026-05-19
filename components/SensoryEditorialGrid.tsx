@@ -81,7 +81,7 @@ export default function SensoryEditorialGrid() {
             >
               <Image
                 src={shot.src}
-                alt={`${shot.label} — LUMÉ editorial`}
+                alt={`${shot.label} — MAUYI editorial`}
                 fill
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 sizes="(max-width: 768px) 50vw, 25vw"

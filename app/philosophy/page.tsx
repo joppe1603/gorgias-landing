@@ -5,7 +5,7 @@ import PhilosophyPageContent from '@/components/PhilosophyPageContent'
 
 export const metadata: Metadata = {
   title: 'Filosofie',
-  description: 'Waarom minder skincare beter werkt. De overtuigingen en principes achter LUMÉ.',
+  description: 'Waarom minder skincare beter werkt. De overtuigingen en principes achter MAUYI.',
 }
 
 export default function PhilosophyPage() {

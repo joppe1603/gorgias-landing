@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import OrderConfirmedContent from './OrderConfirmedContent'
 
 export const metadata: Metadata = {
-  title: 'Bestelling bevestigd — LUMÉ',
+  title: 'Bestelling bevestigd — MAUYI',
   robots: { index: false, follow: false },
 }
 

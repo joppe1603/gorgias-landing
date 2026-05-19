@@ -13,7 +13,7 @@ const categories = [
         a: 'Na 2–4 weken merk je verbetering in hydratatie en textuur. Fine lines en egale huidtint verbeteren na 4–8 weken consistent gebruik. Huid vernieuwt zich elke 28 dagen — geef het die tijd.',
       },
       {
-        q: 'Ik heb gevoelige huid. Kan ik LUMÉ gebruiken?',
+        q: 'Ik heb gevoelige huid. Kan ik MAUYI gebruiken?',
         a: 'Ja. Onze formules zijn parfumvrij, alcoholvrij en zonder agressieve conserveringsmiddelen. Het Reset Serum gebruikt een geleidelijk afgiftesysteem — effectief, maar zachter dan standaard retinol. 91% van klanten met gevoelige huid rapporteert geen irritatie. Twijfel je? Begin met de Sensitive Skin Edit met bakuchiol.',
       },
       {
@@ -22,7 +22,7 @@ const categories = [
       },
       {
         q: 'Moet ik mijn hele routine vervangen?',
-        a: 'Nee. LUMÉ integreert in elke bestaande routine. Doe de quiz als je niet zeker weet welk product bij jou past. Maar eerlijk: de meeste klanten eindigen toch met alleen LUMÉ.',
+        a: 'Nee. MAUYI integreert in elke bestaande routine. Doe de quiz als je niet zeker weet welk product bij jou past. Maar eerlijk: de meeste klanten eindigen toch met alleen MAUYI.',
       },
     ],
   },
@@ -47,7 +47,7 @@ const categories = [
     label: 'Duurzaamheid & Veiligheid',
     faqs: [
       {
-        q: 'Is LUMÉ vegan en cruelty-free?',
+        q: 'Is MAUYI vegan en cruelty-free?',
         a: '100% vegan, gecertificeerd cruelty-free, zonder dierlijke ingrediënten. Verpakking is 92% recyclebaar. Alle INCI-ingrediënten staan op elke productpagina — we verbergen niets.',
       },
       {
@@ -181,13 +181,13 @@ export default function FAQPageContent() {
           >
             <p className="text-[#6B6560] mb-4 font-light">Nog vragen? We zijn er voor je.</p>
             <a
-              href="mailto:hello@lume-skincare.nl"
+              href="mailto:hello@mauyi.nl"
               className="inline-flex items-center gap-2 text-[#C9A96E] font-medium hover:underline underline-offset-4"
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <path d="M2 4h12v9H2V4zm0 0l6 5 6-5" stroke="#C9A96E" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              hello@lume-skincare.nl
+              hello@mauyi.nl
             </a>
           </motion.div>
         </div>

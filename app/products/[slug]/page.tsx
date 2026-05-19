@@ -16,7 +16,7 @@ import { getProduct, getAllProducts, getRelatedProducts } from '@/lib/products'
 import PDPBundleUpsell from './PDPBundleUpsell'
 import PDPReviews from './PDPReviews'
 
-const BASE_URL = 'https://lume-skincare.nl'
+const BASE_URL = 'https://mauyi.nl'
 
 export function generateStaticParams() {
   return getAllProducts().map((p) => ({ slug: p.slug }))
@@ -71,7 +71,7 @@ export default async function ProductPage({
     name: product.name,
     description: product.description,
     image: product.heroImage,
-    brand: { '@type': 'Brand', name: 'LUMÉ' },
+    brand: { '@type': 'Brand', name: 'MAUYI' },
     offers: {
       '@type': 'Offer',
       price: product.price.toString(),

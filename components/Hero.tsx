@@ -28,7 +28,7 @@ export default function Hero() {
             {/* Label */}
             <motion.div {...fadeUp(0)} className="flex items-center gap-3 mb-10">
               <div className="w-6 h-px bg-[#C9A96E]" />
-              <span className="section-label">LUMÉ — Huidverzorging</span>
+              <span className="section-label">MAUYI — Huidverzorging</span>
             </motion.div>
 
             {/* Headline */}
@@ -103,7 +103,7 @@ export default function Hero() {
                 <div className="w-[380px] h-[480px] rounded-[24px] overflow-hidden relative shadow-[0_32px_80px_rgba(0,0,0,0.12)]">
                   <Image
                     src="/reset-serum.jpg"
-                    alt="LUMÉ Reset Serum"
+                    alt="MAUYI Reset Serum"
                     fill
                     className="object-cover"
                     sizes="380px"

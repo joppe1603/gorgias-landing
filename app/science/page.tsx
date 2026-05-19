@@ -4,8 +4,8 @@ import Footer from '@/components/Footer'
 import ScienceContent from './ScienceContent'
 
 export const metadata: Metadata = {
-  title: 'Wetenschap | LUMÉ — Hoe we formuleren',
-  description: 'Hoe LUMÉ formuleert. De wetenschap achter onze ingrediënten, onze testmethodes en waarom elke concentratie een bewuste keuze is.',
+  title: 'Wetenschap | MAUYI — Hoe we formuleren',
+  description: 'Hoe MAUYI formuleert. De wetenschap achter onze ingrediënten, onze testmethodes en waarom elke concentratie een bewuste keuze is.',
 }
 
 export default function SciencePage() {

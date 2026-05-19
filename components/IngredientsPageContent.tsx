@@ -217,7 +217,7 @@ export default function IngredientsPageContent() {
               <span className="text-[#9A9590] font-normal italic">En waarom.</span>
             </h1>
             <p className="text-[#6B6560] text-lg font-light leading-relaxed max-w-xl">
-              Elk ingrediënt in LUMÉ is gekozen op basis van klinisch bewijs. Geen vullers. Geen gepatenteerde namen voor gewone stoffen. Geen vage claims.
+              Elk ingrediënt in MAUYI is gekozen op basis van klinisch bewijs. Geen vullers. Geen gepatenteerde namen voor gewone stoffen. Geen vage claims.
             </p>
           </motion.div>
         </div>

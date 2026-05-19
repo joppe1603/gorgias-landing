@@ -41,7 +41,7 @@ const reviews = [
     color: 'bg-indigo-400',
   },
   {
-    quote: 'Mijn barrière was kapot van te veel scrubben. Na 8 weken LUMÉ voelt mijn huid eindelijk normaal.',
+    quote: 'Mijn barrière was kapot van te veel scrubben. Na 8 weken MAUYI voelt mijn huid eindelijk normaal.',
     author: 'Hannah Park',
     location: 'Seoul / Amsterdam',
     skin: 'Gevoelige huid',

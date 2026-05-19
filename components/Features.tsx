@@ -109,7 +109,7 @@ const resultsFeatures: Feature[] = [
     ),
     color: 'bg-amber-50 text-amber-600',
     title: '12.400+ Vijfsterrenbeoordelingen',
-    description: '94% van de LUMÉ-klanten zegt dat hun huid er zichtbaar beter uitziet na 6 weken consistent gebruik.',
+    description: '94% van de MAUYI-klanten zegt dat hun huid er zichtbaar beter uitziet na 6 weken consistent gebruik.',
     points: ['4.9/5 gemiddelde score', 'Alleen geverifieerde aankopen', 'Wereldwijde community van 12k+'],
   },
   {
@@ -120,7 +120,7 @@ const resultsFeatures: Feature[] = [
     ),
     color: 'bg-indigo-50 text-indigo-600',
     title: 'Dermatoloog Goedgekeurd',
-    description: 'Elke LUMÉ-formule wordt ontwikkeld in samenwerking met dermatologen en getest onder klinisch toezicht vóór lancering.',
+    description: 'Elke MAUYI-formule wordt ontwikkeld in samenwerking met dermatologen en getest onder klinisch toezicht vóór lancering.',
     points: ['Onafhankelijk panel getest', 'Allergie & irritatie gescreend', 'INCI-conforme formules'],
   },
 ]
@@ -156,7 +156,7 @@ export default function Features() {
           className="text-center mb-12"
         >
           <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[#C9A96E] bg-[#FDF8F0] px-4 py-1.5 rounded-full mb-4">
-            De LUMÉ formule
+            De MAUYI formule
           </span>
           <h2 className="text-4xl sm:text-5xl font-bold text-[#1A1A1A] mb-5 leading-tight">
             Ingrediënten die
@@ -164,7 +164,7 @@ export default function Features() {
             <span className="gradient-text">écht werken</span>
           </h2>
           <p className="text-lg text-[#6B6560] max-w-2xl mx-auto leading-relaxed">
-            Wij gebruiken geen vullers. Elk ingrediënt in LUMÉ is gekozen op basis van klinisch bewijs en huidcompatibiliteit.
+            Wij gebruiken geen vullers. Elk ingrediënt in MAUYI is gekozen op basis van klinisch bewijs en huidcompatibiliteit.
           </p>
         </motion.div>
 

@@ -84,7 +84,7 @@ export default function AdminWaitlist() {
               className="text-3xl font-semibold text-[#1A1A1A] leading-tight"
               style={{ fontFamily: 'var(--font-cormorant)' }}
             >
-              LUMÉ Wachtlijst
+              MAUYI Wachtlijst
             </h1>
             <p className="text-[13px] text-[#9A9590] mt-2 font-light">Voer het wachtwoord in om door te gaan.</p>
           </div>
@@ -130,7 +130,7 @@ export default function AdminWaitlist() {
               className="text-xl font-semibold text-[#1A1A1A]"
               style={{ fontFamily: 'var(--font-cormorant)' }}
             >
-              LUMÉ Wachtlijst
+              MAUYI Wachtlijst
             </h1>
           </div>
           <div className="flex items-center gap-6">

@@ -33,7 +33,7 @@ export default async function AdminOrdersPage({
     return (
       <main className="min-h-screen bg-[#0F0E0C] flex items-center justify-center px-6">
         <div className="text-center">
-          <p className="text-[#C9A96E] text-sm font-bold uppercase tracking-[0.2em] mb-3">LUMÉ Admin</p>
+          <p className="text-[#C9A96E] text-sm font-bold uppercase tracking-[0.2em] mb-3">MAUYI Admin</p>
           <p className="text-stone-500 text-sm">Toegang geweigerd. Voeg ?key=... toe aan de URL.</p>
         </div>
       </main>
@@ -66,7 +66,7 @@ export default async function AdminOrdersPage({
         {/* Header */}
         <div className="mb-10">
           <div className="flex items-center gap-3 mb-2">
-            <span className="text-[#C9A96E] text-[10px] font-bold uppercase tracking-[0.25em]">LUMÉ</span>
+            <span className="text-[#C9A96E] text-[10px] font-bold uppercase tracking-[0.25em]">MAUYI</span>
             <span className="text-stone-300">·</span>
             <span className="text-stone-400 text-[10px] uppercase tracking-[0.15em]">Admin</span>
           </div>
@@ -164,7 +164,7 @@ export default async function AdminOrdersPage({
         </div>
 
         <p className="text-center text-[11px] text-stone-400 mt-8">
-          LUMÉ Admin · Niet delen · {(orders as Order[]).length} bestellingen geladen
+          MAUYI Admin · Niet delen · {(orders as Order[]).length} bestellingen geladen
         </p>
       </div>
     </main>

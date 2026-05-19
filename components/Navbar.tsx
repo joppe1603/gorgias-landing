@@ -35,7 +35,7 @@ const shopColumns = [
 
 const exploreLinks = [
   { label: 'Filosofie',       href: '/philosophy',    desc: 'Waarom minder meer is' },
-  { label: 'Waarom LUMÉ',     href: '/why-lume',      desc: 'Ons verhaal & onze principes' },
+  { label: 'Waarom MAUYI',     href: '/why-lume',      desc: 'Ons verhaal & onze principes' },
   { label: 'Wetenschap',      href: '/science',       desc: 'Hoe we formuleren' },
   { label: 'Ingrediënten',    href: '/ingredients',   desc: 'Wat werkt. En waarom.' },
   { label: 'Journal',         href: '/journal',       desc: 'Editoriaal & wetenschap' },
@@ -144,7 +144,7 @@ export default function Navbar() {
                     </radialGradient>
                   </defs>
                 </svg>
-                <span className="text-xl font-medium tracking-[0.22em] text-[#1A1A1A] font-[family-name:var(--font-cormorant)] leading-none">LUMÉ</span>
+                <span className="text-xl font-medium tracking-[0.22em] text-[#1A1A1A] font-[family-name:var(--font-cormorant)] leading-none">MAUYI</span>
               </Link>
 
               {/* Desktop nav */}

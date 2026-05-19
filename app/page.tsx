@@ -24,7 +24,7 @@ export default function Home() {
       <PhilosophyPreview />
       <EditorialQuote
         quote="Huidverzorging hoeft niet ingewikkeld te zijn. Het hoeft alleen eerlijk te zijn."
-        attribution="LUMÉ · Oprichtingsmanifest"
+        attribution="MAUYI · Oprichtingsmanifest"
         variant="light"
         size="md"
       />

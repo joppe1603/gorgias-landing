@@ -5,7 +5,7 @@ import IngredientsPageContent from '@/components/IngredientsPageContent'
 
 export const metadata: Metadata = {
   title: 'Ingrediënten & Wetenschap',
-  description: 'Wat werkt en waarom. De wetenschap achter elk LUMÉ ingrediënt — zonder marketing.',
+  description: 'Wat werkt en waarom. De wetenschap achter elk MAUYI ingrediënt — zonder marketing.',
 }
 
 export default function IngredientsPage() {

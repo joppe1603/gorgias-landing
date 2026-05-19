@@ -11,7 +11,7 @@ const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)
   : null
 
-const FROM = process.env.RESEND_FROM_EMAIL ?? 'LUMÉ <noreply@lume-skincare.nl>'
+const FROM = process.env.RESEND_FROM_EMAIL ?? 'MAUYI <noreply@mauyi.nl>'
 
 function confirmationEmail(email: string): string {
   return `<!DOCTYPE html>
@@ -19,7 +19,7 @@ function confirmationEmail(email: string): string {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Je staat op de LUMÉ wachtlijst</title>
+  <title>Je staat op de MAUYI wachtlijst</title>
 </head>
 <body style="margin:0;padding:0;background:#FAF8F5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#FAF8F5;padding:48px 16px;">
@@ -30,7 +30,7 @@ function confirmationEmail(email: string): string {
           <!-- Header -->
           <tr>
             <td style="background:#0F0E0C;padding:36px 40px;text-align:center;">
-              <p style="margin:0;font-size:22px;font-weight:600;letter-spacing:0.18em;color:#ffffff;">LUMÉ</p>
+              <p style="margin:0;font-size:22px;font-weight:600;letter-spacing:0.18em;color:#ffffff;">MAUYI</p>
               <p style="margin:8px 0 0;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.22em;color:#C9A96E;">Pre-launch · Wachtlijst</p>
             </td>
           </tr>
@@ -75,7 +75,7 @@ function confirmationEmail(email: string): string {
               <table width="100%" cellpadding="0" cellspacing="0" style="margin-top:32px;">
                 <tr>
                   <td align="center">
-                    <a href="https://lume-skincare.nl/launch" style="display:inline-block;background:#C9A96E;color:#1A1A1A;font-size:14px;font-weight:600;padding:14px 32px;border-radius:14px;text-decoration:none;">
+                    <a href="https://mauyi.nl/launch" style="display:inline-block;background:#C9A96E;color:#1A1A1A;font-size:14px;font-weight:600;padding:14px 32px;border-radius:14px;text-decoration:none;">
                       Volg het proces →
                     </a>
                   </td>
@@ -88,12 +88,12 @@ function confirmationEmail(email: string): string {
           <tr>
             <td style="padding:24px 40px;border-top:1px solid #F0EDE9;text-align:center;">
               <p style="margin:0 0 6px;font-size:11px;color:#9A9590;font-weight:300;">
-                Je ontvangt dit bericht omdat je je hebt aangemeld via lume-skincare.nl.
+                Je ontvangt dit bericht omdat je je hebt aangemeld via mauyi.nl.
               </p>
               <p style="margin:0;font-size:11px;color:#C9A96E;">
-                <a href="https://lume-skincare.nl/privacy" style="color:#C9A96E;text-decoration:underline;">Privacybeleid</a>
+                <a href="https://mauyi.nl/privacy" style="color:#C9A96E;text-decoration:underline;">Privacybeleid</a>
                 &nbsp;·&nbsp;
-                <a href="https://lume-skincare.nl/unsubscribe?email=${encodeURIComponent(email)}" style="color:#9A9590;text-decoration:underline;">Uitschrijven</a>
+                <a href="https://mauyi.nl/unsubscribe?email=${encodeURIComponent(email)}" style="color:#9A9590;text-decoration:underline;">Uitschrijven</a>
               </p>
             </td>
           </tr>
@@ -138,7 +138,7 @@ export async function POST(req: NextRequest) {
       await resend.emails.send({
         from: FROM,
         to: email,
-        subject: 'Je staat op de LUMÉ wachtlijst',
+        subject: 'Je staat op de MAUYI wachtlijst',
         html: confirmationEmail(email),
       })
     } catch (emailError) {

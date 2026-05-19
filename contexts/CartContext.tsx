@@ -90,7 +90,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   // Restore cart from localStorage on mount
   useEffect(() => {
     try {
-      const saved = localStorage.getItem('lume-cart')
+      const saved = localStorage.getItem('mauyi-cart')
       if (saved) {
         const items = JSON.parse(saved) as CartItem[]
         if (Array.isArray(items) && items.length > 0) {
@@ -103,7 +103,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   // Persist cart to localStorage on change
   useEffect(() => {
     try {
-      localStorage.setItem('lume-cart', JSON.stringify(state.items))
+      localStorage.setItem('mauyi-cart', JSON.stringify(state.items))
     } catch {}
   }, [state.items])
 

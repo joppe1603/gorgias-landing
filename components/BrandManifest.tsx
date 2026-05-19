@@ -40,7 +40,7 @@ export default function BrandManifest() {
           className="max-w-3xl mb-20"
         >
           <span className="text-xs font-bold uppercase tracking-[0.25em] text-[#C9A96E] mb-6 block">
-            Waarom LUMÉ bestaat
+            Waarom MAUYI bestaat
           </span>
           <h2 className="text-4xl sm:text-5xl lg:text-[3.25rem] font-bold text-white leading-[1.1] mb-8">
             De huidverzorgingsindustrie{' '}
@@ -49,7 +49,7 @@ export default function BrandManifest() {
             <span className="text-stone-500">Wij niet.</span>
           </h2>
           <p className="text-stone-400 text-lg leading-relaxed max-w-2xl">
-            LUMÉ begon vanuit één observatie: mensen kopen te veel en zien te weinig resultaat. We bouwen ons merk op één principe — elk product moet zo goed zijn dat het de rest overbodig maakt.
+            MAUYI begon vanuit één observatie: mensen kopen te veel en zien te weinig resultaat. We bouwen ons merk op één principe — elk product moet zo goed zijn dat het de rest overbodig maakt.
           </p>
         </motion.div>
 

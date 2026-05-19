@@ -99,7 +99,7 @@ export async function POST(req: NextRequest) {
       await resend.emails.send({
         from: process.env.RESEND_FROM_EMAIL!,
         to: order.email,
-        subject: 'Bestellingsbevestiging — LUMÉ',
+        subject: 'Bestellingsbevestiging — MAUYI',
         html: `
           <!DOCTYPE html>
           <html lang="nl">
@@ -112,7 +112,7 @@ export async function POST(req: NextRequest) {
                   <!-- Header -->
                   <tr>
                     <td style="background:#0F0E0C;padding:32px 40px;text-align:center;">
-                      <p style="margin:0;font-size:26px;font-weight:600;letter-spacing:0.1em;color:#FAF8F5;font-family:Georgia,serif;">LUMÉ</p>
+                      <p style="margin:0;font-size:26px;font-weight:600;letter-spacing:0.1em;color:#FAF8F5;font-family:Georgia,serif;">MAUYI</p>
                       <p style="margin:8px 0 0;font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:#C9A96E;">Bestellingsbevestiging</p>
                     </td>
                   </tr>
@@ -172,7 +172,7 @@ export async function POST(req: NextRequest) {
 
                       <!-- Order status link -->
                       <div style="margin:32px 0 0;text-align:center;">
-                        <a href="${process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.lume-skincare.nl'}/orders/${order.id}" style="display:inline-block;background:#0F0E0C;color:#FAF8F5;padding:12px 24px;border-radius:12px;text-decoration:none;font-weight:600;font-size:13px;letter-spacing:0.05em;">
+                        <a href="${process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.mauyi.nl'}/orders/${order.id}" style="display:inline-block;background:#0F0E0C;color:#FAF8F5;padding:12px 24px;border-radius:12px;text-decoration:none;font-weight:600;font-size:13px;letter-spacing:0.05em;">
                           Bekijk je bestelling →
                         </a>
                       </div>
@@ -182,7 +182,7 @@ export async function POST(req: NextRequest) {
 
                       <p style="margin:0;font-size:13px;color:#9A9590;line-height:1.7;font-style:italic;">
                         Vragen over je bestelling? Stuur een e-mail naar
-                        <a href="mailto:hello@lume-skincare.nl" style="color:#C9A96E;text-decoration:none;">hello@lume-skincare.nl</a>
+                        <a href="mailto:hello@mauyi.nl" style="color:#C9A96E;text-decoration:none;">hello@mauyi.nl</a>
                       </p>
                     </td>
                   </tr>
@@ -191,7 +191,7 @@ export async function POST(req: NextRequest) {
                   <tr>
                     <td style="background:#FAF8F5;padding:24px 40px;text-align:center;border-top:1px solid #E8E4DF;">
                       <p style="margin:0;font-size:11px;color:#9A9590;">
-                        LUMÉ Skincare · lume-skincare.nl
+                        MAUYI Skincare · mauyi.nl
                       </p>
                       <p style="margin:8px 0 0;font-size:10px;color:#C8C4BF;">
                         Geen spam. Alleen wat ertoe doet.

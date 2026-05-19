@@ -37,7 +37,7 @@ export default function HeroProductSpotlight() {
           >
             <Image
               src={HERO_IMAGE}
-              alt="LUMÉ Reset Serum — Night Reset Ritual"
+              alt="MAUYI Reset Serum — Night Reset Ritual"
               fill
               className="object-cover"
               sizes="46vw"

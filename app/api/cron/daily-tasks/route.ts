@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 import { Resend } from 'resend'
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.lume-skincare.nl'
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.mauyi.nl'
 
 function db() {
   return createClient(
@@ -57,7 +57,7 @@ export async function GET(req: NextRequest) {
     await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL!,
       to: order.email,
-      subject: 'Je LUMÉ bestelling is onderweg',
+      subject: 'Je MAUYI bestelling is onderweg',
       html: `
         <!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"></head>
         <body style="margin:0;padding:0;background:#FAF8F5;font-family:-apple-system,sans-serif;">
@@ -65,7 +65,7 @@ export async function GET(req: NextRequest) {
             <tr><td align="center">
               <table width="560" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:16px;border:1px solid #E8E4DF;">
                 <tr><td style="background:#0F0E0C;padding:32px 40px;text-align:center;">
-                  <p style="margin:0;font-size:26px;font-weight:600;letter-spacing:0.1em;color:#FAF8F5;font-family:Georgia,serif;">LUMÉ</p>
+                  <p style="margin:0;font-size:26px;font-weight:600;letter-spacing:0.1em;color:#FAF8F5;font-family:Georgia,serif;">MAUYI</p>
                   <p style="margin:8px 0 0;font-size:11px;letter-spacing:0.25em;text-transform:uppercase;color:#C9A96E;">Je pakket is onderweg</p>
                 </td></tr>
                 <tr><td style="padding:40px;">
@@ -79,7 +79,7 @@ export async function GET(req: NextRequest) {
                   </p>
                 </td></tr>
                 <tr><td style="background:#FAF8F5;padding:24px 40px;text-align:center;border-top:1px solid #E8E4DF;">
-                  <p style="margin:0;font-size:11px;color:#9A9590;">LUMÉ Skincare · lume-skincare.nl</p>
+                  <p style="margin:0;font-size:11px;color:#9A9590;">MAUYI Skincare · mauyi.nl</p>
                 </td></tr>
               </table>
             </td></tr>
@@ -109,7 +109,7 @@ export async function GET(req: NextRequest) {
     await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL!,
       to: order.email,
-      subject: 'Hoe bevalt je LUMÉ? — Deel je ervaring',
+      subject: 'Hoe bevalt je MAUYI? — Deel je ervaring',
       html: `
         <!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"></head>
         <body style="margin:0;padding:0;background:#FAF8F5;font-family:-apple-system,sans-serif;">
@@ -117,17 +117,17 @@ export async function GET(req: NextRequest) {
             <tr><td align="center">
               <table width="560" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:16px;border:1px solid #E8E4DF;">
                 <tr><td style="background:#0F0E0C;padding:32px 40px;text-align:center;">
-                  <p style="margin:0;font-size:26px;font-weight:600;letter-spacing:0.1em;color:#FAF8F5;font-family:Georgia,serif;">LUMÉ</p>
+                  <p style="margin:0;font-size:26px;font-weight:600;letter-spacing:0.1em;color:#FAF8F5;font-family:Georgia,serif;">MAUYI</p>
                 </td></tr>
                 <tr><td style="padding:40px;">
                   <p style="margin:0 0 8px;font-size:22px;font-weight:600;color:#1A1A1A;font-family:Georgia,serif;">14 dagen verder, ${order.name.split(' ')[0]}.</p>
-                  <p style="margin:0 0 24px;font-size:14px;color:#9A9590;line-height:1.6;">Hoe bevalt je huid na twee weken LUMÉ? Je mening helpt anderen de juiste keuze te maken.</p>
+                  <p style="margin:0 0 24px;font-size:14px;color:#9A9590;line-height:1.6;">Hoe bevalt je huid na twee weken MAUYI? Je mening helpt anderen de juiste keuze te maken.</p>
                   <a href="${BASE_URL}/products/${slug}#reviews" style="display:inline-block;background:#C9A96E;color:#fff;padding:14px 28px;border-radius:12px;text-decoration:none;font-weight:600;font-size:14px;">
                     Schrijf een review →
                   </a>
                 </td></tr>
                 <tr><td style="background:#FAF8F5;padding:24px 40px;text-align:center;border-top:1px solid #E8E4DF;">
-                  <p style="margin:0;font-size:11px;color:#9A9590;">LUMÉ Skincare · lume-skincare.nl</p>
+                  <p style="margin:0;font-size:11px;color:#9A9590;">MAUYI Skincare · mauyi.nl</p>
                 </td></tr>
               </table>
             </td></tr>
@@ -155,7 +155,7 @@ export async function GET(req: NextRequest) {
     await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL!,
       to: order.email,
-      subject: 'Tijd voor nabestelling? — LUMÉ',
+      subject: 'Tijd voor nabestelling? — MAUYI',
       html: `
         <!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"></head>
         <body style="margin:0;padding:0;background:#FAF8F5;font-family:-apple-system,sans-serif;">
@@ -163,19 +163,19 @@ export async function GET(req: NextRequest) {
             <tr><td align="center">
               <table width="560" cellpadding="0" cellspacing="0" style="background:#fff;border-radius:16px;border:1px solid #E8E4DF;">
                 <tr><td style="background:#0F0E0C;padding:32px 40px;text-align:center;">
-                  <p style="margin:0;font-size:26px;font-weight:600;letter-spacing:0.1em;color:#FAF8F5;font-family:Georgia,serif;">LUMÉ</p>
+                  <p style="margin:0;font-size:26px;font-weight:600;letter-spacing:0.1em;color:#FAF8F5;font-family:Georgia,serif;">MAUYI</p>
                 </td></tr>
                 <tr><td style="padding:40px;">
                   <p style="margin:0 0 8px;font-size:22px;font-weight:600;color:#1A1A1A;font-family:Georgia,serif;">30 dagen. Hoe is je huid?</p>
                   <p style="margin:0 0 24px;font-size:14px;color:#9A9590;line-height:1.6;">
-                    Een maand geleden ontving je je LUMÉ bestelling. De meeste serums zijn na 30 dagen op — tijd voor nabestelling?
+                    Een maand geleden ontving je je MAUYI bestelling. De meeste serums zijn na 30 dagen op — tijd voor nabestelling?
                   </p>
                   <a href="${BASE_URL}/shop" style="display:inline-block;background:#C9A96E;color:#fff;padding:14px 28px;border-radius:12px;text-decoration:none;font-weight:600;font-size:14px;">
                     Bestel opnieuw →
                   </a>
                 </td></tr>
                 <tr><td style="background:#FAF8F5;padding:24px 40px;text-align:center;border-top:1px solid #E8E4DF;">
-                  <p style="margin:0;font-size:11px;color:#9A9590;">LUMÉ Skincare · lume-skincare.nl</p>
+                  <p style="margin:0;font-size:11px;color:#9A9590;">MAUYI Skincare · mauyi.nl</p>
                   <a href="${BASE_URL}/unsubscribe?email=${encodeURIComponent(order.email)}" style="font-size:10px;color:#C8C4BF;text-decoration:none;">Afmelden</a>
                 </td></tr>
               </table>

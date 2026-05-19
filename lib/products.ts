@@ -92,7 +92,7 @@ const PRODUCTS: Product[] = [
       { quote: 'Simpel. Effectief. Mijn huid is er beter van geworden.', author: 'Noor Bakker', location: 'Rotterdam', skin: 'Gemengde huid', weeks: '4 weken', rating: 5, initials: 'NB', color: 'bg-amber-400' },
     ],
     relatedSlugs: ['reset-serum', 'soft-barrier-cream'],
-    seo: { title: 'Quiet Cleanser — Zachte Ceramide Reiniger 150ml | LUMÉ', description: 'Parfumvrije foamreiniger met Ceramiden & Provitamine B5. Reinigt zonder barrièreverstoring. Geschikt voor gevoelige huid. €38.' },
+    seo: { title: 'Quiet Cleanser — Zachte Ceramide Reiniger 150ml | MAUYI', description: 'Parfumvrije foamreiniger met Ceramiden & Provitamine B5. Reinigt zonder barrièreverstoring. Geschikt voor gevoelige huid. €38.' },
     emotion: 'Een cleanser die niks opeist. Wast schoon. Laat met rust.',
     textureNote: 'Rijke foam die direct aanspoelt. Geen trekkerig gevoel achteraf — alleen schoon.',
     textureImages: [
@@ -145,7 +145,7 @@ const PRODUCTS: Product[] = [
       { quote: 'Poriën veel minder zichtbaar na 5 weken. Dit is mijn nieuwe vaste serum.', author: 'Noor Bakker', location: 'Rotterdam', skin: 'Gemengde huid', weeks: '5 weken', rating: 5, initials: 'NB', color: 'bg-indigo-400' },
     ],
     relatedSlugs: ['quiet-cleanser', 'soft-barrier-cream'],
-    seo: { title: 'Reset Serum — Retinol 0.3% + Niacinamide 10% | LUMÉ', description: 'Parfumvrij Retinol 0.3% + Niacinamide 10% serum. Geformuleerd voor barrièreherstel, poriënverfijning en hydratatie. Pre-launch. €58.' },
+    seo: { title: 'Reset Serum — Retinol 0.3% + Niacinamide 10% | MAUYI', description: 'Parfumvrij Retinol 0.3% + Niacinamide 10% serum. Geformuleerd voor barrièreherstel, poriënverfijning en hydratatie. Pre-launch. €58.' },
     emotion: 'Gebouwd voor huid die te veel heeft meegemaakt.',
     textureNote: 'Waterig en bijna doorzichtig. Trekt in binnen 45 seconden. Geen restlaag. Geen kleverig gevoel. Werkt terwijl je slaapt.',
     textureImages: [
@@ -192,12 +192,12 @@ const PRODUCTS: Product[] = [
       'Kan ook gebruikt worden als nachcrème voor extra herstel.',
     ],
     reviews: [
-      { quote: 'Mijn barrière was kapot van te veel scrubben. Na 8 weken LUMÉ voelt mijn huid eindelijk normaal.', author: 'Hannah Park', location: 'Seoul', skin: 'Gevoelige huid', weeks: '8 weken', rating: 5, initials: 'HP', color: 'bg-teal-500' },
+      { quote: 'Mijn barrière was kapot van te veel scrubben. Na 8 weken MAUYI voelt mijn huid eindelijk normaal.', author: 'Hannah Park', location: 'Seoul', skin: 'Gevoelige huid', weeks: '8 weken', rating: 5, initials: 'HP', color: 'bg-teal-500' },
       { quote: 'Licht maar hydraterend. Nooit meer het gevoel dat mijn gezicht droog wordt halverwege de dag.', author: 'Lisa Müller', location: 'Berlijn', skin: 'Droge huid', weeks: '6 weken', rating: 5, initials: 'LM', color: 'bg-indigo-400' },
       { quote: 'Ik gebruik het ochtend én avond. Geen enkele andere crème werkt voor mij zo goed.', author: 'Fleur de Jong', location: 'Utrecht', skin: 'Gemengde huid', weeks: '10 weken', rating: 5, initials: 'FJ', color: 'bg-purple-400' },
     ],
     relatedSlugs: ['quiet-cleanser', 'reset-serum'],
-    seo: { title: 'Soft Barrier Cream — Ceramiden & Bakuchiol Dagcrème 50ml | LUMÉ', description: 'Lichte dagcrème met Ceramiden 3%, Bakuchiol & Squalaan. Barrièreherstel & langdurige hydratatie. Non-comedogeen. €48.' },
+    seo: { title: 'Soft Barrier Cream — Ceramiden & Bakuchiol Dagcrème 50ml | MAUYI', description: 'Lichte dagcrème met Ceramiden 3%, Bakuchiol & Squalaan. Barrièreherstel & langdurige hydratatie. Non-comedogeen. €48.' },
     emotion: 'Hydratatie die beschermt in plaats van verstopt.',
     textureNote: 'Lichte gel-crème die smelt op lichaamstemperatuur. Snel intrekkend. Geen witte restlaag, geen vet gevoel — ook niet na een uur.',
     textureImages: [
@@ -249,7 +249,7 @@ const PRODUCTS: Product[] = [
       { quote: 'Perfect als laatste stap na mijn serum. Mijn huid droogt nu niet meer uit in de nacht.', author: 'Julia van der Berg', location: 'Utrecht', skin: 'Normale huid', weeks: '6 weken', rating: 5, initials: 'JB', color: 'bg-rose-400' },
     ],
     relatedSlugs: ['reset-serum', 'soft-barrier-cream'],
-    seo: { title: 'Overnight Renewal Oil — Rozenbottelolie & Bakuchiol Nachtserum 30ml | LUMÉ', description: 'Herstellende droge olie met Rozenbottelolie 20% & Bakuchiol. Nachtelijk barrièreherstel en celvernieuwing. Non-comedogeen, parfumvrij. €52.' },
+    seo: { title: 'Overnight Renewal Oil — Rozenbottelolie & Bakuchiol Nachtserum 30ml | MAUYI', description: 'Herstellende droge olie met Rozenbottelolie 20% & Bakuchiol. Nachtelijk barrièreherstel en celvernieuwing. Non-comedogeen, parfumvrij. €52.' },
     emotion: 'De nacht is herseltijd. Dit zorgt dat je huid dat ook weet.',
     textureNote: 'Droge olie die absorbeert als water. Geen glans na aanbrengen, geen kleverig gevoel. Huid voelt de volgende ochtend zachter — zonder residue.',
     textureImages: [
@@ -328,7 +328,7 @@ const PRODUCTS: Product[] = [
   {
     slug: 'the-glow-ritual',
     name: 'The Glow Ritual',
-    tagline: 'De complete LUMÉ ochtend- en avondroutine',
+    tagline: 'De complete MAUYI ochtend- en avondroutine',
     badge: 'Beste Waarde',
     price: 129,
     originalPrice: 174,
@@ -337,7 +337,7 @@ const PRODUCTS: Product[] = [
     heroImage:
       'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=900&q=85&fit=crop',
     description:
-      'De complete LUMÉ ochtend- en avondroutine in één bundel. Inclusief gratis Mini Oogcrème. Bespaar €45 ten opzichte van los kopen.',
+      'De complete MAUYI ochtend- en avondroutine in één bundel. Inclusief gratis Mini Oogcrème. Bespaar €45 ten opzichte van los kopen.',
     longDescription:
       "The Glow Ritual is onze complete dagelijks bundel. Drie producten die naadloos samenwerken: de Radiance Serum voor overdag, de Deep Moisture Cream voor barrièreherstel en de Overnight Renewal Oil voor nachtelijk herstel. Als cadeau ontvang je er ook onze Mini Oogcrème bij.",
     benefits: [
@@ -370,7 +370,7 @@ const PRODUCTS: Product[] = [
         skin: 'Gemengde huid', weeks: '6 weken', rating: 5, initials: 'JB', color: 'bg-rose-400',
       },
       {
-        quote: 'LUMÉ heeft me omgezet van een 10-stappen routine naar 3 producten. Mijn huid heeft er nooit beter uitgezien.',
+        quote: 'MAUYI heeft me omgezet van een 10-stappen routine naar 3 producten. Mijn huid heeft er nooit beter uitgezien.',
         author: 'Emma Clarke', location: 'London',
         skin: 'Gevoelige huid', weeks: '8 weken', rating: 5, initials: 'EC', color: 'bg-amber-500',
       },
@@ -384,7 +384,7 @@ const PRODUCTS: Product[] = [
     seo: {
       title: 'The Glow Ritual — Complete Skincare Bundel 3 Producten',
       description:
-        'De complete LUMÉ ochtend- en avondroutine. Radiance Serum + Deep Moisture Cream + Overnight Oil. Bespaar €45. Gratis Mini Oogcrème. €129.',
+        'De complete MAUYI ochtend- en avondroutine. Radiance Serum + Deep Moisture Cream + Overnight Oil. Bespaar €45. Gratis Mini Oogcrème. €129.',
     },
   },
   {
@@ -465,7 +465,7 @@ const PRODUCTS: Product[] = [
     howToUse: [],
     reviews: [],
     relatedSlugs: [],
-    seo: { title: 'Test | LUMÉ', description: 'Testproduct.' },
+    seo: { title: 'Test | MAUYI', description: 'Testproduct.' },
   },
 ]
 

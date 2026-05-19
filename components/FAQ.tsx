@@ -9,19 +9,19 @@ const faqs = [
     a: 'Na 2–4 weken merk je verbetering in hydratatie en textuur. Fine lines en egale huidtint verbeteren na 4–8 weken consistent gebruik. Huid vernieuwt zich elke 28 dagen — geef het die tijd.',
   },
   {
-    q: 'Ik heb gevoelige huid. Kan ik LUMÉ gebruiken?',
+    q: 'Ik heb gevoelige huid. Kan ik MAUYI gebruiken?',
     a: 'Ja. Onze formules zijn parfumvrij, alcoholvrij en zonder agressieve conserveringsmiddelen. De Radiance Serum gebruikt een geleidelijk afgiftesysteem — effectief, maar zachter dan standaard retinol. 91% van klanten met gevoelige huid rapporteert geen irritatie. Twijfel je? Begin met de Sensitive Skin Edit.',
   },
   {
     q: 'Moet ik mijn hele routine vervangen?',
-    a: 'Nee. LUMÉ integreert in elke bestaande routine. Doe de quiz als je niet zeker weet welk product bij jou past. Maar eerlijk: de meeste klanten eindigen toch met alleen LUMÉ.',
+    a: 'Nee. MAUYI integreert in elke bestaande routine. Doe de quiz als je niet zeker weet welk product bij jou past. Maar eerlijk: de meeste klanten eindigen toch met alleen MAUYI.',
   },
   {
     q: 'Hoe werkt de 30-dagen garantie?',
     a: 'Niet tevreden na 30 dagen? Stuur het terug, je krijgt alles terug. Geen vragen, geen gedoe. We geloven in onze formules — dus het risico is voor ons.',
   },
   {
-    q: 'Is LUMÉ vegan en cruelty-free?',
+    q: 'Is MAUYI vegan en cruelty-free?',
     a: '100% vegan, gecertificeerd cruelty-free, zonder dierlijke ingrediënten. Verpakking is 92% recyclebaar. Alle INCI-ingrediënten staan op elke productpagina — we verbergen niets.',
   },
   {

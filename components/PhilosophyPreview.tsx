@@ -26,7 +26,7 @@ export default function PhilosophyPreview() {
           {/* Label */}
           <div className="flex items-center justify-center gap-3 mb-8">
             <div className="w-8 h-px bg-[#C9A96E]/40" />
-            <span className="section-label" style={{ color: '#C9A96E' }}>Waarom LUMÉ bestaat</span>
+            <span className="section-label" style={{ color: '#C9A96E' }}>Waarom MAUYI bestaat</span>
             <div className="w-8 h-px bg-[#C9A96E]/40" />
           </div>
 
@@ -41,7 +41,7 @@ export default function PhilosophyPreview() {
 
           {/* Body */}
           <p className="text-stone-400 text-lg leading-relaxed max-w-2xl mx-auto mb-4 font-light">
-            LUMÉ begon vanuit één observatie: mensen kopen te veel en zien te weinig resultaat. Skincare is een cultuur geworden — terwijl huid gewoon rust, de juiste stoffen en consistentie nodig heeft.
+            MAUYI begon vanuit één observatie: mensen kopen te veel en zien te weinig resultaat. Skincare is een cultuur geworden — terwijl huid gewoon rust, de juiste stoffen en consistentie nodig heeft.
           </p>
           <p className="text-stone-500 text-base leading-relaxed max-w-xl mx-auto mb-14 font-light">
             Wij bouwen ons merk op één principe — elk product moet zo goed zijn dat het de rest overbodig maakt.

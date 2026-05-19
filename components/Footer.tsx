@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 const footerLinks: Record<string, { label: string; href: string }[]> = {
   'Ontdekken': [
-    { label: 'Waarom LUMÉ',    href: '/why-lume' },
+    { label: 'Waarom MAUYI',    href: '/why-lume' },
     { label: 'Wetenschap',     href: '/science' },
     { label: 'Filosofie',      href: '/philosophy' },
     { label: 'Ingrediënten',   href: '/ingredients' },
@@ -21,7 +21,7 @@ const footerLinks: Record<string, { label: string; href: string }[]> = {
     { label: 'Privacybeleid',      href: '/privacy' },
     { label: 'Voorwaarden',        href: '/privacy#voorwaarden' },
     { label: 'Cookiebeleid',       href: '/privacy#cookies' },
-    { label: 'Contact',            href: 'mailto:hello@lume-skincare.nl' },
+    { label: 'Contact',            href: 'mailto:hello@mauyi.nl' },
   ],
 }
 
@@ -37,7 +37,7 @@ const socialLinks = [
   },
   {
     label: 'TikTok',
-    href: 'https://www.tiktok.com/@lumeskincare',
+    href: 'https://www.tiktok.com/@mauyi',
     icon: (
       <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
         <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.67a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
@@ -135,11 +135,11 @@ export default function Footer() {
                   </radialGradient>
                 </defs>
               </svg>
-              <span className="text-2xl font-semibold tracking-[0.18em] text-white font-[family-name:var(--font-cormorant)] leading-none">LUMÉ</span>
+              <span className="text-2xl font-semibold tracking-[0.18em] text-white font-[family-name:var(--font-cormorant)] leading-none">MAUYI</span>
             </Link>
 
             <p className="text-stone-400 text-sm leading-relaxed mb-6 font-light">
-              LUMÉ is een Nederlands huidverzorgingsmerk geformuleerd op wetenschap. Eerlijk over wat werkt, eerlijk over wat nog komt.
+              MAUYI is een Nederlands huidverzorgingsmerk geformuleerd op wetenschap. Eerlijk over wat werkt, eerlijk over wat nog komt.
             </p>
 
             {/* Waitlist signup in footer */}
@@ -223,7 +223,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-stone-600 font-light">
-            © {new Date().getFullYear()} LUMÉ B.V. · Gemaakt in Nederland
+            © {new Date().getFullYear()} MAUYI B.V. · Gemaakt in Nederland
           </p>
           <div className="flex items-center gap-6">
             <Link href="/privacy" className="text-sm text-stone-600 hover:text-stone-400 transition-colors">Privacy</Link>

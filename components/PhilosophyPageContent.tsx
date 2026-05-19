@@ -98,7 +98,7 @@ export default function PhilosophyPageContent() {
               Wij geloven dat huid eenvoud verdient. Niet goedkoop. Niet basic. Maar intentioneel samengesteld — zodat elk product zijn werk doet, en je niet de rest van de dag bezig bent met je routine.
             </p>
             <p>
-              LUMÉ is gebouwd als antwoord op skincare-vermoeidheid. Niet om je minder te verkopen — maar om je beter te laten kopen.
+              MAUYI is gebouwd als antwoord op skincare-vermoeidheid. Niet om je minder te verkopen — maar om je beter te laten kopen.
             </p>
           </motion.div>
         </div>

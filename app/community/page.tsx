@@ -5,7 +5,7 @@ import CommunityPageContent from '@/components/CommunityPageContent'
 
 export const metadata: Metadata = {
   title: 'Community',
-  description: 'Echte mensen. Echte huid. Verhalen en ervaringen van de LUMÉ community.',
+  description: 'Echte mensen. Echte huid. Verhalen en ervaringen van de MAUYI community.',
 }
 
 export default function CommunityPage() {

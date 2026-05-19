@@ -20,7 +20,7 @@ const reviews = [
     product: 'The Glow Ritual', initials: 'LM', color: '#a5b5d4', rating: 5, verified: true,
   },
   {
-    quote: 'Mijn barrière was kapot van te veel scrubben. Na 8 weken LUMÉ voelt mijn huid eindelijk normaal.',
+    quote: 'Mijn barrière was kapot van te veel scrubben. Na 8 weken MAUYI voelt mijn huid eindelijk normaal.',
     author: 'Hannah Park', location: 'Seoul', skin: 'Gevoelige huid', weeks: '8 weken',
     product: 'Sensitive Skin Edit', initials: 'HP', color: '#c4b5a5', rating: 5, verified: true,
   },
@@ -171,7 +171,7 @@ export default function CommunityPageContent() {
               Deel jouw verhaal.
             </h2>
             <p className="text-[#6B6560] font-light mb-8 leading-relaxed">
-              Gebruik je LUMÉ? Tag ons op Instagram (@lumeskincare) of stuur een mail. We publiceren echte ervaringen — geen gefilterde foto&apos;s, geen geselecteerde uitzonderingen.
+              Gebruik je MAUYI? Tag ons op Instagram (@mauyi) of stuur een mail. We publiceren echte ervaringen — geen gefilterde foto&apos;s, geen geselecteerde uitzonderingen.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a
@@ -183,10 +183,10 @@ export default function CommunityPageContent() {
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
                 </svg>
-                @lumeskincare
+                @mauyi
               </a>
               <Link href="/shop" className="btn-outline inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl font-medium text-sm">
-                Probeer LUMÉ
+                Probeer MAUYI
               </Link>
             </div>
           </motion.div>

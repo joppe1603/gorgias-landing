@@ -9,7 +9,7 @@ export default function NewsletterPopup() {
   const [done, setDone] = useState(false)
   const [copied, setCopied] = useState(false)
 
-  const CODE = 'LUMÉ15'
+  const CODE = 'MAUYI15'
 
   useEffect(() => {
     // Don't show if already dismissed this session
@@ -90,7 +90,7 @@ export default function NewsletterPopup() {
                     <circle cx="15" cy="15" r="13" fill="#C9A96E"/>
                     <circle cx="19" cy="15" r="10" fill="#1A1A1A"/>
                   </svg>
-                  <span className="text-[#C9A96E] text-xs font-bold tracking-[0.2em] uppercase">LUMÉ</span>
+                  <span className="text-[#C9A96E] text-xs font-bold tracking-[0.2em] uppercase">MAUYI</span>
                 </div>
                 <p className="text-white text-2xl font-bold leading-snug">
                   15% korting
@@ -146,7 +146,7 @@ export default function NewsletterPopup() {
                           <path d="M5 12L10 17L19 7" stroke="#C9A96E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                       </div>
-                      <p className="text-[#1A1A1A] font-bold text-lg mb-1">Welkom bij LUMÉ ✨</p>
+                      <p className="text-[#1A1A1A] font-bold text-lg mb-1">Welkom bij MAUYI ✨</p>
                       <p className="text-[#6B6560] text-sm mb-6">Gebruik deze code bij checkout:</p>
 
                       <button

@@ -6,7 +6,7 @@ import Footer from '@/components/Footer'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Bestelling — LUMÉ',
+  title: 'Bestelling — MAUYI',
   robots: { index: false, follow: false },
 }
 
@@ -45,7 +45,7 @@ export default async function OrderPage({ params }: { params: Promise<{ id: stri
 
           {/* Header */}
           <div className="mb-8">
-            <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#C9A96E] mb-2">LUMÉ</p>
+            <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#C9A96E] mb-2">MAUYI</p>
             <h1 className="text-3xl font-semibold text-[#1A1A1A] mb-1">Jouw bestelling</h1>
             <p className="text-[13px] text-[#9A9590]">#{order.id.slice(0, 8).toUpperCase()}</p>
           </div>

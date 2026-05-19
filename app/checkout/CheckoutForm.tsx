@@ -80,7 +80,7 @@ export default function CheckoutForm() {
         <div className="max-w-5xl mx-auto flex items-center justify-between">
           <Link href="/" className="text-[1.4rem] font-semibold text-[#1A1A1A] tracking-[0.08em]"
             style={{ fontFamily: 'var(--font-cormorant)' }}>
-            LUMÉ
+            MAUYI
           </Link>
           <Link href="/shop" className="text-[12px] text-[#9A9590] hover:text-[#1A1A1A] transition-colors">
             ← Verder winkelen

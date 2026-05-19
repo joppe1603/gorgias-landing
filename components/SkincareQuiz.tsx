@@ -59,7 +59,7 @@ function getResult(answers: Record<string, string>): Result {
   if (concern === 'ageing' && experience !== 'beginner') {
     return {
       headline: 'The Glow Ritual',
-      description: 'Uw huid is klaar voor de volledige LUMÉ power stack. Retinol + Vitamine C + drievoudig HA — zichtbare transformatie in 28 dagen.',
+      description: 'Uw huid is klaar voor de volledige MAUYI power stack. Retinol + Vitamine C + drievoudig HA — zichtbare transformatie in 28 dagen.',
       products: ['Radiance Serum', 'Deep Moisture Cream', 'Overnight Renewal Oil'],
       cta: 'Shop The Glow Ritual — €129',
     }
@@ -74,7 +74,7 @@ function getResult(answers: Record<string, string>): Result {
   }
   return {
     headline: 'The Glow Ritual',
-    description: 'De complete LUMÉ routine dekt elk huidprobleem — reinigen, behandelen en beschermen. Niet voor niets de meest populaire.',
+    description: 'De complete MAUYI routine dekt elk huidprobleem — reinigen, behandelen en beschermen. Niet voor niets de meest populaire.',
     products: ['Radiance Serum', 'Deep Moisture Cream', 'Overnight Renewal Oil'],
     cta: 'Shop The Glow Ritual — €129',
   }

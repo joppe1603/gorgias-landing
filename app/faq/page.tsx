@@ -5,7 +5,7 @@ import FAQPageContent from '@/components/FAQPageContent'
 
 export const metadata: Metadata = {
   title: 'FAQ',
-  description: 'Antwoorden op de meest gestelde vragen over LUMÉ producten, ingrediënten en routines.',
+  description: 'Antwoorden op de meest gestelde vragen over MAUYI producten, ingrediënten en routines.',
 }
 
 export default function FAQPage() {

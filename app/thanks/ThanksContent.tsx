@@ -117,7 +117,7 @@ export default function ThanksContent() {
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
               <path d="M10 6H2M5 2L1 6l4 4"/>
             </svg>
-            Terug naar LUMÉ
+            Terug naar MAUYI
           </Link>
           <Link
             href="/launch"
@@ -135,7 +135,7 @@ export default function ThanksContent() {
           {...stagger(6)}
           className="mt-12 text-[11px] text-stone-700 font-light"
         >
-          LUMÉ producten zijn cosmetische producten — geen medische behandelingen.
+          MAUYI producten zijn cosmetische producten — geen medische behandelingen.
         </motion.p>
       </div>
     </main>

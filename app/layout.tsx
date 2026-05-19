@@ -18,23 +18,23 @@ const cormorant = Cormorant_Garamond({
   weight: ['300', '400', '500', '600', '700'],
 })
 
-const BASE_URL = 'https://lume-skincare.nl'
+const BASE_URL = 'https://mauyi.nl'
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'LUMÉ — Huidverzorging geformuleerd op wetenschap | Pre-launch',
-    template: '%s | LUMÉ Skincare',
+    default: 'MAUYI — Huidverzorging geformuleerd op wetenschap | Pre-launch',
+    template: '%s | MAUYI Skincare',
   },
   description:
-    'LUMÉ — huidverzorging geformuleerd op wetenschap. Pre-launch: schrijf je in voor de wachtlijst en ontvang als eerste toegang tot Reset Serum.',
+    'MAUYI — huidverzorging geformuleerd op wetenschap. Pre-launch: schrijf je in voor de wachtlijst en ontvang als eerste toegang tot Reset Serum.',
   keywords: [
     'huidverzorging', 'serum', 'retinol', 'hyaluronzuur', 'clean beauty',
-    'LUMÉ', 'skincare Nederland', 'vitamine C serum', 'bakuchiol', 'gezichtscrème',
+    'MAUYI', 'skincare Nederland', 'vitamine C serum', 'bakuchiol', 'gezichtscrème',
   ],
-  authors: [{ name: 'LUMÉ B.V.', url: BASE_URL }],
-  creator: 'LUMÉ B.V.',
-  publisher: 'LUMÉ B.V.',
+  authors: [{ name: 'MAUYI B.V.', url: BASE_URL }],
+  creator: 'MAUYI B.V.',
+  publisher: 'MAUYI B.V.',
   robots: {
     index: true,
     follow: true,
@@ -44,22 +44,22 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'nl_NL',
     url: BASE_URL,
-    siteName: 'LUMÉ Skincare',
-    title: 'LUMÉ — Huidverzorging geformuleerd op wetenschap | Pre-launch',
+    siteName: 'MAUYI Skincare',
+    title: 'MAUYI — Huidverzorging geformuleerd op wetenschap | Pre-launch',
     description:
-      'LUMÉ — huidverzorging geformuleerd op wetenschap. Pre-launch: schrijf je in voor de wachtlijst.',
+      'MAUYI — huidverzorging geformuleerd op wetenschap. Pre-launch: schrijf je in voor de wachtlijst.',
     images: [
       {
         url: '/quiet-cleanser.jpg',
         width: 1200,
         height: 630,
-        alt: 'LUMÉ Premium Skincare producten',
+        alt: 'MAUYI Premium Skincare producten',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'LUMÉ — Pre-launch | Huidverzorging op wetenschap',
+    title: 'MAUYI — Pre-launch | Huidverzorging op wetenschap',
     description: 'Huidverzorging geformuleerd op wetenschap. Wachtlijst open — schrijf je in.',
     images: ['/quiet-cleanser.jpg'],
   },
@@ -68,11 +68,11 @@ export const metadata: Metadata = {
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'LUMÉ',
+  name: 'MAUYI',
   url: BASE_URL,
   description: 'Premium Nederlands huidverzorgingsmerk gebouwd op klinische wetenschap.',
-  contactPoint: { '@type': 'ContactPoint', email: 'hello@lume-skincare.nl', contactType: 'customer service' },
-  sameAs: ['https://www.instagram.com/lumeskincare', 'https://www.tiktok.com/@lumeskincare'],
+  contactPoint: { '@type': 'ContactPoint', email: 'hello@mauyi.nl', contactType: 'customer service' },
+  sameAs: ['https://www.instagram.com/lumeskincare', 'https://www.tiktok.com/@mauyi'],
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

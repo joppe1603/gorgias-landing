@@ -39,7 +39,7 @@ export default function FounderNote() {
                 <span className="text-[#C9A96E] text-[13px] font-bold">L</span>
               </div>
               <div>
-                <p className="text-[13px] font-semibold text-white">LUMÉ</p>
+                <p className="text-[13px] font-semibold text-white">MAUYI</p>
                 <p className="text-[11px] text-stone-500">Oprichter</p>
               </div>
             </div>
@@ -61,7 +61,7 @@ export default function FounderNote() {
             </p>
 
             <p className="text-[15px] text-stone-400 leading-relaxed font-light">
-              LUMÉ begon met een simpele frustratie: te veel producten die mooie beloftes maken maar niet uitleggen waarom ze zouden werken — of wat er precies in zit.
+              MAUYI begon met een simpele frustratie: te veel producten die mooie beloftes maken maar niet uitleggen waarom ze zouden werken — of wat er precies in zit.
             </p>
 
             <p className="text-[15px] text-stone-400 leading-relaxed font-light">
@@ -77,7 +77,7 @@ export default function FounderNote() {
               {[
                 'We publiceren testresultaten — ook als ze tegenvallen',
                 'Eerste batch is beperkt. Wachtlijst leden krijgen als eerste een bericht',
-                'LUMÉ maakt geen medische claims. Wij verkopen cosmetica.',
+                'MAUYI maakt geen medische claims. Wij verkopen cosmetica.',
               ].map((promise, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <div className="shrink-0 w-1.5 h-1.5 rounded-full bg-[#C9A96E] mt-2" />

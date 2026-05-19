@@ -108,7 +108,7 @@ export default function OrderConfirmedContent() {
             Je bestelling wordt zo snel mogelijk verwerkt en verstuurd.
           </p>
           <p className="text-[13px] text-stone-600 font-light leading-relaxed italic">
-            Vragen? Stuur een mail naar hello@lume-skincare.nl
+            Vragen? Stuur een mail naar hello@mauyi.nl
           </p>
         </motion.div>
 
@@ -121,7 +121,7 @@ export default function OrderConfirmedContent() {
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
               <path d="M10 6H2M5 2L1 6l4 4"/>
             </svg>
-            Terug naar LUMÉ
+            Terug naar MAUYI
           </Link>
           <Link
             href="/shop"

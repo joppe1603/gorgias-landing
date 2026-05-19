@@ -41,7 +41,7 @@ const ugcCards = [
   },
   {
     type: 'photo-text',
-    quote: 'Mijn barrière was kapot van te veel scrubben. Na 8 weken LUMÉ voelt mijn huid eindelijk normaal.',
+    quote: 'Mijn barrière was kapot van te veel scrubben. Na 8 weken MAUYI voelt mijn huid eindelijk normaal.',
     author: 'Hannah Park',
     location: 'Seoul',
     skin: 'Gevoelige huid · 8 weken',

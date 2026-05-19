@@ -30,7 +30,7 @@ const products = [
     size:        'Volledige routine · 3 producten',
     price:       '€129',
     originalPrice: '€174',
-    description: 'De complete LUMÉ ochtend- en avondroutine voor transformerende resultaten.',
+    description: 'De complete MAUYI ochtend- en avondroutine voor transformerende resultaten.',
     image:       'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=480&q=80&fit=crop',
     items: [
       'Radiance Serum (ochtend)',
@@ -89,7 +89,7 @@ export default function Pricing() {
           className="text-center mb-14"
         >
           <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[#C9A96E] bg-[#FDF8F0] px-4 py-1.5 rounded-full mb-4">
-            Shop LUMÉ
+            Shop MAUYI
           </span>
           <h2 className="text-4xl sm:text-5xl font-bold text-[#1A1A1A] mb-5 leading-tight">
             Kies je
@@ -206,7 +206,7 @@ export default function Pricing() {
           ))}
         </div>
 
-        {/* Waarom LUMÉ strip */}
+        {/* Waarom MAUYI strip */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -214,7 +214,7 @@ export default function Pricing() {
           transition={{ duration: 0.55, delay: 0.2 }}
           className="mt-16 bg-[#FAF8F5] border border-stone-100 rounded-2xl p-8"
         >
-          <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-stone-400 mb-8">Waarom LUMÉ?</p>
+          <p className="text-center text-xs font-bold uppercase tracking-[0.2em] text-stone-400 mb-8">Waarom MAUYI?</p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {whyItems.map((item) => (
               <div key={item.title} className="text-center">

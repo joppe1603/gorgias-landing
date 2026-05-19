@@ -244,11 +244,11 @@ export default function ScienceContent() {
             <p className="text-white text-[1.2rem] leading-[1.75] font-light mb-8 max-w-2xl mx-auto"
               style={{ fontFamily: 'var(--font-cormorant)' }}
             >
-              LUMÉ formuleert uitsluitend rond ingrediënten met een gedocumenteerde werking in de cosmetologische literatuur. We maken geen medische claims. We vertalen wetenschap naar eerlijke, effectieve huidverzorging.
+              MAUYI formuleert uitsluitend rond ingrediënten met een gedocumenteerde werking in de cosmetologische literatuur. We maken geen medische claims. We vertalen wetenschap naar eerlijke, effectieve huidverzorging.
             </p>
 
             <p className="text-stone-500 text-[13px]">
-              LUMÉ producten zijn cosmetische producten — geen medische behandelingen.
+              MAUYI producten zijn cosmetische producten — geen medische behandelingen.
             </p>
           </motion.div>
         </div>
@@ -278,7 +278,7 @@ export default function ScienceContent() {
                 href="/why-lume"
                 className="btn-outline inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-medium text-[15px]"
               >
-                Waarom LUMÉ
+                Waarom MAUYI
               </Link>
             </div>
           </motion.div>

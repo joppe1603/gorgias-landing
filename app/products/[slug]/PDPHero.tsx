@@ -109,7 +109,7 @@ export default function PDPHero({ product }: { product: Product }) {
                       <div className="absolute bottom-5 left-5 right-5">
                         <div className="bg-[#0F0E0C]/88 backdrop-blur-md rounded-2xl px-4 py-3.5 border border-white/8">
                           <p className="text-[9px] font-bold uppercase tracking-[0.22em] text-[#C9A96E] mb-1.5">
-                            LUMÉ — standpunt
+                            MAUYI — standpunt
                           </p>
                           <p className="text-[13px] font-light text-stone-200 italic leading-relaxed">
                             {product.emotion || product.tagline}
@@ -150,7 +150,7 @@ export default function PDPHero({ product }: { product: Product }) {
                   <motion.div style={{ y: imageY }} className="absolute inset-[-10%] w-[120%] h-[120%]">
                     <Image
                       src={product.heroImage}
-                      alt={`${product.name} — LUMÉ`}
+                      alt={`${product.name} — MAUYI`}
                       fill
                       className="object-cover"
                       sizes="54vw"
@@ -179,7 +179,7 @@ export default function PDPHero({ product }: { product: Product }) {
                   >
                     <div className="bg-[#0F0E0C]/88 backdrop-blur-md rounded-2xl px-5 py-4 border border-white/8">
                       <p className="text-[9px] font-bold uppercase tracking-[0.22em] text-[#C9A96E] mb-2">
-                        LUMÉ — standpunt
+                        MAUYI — standpunt
                       </p>
                       <p className="text-sm font-light text-stone-200 italic leading-relaxed">
                         {product.emotion || product.tagline}

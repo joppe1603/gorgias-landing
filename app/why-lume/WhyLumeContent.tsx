@@ -64,7 +64,7 @@ export default function WhyLumeContent() {
           >
             <div className="flex items-center justify-center gap-3 mb-8">
               <div className="w-8 h-px bg-[#C9A96E]/50" />
-              <span className="section-label text-[#C9A96E]">Waarom LUMÉ bestaat</span>
+              <span className="section-label text-[#C9A96E]">Waarom MAUYI bestaat</span>
               <div className="w-8 h-px bg-[#C9A96E]/50" />
             </div>
 
@@ -77,7 +77,7 @@ export default function WhyLumeContent() {
             </h1>
 
             <p className="text-stone-400 text-lg leading-relaxed max-w-2xl mx-auto font-light">
-              LUMÉ begon met één observatie: mensen kopen te veel, zien te weinig resultaat, en vertrouwen zichzelf niet meer. We bouwen ons merk op één principe — elk product moet zo goed zijn dat het de rest overbodig maakt.
+              MAUYI begon met één observatie: mensen kopen te veel, zien te weinig resultaat, en vertrouwen zichzelf niet meer. We bouwen ons merk op één principe — elk product moet zo goed zijn dat het de rest overbodig maakt.
             </p>
           </motion.div>
         </div>
@@ -102,13 +102,13 @@ export default function WhyLumeContent() {
 
             <div className="space-y-5 text-[16px] text-[#5C5754] leading-[1.85] font-light">
               <p>
-                LUMÉ is niet geboren uit een marketingstrategie. Het begon met een simpele vraag: waarom kopen mensen twaalf huidverzorgingsproducten, en ziet hun huid er toch niet beter uit?
+                MAUYI is niet geboren uit een marketingstrategie. Het begon met een simpele vraag: waarom kopen mensen twaalf huidverzorgingsproducten, en ziet hun huid er toch niet beter uit?
               </p>
               <p>
                 Het antwoord is even simpel als onaangenaam: de industrie verkoopt complexiteit. Nieuwe actieve stoffen, nieuwe rituals, nieuwe problemen om op te lossen. En wij zijn erin meegegaan — tot onze huid uitputte.
               </p>
               <p>
-                LUMÉ werkt andersom. We beginnen bij de vraag: <em>wat heeft huid echt nodig?</em> En bouwen van daaruit. Dat levert minder producten op. Maar producten die werken.
+                MAUYI werkt andersom. We beginnen bij de vraag: <em>wat heeft huid echt nodig?</em> En bouwen van daaruit. Dat levert minder producten op. Maar producten die werken.
               </p>
             </div>
           </motion.div>
@@ -212,7 +212,7 @@ export default function WhyLumeContent() {
             </h2>
 
             <p className="text-[16px] text-[#5C5754] leading-relaxed mb-10 font-light">
-              Als jouw huid er na 30 dagen niet beter uitziet dan voor LUMÉ, krijg je alles terug. Geen formulieren, geen terugstuurkosten. Wij geloven in de formule — of we staan er garant voor.
+              Als jouw huid er na 30 dagen niet beter uitziet dan voor MAUYI, krijg je alles terug. Geen formulieren, geen terugstuurkosten. Wij geloven in de formule — of we staan er garant voor.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

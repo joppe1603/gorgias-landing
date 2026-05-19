@@ -4,8 +4,8 @@ import Footer from '@/components/Footer'
 import WhyLumeContent from './WhyLumeContent'
 
 export const metadata: Metadata = {
-  title: 'Waarom LUMÉ | Huidverzorging zonder compromis',
-  description: 'LUMÉ bestaat omdat de huidverzorgingsindustrie te ingewikkeld is geworden. Lees onze filosofie, onze principes en wat we bewust weglaten.',
+  title: 'Waarom MAUYI | Huidverzorging zonder compromis',
+  description: 'MAUYI bestaat omdat de huidverzorgingsindustrie te ingewikkeld is geworden. Lees onze filosofie, onze principes en wat we bewust weglaten.',
 }
 
 export default function WhyLumePage() {
