@@ -192,6 +192,22 @@ export default function LaunchContent() {
         </div>
       </section>
 
+      {/* ── LAB VISUAL ────────────────────────────────── */}
+      <section className="relative h-[420px] lg:h-[540px] overflow-hidden">
+        <Image
+          src="/factory-lab.jpg"
+          alt="MAUYI laboratorium — formuleontwikkeling"
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0F0E0C]/70 via-[#0F0E0C]/20 to-transparent" />
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-center">
+          <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#C9A96E]">Formuleontwikkeling · Lab</span>
+          <p className="text-white/70 text-[13px] font-light italic mt-1.5">Elk ingredient getest. Elke concentratie bewust bepaald.</p>
+        </div>
+      </section>
+
       {/* ── COUNTDOWN ─────────────────────────────────── */}
       <LaunchCountdown />
 
