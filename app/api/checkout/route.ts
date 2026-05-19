@@ -41,16 +41,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Bestelling kon niet worden opgeslagen.' }, { status: 500 })
     }
 
-    // Create Mollie payment via direct API call (bypasses SDK ESM issues)
+    // Create Mollie payment via direct API call
     const siteUrl = 'https://www.mauyi.nl'
-    console.log('BASE_URL env:', JSON.stringify(process.env.NEXT_PUBLIC_BASE_URL))
-    console.log('order.id:', JSON.stringify(order.id))
-    const redirectUrl = `${siteUrl}/order-confirmed?order_id=${order.id}`
-    console.log('redirectUrl:', redirectUrl)
     const mollieBody = {
       amount: { currency: 'EUR', value: total.toFixed(2) },
       description: `MAUYI bestelling`,
-      redirectUrl,
+      redirectUrl: `${siteUrl}/order-confirmed?order_id=${order.id}`,
       webhookUrl: `${siteUrl}/api/checkout/webhook`,
       metadata: { orderId: order.id, email: form.email },
       locale: 'nl_NL',
@@ -69,7 +65,7 @@ export async function POST(req: NextRequest) {
 
     if (!mollieRes.ok) {
       console.error('Mollie API error:', JSON.stringify(mollieData))
-      return NextResponse.json({ error: `Mollie: ${mollieData?.detail ?? mollieData?.title ?? JSON.stringify(mollieData)}` }, { status: 500 })
+      return NextResponse.json({ error: 'Betaling kon niet worden aangemaakt. Probeer het opnieuw.' }, { status: 500 })
     }
 
     const checkoutUrl = mollieData._links?.checkout?.href
