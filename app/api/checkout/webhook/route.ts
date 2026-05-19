@@ -81,8 +81,20 @@ export async function POST(req: NextRequest) {
         console.error('MyParcel exception:', myparcelErr)
       }
 
+      // ── Inventory: decrement stock ────────────────────────────────────
+      try {
+        const orderItems = order.items as Array<{ slug: string; quantity: number }>
+        for (const item of orderItems) {
+          if (item.slug) {
+            await supabase.rpc('decrement_inventory', { slug: item.slug, qty: item.quantity })
+          }
+        }
+      } catch (invErr) {
+        console.error('Inventory decrement error:', invErr)
+      }
+
       const resend = new Resend(process.env.RESEND_API_KEY!)
-      const items = order.items as Array<{ name: string; quantity: number; price: number; size: string }>
+      const items = order.items as Array<{ name: string; quantity: number; price: number; size: string; slug?: string }>
 
       await resend.emails.send({
         from: process.env.RESEND_FROM_EMAIL!,
@@ -154,6 +166,16 @@ export async function POST(req: NextRequest) {
                         ${order.address.zipCode} ${order.address.city}<br>
                         ${order.address.country === 'NL' ? 'Nederland' : order.address.country === 'BE' ? 'België' : order.address.country}
                       </p>
+
+                      <!-- Divider -->
+                      <div style="height:1px;background:linear-gradient(to right,transparent,#C9A96E,transparent);margin:32px 0;"></div>
+
+                      <!-- Order status link -->
+                      <div style="margin:32px 0 0;text-align:center;">
+                        <a href="${process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.lume-skincare.nl'}/orders/${order.id}" style="display:inline-block;background:#0F0E0C;color:#FAF8F5;padding:12px 24px;border-radius:12px;text-decoration:none;font-weight:600;font-size:13px;letter-spacing:0.05em;">
+                          Bekijk je bestelling →
+                        </a>
+                      </div>
 
                       <!-- Divider -->
                       <div style="height:1px;background:linear-gradient(to right,transparent,#C9A96E,transparent);margin:32px 0;"></div>
