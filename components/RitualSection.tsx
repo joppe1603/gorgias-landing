@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
-const RITUAL_IMAGE = '/quiet-cleanser.jpg'
+const RITUAL_IMAGE = '/reset-serum-3.jpg'
 
 const steps = [
   {
