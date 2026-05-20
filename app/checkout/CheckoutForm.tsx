@@ -65,7 +65,7 @@ export default function CheckoutForm() {
   // Lock suggestion at mount — never changes, disappears once added to cart
   const [suggestedProduct] = useState(() =>
     getAllProducts().find(
-      p => p.availability === 'pre-launch' && p.slug !== 'test-sample' && !state.items.find(i => i.slug === p.slug)
+      p => !p.hidden && p.availability === 'pre-launch' && p.slug !== 'test-sample' && !state.items.find(i => i.slug === p.slug)
     )
   )
 

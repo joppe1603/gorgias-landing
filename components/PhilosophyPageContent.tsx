@@ -237,8 +237,8 @@ export default function PhilosophyPageContent() {
               Bouw een routine die past bij jouw huid. Drie stappen. Geen ruis.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href="/routine" className="btn-gold inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl font-medium text-sm">
-                Bouw mijn routine
+              <Link href="/products/reset-serum" className="btn-gold inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl font-medium text-sm">
+                Bekijk Reset Serum
               </Link>
               <Link href="/ingredients" className="btn-outline inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl font-medium text-sm">
                 Lees over ingrediënten

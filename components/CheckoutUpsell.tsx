@@ -16,7 +16,7 @@ const DISCOUNT = 0.10
 export default function CheckoutUpsell({ cartSlugs, onAccept, onDecline }: Props) {
   // Pick first available product not already in cart
   const upsell = getAllProducts().find(
-    (p) => !cartSlugs.includes(p.slug) && p.availability === 'pre-launch' && p.slug !== 'test-sample'
+    (p) => !p.hidden && !cartSlugs.includes(p.slug) && p.availability === 'pre-launch' && p.slug !== 'test-sample'
   )
 
   // Close on Escape

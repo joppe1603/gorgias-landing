@@ -331,8 +331,8 @@ export default function IngredientsPageContent() {
               <Link href="/shop" className="btn-gold inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl font-medium text-sm">
                 Shop de producten
               </Link>
-              <Link href="/routine" className="btn-outline inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl font-medium text-sm">
-                Bouw mijn routine
+              <Link href="/products/reset-serum" className="btn-outline inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl font-medium text-sm">
+                Bekijk Reset Serum
               </Link>
             </div>
           </motion.div>

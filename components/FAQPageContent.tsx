@@ -200,7 +200,7 @@ export default function FAQPageContent() {
           <div className="flex flex-wrap justify-center gap-3">
             {[
               { label: 'Ingrediënten & Wetenschap', href: '/ingredients' },
-              { label: 'Routine Builder', href: '/routine' },
+              { label: 'Reset Serum', href: '/products/reset-serum' },
               { label: 'Onze Filosofie', href: '/philosophy' },
             ].map(l => (
               <Link key={l.label} href={l.href} className="btn-outline inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-sm font-medium">

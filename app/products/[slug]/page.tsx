@@ -325,15 +325,6 @@ export default async function ProductPage({
                 ))}
               </div>
 
-              {/* Back to shop */}
-              <div className="mt-10 text-center">
-                <Link
-                  href="/shop"
-                  className="btn-outline inline-flex items-center gap-2 px-6 py-3 rounded-2xl text-sm font-medium"
-                >
-                  ← Terug naar alle producten
-                </Link>
-              </div>
             </div>
           </section>
         )}

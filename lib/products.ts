@@ -496,5 +496,5 @@ export function getProduct(slug: string): Product | undefined {
 }
 
 export function getRelatedProducts(slugs: string[]): Product[] {
-  return PRODUCTS.filter((p) => slugs.includes(p.slug))
+  return PRODUCTS.filter((p) => slugs.includes(p.slug) && !p.hidden)
 }

@@ -49,19 +49,19 @@ export default function Hero() {
             {/* CTAs */}
             <motion.div {...fadeUp(0.24)} className="flex flex-wrap gap-4 mb-14">
               <Link
-                href="/shop"
+                href="/products/reset-serum"
                 className="btn-gold inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl font-medium text-[15px]"
               >
-                Shop de routine
+                Bestel nu
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                   <path d="M2 7h10M8 3l4 4-4 4"/>
                 </svg>
               </Link>
               <Link
-                href="/routine"
+                href="/products/reset-serum"
                 className="btn-outline inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-medium text-[15px]"
               >
-                Bouw mijn routine
+                Bekijk Reset Serum
               </Link>
             </motion.div>
 
