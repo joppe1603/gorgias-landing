@@ -13,8 +13,6 @@ const footerLinks: Record<string, { label: string; href: string }[]> = {
   ],
   'Producten': [
     { label: 'Reset Serum',        href: '/products/reset-serum' },
-    { label: 'Quiet Cleanser',     href: '/products/quiet-cleanser' },
-    { label: 'Soft Barrier Cream', href: '/products/soft-barrier-cream' },
     { label: 'Lancering volgen',   href: '/launch' },
   ],
   'Juridisch': [
