@@ -6,32 +6,6 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useCart } from '@/contexts/CartContext'
 
-const shopColumns = [
-  {
-    title: 'Producten',
-    links: [
-      { label: 'Quiet Cleanser',      href: '/products/quiet-cleanser',      desc: 'Stap 01 — Zachte dagelijkse reiniger' },
-      { label: 'Reset Serum',         href: '/products/reset-serum',          desc: 'Stap 02 — Bestseller · Retinol + Niacinamide' },
-      { label: 'Soft Barrier Cream',  href: '/products/soft-barrier-cream',   desc: 'Stap 03 — Barrièreherstel & hydratatie' },
-    ],
-  },
-  {
-    title: 'Bundels',
-    links: [
-      { label: 'The Glow Ritual',     href: '/products/the-glow-ritual',     desc: 'Volledige 3-stappen routine · Bespaar €45' },
-      { label: 'Sensitive Skin Edit', href: '/products/sensitive-skin-edit', desc: 'Bakuchiol · Geschikt voor gevoelige huid' },
-      { label: 'Travel Kit',          href: '/products/travel-kit',           desc: '15ml minis · Handbagage formaat' },
-    ],
-  },
-  {
-    title: 'Alle producten',
-    links: [
-      { label: 'Bekijk alles',        href: '/shop',            desc: 'Volledige productcollectie' },
-      { label: 'Bestsellers',         href: '/shop?filter=bestsellers', desc: 'Meest geliefd door onze community' },
-      { label: 'Routine Builder',     href: '/routine',         desc: 'Vind de routine voor jouw huid' },
-    ],
-  },
-]
 
 const exploreLinks = [
   { label: 'Filosofie',       href: '/philosophy',    desc: 'Waarom minder meer is' },
@@ -43,27 +17,6 @@ const exploreLinks = [
   { label: 'FAQ',             href: '/faq',           desc: 'Goede vragen. Eerlijke antwoorden.' },
 ]
 
-function MegaMenuPanel({ columns }: { columns: typeof shopColumns }) {
-  return (
-    <div className="rounded-2xl border border-stone-100 bg-white shadow-2xl shadow-stone-200/40 p-8 grid grid-cols-3 gap-8 min-w-[640px]">
-      {columns.map((col) => (
-        <div key={col.title}>
-          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 mb-4">{col.title}</p>
-          <ul className="space-y-3">
-            {col.links.map((l) => (
-              <li key={l.label}>
-                <Link href={l.href} className="block group rounded-xl px-2 py-1.5 -mx-2 hover:bg-[#FAF8F5] transition-all">
-                  <span className="text-sm font-medium text-stone-800 group-hover:text-[#C9A96E] transition-colors block">{l.label}</span>
-                  <span className="text-xs text-stone-400 mt-0.5 leading-snug block">{l.desc}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
-  )
-}
 
 const mobileLinkVariants = {
   hidden: { opacity: 0, y: -8 },
@@ -149,20 +102,7 @@ export default function Navbar() {
 
               {/* Desktop nav */}
               <div className="hidden md:flex items-center gap-0.5">
-                {/* Shop mega */}
-                <div className="relative group">
-                  <button type="button" className={`px-4 py-2 text-sm font-medium rounded-lg cursor-pointer transition-all flex items-center gap-1 ${pathname.startsWith('/shop') || pathname.startsWith('/products') ? 'text-[#C9A96E]' : 'text-stone-600 hover:text-[#C9A96E]'}`}>
-                    Shop
-                    <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" className="opacity-40" aria-hidden>
-                      <path d="M3 4.5L6 7.5L9 4.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </button>
-                  <div className="absolute left-0 top-full pt-3 opacity-0 invisible pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:pointer-events-auto transition-all duration-200 z-50">
-                    <MegaMenuPanel columns={shopColumns} />
-                  </div>
-                </div>
-
-                {navLink('/routine', 'Routine')}
+                {navLink('/products/reset-serum', 'Reset Serum')}
 
                 {/* Ontdekken mega */}
                 <div className="relative group">
@@ -266,18 +206,16 @@ export default function Navbar() {
               variants={{ hidden: {}, show: { transition: { staggerChildren: 0.05, delayChildren: 0.08 } } }}
               className="px-6 py-4 max-h-[72vh] overflow-y-auto"
             >
-              {/* Shop */}
+              {/* Product */}
               <motion.p variants={mobileLinkVariants} className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 mb-2 mt-2">
-                Shop
+                Product
               </motion.p>
-              {shopColumns.flatMap(c => c.links.slice(0, 2)).map((l) => (
-                <motion.div key={l.label} variants={mobileLinkVariants}>
-                  <Link href={l.href} onClick={() => setMobileOpen(false)} className="block px-4 py-2.5 text-sm font-medium text-stone-800 hover:text-[#C9A96E] hover:bg-[#FAF8F5] rounded-xl cursor-pointer transition-all">
-                    {l.label}
-                    <span className="block text-xs text-stone-400 font-normal mt-0.5">{l.desc}</span>
-                  </Link>
-                </motion.div>
-              ))}
+              <motion.div variants={mobileLinkVariants}>
+                <Link href="/products/reset-serum" onClick={() => setMobileOpen(false)} className="block px-4 py-2.5 text-sm font-medium text-stone-800 hover:text-[#C9A96E] hover:bg-[#FAF8F5] rounded-xl cursor-pointer transition-all">
+                  Reset Serum
+                  <span className="block text-xs text-stone-400 font-normal mt-0.5">Bestseller · Retinol + Niacinamide + Hyaluronzuur</span>
+                </Link>
+              </motion.div>
 
               {/* Explore */}
               <motion.p variants={mobileLinkVariants} className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 mb-2 mt-5">

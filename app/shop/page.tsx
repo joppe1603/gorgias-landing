@@ -1,19 +1,5 @@
-import type { Metadata } from 'next'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
-import ShopPage from '@/components/ShopPage'
-
-export const metadata: Metadata = {
-  title: 'Shop',
-  description: 'De volledige MAUYI collectie. Quiet Cleanser, Reset Serum, Soft Barrier Cream en meer.',
-}
+import { redirect } from 'next/navigation'
 
 export default function Shop() {
-  return (
-    <>
-      <Navbar />
-      <ShopPage />
-      <Footer />
-    </>
-  )
+  redirect('/products/reset-serum')
 }

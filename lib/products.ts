@@ -468,7 +468,6 @@ const PRODUCTS: Product[] = [
     price: 0.02,
     size: '1ml',
     availability: 'available',
-    hidden: true,
     heroImage: '/reset-serum-new.jpg',
     description: 'Intern testproduct.',
     longDescription: 'Intern testproduct.',
