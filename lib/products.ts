@@ -52,6 +52,8 @@ export type Product = {
   }
   // 'available' | 'pre-launch' | 'sample' — defaults to 'pre-launch' if omitted
   availability?: 'available' | 'pre-launch' | 'sample'
+  // hidden products are not shown in shop or product pages
+  hidden?: boolean
 }
 
 const PRODUCTS: Product[] = [
@@ -63,6 +65,7 @@ const PRODUCTS: Product[] = [
     price: 38,
     size: '150ml',
     availability: 'pre-launch',
+    hidden: true,
     heroImage: '/quiet-cleanser.jpg',
     description: 'Zachte foamreiniger die SPF, make-up en vervuiling verwijdert zonder de huidbarrière te verstoren. Ceramiden en Provitamine B5 herstellen terwijl je reinigt.',
     longDescription: 'De Quiet Cleanser is ontworpen vanuit één principe: reiniging mag nooit ten koste gaan van de huidbarrière. Waar de meeste cleansers de beschermende lipiden wegspoelen, versterkt de Quiet Cleanser deze juist. Ceramiden vullen de barrière aan. Provitamine B5 kalmeert. Allantoin herstelt. Het resultaat is een huid die na het reinigen niet strak aanvoelt, maar soepel en klaar voor de volgende stap.',
@@ -113,7 +116,7 @@ const PRODUCTS: Product[] = [
     badge: 'Bestseller',
     price: 58,
     size: '30ml',
-    availability: 'pre-launch',
+    availability: 'available',
     heroImage: '/reset-serum-new.jpg',
     description: 'Retinol 0.3%, Niacinamide 10% en Hyaluronzuur in één stabiele formule. Effectief voor celvernieuwing, poriënverfijning en hydratatie — zonder irritatie.',
     longDescription: 'Het Reset Serum is ons antwoord op onnodige complexiteit. In plaats van drie afzonderlijke serums voor retinol, niacinamide en hydratie, combineert het Reset Serum deze drie klinisch bewezen ingrediënten in één lichte, waterige textuur. Retinol stimuleert celvernieuwing. Niacinamide verfijnt poriën en egalisert de huidtint. Hyaluronzuur op drie molecuulgewichten hydrateert op elk niveau. Het resultaat: minder stappen, meer effect.',
@@ -166,6 +169,7 @@ const PRODUCTS: Product[] = [
     price: 48,
     size: '50ml',
     availability: 'pre-launch',
+    hidden: true,
     heroImage: '/soft-barrier-cream.jpg',
     description: 'Lichte dagcrème die de huidbarrière herstelt en langdurig vocht vasthoudt. Met Bakuchiol en Ceramiden. Werkt als afsluiting van de ochtend- én avondroutine.',
     longDescription: 'De Soft Barrier Cream is de laatste stap in je routine — en een van de belangrijkste. Een beschadigde huidbarrière laat vocht ontsnappen en externe irritanten toe. Ceramiden vullen de lipidenmantels aan. Bakuchiol voegt milde celvernieuwing toe. Squalaan sluit alles in zonder te verstoppen. Het resultaat is een huid die de rest van de dag beschermd en gehydrateerd blijft — zonder de vettige glans van zwaardere crèmes.',
@@ -217,6 +221,7 @@ const PRODUCTS: Product[] = [
     price: 52,
     size: '30ml',
     availability: 'pre-launch',
+    hidden: true,
     heroImage: '/overnight-renewal-oil.jpg',
     description: 'Lichte droge olie met Rozenbottelolie, Bakuchiol en Squalaan. Werkt nachtelijk aan celvernieuwing en barrièreherstel zonder zware textuur.',
     longDescription: 'De nacht is het meest actieve herstelmoment voor je huid. De Overnight Renewal Oil maakt gebruik van dit raam: Rozenbottelolie levert vitamine A en essentielle vetzuren voor celvernieuwing. Bakuchiol versterkt dit effect en verbetert huidtoon. Squalaan sluit alles in — licht, non-comedogeen en volledig plantaardig. Geen kunstmatig parfum. Geen overbodige vullers. Alleen wat werkt.',
@@ -268,6 +273,7 @@ const PRODUCTS: Product[] = [
     price: 58,
     size: '30ml',
     availability: 'pre-launch',
+    hidden: true,
     heroImage: '/radiance-serum.jpg',
     description:
       'Ons serum combineert Vitamine C 15% met Retinol 0.3% en Niacinamide 5% voor een stralende en egale huid. Geformuleerd voor zichtbaar effect.',
@@ -333,6 +339,7 @@ const PRODUCTS: Product[] = [
     originalPrice: 174,
     size: 'Volledige routine · 3 producten',
     availability: 'pre-launch',
+    hidden: true,
     heroImage: '/the-glow-ritual.jpg',
     description:
       'De complete MAUYI ochtend- en avondroutine in één bundel. Inclusief gratis Mini Oogcrème. Bespaar €45 ten opzichte van los kopen.',
@@ -397,6 +404,7 @@ const PRODUCTS: Product[] = [
     price: 89,
     size: '2 producten',
     availability: 'pre-launch',
+    hidden: true,
     heroImage: '/sensitive-skin-edit.jpg',
     description:
       'Bakuchiol geeft je retinol-achtige resultaten zonder irritatie. Gecombineerd met onze Barrier Restore Cream voor een versterkte, rustige huid.',
@@ -460,6 +468,7 @@ const PRODUCTS: Product[] = [
     price: 0.02,
     size: '1ml',
     availability: 'available',
+    hidden: true,
     heroImage: '/reset-serum-new.jpg',
     description: 'Intern testproduct.',
     longDescription: 'Intern testproduct.',
@@ -473,8 +482,14 @@ const PRODUCTS: Product[] = [
   },
 ]
 
+// Returns all products including hidden ones — for internal use (checkout, order enrichment)
 export function getAllProducts(): Product[] {
   return PRODUCTS
+}
+
+// Returns only visible products — for shop listings and public pages
+export function getPublicProducts(): Product[] {
+  return PRODUCTS.filter((p) => !p.hidden)
 }
 
 export function getProduct(slug: string): Product | undefined {

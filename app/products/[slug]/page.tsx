@@ -12,14 +12,14 @@ import PDPRoutineContext from './PDPRoutineContext'
 import PDPWhyThisWorks from './PDPWhyThisWorks'
 import PDPUsageTimeline from './PDPUsageTimeline'
 import PDPFaq from './PDPFaq'
-import { getProduct, getAllProducts, getRelatedProducts } from '@/lib/products'
+import { getProduct, getAllProducts, getPublicProducts, getRelatedProducts } from '@/lib/products'
 import PDPBundleUpsell from './PDPBundleUpsell'
 import PDPReviews from './PDPReviews'
 
 const BASE_URL = 'https://mauyi.nl'
 
 export function generateStaticParams() {
-  return getAllProducts().map((p) => ({ slug: p.slug }))
+  return getPublicProducts().map((p) => ({ slug: p.slug }))
 }
 
 export async function generateMetadata({
@@ -56,7 +56,7 @@ export default async function ProductPage({
 }) {
   const { slug } = await params
   const product = getProduct(slug)
-  if (!product) notFound()
+  if (!product || product.hidden) notFound()
 
   const related = getRelatedProducts(product.relatedSlugs)
 

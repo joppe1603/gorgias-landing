@@ -95,9 +95,15 @@ export async function POST(req: NextRequest) {
 
       // ── Waitlist: voeg klant toe aan emaillijst ───────────────────────
       try {
-        await supabase
-          .from('waitlist')
-          .upsert({ email: order.email, source: 'checkout' }, { onConflict: 'email', ignoreDuplicates: true })
+        const orderItems = order.items as Array<{ slug?: string }>
+        const productSlug = orderItems.map(i => i.slug).filter(Boolean).join(', ') || null
+        const { data: existing } = await supabase
+          .from('waitlist').select('id').eq('email', order.email).maybeSingle()
+        if (existing) {
+          await supabase.from('waitlist').update({ product_slug: productSlug }).eq('email', order.email)
+        } else {
+          await supabase.from('waitlist').insert({ email: order.email, source: 'checkout', product_slug: productSlug })
+        }
       } catch (waitlistErr) {
         console.error('Waitlist upsert error:', waitlistErr)
       }

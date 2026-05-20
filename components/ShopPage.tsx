@@ -10,6 +10,7 @@ const filters = ['Alles', 'Serums', 'Reinigers', 'Crèmes', 'Bundels', 'Gevoelig
 const products = [
   {
     slug: 'quiet-cleanser',
+    hidden: true,
     name: 'Quiet Cleanser',
     tagline: 'Reinigt zonder te verstoren.',
     price: 38,
@@ -34,6 +35,7 @@ const products = [
   },
   {
     slug: 'soft-barrier-cream',
+    hidden: true,
     name: 'Soft Barrier Cream',
     tagline: 'Hydratatie zonder het vettige gevoel.',
     price: 48,
@@ -46,6 +48,7 @@ const products = [
   },
   {
     slug: 'the-glow-ritual',
+    hidden: true,
     name: 'The Glow Ritual',
     tagline: 'Volledige 3-stappen routine.',
     price: 129,
@@ -59,6 +62,7 @@ const products = [
   },
   {
     slug: 'sensitive-skin-edit',
+    hidden: true,
     name: 'Sensitive Skin Edit',
     tagline: 'Resultaat zonder irritatie.',
     price: 89,
@@ -71,6 +75,7 @@ const products = [
   },
   {
     slug: 'overnight-renewal-oil',
+    hidden: true,
     name: 'Overnight Renewal Oil',
     tagline: 'Herstellend terwijl je slaapt.',
     price: 52,
@@ -98,9 +103,10 @@ function Stars() {
 export default function ShopPage() {
   const [activeFilter, setActiveFilter] = useState('Alles')
 
+  const visibleProducts = products.filter(p => !('hidden' in p && p.hidden))
   const filtered = activeFilter === 'Alles'
-    ? products
-    : products.filter(p => p.categories.includes(activeFilter))
+    ? visibleProducts
+    : visibleProducts.filter(p => p.categories.includes(activeFilter))
 
   return (
     <main>
@@ -229,17 +235,17 @@ export default function ShopPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="section-label mb-4" style={{ color: '#C9A96E' }}>Niet zeker waar je moet beginnen?</p>
+            <p className="section-label mb-4" style={{ color: '#C9A96E' }}>Wees er als eerste bij</p>
             <h2 className="text-4xl sm:text-5xl font-semibold text-white leading-[1.08] mb-6">
-              Wij vinden de
+              De lancering
               <br />
-              <span className="text-stone-500 font-normal italic">routine voor jou.</span>
+              <span className="text-stone-500 font-normal italic">is begonnen.</span>
             </h2>
             <p className="text-stone-400 leading-relaxed mb-10 font-light">
-              Beantwoord 3 vragen. Krijg een persoonlijk advies. Geen ingewikkeld algoritme — gewoon eerlijk advies.
+              Meld je aan voor updates over nieuwe producten, restocks en exclusieve vroegboekers-aanbiedingen.
             </p>
-            <Link href="/routine" className="btn-gold inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-medium">
-              Bouw mijn routine
+            <Link href="/launch" className="btn-gold inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-medium">
+              Bekijk de lancering
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                 <path d="M2 7h10M8 3l4 4-4 4"/>
               </svg>
