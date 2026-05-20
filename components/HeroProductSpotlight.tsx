@@ -160,20 +160,6 @@ export default function HeroProductSpotlight() {
               <span className="text-sm text-[#9A9590]">30ml · incl. BTW</span>
             </motion.div>
 
-            {/* Pre-launch badge */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.26 }}
-              className="mb-6"
-            >
-              <span className="inline-flex items-center gap-2 text-[11px] font-medium text-[#9A9590] bg-[#FAF8F5] border border-stone-100 px-3 py-1.5 rounded-full">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C9A96E] animate-pulse" />
-                Kleine eerste batch in voorbereiding · Pre-launch
-              </span>
-            </motion.div>
-
             {/* CTA block */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}

@@ -5,32 +5,28 @@ import { motion } from 'framer-motion'
 
 const ingredients = [
   {
-    name: 'Retinol 0.3%',
-    category: 'Celvernieuwing',
+    mono: 'RETINOL 0.3%',
+    serif: 'Nachtherstel',
     description:
       'De gouden standaard in dermatologie — ingezet op de drempel van effectiviteit. Gebufferd door niacinamide zodat klinische resultaten niet ten koste gaan van draagbaarheid.',
-    detail: 'Celomloop · textuurverbetering · fijne lijntjes',
   },
   {
-    name: 'Bakuchiol',
-    category: 'Plantaardig alternatief',
+    mono: 'BAKUCHIOL',
+    serif: 'Zachter. Slimmer.',
     description:
-      'Spiegelt het werkingsmechanisme van retinol op receptor-niveau — zonder de irritatie. Samen met retinol versterken ze elkaar in een formule die geen compromissen sluit.',
-    detail: 'Anti-inflammatoir · antioxidant · synergistisch',
+      'Bakuchiol doet wat retinol doet, maar zonder haar compromis. Spiegelt het werkingsmechanisme op receptor-niveau — onverminderd effectief, zonder de irritatie.',
   },
   {
-    name: 'Niacinamide 10%',
-    category: 'Barrièreherstel',
+    mono: 'NIACINAMIDE 10%',
+    serif: 'Barrièreherstel',
     description:
-      'Op klinische dosis ingezet als buffer én actief. Vermindert roodheid, reguleert sebumproductie en versterkt de huidbarrière — precies waar retinol haar het meest nodig heeft.',
-    detail: 'Barrièreversterking · sebumregulatie · kalmering',
+      'Op klinische dosis ingezet als buffer én actief. Kalmeert, versterkt de huidbarrière en reguleert sebumproductie — precies waar retinol het meest nodig heeft.',
   },
   {
-    name: 'Hyaluronzuurcomplex',
-    category: 'Multi-gewicht hydratatie',
+    mono: 'HYALURONZUUR',
+    serif: 'Diep gevoed.',
     description:
-      'Drie molecuulgewichten die samenwerken — van oppervlaktehydratatie tot diep in de dermis. Geen vulstof. Actieve ondersteuning voor een formule die de huid intensief werkt.',
-    detail: 'Laag · middel · hoog molecuulgewicht',
+      'Drie molecuulgewichten die samenwerken van oppervlak tot dermis. Geen vulstof — actieve ondersteuning voor een formule die de huid intensief werkt.',
   },
 ]
 
@@ -40,7 +36,7 @@ export default function IngredientPhilosophy() {
 
       {/* Subtle grid */}
       <div
-        className="absolute inset-0 opacity-[0.016] pointer-events-none"
+        className="absolute inset-0 opacity-[0.015] pointer-events-none"
         aria-hidden
         style={{
           backgroundImage:
@@ -52,7 +48,7 @@ export default function IngredientPhilosophy() {
       <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
 
         {/* Header */}
-        <div className="max-w-2xl mb-20">
+        <div className="max-w-xl mb-20">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -71,12 +67,19 @@ export default function IngredientPhilosophy() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.85, delay: 0.07, ease: [0.22, 1, 0.36, 1] }}
-            className="text-white leading-[1.06] tracking-[-0.025em] mb-6"
-            style={{ fontSize: 'clamp(2.2rem, 4vw, 3.6rem)', fontWeight: 600 }}
+            style={{
+              fontFamily: 'var(--font-cormorant)',
+              fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)',
+              fontWeight: 600,
+              lineHeight: 1.06,
+              letterSpacing: '-0.02em',
+              color: 'white',
+            }}
+            className="mb-6"
           >
             Elk ingrediënt
             <br />
-            <span className="text-stone-500 font-normal italic">heeft een reden.</span>
+            <em className="text-stone-500 font-normal">heeft een reden.</em>
           </motion.h2>
 
           <motion.p
@@ -84,9 +87,9 @@ export default function IngredientPhilosophy() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.65, delay: 0.16 }}
-            className="text-stone-500 text-[16px] font-light leading-[1.8]"
+            className="text-stone-500 text-[15px] font-light leading-[1.85]"
           >
-            Reset Serum bevat geen vulstoffen, geen parfum, geen marketingingrediënten.
+            Geen vulstoffen. Geen parfum. Geen marketingingrediënten.
             Alleen wat werkt — op de concentratie waarop het werkt.
           </motion.p>
         </div>
@@ -95,38 +98,45 @@ export default function IngredientPhilosophy() {
         <div className="grid sm:grid-cols-2 gap-px bg-white/[0.04] rounded-2xl overflow-hidden">
           {ingredients.map((ing, i) => (
             <motion.div
-              key={ing.name}
+              key={ing.mono}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.65, delay: i * 0.09, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-[#0F0E0C] p-8 lg:p-10 group hover:bg-[#131109] transition-colors duration-400"
+              className="bg-[#0F0E0C] p-8 lg:p-10 hover:bg-[#121008] transition-colors duration-500"
             >
-              {/* Header row */}
-              <div className="flex items-start justify-between mb-6">
-                <div>
-                  <p className="text-[9px] font-bold uppercase tracking-[0.22em] text-[#C9A96E] mb-2.5">
-                    {ing.category}
-                  </p>
-                  <h3 className="text-[1.35rem] font-semibold text-white tracking-[-0.01em] leading-tight">
-                    {ing.name}
-                  </h3>
-                </div>
-                <div className="w-8 h-8 rounded-full border border-[#C9A96E]/18 flex items-center justify-center shrink-0 group-hover:border-[#C9A96E]/40 transition-colors duration-300 mt-0.5">
-                  <span className="text-[#C9A96E] text-[11px] font-bold">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                </div>
-              </div>
-
-              {/* Description */}
-              <p className="text-stone-400 text-[14px] font-light leading-[1.8] mb-6">
-                {ing.description}
+              {/* Mono label */}
+              <p
+                className="text-[#C9A96E] mb-3"
+                style={{
+                  fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
+                  fontSize: '10px',
+                  fontWeight: 600,
+                  letterSpacing: '0.22em',
+                  textTransform: 'uppercase',
+                }}
+              >
+                {ing.mono}
               </p>
 
-              {/* Details */}
-              <p className="text-[11px] text-stone-600 font-medium tracking-wide border-t border-white/[0.05] pt-5">
-                {ing.detail}
+              {/* Cormorant serif benefit */}
+              <p
+                className="text-white mb-5"
+                style={{
+                  fontFamily: 'var(--font-cormorant)',
+                  fontSize: 'clamp(1.5rem, 2.2vw, 2rem)',
+                  fontWeight: 400,
+                  fontStyle: 'italic',
+                  lineHeight: 1.15,
+                  letterSpacing: '-0.01em',
+                }}
+              >
+                {ing.serif}
+              </p>
+
+              {/* Description */}
+              <p className="text-stone-500 text-[14px] font-light leading-[1.85] border-t border-white/[0.05] pt-5">
+                {ing.description}
               </p>
             </motion.div>
           ))}
@@ -142,10 +152,10 @@ export default function IngredientPhilosophy() {
         >
           <Link
             href="/ingredients"
-            className="inline-flex items-center gap-2 text-[13px] font-medium text-stone-500 hover:text-[#C9A96E] transition-colors duration-200"
+            className="inline-flex items-center gap-2 text-[12px] font-medium text-stone-600 hover:text-[#C9A96E] transition-colors duration-200 tracking-[0.06em] uppercase"
           >
-            Alle ingrediënten & de wetenschappelijke onderbouwing
-            <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            Alle ingrediënten & wetenschappelijke onderbouwing
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
               <path d="M2 6h8M6 2l4 4-4 4" />
             </svg>
           </Link>

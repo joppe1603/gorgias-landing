@@ -77,7 +77,6 @@ export default function FounderNote() {
               {[
                 'We publiceren testresultaten — ook als ze tegenvallen',
                 'Eerste batch is beperkt. Wachtlijst leden krijgen als eerste een bericht',
-                'MAUYI maakt geen medische claims. Wij verkopen cosmetica.',
               ].map((promise, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <div className="shrink-0 w-1.5 h-1.5 rounded-full bg-[#C9A96E] mt-2" />

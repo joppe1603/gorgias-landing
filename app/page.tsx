@@ -1,14 +1,13 @@
 import PageEntrance from '@/components/PageEntrance'
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
-import TrustStrip from '@/components/TrustStrip'
 import HeroProductSpotlight from '@/components/HeroProductSpotlight'
 import WhyResetExists from '@/components/WhyResetExists'
 import IngredientPhilosophy from '@/components/IngredientPhilosophy'
 import UGCReviews from '@/components/UGCReviews'
 import EditorialQuote from '@/components/EditorialQuote'
 import FounderNote from '@/components/FounderNote'
-import InstagramGrid from '@/components/InstagramGrid'
+import EditorialTexture from '@/components/EditorialTexture'
 import ClosingCTA from '@/components/ClosingCTA'
 import Footer from '@/components/Footer'
 
@@ -17,7 +16,6 @@ export default function Home() {
     <PageEntrance>
       <Navbar />
       <Hero />
-      <TrustStrip />
       <HeroProductSpotlight />
       <WhyResetExists />
       <IngredientPhilosophy />
@@ -29,7 +27,7 @@ export default function Home() {
         size="md"
       />
       <FounderNote />
-      <InstagramGrid />
+      <EditorialTexture />
       <ClosingCTA />
       <Footer />
     </PageEntrance>

@@ -6,23 +6,6 @@ import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { useRef, useState } from 'react'
 import type { Product } from '@/lib/products'
 import { useCart } from '@/contexts/CartContext'
-import PDPSubscriptionToggle from './PDPSubscriptionToggle'
-
-function Stars({ rating, count }: { rating: number; count: number }) {
-  return (
-    <div className="flex items-center gap-2.5">
-      <div className="flex gap-0.5">
-        {[1, 2, 3, 4, 5].map((i) => (
-          <svg key={i} width="13" height="13" viewBox="0 0 16 16" fill={i <= Math.round(rating) ? '#C9A96E' : '#E5E7EB'} aria-hidden>
-            <path d="M8 1L9.8 5.5H15L10.8 8.5L12.5 13L8 10L3.5 13L5.2 8.5L1 5.5H6.2L8 1Z" />
-          </svg>
-        ))}
-      </div>
-      <span className="text-sm font-semibold text-[#1A1A1A] tabular-nums">{rating}</span>
-      <span className="text-sm text-[#9A9590]">({count.toLocaleString('nl-NL')})</span>
-    </div>
-  )
-}
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 22 },
@@ -42,11 +25,7 @@ export default function PDPHero({ product }: { product: Product }) {
   const { dispatch } = useCart()
   const [added, setAdded] = useState(false)
   const [activeSlide, setActiveSlide] = useState(0)
-  const [isSubscription, setIsSubscription] = useState(false)
   const isAvailable = product.availability === 'available'
-  const displayPrice = isSubscription
-    ? Math.round(product.price * 0.9 * 100) / 100
-    : product.price
 
   const allImages = [product.heroImage, ...(product.textureImages ?? [])]
 
@@ -54,12 +33,11 @@ export default function PDPHero({ product }: { product: Product }) {
     dispatch({
       type: 'ADD_ITEM',
       payload: {
-        slug: isSubscription ? `${product.slug}-abo` : product.slug,
-        name: isSubscription ? `${product.name} — Abonnement` : product.name,
-        price: displayPrice,
+        slug: product.slug,
+        name: product.name,
+        price: product.price,
         image: product.heroImage,
         size: product.size,
-        subscription: isSubscription,
       },
     })
     setAdded(true)
@@ -233,13 +211,15 @@ export default function PDPHero({ product }: { product: Product }) {
               {product.tagline}
             </motion.p>
 
-            {/* Availability badge */}
+            {/* Availability note */}
             {!isAvailable && (
               <motion.div {...fadeUp(0.36)} className="mb-7">
-                <span className="inline-flex items-center gap-2 text-[11px] font-medium text-[#9A9590] bg-[#FAF8F5] border border-stone-100 px-3 py-1.5 rounded-full">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#C9A96E]" />
-                  Kleine eerste batch in voorbereiding · Pre-launch
-                </span>
+                <p
+                  className="text-[11px] font-medium tracking-[0.14em] uppercase"
+                  style={{ color: '#C9A96E' }}
+                >
+                  Eerste batch in voorbereiding
+                </p>
               </motion.div>
             )}
 
@@ -295,11 +275,6 @@ export default function PDPHero({ product }: { product: Product }) {
             <motion.div {...fadeUp(0.62)} id="product-hero-cta" className="space-y-3 mb-6">
               {isAvailable ? (
                 <>
-                  <PDPSubscriptionToggle
-                    price={product.price}
-                    isSubscription={isSubscription}
-                    onChange={setIsSubscription}
-                  />
                   <button
                     onClick={handleAddToCart}
                     className="btn-gold w-full py-[1.05rem] rounded-2xl font-medium text-[15px] cursor-pointer tracking-[0.01em] relative overflow-hidden"
@@ -327,13 +302,10 @@ export default function PDPHero({ product }: { product: Product }) {
                           exit={{ opacity: 0, y: 8 }}
                           transition={{ duration: 0.22 }}
                         >
-                          In winkelwagen · €{displayPrice.toFixed(2).replace('.', ',')}
+                          In winkelwagen · €{product.price.toFixed(2).replace('.', ',')}
                         </motion.span>
                       )}
                     </AnimatePresence>
-                  </button>
-                  <button className="w-full py-[0.95rem] rounded-2xl font-light text-[13px] border border-stone-200 text-[#6B6560] hover:border-[#C9A96E] hover:text-[#C9A96E] cursor-pointer transition-all duration-200">
-                    Koop nu, betaal later via Klarna
                   </button>
                 </>
               ) : (
@@ -348,9 +320,6 @@ export default function PDPHero({ product }: { product: Product }) {
                     </svg>
                     Word als eerste uitgenodigd
                   </Link>
-                  <p className="text-center text-[12px] text-[#9A9590] font-light">
-                    Pre-launch · Geen verplichting · Gratis annuleren
-                  </p>
                 </>
               )}
             </motion.div>

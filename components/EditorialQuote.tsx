@@ -50,32 +50,6 @@ export default function EditorialQuote({
           }}
         />
 
-        {/* Quotation mark */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-6"
-          aria-hidden
-        >
-          <span
-            className="font-semibold leading-none select-none"
-            style={{
-              fontFamily: 'var(--font-cormorant), Georgia, serif',
-              fontSize: 'clamp(4rem, 8vw, 7rem)',
-              lineHeight: '0.6',
-              background: 'linear-gradient(135deg, #C9A96E 0%, #E8C98A 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              display: 'block',
-            }}
-          >
-            &ldquo;
-          </span>
-        </motion.div>
-
         {/* Quote text */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}

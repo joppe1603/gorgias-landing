@@ -46,13 +46,13 @@ export default function WhyResetExists() {
               className="space-y-5 mb-12"
             >
               <p className="text-[#6B6560] text-[16px] font-light leading-[1.8]">
-                Te veel producten. Te veel actieve stoffen. Te weinig herstel. De huidverzorgingsindustrie verkoopt complexiteit — maar jouw huid vraagt om het tegenovergestelde.
+                Te veel producten. Te veel actieve stoffen. Te weinig herstel.
               </p>
-              <p className="text-[#6B6560] text-[16px] font-light leading-[1.8]">
-                Reset Serum is geformuleerd als antwoord op overprikkeling. Niet om meer toe te voegen aan je routine — maar om jouw huid de ruimte te geven die ze nodig heeft om te herstellen.
-              </p>
-              <p className="text-[#9A9590] text-[14px] font-light leading-relaxed italic border-l-2 border-[#C9A96E]/30 pl-4">
-                Klinische concentraties. Zorgvuldig gebufferd. Ontworpen voor nachtherstel.
+              <p
+                className="text-[#1A1A1A] text-[16px] font-light leading-[1.8]"
+                style={{ fontFamily: 'var(--font-cormorant)', fontSize: 'clamp(1.2rem, 1.8vw, 1.5rem)', fontStyle: 'italic' }}
+              >
+                Reset Serum is geformuleerd als antwoord.
               </p>
             </motion.div>
 

@@ -114,27 +114,20 @@ export default function SlideCart() {
                     className="text-[1.25rem] font-semibold text-[#1A1A1A] mb-3 leading-snug"
                     style={{ fontFamily: 'var(--font-cormorant)' }}
                   >
-                    Momenteel in samplefase.
+                    Je ritueel is nog leeg.
                   </p>
                   <p className="text-[13px] text-[#9A9590] font-light mb-2 leading-relaxed max-w-[220px]">
-                    De eerste batch is in voorbereiding. Schrijf je in voor vroege toegang.
+                    Reset Serum wordt voorbereid voor de eerste batch.
                   </p>
                   <div className="divider-gold w-12 mx-auto my-5" />
 
-                  {/* CTAs */}
+                  {/* CTA */}
                   <Link
                     href="/launch#waitlist"
                     onClick={() => dispatch({ type: 'CLOSE' })}
-                    className="btn-gold px-7 py-3 rounded-xl text-[13px] font-semibold mb-3"
+                    className="btn-gold px-7 py-3 rounded-xl text-[13px] font-semibold"
                   >
                     Word als eerste uitgenodigd
-                  </Link>
-                  <Link
-                    href="/shop"
-                    onClick={() => dispatch({ type: 'CLOSE' })}
-                    className="text-[12px] text-[#9A9590] hover:text-[#C9A96E] transition-colors font-light"
-                  >
-                    Bekijk alle producten →
                   </Link>
                 </motion.div>
               ) : (
@@ -234,6 +227,11 @@ export default function SlideCart() {
                     />
                   </div>
                 </div>
+
+                {/* Reassurance */}
+                <p className="text-[11px] text-[#9A9590] font-light tracking-[0.06em]">
+                  Verpakt in matte beschermdoos · Parfumvrij · 100% vegan
+                </p>
 
                 {/* Routine suggestion */}
                 {suggestion && (

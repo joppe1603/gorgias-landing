@@ -85,8 +85,8 @@ export default function ClosingCTA() {
             </Link>
           </div>
 
-          <p className="text-[11px] text-stone-700 mt-10 font-medium tracking-[0.14em] uppercase">
-            Geen verplichting · Geen spam · Altijd uitschrijven
+          <p className="text-[11px] text-stone-600 mt-10 font-medium tracking-[0.14em] uppercase">
+            Jij hoort als eerste.
           </p>
         </motion.div>
       </div>

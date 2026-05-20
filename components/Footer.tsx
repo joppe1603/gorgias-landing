@@ -87,8 +87,9 @@ export default function Footer() {
           <div className="pointer-events-none absolute -top-24 left-1/2 h-64 w-[120%] -translate-x-1/2 bg-[radial-gradient(ellipse_at_center,rgba(201,169,110,0.18),transparent_65%)]" />
           <div className="relative">
             <div className="flex items-center justify-center gap-2.5 mb-5">
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#C9A96E] animate-pulse" aria-hidden />
-              <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#C9A96E]">Pre-launch · Wachtlijst open</p>
+              <div className="w-5 h-px bg-[#C9A96E]" />
+              <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#C9A96E]">Eerste batch</p>
+              <div className="w-5 h-px bg-[#C9A96E]" />
             </div>
             <h2 className="text-3xl sm:text-5xl font-semibold text-white mb-5 leading-tight tracking-tight" style={{ fontFamily: 'var(--font-cormorant)' }}>
               Eerste batch.<br />Beperkte oplage.
@@ -142,7 +143,7 @@ export default function Footer() {
 
             {/* Waitlist signup in footer */}
             <div>
-              <p className="text-[12px] font-semibold text-stone-300 mb-3 uppercase tracking-wider">Word als eerste op de hoogte</p>
+              <p className="text-[12px] font-semibold text-stone-300 mb-3 uppercase tracking-wider">Ontvang de eerste batch-notitie</p>
               {status === 'done' ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
