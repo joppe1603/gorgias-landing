@@ -8,30 +8,8 @@ import { useCart } from '@/contexts/CartContext'
 
 const FREE_SHIPPING_THRESHOLD = 75
 
-// Routine suggestion pool — suggest first product not yet in cart
-const ROUTINE_SUGGESTIONS = [
-  {
-    slug: 'quiet-cleanser',
-    name: 'Quiet Cleanser',
-    price: 38,
-    size: '150ml',
-    image: '/quiet-cleanser.jpg',
-  },
-  {
-    slug: 'reset-serum',
-    name: 'Reset Serum',
-    price: 58,
-    size: '30ml',
-    image: '/reset-serum-new.jpg',
-  },
-  {
-    slug: 'soft-barrier-cream',
-    name: 'Soft Barrier Cream',
-    price: 48,
-    size: '50ml',
-    image: 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=200&q=80&fit=crop',
-  },
-]
+// Routine suggestion pool — empty until more products are available
+const ROUTINE_SUGGESTIONS: { slug: string; name: string; price: number; size: string; image: string }[] = []
 
 export default function SlideCart() {
   const { state, dispatch, total, itemCount } = useCart()
