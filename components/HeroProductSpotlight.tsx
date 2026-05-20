@@ -65,10 +65,7 @@ export default function HeroProductSpotlight() {
               className="absolute top-8 left-8 flex flex-col gap-2"
             >
               <span className="text-[9px] font-bold uppercase tracking-[0.22em] text-[#C9A96E] bg-[#0F0E0C]/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-[#C9A96E]/30">
-                Editor&apos;s Choice · 2026
-              </span>
-              <span className="text-[9px] font-bold uppercase tracking-[0.22em] text-white bg-[#0F0E0C]/70 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/12">
-                #1 Bestseller
+                Reset Serum · 30ml
               </span>
             </motion.div>
 
@@ -87,7 +84,7 @@ export default function HeroProductSpotlight() {
                 <p className="text-stone-300 text-[13px] font-light italic leading-relaxed">
                   Retinol 0.3% gebufferd door Niacinamide 10% — ontworpen voor gevoelige huid die ook wil werken met actieve stoffen.
                 </p>
-                <p className="text-stone-600 text-[11px] mt-2">Kleine eerste batch in voorbereiding.</p>
+                <p className="text-stone-600 text-[11px] mt-2">Eerste batch in voorbereiding · Pre-launch.</p>
               </div>
             </motion.div>
           </motion.div>

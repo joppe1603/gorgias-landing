@@ -3,13 +3,14 @@ import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import TrustStrip from '@/components/TrustStrip'
 import HeroProductSpotlight from '@/components/HeroProductSpotlight'
+import WhyResetExists from '@/components/WhyResetExists'
+import IngredientPhilosophy from '@/components/IngredientPhilosophy'
 import UGCReviews from '@/components/UGCReviews'
-import PhilosophyPreview from '@/components/PhilosophyPreview'
 import EditorialQuote from '@/components/EditorialQuote'
 import FounderNote from '@/components/FounderNote'
+import InstagramGrid from '@/components/InstagramGrid'
 import ClosingCTA from '@/components/ClosingCTA'
 import Footer from '@/components/Footer'
-import InstagramGrid from '@/components/InstagramGrid'
 
 export default function Home() {
   return (
@@ -18,8 +19,9 @@ export default function Home() {
       <Hero />
       <TrustStrip />
       <HeroProductSpotlight />
+      <WhyResetExists />
+      <IngredientPhilosophy />
       <UGCReviews />
-      <PhilosophyPreview />
       <EditorialQuote
         quote="Huidverzorging hoeft niet ingewikkeld te zijn. Het hoeft alleen eerlijk te zijn."
         attribution="MAUYI · Oprichtingsmanifest"

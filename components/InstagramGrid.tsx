@@ -4,12 +4,12 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 const posts = [
-  { src: '/reset-serum-new.jpg', caption: 'Reset Serum — ochtend ritual' },
-  { src: '/quiet-cleanser.jpg', caption: 'Quiet Cleanser — begin clean' },
+  { src: '/reset-serum-new.jpg', caption: 'Reset Serum — nachtelijk herstel' },
   { src: '/reset-serum-2.jpg', caption: 'Textuur die je voelt' },
   { src: '/reset-serum-3.jpg', caption: 'Formulering op basis van wetenschap' },
-  { src: '/reset-serum-4.jpg', caption: 'Klinisch getest' },
-  { src: '/quiet-cleanser.jpg', caption: 'Barrière-herstel dagelijks' },
+  { src: '/reset-serum-4.jpg', caption: 'Klinisch gedoseerd' },
+  { src: '/reset-serum-new.jpg', caption: 'Eén serum. Elke nacht.' },
+  { src: '/reset-serum-2.jpg', caption: 'Stille luxe. Echte resultaten.' },
 ]
 
 export default function InstagramGrid() {

@@ -4,158 +4,173 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 28 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] as const },
-})
-
 export default function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-white">
-      {/* Ambient blob */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden>
-        <div className="hero-blob absolute top-0 left-1/4 w-[700px] h-[600px] rounded-[50%]" />
-        <div className="dot-pattern absolute inset-0 opacity-30" />
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#0A0908]">
+
+      {/* Grain texture overlay */}
+      <svg
+        className="absolute inset-0 w-full h-full opacity-[0.038] pointer-events-none mix-blend-overlay z-10"
+        aria-hidden
+      >
+        <filter id="grain-hero">
+          <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch" />
+          <feColorMatrix type="saturate" values="0" />
+        </filter>
+        <rect width="100%" height="100%" filter="url(#grain-hero)" />
+      </svg>
+
+      {/* Ambient warm glow — left */}
+      <div
+        className="absolute top-1/4 -left-32 w-[700px] h-[700px] rounded-full pointer-events-none z-0"
+        style={{
+          background: 'radial-gradient(circle, rgba(201,169,110,0.045) 0%, transparent 65%)',
+          filter: 'blur(100px)',
+        }}
+        aria-hidden
+      />
+
+      {/* Full-bleed product image — right panel */}
+      <div className="absolute inset-y-0 right-0 w-[55%] hidden lg:block z-0">
+        <Image
+          src="/reset-serum-new.jpg"
+          alt="MAUYI Reset Serum"
+          fill
+          className="object-cover object-center"
+          sizes="55vw"
+          priority
+        />
+        {/* Cinematic gradients */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0908] via-[#0A0908]/55 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908]/60 via-transparent to-[#0A0908]/25" />
       </div>
 
-      <div className="relative w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-24 lg:py-0">
-        <div className="grid lg:grid-cols-[1fr_420px] gap-16 lg:gap-24 items-center min-h-[80vh]">
+      {/* Mobile image — top third */}
+      <div className="absolute inset-x-0 top-0 h-[45vh] lg:hidden z-0">
+        <Image
+          src="/reset-serum-new.jpg"
+          alt="MAUYI Reset Serum"
+          fill
+          className="object-cover object-top"
+          sizes="100vw"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0908]/30 via-[#0A0908]/60 to-[#0A0908]" />
+      </div>
 
-          {/* LEFT — COPY */}
-          <div className="max-w-2xl">
+      {/* Content */}
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-40 pb-28 lg:py-0">
+        <div className="max-w-[520px]">
 
-            {/* Label */}
-            <motion.div {...fadeUp(0)} className="flex items-center gap-3 mb-10">
-              <div className="w-6 h-px bg-[#C9A96E]" />
-              <span className="section-label">MAUYI — Huidverzorging</span>
-            </motion.div>
-
-            {/* Headline */}
-            <motion.h1
-              {...fadeUp(0.08)}
-              className="text-[clamp(3rem,7vw,6rem)] font-semibold leading-[1.03] tracking-[-0.025em] text-[#1A1A1A] mb-8"
-            >
-              Huidverzorging
-              <br />
-              <span className="text-[#9A9590] font-normal italic">zonder het spektakel.</span>
-            </motion.h1>
-
-            {/* Subline */}
-            <motion.p {...fadeUp(0.16)} className="text-xl text-[#6B6560] leading-relaxed mb-12 max-w-lg font-light">
-              Drie producten. Klinisch bewezen. Elke dag klaar in minder dan drie minuten — voor mensen die genoeg hebben van ingewikkelde routines.
-            </motion.p>
-
-            {/* CTAs */}
-            <motion.div {...fadeUp(0.24)} className="flex flex-wrap gap-4 mb-14">
-              <Link
-                href="/products/reset-serum"
-                className="btn-gold inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl font-medium text-[15px]"
-              >
-                Bestel nu
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                  <path d="M2 7h10M8 3l4 4-4 4"/>
-                </svg>
-              </Link>
-              <Link
-                href="/products/reset-serum"
-                className="btn-outline inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-medium text-[15px]"
-              >
-                Bekijk Reset Serum
-              </Link>
-            </motion.div>
-
-            {/* Trust signals */}
-            <motion.div {...fadeUp(0.32)} className="flex flex-wrap items-center gap-5">
-              {[
-                { label: '30 dagen garantie', sub: 'Geen vragen gesteld' },
-                { label: 'Parfumvrij', sub: 'Geschikt voor gevoelige huid' },
-                { label: 'Pre-launch', sub: 'Eerste batch in voorbereiding' },
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-2.5">
-                  {i > 0 && <div className="w-px h-7 bg-stone-200" />}
-                  <div>
-                    <p className="text-sm font-semibold text-[#1A1A1A]">{item.label}</p>
-                    <p className="text-xs text-[#9A9590] mt-0.5">{item.sub}</p>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
-          </div>
-
-          {/* RIGHT — PRODUCT VISUAL */}
+          {/* Pre-label */}
           <motion.div
-            initial={{ opacity: 0, y: 48, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="relative hidden lg:flex justify-end"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="flex items-center gap-3 mb-12"
           >
-            {/* Main product image */}
-            <div className="relative">
-              {/* Subtle background shape */}
-              <div className="absolute -inset-8 bg-[#F5EFE6] rounded-[32px] opacity-60" />
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#C9A96E] animate-pulse shrink-0" />
+            <span className="text-[10px] font-bold uppercase tracking-[0.26em] text-[#C9A96E]">
+              Pre-launch · Eerste batch in voorbereiding
+            </span>
+          </motion.div>
 
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-                className="relative z-10"
-              >
-                <div className="w-[380px] h-[480px] rounded-[24px] overflow-hidden relative shadow-[0_32px_80px_rgba(0,0,0,0.12)]">
-                  <Image
-                    src="/reset-serum-new.jpg"
-                    alt="MAUYI Reset Serum"
-                    fill
-                    className="object-cover"
-                    sizes="380px"
-                    priority
-                  />
-                  {/* Subtle tone overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/25 via-transparent to-transparent" />
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 36 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="text-white leading-[1.02] tracking-[-0.03em] mb-7"
+            style={{ fontSize: 'clamp(3rem, 6.5vw, 5.2rem)', fontWeight: 600 }}
+          >
+            Herstel voor{' '}
+            <br />
+            <em
+              style={{
+                background: 'linear-gradient(135deg, #C9A96E 0%, #E8C98A 55%, #C9A96E 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                fontStyle: 'italic',
+                fontWeight: 400,
+              }}
+            >
+              overprikkelde
+            </em>
+            <br />
+            huid.
+          </motion.h1>
 
-                  {/* Product label */}
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <div className="bg-white/90 backdrop-blur-md rounded-2xl px-5 py-3.5 border border-stone-100/80">
-                      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C9A96E] mb-0.5">Reset Serum · 30ml</p>
-                      <div className="flex items-center justify-between">
-                        <p className="text-sm font-semibold text-[#1A1A1A]">€58 · Gratis verzending</p>
-                        <Link href="/products/reset-serum" className="text-[10px] font-bold text-[#C9A96E] hover:underline underline-offset-2">
-                          Bekijk →
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          {/* Subline */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            className="text-stone-400 font-light leading-[1.75] mb-12"
+            style={{ fontSize: 'clamp(1rem, 1.5vw, 1.1rem)' }}
+          >
+            Klinische actives. Stille luxe. Eén serum voor wat jouw huid
+            <br className="hidden sm:block" /> de dag heeft aangedaan.
+          </motion.p>
 
-                {/* Floating ingredient note */}
-                <motion.div
-                  initial={{ opacity: 0, x: -24 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 1.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute -left-14 top-1/3 bg-white rounded-2xl shadow-lg border border-stone-100 px-4 py-3"
-                >
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-stone-400 mb-1">Hoofdingredient</p>
-                  <p className="text-sm font-semibold text-[#1A1A1A]">Retinol 0.3%</p>
-                  <p className="text-xs text-[#6B6560]">+ Niacinamide 10%</p>
-                </motion.div>
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.36, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-wrap gap-3 mb-14"
+          >
+            <Link
+              href="/products/reset-serum"
+              className="btn-gold inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl font-medium text-[14px] tracking-[0.01em]"
+            >
+              Ontdek Reset Serum
+              <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <path d="M2 7h10M8 3l4 4-4 4" />
+              </svg>
+            </Link>
+            <Link
+              href="/launch#waitlist"
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-medium text-[14px] text-stone-400 border border-white/10 hover:border-[#C9A96E]/35 hover:text-[#C9A96E] transition-all duration-300"
+            >
+              Word als eerste uitgenodigd
+            </Link>
+          </motion.div>
 
-                {/* Floating skin badge */}
-                <motion.div
-                  initial={{ opacity: 0, x: 24 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 1.4, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute -right-10 top-1/4 bg-[#0F0E0C] rounded-2xl px-4 py-3"
-                >
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-[#C9A96E] mb-1">Alle huidtypes</p>
-                  <p className="text-xs text-stone-300">Parfumvrij · Vegan</p>
-                </motion.div>
-              </motion.div>
-            </div>
+          {/* Bottom credentials row */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.55 }}
+            className="flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-white/[0.06] pt-7"
+          >
+            {[
+              'Retinol · Bakuchiol · Niacinamide',
+              'Parfumvrij',
+              '30 dagen garantie',
+            ].map((item, i) => (
+              <span key={i} className="text-[11px] font-medium text-stone-600 tracking-wide">
+                {item}
+              </span>
+            ))}
           </motion.div>
         </div>
       </div>
 
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#FAF8F5] to-transparent pointer-events-none" />
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.4, duration: 0.8 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1.5"
+        aria-hidden
+      >
+        <motion.div
+          animate={{ y: [0, 7, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          className="w-px h-10 bg-gradient-to-b from-[#C9A96E]/40 to-transparent"
+        />
+      </motion.div>
     </section>
   )
 }
