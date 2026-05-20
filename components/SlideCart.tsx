@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -12,8 +12,9 @@ const FREE_SHIPPING_THRESHOLD = 75
 const ROUTINE_SUGGESTIONS: { slug: string; name: string; price: number; size: string; image: string }[] = []
 
 export default function SlideCart() {
-  const { state, dispatch, total, itemCount, initiateCheckout, isCheckingOut } = useCart()
+  const { state, dispatch, total, itemCount } = useCart()
   const { isOpen, items } = state
+  const [isCheckingOut, setIsCheckingOut] = useState(false)
 
   // Lock body scroll
   useEffect(() => {
@@ -292,14 +293,29 @@ export default function SlideCart() {
                   </div>
                 </div>
 
-                {/* Checkout CTA */}
-                <button
-                  onClick={initiateCheckout}
-                  disabled={isCheckingOut}
-                  className="btn-gold w-full py-[1.05rem] rounded-2xl font-medium text-[15px] tracking-[0.01em] flex items-center justify-center disabled:opacity-70 disabled:cursor-not-allowed"
+                {/* Checkout CTA — form POST for reliable mobile redirect */}
+                <form
+                  method="POST"
+                  action="/api/shopify-checkout"
+                  onSubmit={() => setIsCheckingOut(true)}
                 >
-                  {isCheckingOut ? 'Laden…' : `Afrekenen · €${freeShipping ? total : orderTotal.toFixed(2).replace('.', ',')}`}
-                </button>
+                  <input
+                    type="hidden"
+                    name="lines"
+                    value={JSON.stringify(
+                      items
+                        .filter((i) => i.shopifyVariantId)
+                        .map((i) => ({ merchandiseId: i.shopifyVariantId, quantity: i.quantity }))
+                    )}
+                  />
+                  <button
+                    type="submit"
+                    disabled={isCheckingOut}
+                    className="btn-gold w-full py-[1.05rem] rounded-2xl font-medium text-[15px] tracking-[0.01em] flex items-center justify-center disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    {isCheckingOut ? 'Laden…' : `Afrekenen · €${freeShipping ? total : orderTotal.toFixed(2).replace('.', ',')}`}
+                  </button>
+                </form>
 
                 <button
                   onClick={() => dispatch({ type: 'CLOSE' })}
