@@ -37,12 +37,19 @@ export async function POST(req: NextRequest) {
     if (!checkoutUrl) {
       const errMsg = JSON.stringify(json.errors ?? json.data?.cartCreate?.userErrors ?? json)
       console.error('Shopify checkout: no checkoutUrl:', errMsg)
-      return NextResponse.redirect(new URL('/?checkout-error=' + encodeURIComponent(errMsg), req.url), 303)
+      return new Response(`<h2>Checkout fout</h2><pre>${errMsg}</pre>`, {
+        status: 200,
+        headers: { 'Content-Type': 'text/html' },
+      })
     }
 
     return NextResponse.redirect(checkoutUrl, 303)
   } catch (err) {
-    console.error('Shopify checkout error:', err)
-    return NextResponse.redirect(new URL('/?checkout-error=exception', req.url), 303)
+    const errMsg = String(err)
+    console.error('Shopify checkout error:', errMsg)
+    return new Response(`<h2>Checkout fout (exception)</h2><pre>${errMsg}</pre>`, {
+      status: 200,
+      headers: { 'Content-Type': 'text/html' },
+    })
   }
 }
