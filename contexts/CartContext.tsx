@@ -123,7 +123,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
         quantity: item.quantity,
       }))
 
-    if (lines.length === 0) return
+    if (lines.length === 0) {
+      // Cart items missing variantId — likely stale localStorage. Clear and reload.
+      localStorage.removeItem('mauyi-cart')
+      window.location.reload()
+      return
+    }
 
     setIsCheckingOut(true)
     try {
