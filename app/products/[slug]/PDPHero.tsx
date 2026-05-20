@@ -38,6 +38,7 @@ export default function PDPHero({ product }: { product: Product }) {
         price: product.price,
         image: product.heroImage,
         size: product.size,
+        shopifyVariantId: product.shopifyVariantId,
       },
     })
     setAdded(true)

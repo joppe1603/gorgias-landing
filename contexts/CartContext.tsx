@@ -1,6 +1,7 @@
 'use client'
 
-import { createContext, useContext, useReducer, useEffect, ReactNode } from 'react'
+import { createContext, useContext, useReducer, useEffect, useState, ReactNode } from 'react'
+import { createShopifyCheckout } from '@/lib/shopify'
 
 export type CartItem = {
   slug: string
@@ -9,6 +10,7 @@ export type CartItem = {
   image: string
   size: string
   quantity: number
+  shopifyVariantId?: string
   subscription?: boolean
 }
 
@@ -80,12 +82,15 @@ type CartContextType = {
   dispatch: React.Dispatch<CartAction>
   total: number
   itemCount: number
+  initiateCheckout: () => Promise<void>
+  isCheckingOut: boolean
 }
 
 const CartContext = createContext<CartContextType | null>(null)
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(cartReducer, initialState)
+  const [isCheckingOut, setIsCheckingOut] = useState(false)
 
   // Restore cart from localStorage on mount
   useEffect(() => {
@@ -110,8 +115,28 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const total = state.items.reduce((sum, item) => sum + item.price * item.quantity, 0)
   const itemCount = state.items.reduce((sum, item) => sum + item.quantity, 0)
 
+  async function initiateCheckout() {
+    const lines = state.items
+      .filter((item) => item.shopifyVariantId)
+      .map((item) => ({
+        merchandiseId: item.shopifyVariantId!,
+        quantity: item.quantity,
+      }))
+
+    if (lines.length === 0) return
+
+    setIsCheckingOut(true)
+    try {
+      const checkoutUrl = await createShopifyCheckout(lines)
+      window.location.href = checkoutUrl
+    } catch (err) {
+      console.error('Shopify checkout error:', err)
+      setIsCheckingOut(false)
+    }
+  }
+
   return (
-    <CartContext.Provider value={{ state, dispatch, total, itemCount }}>
+    <CartContext.Provider value={{ state, dispatch, total, itemCount, initiateCheckout, isCheckingOut }}>
       {children}
     </CartContext.Provider>
   )

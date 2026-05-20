@@ -12,7 +12,7 @@ const FREE_SHIPPING_THRESHOLD = 75
 const ROUTINE_SUGGESTIONS: { slug: string; name: string; price: number; size: string; image: string }[] = []
 
 export default function SlideCart() {
-  const { state, dispatch, total, itemCount } = useCart()
+  const { state, dispatch, total, itemCount, initiateCheckout, isCheckingOut } = useCart()
   const { isOpen, items } = state
 
   // Lock body scroll
@@ -293,9 +293,13 @@ export default function SlideCart() {
                 </div>
 
                 {/* Checkout CTA */}
-                <Link href="/checkout" onClick={() => dispatch({ type: 'CLOSE' })} className="btn-gold w-full py-[1.05rem] rounded-2xl font-medium text-[15px] tracking-[0.01em] flex items-center justify-center">
-                  Afrekenen · €{freeShipping ? total : orderTotal.toFixed(2).replace('.', ',')}
-                </Link>
+                <button
+                  onClick={initiateCheckout}
+                  disabled={isCheckingOut}
+                  className="btn-gold w-full py-[1.05rem] rounded-2xl font-medium text-[15px] tracking-[0.01em] flex items-center justify-center disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {isCheckingOut ? 'Laden…' : `Afrekenen · €${freeShipping ? total : orderTotal.toFixed(2).replace('.', ',')}`}
+                </button>
 
                 <button
                   onClick={() => dispatch({ type: 'CLOSE' })}

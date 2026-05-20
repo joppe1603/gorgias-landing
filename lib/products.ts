@@ -54,6 +54,10 @@ export type Product = {
   availability?: 'available' | 'pre-launch' | 'sample'
   // hidden products are not shown in shop or product pages
   hidden?: boolean
+  // Shopify variant GID — required for checkout via Shopify Storefront API
+  // Format: "gid://shopify/ProductVariant/XXXXXXXXXXXXX"
+  // Fill this in after adding the product to Shopify admin
+  shopifyVariantId?: string
 }
 
 const PRODUCTS: Product[] = [
