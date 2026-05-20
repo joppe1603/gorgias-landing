@@ -103,7 +103,7 @@ export default function HeroProductSpotlight() {
               className="flex items-center gap-3 mb-7"
             >
               <div className="w-5 h-px bg-[#C9A96E]" />
-              <span className="section-label">Meest geliefd · Night Reset Ritual</span>
+              <span className="section-label">Night Reset Ritual</span>
             </motion.div>
 
             {/* Product name */}

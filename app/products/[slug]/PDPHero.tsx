@@ -192,12 +192,6 @@ export default function PDPHero({ product }: { product: Product }) {
           {/* ── RIGHT: Product info ── */}
           <div className="lg:pt-6 space-y-0">
 
-            {/* Badge label */}
-            <motion.div {...fadeUp(0.15)} className="flex items-center gap-3 mb-5">
-              <div className="w-5 h-px bg-[#C9A96E]" />
-              <span className="section-label">{product.badge}</span>
-            </motion.div>
-
             {/* Name */}
             <motion.h1
               {...fadeUp(0.22)}
@@ -257,19 +251,6 @@ export default function PDPHero({ product }: { product: Product }) {
                 </div>
               </motion.div>
             )}
-
-            {/* Benefits */}
-            <motion.div {...fadeUp(0.56)} className="grid grid-cols-2 gap-2 mb-8">
-              {product.benefits.map((b) => (
-                <div key={b.title} className="flex items-start gap-2.5 bg-[#FAF8F5] rounded-xl p-3 border border-stone-100">
-                  <span className="text-[15px] leading-none mt-0.5 shrink-0">{b.icon}</span>
-                  <div>
-                    <p className="text-[11px] font-semibold text-[#1A1A1A] mb-0.5 leading-tight">{b.title}</p>
-                    <p className="text-[10px] text-[#9A9590] leading-snug">{b.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </motion.div>
 
             {/* CTAs */}
             <motion.div {...fadeUp(0.62)} id="product-hero-cta" className="space-y-3 mb-6">

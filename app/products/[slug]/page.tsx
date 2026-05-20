@@ -219,15 +219,6 @@ export default async function ProductPage({
             <div className="grid md:grid-cols-3 gap-5">
               {product.reviews.map((r, i) => (
                 <div key={i} className="bg-white rounded-2xl border border-stone-100 p-6 flex flex-col">
-                  {/* Stars */}
-                  <div className="flex gap-0.5 mb-4">
-                    {[...Array(r.rating)].map((_, j) => (
-                      <svg key={j} width="11" height="11" viewBox="0 0 16 16" fill="#C9A96E" aria-hidden>
-                        <path d="M8 1L9.8 5.5H15L10.8 8.5L12.5 13L8 10L3.5 13L5.2 8.5L1 5.5H6.2L8 1Z"/>
-                      </svg>
-                    ))}
-                  </div>
-
                   {/* Quote */}
                   <p className="text-[#1A1A1A] text-[14px] leading-relaxed font-light mb-5 flex-1">
                     &ldquo;{r.quote}&rdquo;

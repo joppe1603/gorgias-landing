@@ -59,10 +59,10 @@ export default function WaitlistForm({
 
     // Mirror to localStorage as read cache
     try {
-      const existing = JSON.parse(localStorage.getItem('lume_waitlist') || '[]') as string[]
+      const existing = JSON.parse(localStorage.getItem('mauyi_waitlist') || '[]') as string[]
       if (!existing.includes(trimmedEmail)) {
         existing.push(trimmedEmail)
-        localStorage.setItem('lume_waitlist', JSON.stringify(existing))
+        localStorage.setItem('mauyi_waitlist', JSON.stringify(existing))
       }
     } catch {
       // ignore storage errors
@@ -75,7 +75,7 @@ export default function WaitlistForm({
     const params = new URLSearchParams({ source })
     if (productSlug) params.set('product', productSlug)
     // Store email briefly for personalisation on /thanks if needed
-    try { sessionStorage.setItem('lume_registered_email', email) } catch { /* ignore */ }
+    try { sessionStorage.setItem('mauyi_registered_email', email) } catch { /* ignore */ }
     router.push(`/thanks?${params.toString()}`)
   }
 

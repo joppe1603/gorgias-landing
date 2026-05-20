@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 
-const STORAGE_KEY = 'lume-cookie-consent'
+const STORAGE_KEY = 'mauyi-cookie-consent'
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false)

@@ -113,7 +113,7 @@ const PRODUCTS: Product[] = [
     slug: 'reset-serum',
     name: 'Reset Serum',
     tagline: 'Eén serum. Doet het werk van drie.',
-    badge: 'Bestseller',
+    badge: 'Night Reset Ritual',
     price: 58,
     size: '30ml',
     availability: 'available',
@@ -134,7 +134,7 @@ const PRODUCTS: Product[] = [
     ],
     allIngredients: 'Aqua, Glycerin, Niacinamide (10%), Sodium Hyaluronate, Hydrolyzed Hyaluronic Acid, Sodium Hyaluronate Crosspolymer, Retinol (0.3%), Bakuchiol (0.5%), Pentylene Glycol, Allantoin, Panthenol, Xanthan Gum, Sodium PCA, Citric Acid, Sodium Benzoate, Potassium Sorbate.',
     howToUse: [
-      'Reinig je huid met de Quiet Cleanser en dep droog.',
+      'Reinig je huid met een zachte, parfumvrije cleanser en dep droog.',
       'Breng 3–4 druppels aan op gezicht, hals en decolleté.',
       'Druk zachtjes aan met handpalmen — niet wrijven.',
       'Laat 60–90 seconden intrekken voor de volgende stap.',
@@ -157,7 +157,7 @@ const PRODUCTS: Product[] = [
     routineContext: {
       time: 'Avond',
       step: 2,
-      note: 'Na de Quiet Cleanser, voor de Soft Barrier Cream. 3–4 druppels. Druk zachtjes aan — niet wrijven. Beginners: start 2–3× per week en bouw langzaam op naar dagelijks gebruik.',
+      note: 'Na het reinigen, voor je moisturizer. 3–4 druppels. Druk zachtjes aan — niet wrijven. Beginners: start 2–3× per week en bouw langzaam op naar dagelijks gebruik.',
       pairingNote: 'Gebruik altijd SPF 30+ de volgende ochtend. Retinol verhoogt UV-gevoeligheid. Dit is niet optioneel.',
     },
   },

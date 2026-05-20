@@ -26,7 +26,7 @@ const footerLinks: Record<string, { label: string; href: string }[]> = {
 const socialLinks = [
   {
     label: 'Instagram',
-    href: 'https://www.instagram.com/lumeskincare',
+    href: 'https://www.instagram.com/mauyi',
     icon: (
       <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
@@ -74,47 +74,6 @@ export default function Footer() {
 
   return (
     <footer id="footer" className="bg-[#0F0E0C] text-white scroll-mt-28">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
-
-        {/* Pre-launch CTA banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          className="relative overflow-hidden rounded-3xl border border-[#C9A96E]/20 bg-gradient-to-br from-[#1A1710] via-[#0F0E0C] to-black px-6 py-14 sm:px-12 sm:py-16 text-center shadow-[0_0_80px_rgba(201,169,110,0.12)]"
-        >
-          <div className="pointer-events-none absolute -top-24 left-1/2 h-64 w-[120%] -translate-x-1/2 bg-[radial-gradient(ellipse_at_center,rgba(201,169,110,0.18),transparent_65%)]" />
-          <div className="relative">
-            <div className="flex items-center justify-center gap-2.5 mb-5">
-              <div className="w-5 h-px bg-[#C9A96E]" />
-              <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#C9A96E]">Eerste batch</p>
-              <div className="w-5 h-px bg-[#C9A96E]" />
-            </div>
-            <h2 className="text-3xl sm:text-5xl font-semibold text-white mb-5 leading-tight tracking-tight" style={{ fontFamily: 'var(--font-cormorant)' }}>
-              Eerste batch.<br />Beperkte oplage.
-            </h2>
-            <p className="text-stone-400 text-base sm:text-lg mb-10 max-w-xl mx-auto leading-relaxed font-light">
-              Reset Serum is bijna klaar. Schrijf je in en ontvang als eerste een persoonlijk bericht — geen hype, geen kortingen. Gewoon eerlijk.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/launch#waitlist"
-                className="btn-gold px-8 py-4 rounded-2xl font-semibold text-base w-full sm:w-auto text-center"
-              >
-                Zet me op de wachtlijst
-              </Link>
-              <Link
-                href="/launch"
-                className="px-8 py-4 rounded-2xl font-semibold text-base border border-stone-700 text-stone-300 hover:border-[#C9A96E]/40 hover:text-[#C9A96E] transition-all w-full sm:w-auto text-center"
-              >
-                Volg het proces →
-              </Link>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-
       <div className="border-t border-white/10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">

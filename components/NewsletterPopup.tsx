@@ -13,7 +13,7 @@ export default function NewsletterPopup() {
 
   useEffect(() => {
     // Don't show if already dismissed this session
-    if (sessionStorage.getItem('lume-popup-dismissed')) return
+    if (sessionStorage.getItem('mauyi-popup-dismissed')) return
 
     // Show after 6 seconds
     const t = setTimeout(() => setVisible(true), 6000)
@@ -22,14 +22,14 @@ export default function NewsletterPopup() {
 
   const dismiss = () => {
     setVisible(false)
-    sessionStorage.setItem('lume-popup-dismissed', '1')
+    sessionStorage.setItem('mauyi-popup-dismissed', '1')
   }
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault()
     if (!email.includes('@')) return
     setDone(true)
-    sessionStorage.setItem('lume-popup-dismissed', '1')
+    sessionStorage.setItem('mauyi-popup-dismissed', '1')
   }
 
   const copyCode = () => {

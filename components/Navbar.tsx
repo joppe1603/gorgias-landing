@@ -65,17 +65,6 @@ export default function Navbar() {
         transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         className="fixed top-0 left-0 right-0 z-50"
       >
-        {/* Announcement — pre-launch */}
-        <Link href="/launch" className="flex items-center justify-center gap-2.5 bg-[#1A1A1A] text-white text-xs font-medium py-2.5 px-4 text-center hover:bg-[#2A2A2A] transition-colors">
-          <span className="inline-flex items-center gap-1.5">
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#C9A96E] animate-pulse" aria-hidden />
-            <span className="text-[#C9A96E] font-semibold tracking-wide uppercase text-[10px]">Pre-launch</span>
-          </span>
-          <span className="hidden sm:inline text-white/60">·</span>
-          <span className="hidden sm:inline">Wachtlijst is open — wees erbij van het begin</span>
-          <span className="sm:hidden">Wachtlijst open →</span>
-        </Link>
-
         <nav className={`transition-all duration-300 border-b ${
           scrolled
             ? 'bg-white/96 backdrop-blur-md shadow-sm border-stone-100'
@@ -188,7 +177,7 @@ export default function Navbar() {
       </motion.header>
 
       {/* Header spacer */}
-      <div className="h-[104px]" aria-hidden />
+      <div className="h-[64px]" aria-hidden />
 
       {/* Mobile menu */}
       <AnimatePresence>
@@ -198,7 +187,7 @@ export default function Navbar() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed top-[104px] left-0 right-0 z-40 bg-white border-b border-stone-100 shadow-xl md:hidden overflow-hidden"
+            className="fixed top-[64px] left-0 right-0 z-40 bg-white border-b border-stone-100 shadow-xl md:hidden overflow-hidden"
           >
             <motion.div
               initial="hidden"
@@ -213,7 +202,7 @@ export default function Navbar() {
               <motion.div variants={mobileLinkVariants}>
                 <Link href="/products/reset-serum" onClick={() => setMobileOpen(false)} className="block px-4 py-2.5 text-sm font-medium text-stone-800 hover:text-[#C9A96E] hover:bg-[#FAF8F5] rounded-xl cursor-pointer transition-all">
                   Reset Serum
-                  <span className="block text-xs text-stone-400 font-normal mt-0.5">Bestseller · Retinol + Niacinamide + Hyaluronzuur</span>
+                  <span className="block text-xs text-stone-400 font-normal mt-0.5">Retinol 0.3% · Niacinamide 10% · Hyaluronzuur</span>
                 </Link>
               </motion.div>
 

@@ -131,13 +131,13 @@ export default function FAQ() {
         >
           <p className="text-[#6B6560] mb-4">Nog vragen? Wij zijn er voor je.</p>
           <a
-            href="mailto:hello@lume.com"
+            href="mailto:hallo@mauyi.nl"
             className="inline-flex items-center gap-2 text-[#C9A96E] font-semibold hover:underline underline-offset-4"
           >
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M2 4h12v9H2V4zm0 0l6 5 6-5" stroke="#C9A96E" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-            hello@lume.com
+            hallo@mauyi.nl
           </a>
         </motion.div>
       </div>

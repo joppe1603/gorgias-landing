@@ -38,7 +38,7 @@ const ingredients = [
     description: 'Bakuchiol is een plantaard extract dat vergelijkbare resultaten geeft als retinol — celvernieuwing, anti-aging — maar zonder roodheid, schilfering of zonsgevoeligheid. Ideaal voor gevoelige huid en veilig tijdens zwangerschap.',
     benefits: ['Retinol-achtige resultaten', 'Geen irritatie', 'Geschikt voor gevoelige huid', 'Zwangerschapsveilig'],
     studyNote: 'Vergelijkingsstudies tonen gelijkwaardige resultaten met retinol bij 12 weken gebruik.',
-    usedIn: ['Sensitive Skin Edit', 'Soft Barrier Cream'],
+    usedIn: ['Reset Serum'],
     caution: null,
     color: 'bg-green-50',
     accentColor: 'text-green-700',
@@ -50,46 +50,10 @@ const ingredients = [
     description: 'Niet alle hyaluronzuur is hetzelfde. Onze formule gebruikt drie molecuulgewichten die elk een andere huidlaag bereiken — van de oppervlakte tot dieper in de dermis — voor 72 uur aangehouden hydratatie.',
     benefits: ['3 molecuulgewichten', '72u hydratatiebehoud', 'Alle huidtypes', 'Direct zichtbaar effect'],
     studyNote: 'Multi-moleculair HA toont significant betere resultaten dan single-molecular formulaties.',
-    usedIn: ['Reset Serum', 'Soft Barrier Cream'],
+    usedIn: ['Reset Serum'],
     caution: null,
     color: 'bg-blue-50',
     accentColor: 'text-blue-700',
-  },
-  {
-    name: 'Ceramiden',
-    category: 'Barrière',
-    tagline: 'De bouwstenen van een gezonde barrière.',
-    description: 'Ceramiden maken 50% uit van de lipiden in de stratum corneum — de buitenste huidlaag. Ze houden vocht vast en beschermen tegen externe irritanten. Essentieel voor een gezonde barrièrefunctie.',
-    benefits: ['Versterkt huidbarrière', 'Houdt vocht vast', 'Kalmeert geïrriteerde huid', 'Herstelt beschadigde barrière'],
-    studyNote: 'Essentieel bij eczeem, rosacea en barrièrestoornis. Veilig voor alle leeftijden.',
-    usedIn: ['Quiet Cleanser', 'Soft Barrier Cream'],
-    caution: null,
-    color: 'bg-teal-50',
-    accentColor: 'text-teal-700',
-  },
-  {
-    name: 'Vitamine C 15%',
-    category: 'Actieven',
-    tagline: 'Verheldering en bescherming in één.',
-    description: 'Stabiele L-ascorbinezuur op 15% is de klinisch effectieve drempel voor verlichting van hyperpigmentatie, UV-schade en antioxidantwerking. Onze formule is gebufferd voor stabiliteit en tolerantie.',
-    benefits: ['Vermindert donkere vlekken', 'Antioxidantbescherming', 'Stimuleert collageensynthese', 'Verheldert huidtint'],
-    studyNote: 'L-ascorbinezuur boven 10% toont aantoonbare fotobescherming naast UV-filters.',
-    usedIn: ['Reset Serum'],
-    caution: 'Bewaar op donkere plek. Oxidatie vermindert effectiviteit.',
-    color: 'bg-orange-50',
-    accentColor: 'text-orange-700',
-  },
-  {
-    name: 'Rozenbottelolie',
-    category: 'Botanicals',
-    tagline: 'Rijke voeding voor droge en rijpere huid.',
-    description: 'Koudgeperste rozenbottelolie is rijk aan linolzuur (omega-6) en alfa-linoleenzuur (omega-3), essentieel voor huidherstel. Bevat ook van nature vitamine A en C voor een lichte retinol-achtige werking.',
-    benefits: ['Vervaagt littekens & vlekken', 'Vitamines A, C & E', 'Droge & rijpere huid', 'Licht, niet vettig'],
-    studyNote: 'Effectief bij postinflammatoire hyperpigmentatie bij consistent gebruik.',
-    usedIn: ['Overnight Renewal Oil'],
-    caution: null,
-    color: 'bg-rose-50',
-    accentColor: 'text-rose-700',
   },
   {
     name: 'Provitamine B5 (Panthenol)',
@@ -98,7 +62,7 @@ const ingredients = [
     description: 'Panthenol (provitamine B5) dringt diep in de huid en wordt omgezet in pantotheenzuur — een essentieel onderdeel van de huidbarrière. Kalmeert geïrriteerde huid en versnelt het herstelproces.',
     benefits: ['Kalmeert irritatie', 'Bevordert wondgenezing', 'Diepe hydratatie', 'Versterkt barrière'],
     studyNote: 'Veelvuldig gebruikt in dermatologische behandelingen. Uitstekend veiligheidsprofiel.',
-    usedIn: ['Quiet Cleanser', 'Soft Barrier Cream'],
+    usedIn: ['Reset Serum'],
     caution: null,
     color: 'bg-yellow-50',
     accentColor: 'text-yellow-700',
@@ -255,7 +219,6 @@ export default function IngredientsPageContent() {
               {[
                 { stat: '70%', label: 'van huidproblemen is barrièredisfunctie' },
                 { stat: '28 dagen', label: 'is de complete celvernieuwingscyclus' },
-                { stat: '3', label: 'actieve stoffen is het effectieve maximum' },
               ].map(item => (
                 <div key={item.stat} className="flex items-center gap-5 bg-[#FAF8F5] rounded-2xl p-5 border border-stone-100">
                   <p className="text-3xl font-semibold text-[#C9A96E] font-[family-name:var(--font-cormorant)] shrink-0 w-24">{item.stat}</p>
@@ -328,11 +291,11 @@ export default function IngredientsPageContent() {
               Vind de routine die werkt voor jouw huid.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href="/shop" className="btn-gold inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl font-medium text-sm">
-                Shop de producten
-              </Link>
-              <Link href="/products/reset-serum" className="btn-outline inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl font-medium text-sm">
+              <Link href="/products/reset-serum" className="btn-gold inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl font-medium text-sm">
                 Bekijk Reset Serum
+              </Link>
+              <Link href="/launch#waitlist" className="btn-outline inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-2xl font-medium text-sm">
+                Word als eerste uitgenodigd
               </Link>
             </div>
           </motion.div>

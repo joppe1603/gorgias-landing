@@ -18,11 +18,11 @@ const faqs = [
   },
   {
     q: 'Wat als mijn huid reageert?',
-    a: 'Lichte warmte, strakheid of een tijdelijke droogheid zijn normaal in de eerste weken — de huid went. Verlaag de frequentie naar 2 avonden per week. Bij aanhoudende irritatie, stop het gebruik en neem contact op via hallo@lume.nl.',
+    a: 'Lichte warmte, strakheid of een tijdelijke droogheid zijn normaal in de eerste weken — de huid went. Verlaag de frequentie naar 2 avonden per week. Bij aanhoudende irritatie, stop het gebruik en neem contact op via hallo@mauyi.nl.',
   },
   {
     q: 'Is dit geschikt tijdens zwangerschap of borstvoeding?',
-    a: 'Retinol wordt niet aanbevolen tijdens zwangerschap of borstvoeding. De Soft Barrier Cream en Quiet Cleanser zijn wel veilig te gebruiken. Bij twijfel, bespreek het met je huisarts of gynaecoloog.',
+    a: 'Retinol wordt niet aanbevolen tijdens zwangerschap of borstvoeding. Raadpleeg altijd je huisarts of gynaecoloog voor advies over veilige producten in deze periode.',
   },
   {
     q: 'Hoe bewaar ik dit product?',
@@ -102,8 +102,8 @@ export default function PDPFaq({ productName }: { productName: string }) {
 
         <p className="mt-6 text-center text-[12px] text-[#9A9590] font-light">
           Andere vraag?{' '}
-          <a href="mailto:hallo@lume.nl" className="text-[#C9A96E] hover:underline underline-offset-3">
-            hallo@lume.nl
+          <a href="mailto:hallo@mauyi.nl" className="text-[#C9A96E] hover:underline underline-offset-3">
+            hallo@mauyi.nl
           </a>
         </p>
       </div>

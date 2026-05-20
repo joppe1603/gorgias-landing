@@ -21,8 +21,7 @@ export default function Home() {
       <IngredientPhilosophy />
       <UGCReviews />
       <EditorialQuote
-        quote="Huidverzorging hoeft niet ingewikkeld te zijn. Het hoeft alleen eerlijk te zijn."
-        attribution="MAUYI · Oprichtingsmanifest"
+        quote="Eén formule. Ontworpen voor de avond. Gebouwd voor herstel."
         variant="light"
         size="md"
       />

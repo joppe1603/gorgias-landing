@@ -43,18 +43,6 @@ const ugcCards = [
   },
 ]
 
-function Stars({ count = 5 }: { count?: number }) {
-  return (
-    <div className="flex gap-0.5">
-      {Array.from({ length: count }).map((_, i) => (
-        <svg key={i} width="11" height="11" viewBox="0 0 12 12" fill="#C9A96E" aria-hidden>
-          <path d="M6 1L7.4 4.3H11L8.2 6.5L9.2 10L6 8L2.8 10L3.8 6.5L1 4.3H4.6L6 1Z" />
-        </svg>
-      ))}
-    </div>
-  )
-}
-
 export default function UGCReviews() {
   return (
     <section className="py-28 bg-white overflow-hidden">
@@ -124,11 +112,6 @@ export default function UGCReviews() {
                     />
                   </div>
                 )}
-
-                {/* Stars */}
-                <div className="mb-4">
-                  <Stars count={card.rating} />
-                </div>
 
                 {/* Quote */}
                 <p className="text-[#1A1A1A] text-[14px] leading-[1.7] mb-5">
