@@ -43,7 +43,11 @@ export async function POST(req: NextRequest) {
       })
     }
 
-    return NextResponse.redirect(checkoutUrl, 303)
+    // Route via storefront with checkout_url param so theme.liquid can forward
+    // without relying on document.referrer (stripped by iOS Safari ITP)
+    const storeDomain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
+    const bridgeUrl = `https://${storeDomain}/?checkout_url=${encodeURIComponent(checkoutUrl)}`
+    return NextResponse.redirect(bridgeUrl, 303)
   } catch (err) {
     const errMsg = String(err)
     console.error('Shopify checkout error:', errMsg)
