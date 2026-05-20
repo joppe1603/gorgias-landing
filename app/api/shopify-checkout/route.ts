@@ -43,10 +43,9 @@ export async function POST(req: NextRequest) {
       })
     }
 
-    // Route via storefront with checkout_url param so theme.liquid can forward
-    // without relying on document.referrer (stripped by iOS Safari ITP)
+    // Route via storefront hash so theme.liquid can forward without URL encoding issues
     const storeDomain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
-    const bridgeUrl = `https://${storeDomain}/?checkout_url=${encodeURIComponent(checkoutUrl)}`
+    const bridgeUrl = `https://${storeDomain}/#mauyi-checkout:${checkoutUrl}`
     return NextResponse.redirect(bridgeUrl, 303)
   } catch (err) {
     const errMsg = String(err)
