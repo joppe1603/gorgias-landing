@@ -21,21 +21,26 @@ export async function POST(req: NextRequest) {
         'X-Shopify-Storefront-Access-Token': token,
       },
       body: JSON.stringify({
-        query: `mutation cartCreate($lines: [CartLineInput!]!) {
-          cartCreate(input: { lines: $lines }) {
-            cart { checkoutUrl }
-            userErrors { message }
+        query: `mutation checkoutCreate($lineItems: [CheckoutLineItemInput!]!) {
+          checkoutCreate(input: { lineItems: $lineItems }) {
+            checkout { webUrl }
+            checkoutUserErrors { message }
           }
         }`,
-        variables: { lines },
+        variables: {
+          lineItems: lines.map((l: { merchandiseId: string; quantity: number }) => ({
+            variantId: l.merchandiseId,
+            quantity: l.quantity,
+          })),
+        },
       }),
     })
 
     const json = await res.json()
-    const checkoutUrl = json.data?.cartCreate?.cart?.checkoutUrl
+    const checkoutUrl = json.data?.checkoutCreate?.checkout?.webUrl
 
     if (!checkoutUrl) {
-      const errMsg = JSON.stringify(json.errors ?? json.data?.cartCreate?.userErrors ?? json)
+      const errMsg = JSON.stringify(json.errors ?? json.data?.checkoutCreate?.checkoutUserErrors ?? json)
       console.error('Shopify checkout: no checkoutUrl:', errMsg)
       return new Response(`<h2>Checkout fout</h2><pre>${errMsg}</pre>`, {
         status: 200,
