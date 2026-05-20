@@ -133,7 +133,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setIsCheckingOut(true)
     try {
       const checkoutUrl = await createShopifyCheckout(lines)
-      window.location.href = checkoutUrl
+      // Use anchor click for reliable navigation on iOS Safari
+      const a = document.createElement('a')
+      a.href = checkoutUrl
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
     } catch (err) {
       console.error('Shopify checkout error:', err)
       setIsCheckingOut(false)
