@@ -3,7 +3,6 @@ import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import TrustStrip from '@/components/TrustStrip'
 import HeroProductSpotlight from '@/components/HeroProductSpotlight'
-import RitualSection from '@/components/RitualSection'
 import UGCReviews from '@/components/UGCReviews'
 import PhilosophyPreview from '@/components/PhilosophyPreview'
 import EditorialQuote from '@/components/EditorialQuote'
@@ -19,7 +18,6 @@ export default function Home() {
       <Hero />
       <TrustStrip />
       <HeroProductSpotlight />
-      <RitualSection />
       <UGCReviews />
       <PhilosophyPreview />
       <EditorialQuote
