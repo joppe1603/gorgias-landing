@@ -43,10 +43,9 @@ export async function POST(req: NextRequest) {
       })
     }
 
-    // Route via storefront hash so theme.liquid can forward without URL encoding issues
-    const storeDomain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
-    const bridgeUrl = `https://${storeDomain}/#mauyi-checkout:${checkoutUrl}`
-    return NextResponse.redirect(bridgeUrl, 303)
+    // Redirect directly to Shopify checkout URL
+    // theme.liquid whitelists /cart/c/ so no bridge needed
+    return NextResponse.redirect(checkoutUrl, 303)
   } catch (err) {
     const errMsg = String(err)
     console.error('Shopify checkout error:', errMsg)
