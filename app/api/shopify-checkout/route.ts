@@ -43,9 +43,12 @@ export async function POST(req: NextRequest) {
       })
     }
 
-    // Redirect directly to Shopify checkout URL
-    // theme.liquid whitelists /cart/c/ so no bridge needed
-    return NextResponse.redirect(checkoutUrl, 303)
+    // Bridge via storefront homepage so theme.liquid can set a same-domain cookie
+    // before checkout. Cookie on shop.mauyi.nl survives Shopify's internal
+    // session redirects back through storefront (which strip the referrer on iOS Safari).
+    const storeDomain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN
+    const bridgeUrl = `https://${storeDomain}/#mauyi-checkout:${checkoutUrl}`
+    return NextResponse.redirect(bridgeUrl, 303)
   } catch (err) {
     const errMsg = String(err)
     console.error('Shopify checkout error:', errMsg)
