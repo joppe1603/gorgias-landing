@@ -17,7 +17,8 @@ const footerLinks: Record<string, { label: string; href: string }[]> = {
   ],
   'Juridisch': [
     { label: 'Privacybeleid',      href: '/privacy' },
-    { label: 'Voorwaarden',        href: '/privacy#voorwaarden' },
+    { label: 'Algemene voorwaarden', href: '/voorwaarden' },
+    { label: 'Retourbeleid',        href: '/retourbeleid' },
     { label: 'Cookiebeleid',       href: '/privacy#cookies' },
     { label: 'Contact',            href: 'mailto:hello@mauyi.nl' },
   ],
@@ -185,7 +186,8 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-6">
             <Link href="/privacy" className="text-sm text-stone-600 hover:text-stone-400 transition-colors">Privacy</Link>
-            <Link href="/privacy#voorwaarden" className="text-sm text-stone-600 hover:text-stone-400 transition-colors">Voorwaarden</Link>
+            <Link href="/voorwaarden" className="text-sm text-stone-600 hover:text-stone-400 transition-colors">Voorwaarden</Link>
+            <Link href="/retourbeleid" className="text-sm text-stone-600 hover:text-stone-400 transition-colors">Retour</Link>
             <Link href="/privacy#cookies" className="text-sm text-stone-600 hover:text-stone-400 transition-colors">Cookies</Link>
           </div>
         </div>
