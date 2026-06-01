@@ -4,8 +4,8 @@ import Footer from '@/components/Footer'
 import PhilosophyPageContent from '@/components/PhilosophyPageContent'
 
 export const metadata: Metadata = {
-  title: 'Filosofie',
-  description: 'Waarom minder skincare beter werkt. De overtuigingen en principes achter MAUYI.',
+  title: 'Filosofie — Waarom Minder Huidverzorging Beter Werkt',
+  description: 'De filosofie achter MAUYI: minder producten, betere formuleringen. Waarom wij geloven in wetenschappelijke eenvoud boven een complexe skincare routine.',
 }
 
 export default function PhilosophyPage() {

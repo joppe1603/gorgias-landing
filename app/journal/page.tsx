@@ -4,8 +4,8 @@ import Footer from '@/components/Footer'
 import JournalPageContent from '@/components/JournalPageContent'
 
 export const metadata: Metadata = {
-  title: 'Journal',
-  description: 'Editoriaal over huidverzorging, ingrediënten, routines en intentionele schoonheid.',
+  title: 'Journal — Huidverzorging op Wetenschap',
+  description: 'MAUYI Journal: eerlijke artikelen over retinol, niacinamide, bakuchiol, huidbarrière en skincare routines. Geen marketing — wel wetenschap.',
 }
 
 export default function JournalPage() {

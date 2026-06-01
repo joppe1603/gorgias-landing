@@ -4,8 +4,8 @@ import Footer from '@/components/Footer'
 import IngredientsPageContent from '@/components/IngredientsPageContent'
 
 export const metadata: Metadata = {
-  title: 'Ingrediënten & Wetenschap',
-  description: 'Wat werkt en waarom. De wetenschap achter elk MAUYI ingrediënt — zonder marketing.',
+  title: 'Ingrediënten & Wetenschap — Retinol, Niacinamide, Bakuchiol',
+  description: 'De wetenschap achter MAUYI ingrediënten: retinol, niacinamide 10%, bakuchiol en ceramiden. Wat elk ingrediënt doet, welke concentraties werken en waarom ze samen effectiever zijn.',
 }
 
 export default function IngredientsPage() {

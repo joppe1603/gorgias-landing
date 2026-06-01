@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
+import { createClient } from '@supabase/supabase-js'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import StickyProductBar from './StickyProductBar'
@@ -60,6 +61,25 @@ export default async function ProductPage({
 
   const related = getRelatedProducts(product.relatedSlugs)
 
+  // Fetch review aggregate for structured data (star ratings in Google SERP)
+  let reviewCount = 0
+  let avgRating: number | null = null
+  try {
+    const db = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    )
+    const { data: rows } = await db
+      .from('reviews')
+      .select('rating')
+      .eq('product_slug', slug)
+      .eq('approved', true)
+    if (rows && rows.length > 0) {
+      reviewCount = rows.length
+      avgRating = Math.round(rows.reduce((s: number, r: { rating: number }) => s + r.rating, 0) / rows.length * 10) / 10
+    }
+  } catch {}
+
   const availability =
     product.availability === 'available'
       ? 'https://schema.org/InStock'
@@ -80,6 +100,15 @@ export default async function ProductPage({
       url: `${BASE_URL}/products/${slug}`,
       seller: { '@type': 'Organization', name: 'MAUYI' },
     },
+    ...(reviewCount > 0 && {
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: avgRating,
+        reviewCount,
+        bestRating: 5,
+        worstRating: 1,
+      },
+    }),
   }
 
   const breadcrumbSchema = {

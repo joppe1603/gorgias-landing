@@ -1,8 +1,27 @@
 import type { MetadataRoute } from 'next'
+import { getAllPosts } from '@/lib/journal'
+import { getPublicProducts } from '@/lib/products'
 
 const BASE_URL = 'https://mauyi.nl'
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const posts = getAllPosts()
+  const products = getPublicProducts()
+
+  const journalEntries: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `${BASE_URL}/journal/${post.slug}`,
+    lastModified: new Date(post.dateISO),
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }))
+
+  const productEntries: MetadataRoute.Sitemap = products.map((product) => ({
+    url: `${BASE_URL}/products/${product.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: 0.95,
+  }))
+
   return [
     {
       url: BASE_URL,
@@ -10,18 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 1,
     },
-    {
-      url: `${BASE_URL}/products/reset-serum`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.95,
-    },
-    {
-      url: `${BASE_URL}/launch`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 0.9,
-    },
+    ...productEntries,
     {
       url: `${BASE_URL}/shop`,
       lastModified: new Date(),
@@ -29,10 +37,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${BASE_URL}/journal`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.6,
+    },
+    ...journalEntries,
+    {
       url: `${BASE_URL}/science`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.7,
+      priority: 0.65,
     },
     {
       url: `${BASE_URL}/ingredients`,
@@ -51,42 +66,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.6,
-    },
-    {
-      url: `${BASE_URL}/journal`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.55,
-    },
-    {
-      url: `${BASE_URL}/journal/bakuchiol-vs-retinol`,
-      lastModified: new Date('2026-06-01'),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/journal/niacinamide-serum-gids`,
-      lastModified: new Date('2026-06-01'),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/journal/huidbarriere-herstellen`,
-      lastModified: new Date('2026-05-20'),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${BASE_URL}/journal/retinol-beginners-gids`,
-      lastModified: new Date('2026-04-10'),
-      changeFrequency: 'monthly',
-      priority: 0.65,
-    },
-    {
-      url: `${BASE_URL}/journal/waarom-minder-beter-werkt`,
-      lastModified: new Date('2026-05-15'),
-      changeFrequency: 'monthly',
-      priority: 0.65,
     },
     {
       url: `${BASE_URL}/routine`,

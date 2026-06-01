@@ -486,6 +486,379 @@ const POSTS: JournalPost[] = [
       },
     ],
   },
+  {
+    slug: 'vitamine-c-serum-gids',
+    title: 'Vitamine C serum: wat het doet, welke vorm werkt en hoe je het gebruikt',
+    excerpt: 'Vitamine C serum staat in elke skincare-routine. Maar welke vorm werkt het beste, welke concentratie heb je nodig en waarom kun je het beter \'s ochtends gebruiken?',
+    category: 'Ingrediënten',
+    readTime: '6 min',
+    date: 'Juni 2026',
+    dateISO: '2026-06-05',
+    image: '/reset-serum-new.jpg',
+    seo: {
+      title: 'Vitamine C Serum: werking, concentratie en gebruik | MAUYI Journal',
+      description: 'Vitamine C serum verkleint poriën, egalisert huidtoon en beschermt tegen vrije radicalen. Welke vorm werkt het beste en wat is de juiste concentratie?',
+    },
+    body: [
+      {
+        type: 'p',
+        content: 'Vitamine C is een van de meest gebruikte actieve ingrediënten in skincare — en tegelijk een van de meest misverstane. Er zijn tientallen vormen, concentraties variëren van 5% tot 30%, en de werking hangt sterk af van de formulering. Dit is wat je moet weten.',
+      },
+      {
+        type: 'h2',
+        content: 'Wat doet vitamine C voor je huid?',
+      },
+      {
+        type: 'ul',
+        content: [
+          'Antioxidantbescherming — neutraliseert vrije radicalen veroorzaakt door UV-straling en luchtvervuiling',
+          'Collageen stimuleren — vitamine C is een cofactor voor collageen synthese, waardoor huid steviger wordt',
+          'Pigmentvlekken verminderen — remt melanineproductie, waardoor zonnevlekken en donkere kringen vervagen',
+          'Huidtoon egaliseren — verbetert de algehele luminantie en egaalheid van de huid',
+          'SPF versterken — vitamine C versterkt de bescherming van zonnebrand wanneer samen gebruikt',
+        ],
+      },
+      {
+        type: 'h2',
+        content: 'Welke vorm van vitamine C werkt het beste?',
+      },
+      {
+        type: 'p',
+        content: 'L-ascorbinezuur is de meest bestudeerde en krachtigste vorm van vitamine C. Het penetreert diep in de huid en heeft de meeste klinische bewijslast. Het nadeel: L-ascorbinezuur is onstabiel en oxideert snel bij blootstelling aan lucht en licht — een geel of oranje serum is een teken van oxidatie en verlies van werkzaamheid.',
+      },
+      {
+        type: 'p',
+        content: 'Stabielere derivaten zoals ascorbyl glucoside, sodium ascorbyl phosphate en tetrahexyldecyl ascorbate zijn minder krachtig maar oxideren minder snel. Voor gevoelige huid zijn deze derivaten doorgaans beter te verdragen. Ze vereisen wel een hogere concentratie voor vergelijkbaar effect.',
+      },
+      {
+        type: 'callout',
+        content: 'L-ascorbinezuur is het meest effectief bij een concentratie van 10–20% en een pH onder 3.5. Boven 20% neemt de effectiviteit niet toe, maar stijgt het irritatierisico aanzienlijk.',
+      },
+      {
+        type: 'h2',
+        content: 'Ochtend of avond?',
+      },
+      {
+        type: 'p',
+        content: 'Vitamine C gebruik je het beste \'s ochtends. Het werkt overdag als antioxidant die je huid beschermt tegen UV-schade en vervuiling. Gecombineerd met SPF versterken ze elkaars beschermende werking. \'s Avonds is er minder reden voor gebruik — dan is de antioxidantfunctie minder relevant, terwijl andere actieven zoals retinol overneemen.',
+      },
+      {
+        type: 'h2',
+        content: 'Vitamine C en retinol: wel of niet combineren?',
+      },
+      {
+        type: 'p',
+        content: 'De klassieke aanpak: vitamine C \'s ochtends, retinol \'s avonds. Niet omdat ze slecht samenwerken, maar omdat ze elk op een ander moment het meest effectief zijn. Vitamine C beschermt overdag, retinol vernieuwt \'s nachts. Samen geven ze coverage over de hele dag.',
+      },
+      {
+        type: 'h2',
+        content: 'Wat te doen als je huid reageert?',
+      },
+      {
+        type: 'p',
+        content: 'L-ascorbinezuur kan bij gevoelige huid tintelingen veroorzaken, zeker in hogere concentraties. Begin dan met een lagere concentratie (5–10%) of kies voor een stabieler derivaat. Als je huid barrièreproblemen heeft, introduceer vitamine C pas nadat de barrière hersteld is.',
+      },
+      {
+        type: 'h2',
+        content: 'Hoe bewaar je vitamine C serum?',
+      },
+      {
+        type: 'ul',
+        content: [
+          'Donker en koel bewaren — in de koelkast of een donkere lade verlengt de houdbaarheid',
+          'Luchtdichte verpakking — pompflacons of airless packaging voorkomen oxidatie',
+          'Kleur controleren — lichtgeel is normaal, donkergeel of oranje = geoxideerd, gooi het weg',
+          'Na opening: gebruik binnen 3 maanden voor optimale werking',
+        ],
+      },
+      {
+        type: 'cta',
+        content: 'MAUYI Reset Serum bevat Niacinamide 10% — een stabiele antioxidant die overdag én \'s avonds de huidbarrière versterkt. Combineer het \'s ochtends met vitamine C voor maximale bescherming.',
+      },
+    ],
+  },
+  {
+    slug: 'hyaluronzuur-serum-gids',
+    title: 'Hyaluronzuur serum: werking, molecuulgewicht en wanneer het écht helpt',
+    excerpt: 'Hyaluronzuur staat in bijna elk vochtinbrengend serum. Maar hoe werkt het, maakt molecuulgewicht uit en bij welke huidtypen helpt het het meest?',
+    category: 'Ingrediënten',
+    readTime: '5 min',
+    date: 'Juni 2026',
+    dateISO: '2026-06-08',
+    image: '/journal-barrier.jpg',
+    seo: {
+      title: 'Hyaluronzuur Serum: werking, molecuulgewicht en gebruik | MAUYI Journal',
+      description: 'Hyaluronzuur bindt tot 1000x zijn eigen gewicht aan vocht. Maar maakt molecuulgewicht uit? En wanneer helpt het serum écht voor jouw huid?',
+    },
+    body: [
+      {
+        type: 'p',
+        content: 'Hyaluronzuur is het ingrediënt dat in vrijwel elk vochtinbrengend serum, crème of toner staat. Het wordt aangeprezen als "supervochtig", "plumpend" en "jeugdverlengende". Maar wat doet het werkelijk, en wanneer heeft een hyaluronzuur serum écht zin?',
+      },
+      {
+        type: 'h2',
+        content: 'Wat is hyaluronzuur?',
+      },
+      {
+        type: 'p',
+        content: 'Hyaluronzuur (hyaluronic acid, HA) is een glycosaminoglycaan — een suikermolecuul dat van nature in je huid, gewrichten en ogen voorkomt. In de huid zit het in de dermis, waar het vocht aantrekt en vasthoudt. Eén gram hyaluronzuur kan tot 6 liter water binden, wat het een uitzonderlijk krachtige vochtbinder maakt.',
+      },
+      {
+        type: 'p',
+        content: 'Naarmate je ouder wordt, neemt de hoeveelheid hyaluronzuur in de huid af — samen met collageen en elastine. Dat is een van de redenen waarom huid droger en minder veerkrachtig wordt.',
+      },
+      {
+        type: 'h2',
+        content: 'Maakt molecuulgewicht uit?',
+      },
+      {
+        type: 'p',
+        content: 'Ja, en het is een van de meest onderschatte aspecten van hyaluronzuur serums. Molecuulgewicht bepaalt hoe diep het ingrediënt in de huid doordringt:',
+      },
+      {
+        type: 'ul',
+        content: [
+          'Hoog molecuulgewicht (>1000 kDa) — blijft op de huid, vormt een vochtfilm op de oppervlakte, geeft direct "plump" effect maar dringt niet diep door',
+          'Medium molecuulgewicht (50–500 kDa) — dringt door tot het bovenste deel van de dermis',
+          'Laag molecuulgewicht (<50 kDa) — penetreert dieper, stimuleert collageen, maar kan bij beschadigde huid inflammatoir werken',
+          'Nano HA (<10 kDa) — diepste penetratie, meest effectief voor langetermijn hydratatie',
+        ],
+      },
+      {
+        type: 'callout',
+        content: 'De beste hyaluronzuur serums combineren meerdere molecuulgewichten voor hydratatie op alle niveaus: oppervlakkig voor direct effect, diep voor langdurige vochtretentie.',
+      },
+      {
+        type: 'h2',
+        content: 'Wanneer helpt een hyaluronzuur serum écht?',
+      },
+      {
+        type: 'p',
+        content: 'Hyaluronzuur werkt het beste in een vochtige omgeving. Het trekt water aan vanuit de omgeving — maar als de lucht erg droog is (airconditioned ruimtes, winterlucht), kan het water juist aan de huid onttrekken als er geen afsluitmiddel bovenop zit. Aanbrengen op vochtige huid en daarna afsluiten met een ceramide-rijke moisturizer is de effectiefste manier.',
+      },
+      {
+        type: 'h2',
+        content: 'Voor welke huidtypen is het geschikt?',
+      },
+      {
+        type: 'p',
+        content: 'Hyaluronzuur is universeel toepasbaar en heeft nauwelijks contra-indicaties. Het is de basis van een goede vochthuishouding voor elk huidtype. Voor droge en gevoelige huid is het een essentieel onderdeel van de routine. Voor vette huid biedt het hydratatie zonder dat het poriën verstopt. Voor aging skin ondersteunt het de plompheid en veerkracht die verloren gaan.',
+      },
+      {
+        type: 'h2',
+        content: 'Hoe gebruik je het correct?',
+      },
+      {
+        type: 'ul',
+        content: [
+          'Aanbrengen na reinigen, op licht vochtige huid',
+          'Daarna afsluiten met moisturizer — niet weglaten, anders werkt HA averechts in droge lucht',
+          'Ochtend én avond te gebruiken',
+          'Combineer met niacinamide voor betere barrièreondersteuning',
+          'Niet combineren met zeer lage pH-producten (zoals hoge L-ascorbinezuur) — wacht dan 15–20 minuten',
+        ],
+      },
+      {
+        type: 'cta',
+        content: 'MAUYI Reset Serum bevat Niacinamide 10%, dat de ceramideproductie stimuleert en vochtverlies vermindert — een fundamentelere aanpak dan oppervlakkige hydratatie. Combineer met een hyaluronzuur toner voor maximale vochthuishouding.',
+      },
+      {
+        type: 'h2',
+        content: 'Conclusie',
+      },
+      {
+        type: 'p',
+        content: 'Hyaluronzuur werkt — maar alleen als je de juiste formulering kiest en het correct gebruikt. Let op molecuulgewichten, breng het aan op vochtige huid en sluit altijd af. Dan is het een van de beste vochtbinders in skincare.',
+      },
+    ],
+  },
+  {
+    slug: 'huidverzorging-routine-ochtend-avond',
+    title: 'Skincare routine opbouwen: de juiste volgorde voor ochtend en avond',
+    excerpt: 'Welke producten in welke volgorde? Een duidelijke gids voor een effectieve skincare routine — zowel \'s ochtends als \'s avonds — zonder onnodige stappen.',
+    category: 'Huidverzorging',
+    readTime: '7 min',
+    date: 'Juni 2026',
+    dateISO: '2026-06-10',
+    image: '/journal-featured.jpg',
+    seo: {
+      title: 'Skincare Routine Opbouwen: volgorde ochtend en avond | MAUYI Journal',
+      description: 'De juiste volgorde voor een skincare routine: van reiniger tot SPF. Welke producten in welke stap, en wat is het verschil tussen ochtend en avond?',
+    },
+    body: [
+      {
+        type: 'p',
+        content: 'Een goede huidverzorgingsroutine hoeft niet ingewikkeld te zijn. De volgorde maakt echter veel uit — producten die in de verkeerde volgorde worden aangebracht, kunnen elkaars werking blokkeren of irritatie veroorzaken. Dit is een praktische gids voor een effectieve routine, ochtend én avond.',
+      },
+      {
+        type: 'h2',
+        content: 'De ochtend skincare routine',
+      },
+      {
+        type: 'p',
+        content: 'De ochtend routine is gericht op beschermen. Je huid heeft \'s nachts gewerkt aan herstel — de ochtend is het moment om die huid te ondersteunen en klaar te maken voor de dag.',
+      },
+      {
+        type: 'ul',
+        content: [
+          'Stap 1: Reinigen — gebruik \'s ochtends een milde reiniger of gewoon water als je huid niet vet aanvoelt. Agressief reinigen verwijdert de beschermende oliën die \'s nachts zijn opgebouwd.',
+          'Stap 2: Toner of essence (optioneel) — hyaluronzuur toner op vochtige huid voor extra hydratatie.',
+          'Stap 3: Vitamine C serum — antioxidant bescherming overdag, stimuleert collageen. Laat 1–2 minuten intrekken.',
+          'Stap 4: Moisturizer — sluit vocht in en versterkt de barrière.',
+          'Stap 5: SPF — verplicht, altijd. Factor 30 als minimum, factor 50 als ideaal. Geen gezichtscrème vervangt SPF.',
+        ],
+      },
+      {
+        type: 'callout',
+        content: 'SPF is het meest impactvolle anti-aging product dat bestaat. UV-straling is verantwoordelijk voor 80–90% van zichtbare veroudering. Geen serum compenseert het weglaten van SPF.',
+      },
+      {
+        type: 'h2',
+        content: 'De avond skincare routine',
+      },
+      {
+        type: 'p',
+        content: '\'s Avonds is de huid in herstelmode. Celvernieuwing is \'s nachts verhoogd, wat de avond het ideale moment maakt voor actieve ingrediënten zoals retinol.',
+      },
+      {
+        type: 'ul',
+        content: [
+          'Stap 1: Make-up verwijderen — gebruik micellair water of een olie-based cleanser als eerste stap.',
+          'Stap 2: Reinigen — een milde cleanser om alle residuen te verwijderen. Dit is de dubbele reiniging (double cleanse).',
+          'Stap 3: Toner (optioneel) — bereid de huid voor op actieve ingrediënten.',
+          'Stap 4: Actief serum — retinol, niacinamide of andere actieven. Gebruik op droge huid voor maximale absorptie.',
+          'Stap 5: Moisturizer — sluit alles af en ondersteunt de barrière tijdens de herstelperiode.',
+          'Stap 6: Facial oil (optioneel) — een olie bovenop de moisturizer voor extra voeding bij droge huid.',
+        ],
+      },
+      {
+        type: 'h2',
+        content: 'De regel voor volgorde: dun naar dik',
+      },
+      {
+        type: 'p',
+        content: 'De basisregel voor het aanbrengen van skincare producten: altijd van dun naar dik, en van waterig naar vettig. Dit zorgt ervoor dat lichte producten kunnen penetreren voordat dikkere producten de huid afsluiten. Een serum gaat altijd voor een crème, en een olie altijd als laatste stap.',
+      },
+      {
+        type: 'h2',
+        content: 'Wat mag je niet stapelen?',
+      },
+      {
+        type: 'ul',
+        content: [
+          'Retinol + AHA/BHA op dezelfde avond — te agressief voor de huidbarrière',
+          'Vitamine C (L-ascorbinezuur) + niacinamide direct na elkaar bij lage pH — laat 15 minuten wachten',
+          'Retinol overdag — retinol breekt af onder UV-straling en verhoogt fotogevoeligheid',
+          'Twee exfolianten tegelijk — kies één en gebruik wisselend',
+        ],
+      },
+      {
+        type: 'h2',
+        content: 'Hoeveel stappen heb je echt nodig?',
+      },
+      {
+        type: 'p',
+        content: 'Veel minder dan je denkt. Een effectieve routine kan bestaan uit drie stappen: reinigen, actief serum en SPF (ochtend) of moisturizer (avond). Meer producten betekenen niet betere resultaten — het verhoogt het risico op ingrediëntenconflicten en irritatie. Begin met het minimum en voeg alleen toe wat bewezen effect heeft.',
+      },
+      {
+        type: 'cta',
+        content: 'Reset Serum vervangt drie aparte stappen: celvernieuwing (retinol 0.3%), barrièreondersteuning (niacinamide 10%) en kalmering (bakuchiol 0.5%) in één avondserum. Eenvoudiger en effectiever dan een complexe meerstaps routine.',
+      },
+    ],
+  },
+  {
+    slug: 'porieen-verkleinen-tips',
+    title: 'Poriën verkleinen: wat echt werkt (en wat niet)',
+    excerpt: 'Poriën kun je niet "sluiten" — maar je kunt ze minder zichtbaar maken. Wat werkt wetenschappelijk gezien, en wat is marketing?',
+    category: 'Huidverzorging',
+    readTime: '5 min',
+    date: 'Juni 2026',
+    dateISO: '2026-06-12',
+    image: '/reset-serum-new.jpg',
+    seo: {
+      title: 'Poriën Verkleinen: wat werkt en wat niet | MAUYI Journal',
+      description: 'Poriën kun je niet "sluiten", maar wel minder zichtbaar maken. Welke ingrediënten werken echt en welke claims zijn marketing? De wetenschap.',
+    },
+    body: [
+      {
+        type: 'p',
+        content: 'Poriën verkleinen is een van de meest gezochte skincare-doelen. En tegelijk een van de meest misleidende marketingclaims. De waarheid is simpel maar zelden gezegd: poriën hebben geen spieren en kunnen niet "openen" of "sluiten". Maar je kunt ze aanzienlijk minder zichtbaar maken — als je weet wat er wetenschappelijk gezien werkt.',
+      },
+      {
+        type: 'h2',
+        content: 'Waarom zijn poriën zichtbaar?',
+      },
+      {
+        type: 'p',
+        content: 'Poriën zijn de openingen van talgklieren en haarzakjes. Ze worden zichtbaarder door vier factoren: overmatige talgproductie (poriën raken verstopt en zetten uit), verlies van elasticiteit (huid die minder strak is laat poriën wijder lijken), ophoping van dode huidcellen (vergroot de opening optisch), en genetica (poriegrootte is grotendeels erfelijk bepaald).',
+      },
+      {
+        type: 'h2',
+        content: 'Wat werkt echt?',
+      },
+      {
+        type: 'ul',
+        content: [
+          'Niacinamide (5–10%) — reguleert talgproductie, vermindert aantoonbaar de zichtbaarheid van poriën na 4–8 weken bij consistent gebruik',
+          'Retinol — verhoogt celvernieuwing, vermindert ophoping van dode huidcellen die poriën vergroten en stimuleert collageen voor betere huidspanning',
+          'Salicylzuur (BHA) — lost in vet op en reinigt de porie van binnenuit, effectief bij verstopte poriën en blackheads',
+          'Glycolzuur (AHA) — exfolieert dode huidcellen op de oppervlakte, maakt poriën optisch kleiner',
+          'SPF — UV-schade tast collageen aan, waardoor poriën wijder worden. Dagelijkse SPF is preventief het meest effectief',
+        ],
+      },
+      {
+        type: 'callout',
+        content: 'In een klinische studie (Journal of Cosmetic Dermatology, 2017) reduceerde 5% niacinamide de zichtbaarheid van poriën significant na 12 weken — vergelijkbaar met tretinoine, maar zonder de bijwerkingen.',
+      },
+      {
+        type: 'h2',
+        content: 'Wat werkt niet?',
+      },
+      {
+        type: 'ul',
+        content: [
+          'Stoom — opent geen poriën, verhoogt alleen bloedcirculatie',
+          'Koud water — "sluit" geen poriën, heeft geen permanent effect',
+          'Porie-strips — verwijderen de bovenste laag van blackheads maar niet de oorzaak; poriën raken snel opnieuw verstopt',
+          'Bicarbonat scrubs — te agressief voor pH van de huid, beschadigt de barrière',
+          '"Porie-minimizer" primers — verbergen poriën optisch maar hebben geen effect op de eigenlijke grootte',
+        ],
+      },
+      {
+        type: 'h2',
+        content: 'Wat heeft invloed op poriën die je niet kunt veranderen?',
+      },
+      {
+        type: 'p',
+        content: 'Genetica speelt de grootste rol in poriegrootte. Als jouw ouders grote poriën hebben, is de kans groot dat jij ze ook hebt — en dat is oké. Het doel van skincare is niet het elimineren van poriën (dat kan niet), maar het optimaliseren van je huid binnen jouw genetische bandbreedte.',
+      },
+      {
+        type: 'h2',
+        content: 'De meest effectieve aanpak',
+      },
+      {
+        type: 'p',
+        content: 'Combineer niacinamide met retinol: niacinamide reguleert talg en vermindert direct de poriézichtbaarheid, retinol verhoogt celvernieuwing en stimuleert collageen voor een strakker "omhulsel" rondom de porie. Beide ingrediënten versterken elkaars werking zonder conflicten.',
+      },
+      {
+        type: 'cta',
+        content: 'Reset Serum combineert Niacinamide 10% met Retinol 0.3% — de twee effectiefste ingrediënten voor poriënverfijning in één parfumvrije avondformule. Verwacht na 4–6 weken zichtbaar verschil.',
+      },
+      {
+        type: 'h2',
+        content: 'Tijdlijn',
+      },
+      {
+        type: 'ul',
+        content: [
+          '2–4 weken: talgproductie meer in balans, huid minder glanzend',
+          '4–8 weken: poriën zichtbaar verfijnd door niacinamide en exfoliatie',
+          '8–12 weken: collageen opbouw door retinol zorgt voor betere huidspanning rondom poriën',
+          '6 maanden+: consistente verbetering; huidtextuur gladder en meer egaal',
+        ],
+      },
+    ],
+  },
 ]
 
 export function getAllPosts(): JournalPost[] {
