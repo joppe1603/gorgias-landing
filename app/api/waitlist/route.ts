@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 import { Resend } from 'resend'
+import { renderWaitlistEmail } from '@/emails/WaitlistConfirmation'
+
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://www.mauyi.nl'
 
 const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)
@@ -8,6 +11,7 @@ const resend = process.env.RESEND_API_KEY
 
 const FROM = process.env.RESEND_FROM_EMAIL ?? 'MAUYI <noreply@mauyi.nl>'
 
+// Legacy fallback — kept for reference, no longer used
 function confirmationEmail(email: string): string {
   return `<!DOCTYPE html>
 <html lang="nl">
@@ -134,11 +138,12 @@ export async function POST(req: NextRequest) {
   // Send confirmation email (skip for duplicate registrations)
   if (!isDuplicate && resend) {
     try {
+      const html = await renderWaitlistEmail(BASE_URL, email)
       await resend.emails.send({
         from: FROM,
         to: email,
         subject: 'Je staat op de MAUYI wachtlijst',
-        html: confirmationEmail(email),
+        html,
       })
     } catch (emailError) {
       // Don't fail the request if email sending fails — the signup succeeded
