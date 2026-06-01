@@ -304,6 +304,42 @@ export default async function ProductPage({
         {/* ─── 9. FAQ ───────────────────────────────────── */}
         <PDPFaq productName={product.name} />
 
+        {/* ─── 9d. JOURNAL LINKS ────────────────────────── */}
+        <section className="py-16 bg-white border-t border-stone-100">
+          <div className="max-w-3xl mx-auto px-6 sm:px-8">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-5 h-px bg-[#C9A96E]" />
+              <span className="section-label">Meer lezen</span>
+            </div>
+            <h2
+              className="text-2xl sm:text-3xl font-semibold text-[#1A1A1A] mb-8 leading-tight"
+            >
+              Uit het MAUYI Journal
+            </h2>
+            <div className="grid sm:grid-cols-3 gap-4">
+              {[
+                { slug: 'bakuchiol-vs-retinol', title: 'Bakuchiol vs retinol: wat is het verschil?', category: 'Ingrediënten' },
+                { slug: 'niacinamide-serum-gids', title: 'Niacinamide serum: wat het doet en welke concentratie werkt', category: 'Ingrediënten' },
+                { slug: 'retinol-beginners-gids', title: 'Retinol voor beginners: hoe je start zonder irritatie', category: 'Ingrediënten' },
+              ].map((article) => (
+                <Link
+                  key={article.slug}
+                  href={`/journal/${article.slug}`}
+                  className="group flex flex-col bg-[#FAF8F5] rounded-xl border border-stone-100 p-5 hover:border-[#C9A96E]/30 hover:bg-white hover:shadow-sm transition-all duration-300"
+                >
+                  <span className="section-label block mb-2">{article.category}</span>
+                  <p className="text-[14px] font-medium text-[#1A1A1A] leading-snug group-hover:text-[#C9A96E] transition-colors flex-1">
+                    {article.title}
+                  </p>
+                  <span className="mt-4 text-[11px] text-[#C9A96E] font-medium group-hover:underline underline-offset-2">
+                    Lees artikel →
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ─── 9b. BUNDLE UPSELL ────────────────────────── */}
         {related.length > 0 && (
           <PDPBundleUpsell currentProduct={product} relatedProducts={related} />

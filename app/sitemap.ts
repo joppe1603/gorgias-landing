@@ -71,6 +71,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${BASE_URL}/journal/huidbarriere-herstellen`,
+      lastModified: new Date('2026-05-20'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/journal/retinol-beginners-gids`,
+      lastModified: new Date('2026-04-10'),
+      changeFrequency: 'monthly',
+      priority: 0.65,
+    },
+    {
+      url: `${BASE_URL}/journal/waarom-minder-beter-werkt`,
+      lastModified: new Date('2026-05-15'),
+      changeFrequency: 'monthly',
+      priority: 0.65,
+    },
+    {
       url: `${BASE_URL}/routine`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
