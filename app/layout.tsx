@@ -37,6 +37,11 @@ export const metadata: Metadata = {
   authors: [{ name: 'MAUYI B.V.', url: BASE_URL }],
   creator: 'MAUYI B.V.',
   publisher: 'MAUYI B.V.',
+  icons: {
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
+    apple: '/icon.svg',
+  },
   robots: {
     index: true,
     follow: true,
