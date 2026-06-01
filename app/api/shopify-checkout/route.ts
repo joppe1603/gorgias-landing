@@ -11,6 +11,11 @@ export async function POST(req: NextRequest) {
 
     const lines = JSON.parse(linesJson)
 
+    // Empty lines = stale cart without shopifyVariantId — send back to product
+    if (!Array.isArray(lines) || lines.length === 0) {
+      return NextResponse.redirect(new URL('/products/reset-serum', req.url), 303)
+    }
+
     const storeUrl = `https://${process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN}/api/2024-01/graphql.json`
     const token = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN!
 

@@ -297,7 +297,17 @@ export default function SlideCart() {
                 <form
                   method="POST"
                   action="/api/shopify-checkout"
-                  onSubmit={() => setIsCheckingOut(true)}
+                  onSubmit={(e) => {
+                    const validLines = items.filter((i) => i.shopifyVariantId)
+                    if (validLines.length === 0) {
+                      e.preventDefault()
+                      // Stale cart without variant IDs — clear and reload
+                      localStorage.removeItem('mauyi-cart')
+                      dispatch({ type: 'CLEAR_CART' })
+                      return
+                    }
+                    setIsCheckingOut(true)
+                  }}
                 >
                   <input
                     type="hidden"
