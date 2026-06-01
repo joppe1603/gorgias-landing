@@ -6,7 +6,7 @@ import Footer from '@/components/Footer'
 export const metadata: Metadata = {
   title: 'Privacybeleid',
   description: 'Hoe MAUYI omgaat met jouw persoonsgegevens.',
-  robots: { index: true, follow: true },
+  robots: { index: false, follow: false },
 }
 
 const lastUpdated = '18 mei 2026'

@@ -70,7 +70,7 @@ export default async function ProductPage({
     '@type': 'Product',
     name: product.name,
     description: product.description,
-    image: product.heroImage,
+    image: `${BASE_URL}${product.heroImage}`,
     brand: { '@type': 'Brand', name: 'MAUYI' },
     offers: {
       '@type': 'Offer',
@@ -78,7 +78,50 @@ export default async function ProductPage({
       priceCurrency: 'EUR',
       availability,
       url: `${BASE_URL}/products/${slug}`,
+      seller: { '@type': 'Organization', name: 'MAUYI' },
     },
+  }
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Producten', item: `${BASE_URL}/shop` },
+      { '@type': 'ListItem', position: 3, name: product.name, item: `${BASE_URL}/products/${slug}` },
+    ],
+  }
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Is dit veilig voor gevoelige huid?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Ja. De formule is ontworpen met gevoelige huid als uitgangspunt. De laagste effectieve retinolconcentratie (0.3%) wordt gebufferd door niacinamide, waardoor irritatie sterk vermindert. Begin met 2–3 avonden per week.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'Kan ik dit combineren met vitamine C of SPF?',
+        acceptedAnswer: { '@type': 'Answer', text: "Gebruik vitamine C 's ochtends, dit serum 's avonds. SPF overdag is verplicht — retinol maakt de huid tijdelijk iets gevoeliger voor zon. Combineer dit niet met andere retinol- of exfoliërende producten." },
+      },
+      {
+        '@type': 'Question',
+        name: 'Hoe snel zie ik resultaat?',
+        acceptedAnswer: { '@type': 'Answer', text: 'De eerste veranderingen in textuur zijn merkbaar na 3–4 weken bij consistent gebruik. Significant verschil in huidtoon, fijnere lijntjes en kleinere poriën is zichtbaar na 8–12 weken.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'Wat als mijn huid reageert?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Lichte warmte, straktheid of een tijdelijke droogheid zijn normaal in de eerste weken. Verlaag de frequentie naar 2 avonden per week. Bij aanhoudende irritatie, stop het gebruik.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'Is dit geschikt tijdens zwangerschap of borstvoeding?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Retinol wordt niet aanbevolen tijdens zwangerschap of borstvoeding. Raadpleeg altijd je huisarts of gynaecoloog.' },
+      },
+    ],
   }
 
   return (
@@ -86,6 +129,14 @@ export default async function ProductPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navbar />
 

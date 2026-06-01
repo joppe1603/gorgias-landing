@@ -6,7 +6,7 @@ import Footer from '@/components/Footer'
 export const metadata: Metadata = {
   title: 'Retourbeleid | MAUYI',
   description: 'Informatie over retourneren, ruilen en terugbetalingen bij MAUYI.',
-  robots: { index: true, follow: true },
+  robots: { index: false, follow: false },
 }
 
 const lastUpdated = '21 mei 2026'
