@@ -5,16 +5,34 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 const featured = {
-  slug: 'waarom-minder-beter-werkt',
-  title: 'Waarom minder huidverzorging bijna altijd beter werkt',
-  excerpt: 'De gemiddelde vrouw gebruikt 12 producten per dag. Dermatologen raden 3 à 4 aan. Wat doen de andere 8 eigenlijk met je huid?',
-  category: 'Filosofie',
+  slug: 'bakuchiol-vs-retinol',
+  title: 'Bakuchiol vs retinol: wat is het verschil en wat werkt beter?',
+  excerpt: 'Bakuchiol wordt vaak gepresenteerd als het "natuurlijke retinol-alternatief". Maar klopt dat? En wanneer kies je voor wat?',
+  category: 'Ingrediënten',
   readTime: '6 min',
-  date: 'Mei 2026',
-  image: '/journal-featured.jpg',
+  date: 'Juni 2026',
+  image: '/reset-serum-new.jpg',
 }
 
 const articles = [
+  {
+    slug: 'waarom-minder-beter-werkt',
+    title: 'Waarom minder huidverzorging bijna altijd beter werkt',
+    excerpt: 'De gemiddelde vrouw gebruikt 12 producten per dag. Dermatologen raden 3 à 4 aan. Wat doen de andere 8 eigenlijk met je huid?',
+    category: 'Filosofie',
+    readTime: '6 min',
+    date: 'Mei 2026',
+    image: '/journal-featured.jpg',
+  },
+  {
+    slug: 'retinol-beginners-gids',
+    title: 'Retinol voor beginners: wat je moet weten',
+    excerpt: 'Hoe start je met retinol zonder irritatie? Alles wat je moet weten in één leesbare gids.',
+    category: 'Ingrediënten',
+    readTime: '5 min',
+    date: 'April 2026',
+    image: '/reset-serum-new.jpg',
+  },
   {
     slug: 'de-huidbarriere-gids',
     title: 'De complete gids voor een gezonde huidbarrière',
