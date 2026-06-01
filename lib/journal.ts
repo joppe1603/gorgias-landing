@@ -148,6 +148,109 @@ const POSTS: JournalPost[] = [
       { type: 'p', content: 'Dit artikel is binnenkort beschikbaar.' },
     ],
   },
+  {
+    slug: 'niacinamide-serum-gids',
+    title: 'Niacinamide serum: wat het doet en waarom het in elke routine past',
+    excerpt: 'Niacinamide is een van de meest veelzijdige ingrediënten in huidverzorging. Maar wat doet het precies, welke concentratie heb je nodig en combineert het goed met retinol?',
+    category: 'Ingrediënten',
+    readTime: '5 min',
+    date: 'Juni 2026',
+    dateISO: '2026-06-01',
+    image: '/reset-serum-new.jpg',
+    seo: {
+      title: 'Niacinamide Serum: wat het doet en welke concentratie werkt | MAUYI Journal',
+      description: 'Niacinamide 10% verkleint poriën, versterkt de huidbarrière en vermindert roodheid. Alles over dit multitasker-ingrediënt: werking, concentratie en combinaties.',
+    },
+    body: [
+      {
+        type: 'p',
+        content: 'Niacinamide staat op vrijwel elk serum-etiket dat de afgelopen jaren is uitgebracht. En dat is niet zonder reden — het is een van de weinige ingrediënten die klinisch bewijs heeft voor meerdere huidproblemen tegelijk. Maar "niacinamide zit erin" zegt weinig als je niet weet wat het doet, hoeveel je nodig hebt en waarom het bijna altijd een slimme keuze is.',
+      },
+      {
+        type: 'h2',
+        content: 'Wat is niacinamide?',
+      },
+      {
+        type: 'p',
+        content: 'Niacinamide is de actieve vorm van vitamine B3 (niacine) en een in water oplosbare verbinding die direct door de huid wordt opgenomen. Het werkt op meerdere lagen tegelijk: het versterkt de huidbarrière, reguleert talgproductie, remt melanineoverdracht en heeft anti-inflammatoire eigenschappen.',
+      },
+      {
+        type: 'p',
+        content: 'Wat niacinamide onderscheidt van veel andere actieven is de brede inzetbaarheid: het werkt goed op droge huid, vette huid, gevoelige huid en gecombineerde huid — zonder dat je een inloopperiode nodig hebt.',
+      },
+      {
+        type: 'h2',
+        content: 'Wat doet een niacinamide serum voor je huid?',
+      },
+      {
+        type: 'ul',
+        content: [
+          'Poriënverfijning — niacinamide reguleert talgproductie, waardoor poriën minder snel verstopt raken en zichtbaar kleiner lijken',
+          'Huidbarrière versterken — het verhoogt de productie van ceramiden en huideiwitten die de barrièrefunctie ondersteunen',
+          'Ongelijkmatige huidtoon egaliseren — remt melanineoverdracht van melanocyten naar huidcellen, waardoor pigmentvlekken en donkere kringen vervagen',
+          'Roodheid en ontsteking verminderen — anti-inflammatoire werking maakt het geschikt bij acne, rosacea-geneigde huid en reactieve huid',
+          'Fijne lijntjes — bij hogere concentraties (10%) zijn effecten op huidtextuur en fijne lijntjes klinisch aangetoond',
+        ],
+      },
+      {
+        type: 'h2',
+        content: 'Welke concentratie werkt?',
+      },
+      {
+        type: 'p',
+        content: 'Het meeste onderzoek is gedaan op concentraties tussen 2% en 10%. Lage concentraties (2–4%) zijn effectief voor barrièreondersteuning en vochtretentie. Voor merkbare effecten op poriën, pigment en textuur zijn concentraties van 5% en hoger aan te raden. De bekende "10% concentratie" is de drempel waarbij effecten op fijne lijntjes en huidtoon consistent in studies worden gemeten.',
+      },
+      {
+        type: 'callout',
+        content: 'Hogere concentraties (>10%) geven niet per se betere resultaten. Boven de 10% neemt het risico op tijdelijke roodheid toe zonder extra bewezen voordeel. 10% niacinamide is de sweet spot die in de meeste klinische trials als effectief en veilig geldt.',
+      },
+      {
+        type: 'h2',
+        content: 'Combineert niacinamide met retinol?',
+      },
+      {
+        type: 'p',
+        content: 'Ja — en goed ook. Er was lange tijd de misvatting dat niacinamide en retinol niet gecombineerd mogen worden omdat ze een verbinding zouden vormen (nicotinezuur) die roodheid veroorzaakt. Dat klopt niet in de praktijk: deze reactie vereist hoge temperaturen en treedt niet op bij huidverzorgingsproducten. Integendeel — niacinamide vermindert de irritatie die retinol kan veroorzaken en beschermt de huidbarrière terwijl retinol celvernieuwing stimuleert.',
+      },
+      {
+        type: 'p',
+        content: 'De combinatie is daarmee niet alleen veilig, maar synergistisch: retinol pakt de structuur aan, niacinamide zorgt dat de huid de ingreep verdraagt.',
+      },
+      {
+        type: 'h2',
+        content: 'Voor welke huidtypen is niacinamide geschikt?',
+      },
+      {
+        type: 'p',
+        content: 'Niacinamide is een van de veiligste actieven in huidverzorging en geschikt voor vrijwel elk huidtype. Voor vette en acnegevoelige huid reguleert het talg en remt het ontstekingen. Voor droge en gevoelige huid ondersteunt het de barrière en houdt het vocht vast. Voor volwassen en aging huid verlaagt het de zichtbaarheid van pigmentvlekken en verfijnt het textuur. Er is geen inloopperiode vereist — je kunt het dagelijks toepassen, ook overdag.',
+      },
+      {
+        type: 'h2',
+        content: 'Hoe gebruik je een niacinamide serum correct?',
+      },
+      {
+        type: 'ul',
+        content: [
+          'Volgorde — serum na toner, voor moisturizer; bij combinatie met retinol kun je ze samen \'s avonds gebruiken',
+          'Frequentie — dagelijks, ochtend én avond is veilig en effectief',
+          'Combinaties om te vermijden — niacinamide heeft geen problematische interacties met gangbare ingrediënten; veilig naast vitamine C, AHA/BHA, peptiden en SPF',
+          'Verwachte resultaten — poriën en textuur na 4–6 weken, pigmentvlekken na 8–12 weken bij consequent gebruik',
+        ],
+      },
+      {
+        type: 'cta',
+        content: 'Reset Serum bevat Niacinamide 10% — samen met Retinol 0.3% en Bakuchiol. Zo werkt barrièrebescherming en celvernieuwing tegelijk, in één parfumvrije formule voor de avond.',
+      },
+      {
+        type: 'h2',
+        content: 'Conclusie',
+      },
+      {
+        type: 'p',
+        content: 'Niacinamide is geen trend — het is een van de best onderbouwde ingrediënten in moderne huidverzorging. Het doet wat de meeste serums beloven: poriënverfijning, barrièreondersteuning, egalisatie en anti-aging in één formule. Als je maar één actief ingrediënt aan je routine toevoegt en je huid gevoelig of reactief is, is niacinamide de meest logische keuze.',
+      },
+    ],
+  },
 ]
 
 export function getAllPosts(): JournalPost[] {

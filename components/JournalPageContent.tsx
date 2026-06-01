@@ -43,12 +43,12 @@ const articles = [
     image: '/journal-barrier.jpg',
   },
   {
-    slug: 'retinol-beginners-gids',
-    title: 'Retinol voor beginners: wat je moet weten',
-    excerpt: 'Hoe start je met retinol zonder irritatie? Alles wat je moet weten in één leesbare gids.',
+    slug: 'niacinamide-serum-gids',
+    title: 'Niacinamide serum: wat het doet en waarom het in elke routine past',
+    excerpt: 'Poriënverfijner, barrièreversterker, pigmentegalisator. Niacinamide doet wat de meeste serums beloven — en combineert uitstekend met retinol.',
     category: 'Ingrediënten',
     readTime: '5 min',
-    date: 'April 2026',
+    date: 'Juni 2026',
     image: '/reset-serum-new.jpg',
   },
   {

@@ -65,6 +65,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: `${BASE_URL}/journal/niacinamide-serum-gids`,
+      lastModified: new Date('2026-06-01'),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
       url: `${BASE_URL}/routine`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
