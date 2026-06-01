@@ -76,6 +76,20 @@ const organizationSchema = {
   sameAs: ['https://www.instagram.com/lumeskincare', 'https://www.tiktok.com/@mauyi'],
 }
 
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'MAUYI',
+  url: BASE_URL,
+  description: 'Wetenschappelijk geformuleerde huidverzorging voor gevoelige huid. Retinol, Niacinamide en Bakuchiol in parfumvrije formules.',
+  inLanguage: 'nl-NL',
+  publisher: {
+    '@type': 'Organization',
+    name: 'MAUYI',
+    url: BASE_URL,
+  },
+}
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="nl" className={`${inter.variable} ${cormorant.variable}`}>
@@ -83,6 +97,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
       <body className={`${inter.className} antialiased`}>
