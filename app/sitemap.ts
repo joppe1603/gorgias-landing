@@ -11,28 +11,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: `${BASE_URL}/products/reset-serum`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.95,
+    },
+    {
       url: `${BASE_URL}/launch`,
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 0.9,
     },
     {
-      url: `${BASE_URL}/products/reset-serum`,
+      url: `${BASE_URL}/shop`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
-      priority: 0.85,
-    },
-    {
-      url: `${BASE_URL}/why-lume`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
+      priority: 0.8,
     },
     {
       url: `${BASE_URL}/science`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
+    },
+    {
+      url: `${BASE_URL}/ingredients`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.65,
     },
     {
       url: `${BASE_URL}/philosophy`,
@@ -44,13 +50,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${BASE_URL}/faq`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.5,
+      priority: 0.6,
     },
     {
-      url: `${BASE_URL}/privacy`,
+      url: `${BASE_URL}/journal`,
       lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
+      changeFrequency: 'weekly',
+      priority: 0.55,
+    },
+    {
+      url: `${BASE_URL}/routine`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.5,
     },
   ]
 }
