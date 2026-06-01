@@ -99,7 +99,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
       if (saved) {
         const items = JSON.parse(saved) as CartItem[]
         if (Array.isArray(items) && items.length > 0) {
-          dispatch({ type: 'RESTORE', payload: items })
+          // Drop stale items that predate Shopify integration (no variantId)
+          const valid = items.filter((i) => i.shopifyVariantId)
+          if (valid.length > 0) {
+            dispatch({ type: 'RESTORE', payload: valid })
+          } else {
+            localStorage.removeItem('mauyi-cart')
+          }
         }
       }
     } catch {}
