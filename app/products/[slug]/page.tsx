@@ -418,6 +418,7 @@ export default async function ProductPage({
         image={product.heroImage}
         size={product.size}
         availability={product.availability}
+        shopifyVariantId={product.shopifyVariantId}
       />
     </>
   )

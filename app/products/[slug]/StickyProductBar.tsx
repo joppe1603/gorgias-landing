@@ -13,6 +13,7 @@ export default function StickyProductBar({
   image,
   size,
   availability,
+  shopifyVariantId,
 }: {
   slug: string
   name: string
@@ -21,6 +22,7 @@ export default function StickyProductBar({
   image: string
   size: string
   availability?: 'available' | 'pre-launch' | 'sample'
+  shopifyVariantId?: string
 }) {
   const [visible, setVisible] = useState(false)
   const [added, setAdded] = useState(false)
@@ -41,7 +43,7 @@ export default function StickyProductBar({
   function handleAddToCart() {
     dispatch({
       type: 'ADD_ITEM',
-      payload: { slug, name, price, image, size },
+      payload: { slug, name, price, image, size, shopifyVariantId },
     })
     setAdded(true)
     setTimeout(() => setAdded(false), 2200)
