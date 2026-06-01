@@ -3,55 +3,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { getAllPosts, getFeaturedPost } from '@/lib/journal'
 
-const featured = {
-  slug: 'bakuchiol-vs-retinol',
-  title: 'Bakuchiol vs retinol: wat is het verschil en wat werkt beter?',
-  excerpt: 'Bakuchiol wordt vaak gepresenteerd als het "natuurlijke retinol-alternatief". Maar klopt dat? En wanneer kies je voor wat?',
-  category: 'Ingrediënten',
-  readTime: '6 min',
-  date: 'Juni 2026',
-  image: '/reset-serum-new.jpg',
-}
-
-const articles = [
-  {
-    slug: 'niacinamide-serum-gids',
-    title: 'Niacinamide serum: wat het doet en waarom het in elke routine past',
-    excerpt: 'Poriënverfijner, barrièreversterker, pigmentegalisator. Niacinamide doet wat de meeste serums beloven — en combineert uitstekend met retinol.',
-    category: 'Ingrediënten',
-    readTime: '5 min',
-    date: 'Juni 2026',
-    image: '/reset-serum-new.jpg',
-  },
-  {
-    slug: 'huidbarriere-herstellen',
-    title: 'Huidbarrière herstellen: wat het is, hoe je het beschadigt en hoe je het repareert',
-    excerpt: 'Een beschadigde huidbarrière is de meest onderschatte oorzaak van gevoelige huid. Herken de signalen en leer hoe je herstel versnelt.',
-    category: 'Huidverzorging',
-    readTime: '6 min',
-    date: 'Mei 2026',
-    image: '/journal-barrier.jpg',
-  },
-  {
-    slug: 'retinol-beginners-gids',
-    title: 'Retinol voor beginners: hoe je start zonder irritatie',
-    excerpt: 'Hoe start je met retinol zonder irritatie? De juiste concentratie, opbouwschema en wat je wel en niet combineert.',
-    category: 'Ingrediënten',
-    readTime: '6 min',
-    date: 'April 2026',
-    image: '/reset-serum-new.jpg',
-  },
-  {
-    slug: 'waarom-minder-beter-werkt',
-    title: 'Waarom minder huidverzorging bijna altijd beter werkt',
-    excerpt: 'De gemiddelde vrouw gebruikt 12 producten per dag. Dermatologen raden 3 à 4 aan. Wat doen de andere 8 eigenlijk met je huid?',
-    category: 'Filosofie',
-    readTime: '5 min',
-    date: 'Mei 2026',
-    image: '/journal-featured.jpg',
-  },
-]
+const allPosts = getAllPosts()
+const featuredPost = getFeaturedPost()
+const articles = allPosts.filter((p) => p.slug !== featuredPost.slug)
 
 const categoryColors: Record<string, string> = {
   Filosofie: 'bg-stone-100 text-stone-600',
@@ -94,11 +50,11 @@ export default function JournalPageContent() {
             transition={{ duration: 0.6 }}
           >
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400 mb-6">Uitgelicht artikel</p>
-            <Link href={`/journal/${featured.slug}`} className="group grid lg:grid-cols-2 gap-10 items-center">
+            <Link href={`/journal/${featuredPost.slug}`} className="group grid lg:grid-cols-2 gap-10 items-center" key={featuredPost.slug}>
               <div className="relative h-80 rounded-2xl overflow-hidden bg-[#F5EFE6]">
                 <Image
-                  src={featured.image}
-                  alt={featured.title}
+                  src={featuredPost.image}
+                  alt={featuredPost.title}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -107,17 +63,17 @@ export default function JournalPageContent() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
               </div>
               <div>
-                <span className={`text-[10px] font-bold uppercase tracking-[0.15em] px-2.5 py-1 rounded-full mb-4 inline-block ${categoryColors[featured.category] || 'bg-stone-100 text-stone-600'}`}>
-                  {featured.category}
+                <span className={`text-[10px] font-bold uppercase tracking-[0.15em] px-2.5 py-1 rounded-full mb-4 inline-block ${categoryColors[featuredPost.category] || 'bg-stone-100 text-stone-600'}`}>
+                  {featuredPost.category}
                 </span>
                 <h2 className="text-3xl sm:text-4xl font-semibold text-[#1A1A1A] leading-[1.1] mb-4 group-hover:text-[#C9A96E] transition-colors duration-200">
-                  {featured.title}
+                  {featuredPost.title}
                 </h2>
-                <p className="text-[#6B6560] leading-relaxed font-light mb-6">{featured.excerpt}</p>
+                <p className="text-[#6B6560] leading-relaxed font-light mb-6">{featuredPost.excerpt}</p>
                 <div className="flex items-center gap-4 text-sm text-stone-400">
-                  <span>{featured.date}</span>
+                  <span>{featuredPost.date}</span>
                   <span>·</span>
-                  <span>{featured.readTime} lezen</span>
+                  <span>{featuredPost.readTime} lezen</span>
                 </div>
               </div>
             </Link>
